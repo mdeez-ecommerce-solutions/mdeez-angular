@@ -24,9 +24,12 @@ export class UserComponent implements OnInit {
   visitorId: any;
   VisitorName: any;
   exportVisitorListFileName = 'visitorVisit.xlsx';
-  displayedColumns: string[] = ['S.No.', 'Unique Visitor ID', 'Date', 'Purpose of Visit', 'Whom Visitor Meet', 'Meeting Location', 'remarks', 'Status', 'Action'];
-
-  dataSource: any;
+  displayedColumns: string[] = ['S.No.', 'Name', 'Email', 'Role', 'Action'];
+  dataSource = [
+    {name:'Himanshu', email:"himanshuarora2188@gmail.com", role:"Admin"},
+    {name:'Test', email:"test@example.com", role:"Editors"}
+   ]
+  // dataSource: any;
   authData
   adminRole=environment.ADMIN_ROLE
   editorRole=environment.EDITOR_ROLE
@@ -52,9 +55,9 @@ export class UserComponent implements OnInit {
     this.userService.getVisitorList(pageIndexOfListingTable).subscribe((response: any) => {
       if (response.error === false) {
           this.visitorLists = response.data.response;
-          this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+          // this.dataSource = new MatTableDataSource<any>(this.visitorLists);
          
-          this.dataSource.paginator = this.paginator;
+          // this.dataSource.paginator = this.paginator;
       }
     }, (error) => {
       this._snackBar.open(error.message, '', {
