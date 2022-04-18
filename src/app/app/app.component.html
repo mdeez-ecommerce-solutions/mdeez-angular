@@ -1,0 +1,88 @@
+<app-header *ngIf="this.authData?.token" [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-header>
+<div class="conatiner-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="text-center p-2">
+                <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight"
+                        style="margin-right: 1em;" />
+                    <span style="font-size: 0.9em;">
+                        <span>Powered by NSIGHT Consulting</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1" *ngIf="this.authData?.token">
+        <div class="log-position">
+        
+        <div class="log-icon">LOGO</div>
+
+        <ng-container *ngIf="this.authData.role===adminRole">
+            <a href="Javascript:void(0)" routerLink="add-visitor">
+                <img src="../../assets/images/side-nav/add-new-visitor.jpg" class="image-size">
+                <div class="pb-45" >Add Visitor</div>
+            </a>
+
+            <a href="Javascript:void(0)" routerLink="dashboard">
+                <img src="../../assets/images/side-nav/dashboard.png" class="image-size">
+                <div class="pb-45" >Analytics</div>
+            </a>
+            <a href="Javascript:void(0)" routerLink="total-visit-list">
+                <img src="../../assets/images/side-nav/visitor-list.jpg" class="image-size">
+                <div class="pb-45" >Visitor List</div>
+            </a>
+           
+            <a routerLink="user/list" href="Javascript:void(0)">
+                <img src="../../assets/images/side-nav/user.png" class="image-size">
+                <div class="pb-45" >User List</div>
+            </a>
+            <a routerLink="user/map" href="Javascript:void(0)">
+                <img src="../../assets/images/side-nav/user.png" class="image-size">
+                <div class="pb-45" >User List</div>
+            </a>
+        </ng-container>
+        
+
+        <ng-container *ngIf="this.authData.role===(editorRole)">
+
+            <a href="Javascript:void(0)" routerLink="add-visitor">
+                <img src="../../assets/images/side-nav/add-new-visitor.jpg" class="image-size">
+                <div class="pb-45" >Add Visitor</div>
+            </a>
+            <a href="Javascript:void(0)" routerLink="total-visit-list">
+                <img src="../../assets/images/side-nav/visitor-list.jpg" class="image-size">
+                <div class="pb-45" >Visitor List</div>
+            </a>
+      
+       
+        </ng-container>
+
+      
+        
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="col-md-11">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
+</div>
+<app-footer [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-footer>
+<button *ngIf="isShow" (click)="gotoTop()"><span class="material-icons">
+        arrow_upward
+    </span>
+</button>

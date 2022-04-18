@@ -1,0 +1,286 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mt-3 card">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="font-13">Visitor Management</a></li>
+                        <li class="breadcrumb-item"><a [routerLink]="['/dashboard']" class="font-13">Visitor List</a></li>
+                        <!-- <li class="breadcrumb-item active"><a class="font-13 highlight-text">{{visitorDetail?.visitor?.fullName}}</a></li> -->
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-3">
+                <div class="m-30">
+                    <div class="mt-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">Visitor Information
+                                <span (click)="getVisitorEdit()" class="cursor-pointer float-right"> <img width="20" src="../../../assets/images/edit-white.svg"
+                                        alt="edit" /> </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-3">
+                                    <img class="img-fluid visitor_img" style="height: 250px;" [src]="visitorImage" alt="user">
+                                </div>
+                                <div class="col-md-5 col-lg-4 personal-detail">
+                                    <div class="row">
+                                        <span class="label-key col-5">Visitor Name</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.fullName || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Date of Birth</span> <span class="pl-5 list-mar col-7">:
+                                            {{(visitorDetail?.visitor?.dob | date: 'dd/MM/yyyy') || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Father's Name</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.father || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Mother's Name</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.mother || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                            <span class="label-key col-5">Unique Visitor Id</span> <span class="pl-5 list-mar col-7 id-width">:
+                                                {{visitorDetail?.visitor?.uniqueVisitorId || 'Not Available'}}
+                                            </span>
+                                        </div>
+                                    <div class="row">
+                                            <span class="label-key col-5">Caste</span> <span class="pl-5 list-mar col-7">:
+                                                {{visitorDetail?.visitor?.caste || 'Not Available'}}
+                                            </span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="label-key col-5">Occupation</span> <span class="pl-5 list-mar col-7">:
+                                                {{visitorDetail?.visitor?.occupation || 'Not Available'}}
+                                            </span>
+                                        </div>
+                                        
+                                 
+                                </div>
+                                <div class="col-md-5 col-lg-5 personal-detail">
+                                    <div class="row">
+                                        <span class="label-key col-5">Gender</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.gender || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Total Family Members</span> <span
+                                            class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.objectiveInfo?.totalFamilyMembers || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Email Id</span> <span class="pl-5 list-mar col-7 id-width">:
+                                            {{visitorDetail?.visitor?.emailId || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Mobile</span> <span class="pl-5 list-mar col-7 ">:
+                                            {{visitorDetail?.visitor?.mobile || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                            <span class="label-key col-5">Secondary Mobile Number</span> <span class="pl-5 list-mar col-7 ">:
+                                                {{visitorDetail?.visitor?.mobileTwo || 'Not Available'}}</span>
+                                        </div>
+                                        <div class="row">
+                                                <span class="label-key col-5">Other Mobile Number</span> <span class="pl-5 list-mar col-7 ">:
+                                                    {{visitorDetail?.visitor?.mobileThree || 'Not Available'}}</span>
+                                            </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Landline Number</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.landLineNumber || 'Not Available'}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="panel panel-default">
+                            <div class="row">
+                                <div class="panel-body col-md-6">Visitor Address</div>
+                                <div class="panel-body col-md-6">Objective Information</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <div class="col-md-6 personal-detail">
+                                    <div class="row">
+                                        <span class="label-key col-5">House Number</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.houseNumber || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Colony/Village</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.line1 || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Ward</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.line2 || 'Not Available'}}</span>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Tehsil</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.tehsil || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">District</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.district || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Area PIN/ZIP Code</span> <span
+                                            class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.zipCode || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Voter Id Number</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.visitor?.voterId || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Constituency</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.constituency || 'Not Available'}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Area</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.addressInfo?.area || 'Not Available'}}</span>
+                                    </div>
+
+                                
+
+                                </div>
+
+                                <div class="col-md-6 personal-detail">
+                                    <div class="row">
+                                        <span class="label-key col-5">Total Visits </span> <span class="pl-5 col-7 list-mar">:
+                                            {{visitorDetail?.totalRevisits || 'Not Available'}} 
+                                            <a (click)=" openTotalVisit(visitorDetail?.visitor?.fullName)"
+                                            ><img
+                                              width="20"
+                                              style="margin-left: 0.2em"
+                                              src="../../../assets/images/View.svg"
+                                              alt="view" /></a
+                                        ></span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Location of Meeting</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.objectiveInfo?.meetingLocation || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Perceived Political Inclination</span> <span
+                                            class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.objectiveInfo?.perceivedPoliticalInclination || 'Not Available'}}</span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Proximity of Visitor</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.objectiveInfo?.proximityOfVisitor || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+
+                                  
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Remark</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.objectiveInfo?.remark || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="panel panel-default">
+                            <div class="row">
+                                <div class="panel-body col-md-12"> Political Information</div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <div class="col-md-12 personal-detail">
+                                    <div class="row">
+                                        <span class="label-key col-5">Refrence Name</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.refrenceName || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Refrence Mobile</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.refrenceMobile || 'Not Available'}}
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Refrence Remark</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.refrenceRemark || 'Not Available'}}
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Accomplice Name</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.accompliceName || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Accomplice Mobile</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.accompliceMobile || 'Not Available'}}
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Accomplice Remark</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.accompliceRemark || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Category of Visitor</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.visitorCategory || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <span class="label-key col-5">Remark (In Case of Reference)</span> <span
+                                            class="pl-5 list-mar col-7">: {{visitorDetail?.politicalInfo?.remarks || 'Not Available'}}
+                                        </span>
+                                    </div> -->
+
+
+
+                                    <div class="row">
+                                        <span class="label-key col-5">Captured Details</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.politicalInfo?.accomplicedDetails || 'Not Available'}}
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="label-key col-5">Is Samajwadi Party Member</span> <span class="pl-5 list-mar col-7">:
+                                            {{visitorDetail?.politicalInfo?.isSamajwadiPartyMember || 'Not Available'}}
+                                        </span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+          

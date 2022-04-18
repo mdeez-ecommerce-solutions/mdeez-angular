@@ -1,0 +1,924 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mt-3 card">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="font-13">Visitor Management</a></li>
+                        <li class="breadcrumb-item"><a [routerLink]="['/dashboard']" class="font-13">Visitor List</a>
+                        </li>
+                        <li *ngIf="!editForm" class="breadcrumb-item active"><a class="font-13">Add New Visitor</a></li>
+                        <li *ngIf="editForm" class="breadcrumb-item active"><a class="font-13">Edit Visitor</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="existVisitorFlag">
+        <div class="col-md-12">
+            <form class="mat-horizontal-content-container" [formGroup]="ExistVisitorInformation" >
+                <div class="row mt-5" *ngIf="!editForm">
+
+                    <div class="col-md-6">
+                        <div>
+                            <label> Are you a new visitor? * </label>
+                        </div>
+                        <mat-radio-group formControlName="isNewVisitor" aria-label="Select an option" class="mt-3">
+                            <mat-radio-button (change)="existVisitorBtn($event)" [value]="true">Yes</mat-radio-button>
+                            <mat-radio-button [checked]="true" (change)="existVisitorBtn($event)" [value]="false">No
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div>
+                            <label> Unique visitor ID* </label>
+                        </div>
+                        <mat-form-field floatLabel="never">
+                            <input matInput (keyup)="uniqueVisitorIdFetchData($event.target.value)"
+                                formControlName="uniqueVisitorId" placeholder="Enter visitor ID" required />
+                            <app-spiner style="position: absolute; right: 0; top: 2px;" [loader]="fetchUniqueIdData">
+                            </app-spiner>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label> Date </label>
+                        </div>
+                        <mat-form-field floatLabel="never">
+                            <input matInput [max]="today" [matDatepicker]="picker" formControlName="date"
+                                placeholder="Date" required />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div>
+                            <label> Purpose of Visit/Meet* </label>
+                        </div>
+                        <mat-form-field appearance="fill" class="select-bg">
+                            <mat-select formControlName="visitPurposeCategoryForExist">
+                                <mat-option value="" selected disabled>Select Purpose of Visit/Meet
+                                </mat-option>
+                                <mat-option *ngFor="let categoryPurposeOfVisit of categoryPurposeOfVisits"
+                                    [value]="categoryPurposeOfVisit.purpose">
+                                    {{categoryPurposeOfVisit?.purpose}}
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label> DESIRE TO MEET* </label>
+                        </div>
+                        <mat-form-field appearance="fill" class="select-bg">
+                            <mat-select formControlName="whomToMeetForExist">
+                                <mat-option value="" selected disabled>Select Desire to meet
+                                </mat-option>
+                                <mat-option *ngFor="let whomVisitorMeet of whomVisitorMeets"
+                                    [value]="whomVisitorMeet.toMeet">
+                                    {{whomVisitorMeet?.toMeet}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div>
+                            <label> Location of Meeting* </label>
+                        </div>
+                        <mat-form-field appearance="fill" class="select-bg" required>
+                            <mat-select (selectionChange)="meetingLocationPopup($event.value)"
+                                formControlName="meetingLocationForExist">
+                                <mat-option value="" selected disabled>Select location</mat-option>
+                                <mat-option *ngFor="let meetingLocation of meetingLocations"
+                                    [value]="meetingLocation.location">
+                                    {{meetingLocation?.location}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div>
+                            <label> Perceived political inclination* </label>
+                        </div>
+                        <mat-form-field appearance="fill" class="select-bg">
+                            <mat-select formControlName="perceivedPoliticalInclinationForExist" required>
+                                <mat-option value="" selected disabled>Select </mat-option>
+                                <mat-option *ngFor="let perceivedPoliticalInclination of perceivedPoliticalInclinations"
+                                    [value]="perceivedPoliticalInclination.inclination">
+                                    {{perceivedPoliticalInclination?.inclination}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div>
+                            <label> Meeting Remarks </label>
+                        </div>
+                        <mat-form-field floatLabel="never">
+                            <input matInput formControlName="meetingRemark" placeholder="" />
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <br />
+                <hr />
+                <div class="float-right">
+                    <button mat-button class="m-2 back" [routerLink]="['/dashboard']"
+                        routerLinkActive="router-link-active"><span class="material-icons arrow-back">
+                            west
+                        </span> Cancel</button>
+                    <button (click)="ExistVisitorInformationFormSubmit()" mat-button mat-flat-button color="warn"
+                        class="m-2 next">Submit
+                        <app-spiner class="align-submit-loader" [loader]="submitFormLoader"></app-spiner>
+                        <span class="material-icons arrow-forword">
+                            east
+                        </span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" *ngIf="!existVisitorFlag">
+        <div class="col-md-12 ">
+
+            <mat-horizontal-stepper linear #stepper>
+                <mat-step [stepControl]="visitorInformation">
+                    <form   [formGroup]="visitorInformation" (ngSubmit)="visitorInformationFormSubmit(stepper)" >
+                        <ng-template matStepLabel>Visitor Information</ng-template>
+                        <div class="row mt-5" *ngIf="!editForm">
+
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Are you a new visitor? * </label>
+                                </div>
+                                <mat-radio-group formControlName="isNewVisitor" aria-label="Select an option"
+                                    class="mt-3">
+                                    <mat-radio-button [checked]="true" (change)="existVisitorBtn($event)"
+                                        [value]="true">Yes</mat-radio-button>
+                                    <mat-radio-button (change)="existVisitorBtn($event)" [value]="false">No
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Date* </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput [matDatepicker]="picker" formControlName="enrollmentDate"
+                                        mat-raised-button (click)="picker.open()" placeholder="Date" autocomplete="off"
+                                         required  />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Visitor Full Name* </label>
+                                </div>
+                                <mat-form-field floatLabel="never" class="example-full-width" *ngIf="editForm">
+                                    <input type="text" placeholder="Enter visitor name" matInput
+                                        formControlName="fullName">
+                                </mat-form-field>
+
+                                <mat-form-field floatLabel="never" class="example-full-width" *ngIf="!editForm">
+                                    <input type="text" placeholder="Enter visitor name" matInput
+                                        formControlName="fullName" [matAutocomplete]="auto">
+                                    <app-spiner style="position: absolute; right: 0; top: 2px;"
+                                        [loader]="loaderVisitorSuggestion">
+                                    </app-spiner>
+
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option (click)="getIndex(i)" *ngFor="let detail of options$; let i = index"
+                                            [value]="detail?.firstName">
+                                            {{detail?.firstName}} {{detail?.lastName}} |
+                                            <small>{{detail?.relationType == 'F' ? 'Father' : detail?.relationType == 'M' ? 'Mother' : detail?.relationType == 'H' ? 'Husband' : detail?.relationType == 'W' ? 'Wife' : detail?.relationType == 'G' ? 'Guru' : detail?.relationType == 'O' ? 'Other' : ''}}
+                                                name: {{detail?.realtionTypeFamilyFirstName}}</small>
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Father's Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="father" placeholder="Enter father's name" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Mother's Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="mother"
+                                        placeholder="Enter visitor mother's name" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Caste* </label>
+                                </div>
+
+                                <mat-form-field floatLabel="never" class="example-full-width">
+                                    <input type="text" placeholder="Enter visitor Caste" matInput
+                                        formControlName="caste" [matAutocomplete]="casteSuggestion">
+                                    <!-- <app-spiner style="position: absolute; right: 0; top: 2px;"
+                                            [loader]="loaderVisitorSuggestion">
+                                        </app-spiner> -->
+
+                                    <mat-autocomplete #casteSuggestion="matAutocomplete">
+                                        <mat-option *ngFor="let caste of $castesSuggestion; let i = index"
+                                            [value]="caste?.caste">
+                                            {{caste?.caste}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Date of Birth* </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input [max]="today" matInput [matDatepicker]="dobPicker" formControlName="dob"
+                                        placeholder="Select date" mat-raised-button (click)="dobPicker.open()"
+                                        autocomplete="off" required  />
+                                    <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #dobPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Visitor Voter Id Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="voterId"
+                                        placeholder="Enter visitor voter id number">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Gender* </label>
+                                </div>
+                                <mat-radio-group aria-label="Select an option" class="mt-3" formControlName="gender">
+                                    <mat-radio-button *ngFor="let gen of gender" [value]="gen">
+                                        {{gen}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                           
+                        </div>
+                        <div class="row mt-4">
+                            <!--- voter Id Change place-->
+
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Occupation* </label>
+                                </div>
+                                <mat-form-field floatLabel="never" class="example-full-width">
+                                    <input type="text" placeholder="Enter visitor Occupation" matInput
+                                        formControlName="occupation" [matAutocomplete]="occupationSuggestion">
+                                    <!-- <app-spiner style="position: absolute; right: 0; top: 2px;"
+                                            [loader]="loaderVisitorSuggestion">
+                                        </app-spiner> -->
+
+                                    <mat-autocomplete #occupationSuggestion="matAutocomplete">
+                                        <mat-option *ngFor="let item of $occupationSuggestion; let i = index"
+                                            [value]="item?.occupation">
+                                            {{item?.occupation}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <!-- <mat-form-field appearance="fill" class="select-bg" required>
+                                    <mat-select formControlName="occupation">
+                                        <mat-option value="" selected disabled>Select Occupation</mat-option>
+                                        <mat-option *ngFor="let item of occupation" [value]="item.occupation">
+                                            {{item?.occupation}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field> -->
+                            </div>
+                            </div>
+                        <br />
+                        <hr>
+                        <div class="float-right foot_bot">
+                            <button mat-button type="button"  class="m-2 back"  [routerLink]="['/dashboard']"
+                                ><span class="material-icons arrow-back">
+                                    west
+                                </span> Cancel</button>
+                            <button type="submit"  
+                                [disabled]="!visitorInformation.valid" mat-button mat-flat-button color="warn"
+                                class="m-2 next">Next <span class="material-icons arrow-forword">
+                                    east
+                                </span></button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="visitorAddress">
+                    <form [formGroup]="visitorAddress">
+                        <ng-template matStepLabel>Visitor address</ng-template>
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> House Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="houseNumber" placeholder="Enter house number">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Colony/Village* </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="line1" placeholder="Enter colony/village name"
+                                        required />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Ward Number/Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="line2" placeholder="Enter ward number/name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Tehsil </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="tehsil" placeholder="Enter tehsil name" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> District* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg" required>
+                                    <mat-select formControlName="district">
+                                        <mat-option value="" selected disabled>Select District</mat-option>
+                                        <mat-option *ngFor="let item of visitorDistrict" [value]="item">
+                                            {{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <!-- <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="district" placeholder="Enter district name"
+                                        required />
+                                </mat-form-field> -->
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Area PIN/ZIP Code </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="zipCode" placeholder="Enter pin/zip code">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <!--- voter Id Change place-->
+
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Constituency* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg" required>
+                                    <mat-select formControlName="constituency">
+                                        <mat-option value="" selected disabled>Select Constituency</mat-option>
+                                        <mat-option *ngFor="let item of visitorConstituency" [value]="item">
+                                            {{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Area* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg" required>
+                                    <mat-select formControlName="area">
+                                        <mat-option value="" selected disabled>Select Area</mat-option>
+                                        <mat-option value="Rural" >RURAL</mat-option>
+                                        <mat-option value="Urban" >URBAN</mat-option>
+                                        <!-- <mat-option *ngFor="let item of visitorConstituency" [value]="item">
+                                            {{item}}
+                                        </mat-option> -->
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                <div>
+                                    <label> Booth Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input (keyup)="boothAddressByNumber($event.target.value)" matInput
+                                        formControlName="boothNumber" placeholder="Enter booth number">
+                                </mat-form-field>
+                            </div> -->
+                        </div>
+
+                        <!-- <div class="row mt-4">
+                        
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Booth Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="boothName" placeholder="Enter booth name">
+                                </mat-form-field>
+                                <app-spiner style="position: absolute; right: 10px; top: 2px;"
+                                    [loader]="fetchUniqueIdData"></app-spiner>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Booth Area </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="boothArea">
+                                        <mat-option value="" selected disabled>Select Booth Area</mat-option>
+                                        <mat-option *ngFor="let BoothArea of BoothAreas" [value]="BoothArea">
+                                            {{BoothArea}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <app-spiner style="position: absolute; right: 10px; top: 2px;"
+                                        [loader]="fetchUniqueIdData"></app-spiner>
+                                </mat-form-field>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="row mt-4">
+                   
+
+                        </div> -->
+
+                        <div>
+
+                            <hr class="mt-5">
+                            <div class="float-right">
+                                <button mat-button matStepperPrevious mat-button class="m-2 back"><span
+                                        class="material-icons arrow-back">
+                                        west
+                                    </span> Back</button>
+                                <button  (click)="visitorAddressFormSubmit(stepper)" [disabled]="!visitorAddress.valid"
+                                    mat-button mat-flat-button color="warn" class="m-2 next">Next
+                                    <span class="material-icons arrow-forword">
+                                        east
+                                    </span></button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+
+
+
+                <mat-step [stepControl]="objectiveInformation">
+                    <form [formGroup]="objectiveInformation">
+                        <ng-template matStepLabel>Objective Information</ng-template>
+                        <!-- <div class="row mt-5">
+                            <div class="col-md-6">
+                                <div class="vistor_bot">
+                                    <label> Total Number of Visits </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input appOnlyNumber="true" matInput formControlName="totalVisits"
+                                        placeholder="Enter Total Number of Visits">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Number of Visit <small>(Please use an incremented number to capture the
+                                            current visit number)</small> </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input appOnlyNumber="true" matInput formControlName="numberOfVisit"
+                                        placeholder="Enter visit number">
+                                </mat-form-field>
+                            </div>
+                        </div> -->
+                        <div class="row mt-4">
+                            <!-- <div class="col-md-6" *ngIf="customLocationMeeting">
+                                        <div>
+                                            <label> Location of Meeting* </label>
+                                        </div>
+                                        <mat-form-field floatLabel="never">
+                                            <input matInput formControlName="meetingLocation"
+                                                placeholder="">
+                                        </mat-form-field>
+                                        <span class="input-group-btn location-ui">
+                                                <button mat-button (click)="clearMeetingLocation()">
+                                                        <span class="material-icons">
+                                                                highlight_off
+                                                                </span>
+                                                </button>
+                                            </span>
+                                    </div> -->
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Location of Meeting* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg" required>
+                                    <mat-select (selectionChange)="meetingLocationPopup($event.value)"
+                                        formControlName="meetingLocation">
+                                        <mat-option value="" selected disabled>Select location</mat-option>
+                                        <mat-option *ngFor="let meetingLocation of meetingLocations"
+                                            [value]="meetingLocation.location">
+                                            {{meetingLocation?.location}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Location Name* </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="locationName" placeholder="Enter location name"
+                                        required />
+                                </mat-form-field>
+                                <span class="input-group-btn location-ui">
+                                    <button mat-button (click)="getPosition()">
+                                        <span class="material-icons">
+                                            location_searching
+                                        </span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Perceived political inclination* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="perceivedPoliticalInclination" required>
+                                        <mat-option value="" selected disabled>Select </mat-option>
+                                        <mat-option
+                                            *ngFor="let perceivedPoliticalInclination of perceivedPoliticalInclinations"
+                                            [value]="perceivedPoliticalInclination.inclination">
+                                            {{perceivedPoliticalInclination?.inclination}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label>Proximity of Visitor* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="proximityOfVisitor" required>
+                                        <mat-option value="" selected disabled>Select </mat-option>
+                                        <mat-option *ngFor="let SelectProximityOfVisitor of SelectProximityOfVisitors"
+                                            [value]="SelectProximityOfVisitor.Proximity">
+                                            {{SelectProximityOfVisitor?.Proximity}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-1" *ngIf="otherOptionOfSelectParty">
+                            <div class="col-md-6">
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="partyName" placeholder="Enter party name" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Total Number of Family Members (ABOVE 16 YEARS) </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input appOnlyNumber="true" matInput formControlName="totalFamilyMembers"
+                                        placeholder="Enter total number of family members" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label>Email Id</label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="emailId" placeholder="Enter email id" />
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Mobile* </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input maxlength="12" appOnlyNumber="true" matInput formControlName="mobile"
+                                        placeholder="Enter mobile number" required />
+
+                                </mat-form-field>
+                                <mat-error *ngIf="mobileFlag == false">Mobile number should 10-12 digits.</mat-error>
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <div>
+                                    <label> Secondary Mobile Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input maxlength="12" appOnlyNumber="true" matInput formControlName="mobileTwo"
+                                        placeholder="Enter mobile number" />
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label>Other Mobile Number</label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input maxlength="12" appOnlyNumber="true" matInput formControlName="mobileThree"
+                                        placeholder="Enter mobile number" />
+
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Landline Number (If Applicable) </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input maxlength="15" matInput formControlName="landLineNumber"
+                                        placeholder="Enter landline number" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Remark </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="remark" placeholder="Enter remark">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <hr class="mt-5">
+                        <div>
+                            <div class="float-right">
+                                <button matStepperPrevious mat-button class="m-2 back"><span
+                                        class="material-icons arrow-back">
+                                        west
+                                    </span> Back</button>
+                                <button  (click)="objectiveInformationFormSubmit(stepper)"
+                                    [disabled]="!objectiveInformation.valid" mat-button mat-flat-button color="warn"
+                                    class="m-2 next">Next
+                                    <span class="material-icons arrow-forword">
+                                        east
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="politicalInformation">
+                    <form [formGroup]="politicalInformation">
+                        <ng-template matStepLabel>Political Information</ng-template>
+                        <div class="row mt-5">
+                            <div class="col-md-12">
+                                <div class="d-flex-center">
+                                    <div class="upload-img-height">
+                                        <figure class="imageupload-fix-height">
+                                            <img class="img-fluid" [src]="imageUrl" />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="d-flex-center">
+                                    <div class="m-1">
+                                        <!-- (click)="startWeb() -->
+                                        <label disabled class="fileContainer2 cursor-pointer" (click)="startWeb()">
+                                            <img class="upload-btn-align" src="../../../assets/images/camera.svg"
+                                                alt="camera" /> Click Photo <app-spiner [loader]="loaderWebcam">
+                                            </app-spiner>
+                                        </label>
+                                    </div>
+                                    <div class="m-1">
+                                        <label class="fileContainer2">
+                                            <img class="upload-btn-align" src="../../../assets/images/gallery.svg"
+                                                alt="camera" /> Browse <app-spiner [loader]="loader"></app-spiner>
+                                            <input class="file-input" type="file" name="file" accept="image/*"
+                                                #fileInput (change)="onChange(fileInput.files[0])" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Visitor Category* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="visitorCategory">
+                                        <mat-option value="" selected disabled>Select visitor category</mat-option>
+                                        <mat-option *ngFor="let visitorCategory of visitorCategories"
+                                            [value]="visitorCategory.category">
+                                            {{visitorCategory?.category}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Purpose of Visit/Meet* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="visitPurposeCategory">
+                                        <mat-option value="" selected disabled>Select Purpose of Visit/Meet
+                                        </mat-option>
+                                        <mat-option *ngFor="let categoryPurposeOfVisit of categoryPurposeOfVisits"
+                                            [value]="categoryPurposeOfVisit.purpose">
+                                            {{categoryPurposeOfVisit?.purpose}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <mat-form-field floatLabel="never">
+                                    <textarea matInput formControlName="purposeOfVisitText"
+                                        placeholder="Enter purpose of visit/meet" rows="4"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div>
+                                <label> In case if the visitor comes with some reference) * </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="whome-meet">
+                                    <label> Reference Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="refrenceName"
+                                        placeholder="Enter reference Name" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="whome-meet">
+                                    <label> Reference Mobile Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="refrenceMobile"
+                                        placeholder="Enter reference Mobile number" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <label> Reference Remarks </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="refrenceRemark"
+                                        placeholder="Enter remark if visitor comes with reference" required />
+                                </mat-form-field>
+
+                            </div>
+                           
+                        </div>
+                       
+
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div>
+                                    <label> Capture details of any accomplice with the visitor </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="whome-meet">
+                                    <label> Accomplice Name </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="accompliceName"
+                                        placeholder="Enter Name" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="whome-meet">
+                                    <label> Accomplice Mobile Number </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="accompliceMobile"
+                                        placeholder="Enter Mobile number" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <label> Accomplice Remarks </label>
+                                </div>
+                                <mat-form-field floatLabel="never">
+                                    <input matInput formControlName="accompliceRemark"
+                                        placeholder="Enter remark " />
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="whome-meet">
+                                    <label> Whom Visitor Meet* </label>
+                                </div>
+                                <mat-form-field appearance="fill" class="select-bg">
+                                    <mat-select formControlName="whomToMeet">
+                                        <mat-option value="" selected disabled>Select whom visitor meet
+                                        </mat-option>
+                                        <mat-option *ngFor="let whomVisitorMeet of whomVisitorMeets"
+                                            [value]="whomVisitorMeet.toMeet">
+                                            {{whomVisitorMeet?.toMeet}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <label> Are you a member of Aam Aadmi Party ?* </label>
+                                </div>
+                                <mat-radio-group aria-label="Select an option" class="mt-3"
+                                    formControlName="isSamajwadiPartyMember">
+                                    <mat-radio-button *ngFor="let gen of isSamajwadiParty" [value]="gen">
+                                        {{gen}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+
+                        <hr class="mt-5">
+                        <div>
+                            <div class="float-right">
+                                <button matStepperPrevious mat-button class="m-2 back"><span
+                                        class="material-icons arrow-back">
+                                        west
+                                    </span> Back</button>
+                                <button type="submit" (click)="politicalInformationFormSubmit()"
+                                    [disabled]="!politicalInformation.valid" mat-button mat-flat-button color="warn"
+                                    class="m-2 next">Submit
+                                    <span class="material-icons arrow-forword">
+                                        east
+                                    </span>
+                                    <app-spiner class="align-submit-loader" [loader]="submitFormLoader"></app-spiner>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>

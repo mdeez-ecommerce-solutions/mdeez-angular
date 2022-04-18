@@ -1,0 +1,23 @@
+
+<div class="card card-padding mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h6>VISITOR OCCUPATION</h6>
+        </div>
+        <div class="col-md-6">
+            <div class="nav-item dropdown text-right">
+                <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="visitorCategoryOption" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    FILTER
+                </a>
+                <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="purpose">
+                    <!-- <a class="dropdown-item cursor-pointer" (click)="visitorCategoryFilter(visitorCategoriesOption?._id)" *ngFor="let visitorCategoriesOption of visitorCategoryGraph?.data">{{visitorCategoriesOption?._id}}</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="example-loading-shade bg-none" *ngIf="graphDataLoader">
+            <mat-spinner></mat-spinner>
+        </div>
+    <div id="visitorOccupationChart" class="mt-3" style="width: 100%; height: 350px"></div>
+</div>

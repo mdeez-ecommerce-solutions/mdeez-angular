@@ -1,0 +1,66 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  width: 100%
+}
+
+label {
+  font-size: 16px;
+}
+
+.imageupload-fix-height {
+  width: 150px;
+  height: auto;
+}
+
+.material-icons {
+  font-size: 18px;
+  position: relative;
+}
+
+.arrow-forword {
+  transition: 0.3s ease-in;
+}
+
+.next:hover .arrow-forword {
+  right: -5px;
+}
+.back:hover .arrow-back {
+  left: -5px;
+}
+
+.align-submit-loader{
+  position: relative;
+    top: 3px;
+    left: 5px;
+}
+.upload-btn-align{
+  position: relative;
+    top: -2px;
+    left: -4px;
+}
+
+/* Media query for tablate */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  
+   
+}
+@media (min-width: 1024px) and (max-width: 1112px) {
+  .vistor_bot, .whome-meet{
+    margin-bottom: 25px;
+  }
+  .foot_bot{
+    margin-bottom: 53%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .vistor_bot, .whome-meet{
+    margin-bottom: 25px;
+  }
+  .foot_bot{
+    margin-bottom: 53%;
+  }
+}

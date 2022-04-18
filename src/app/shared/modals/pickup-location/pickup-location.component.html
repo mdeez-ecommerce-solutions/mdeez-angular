@@ -1,0 +1,10 @@
+<div>
+        <div mat-dialog-content>
+          <p>Pick Up Location</p>
+            <div id="map" style="height: 350px;"></div>
+        </div>
+        <div mat-dialog-actions class="float-right">
+          <button mat-button (click)="onNoClick()">Cancel</button>
+          <button mat-button color="primary" [disabled]="locationFound" [mat-dialog-close]="coordinatorAddress" cdkFocusInitial>Ok</button>
+        </div>
+      </div>

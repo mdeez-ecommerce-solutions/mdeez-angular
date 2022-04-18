@@ -1,0 +1,34 @@
+a, a:hover{
+    cursor: pointer;
+}
+.navbar-brand{
+    padding-top: 0;
+    padding-bottom: 0; 
+    margin-right: 0;
+}
+/* Media query for tablate */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  
+   
+}
+@media (min-width: 1024px) and (max-width: 1112px) {
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #000000;
+        font-size: 12px;
+        margin: 0;
+    }
+}
+@media (min-width: 1112px) and (max-width: 1200px) {
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #000000;
+        font-size: 13px;
+        margin: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+}

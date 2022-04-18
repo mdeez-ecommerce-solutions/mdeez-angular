@@ -1,0 +1,11 @@
+.mat-dialog-content{
+    margin: 0;
+    padding: 0;
+}
+.mat-dialog-actions{
+    display: flex;
+    justify-content: center;
+}
+.mat-form-field{
+    width: 100%;
+}

@@ -1,0 +1,98 @@
+<section class="bg-color-signUp">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="auth-padding-left-text auth-img">
+                    <h2 class="mt-80">Constituency Management System</h2>
+                    <ul class="pl-0 list-style-none mt-5">
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Visitor
+                            Management</li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Scheduling
+                            and Planning</li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Workers
+                            Management</li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Knowledge
+                            Management System</li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Projects
+                        </li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> HH
+                            Analytics</li>
+                        <li> <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check"> Leader's
+                            Progress Tracker</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="my-5">
+                    <div class="mt-6">
+                        <h5 class="card-title text-center">Create an account</h5>
+                        <form [formGroup]="signUp" (ngSubmit)="submit()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="email" formControlName="firstname" id="firstName"
+                                            class="form-control" placeholder="Enter your first name" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="LastName">Last Name</label>
+                                        <input type="LastName" formControlName="lastname" id="LastName"
+                                            class="form-control" placeholder="Enter your last name" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="phoneNumber">Phone Number</label>
+                                        <input maxlength="12" appOnlyNumber="true" formControlName="contactNumber" id="phoneNumber"
+                                            class="form-control" placeholder="Enter your phone number" required
+                                            autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="emailId">Email Id</label>
+                                        <input type="emailId" formControlName="email" id="emailId" class="form-control"
+                                            placeholder="Enter your email id" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="inputPassword">Password</label>
+                                        <input type="password" formControlName="password" id="inputPassword"
+                                            class="form-control" placeholder="Enter Password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="confirmPassword">Confirm Password</label>
+                                        <input type="password" formControlName="confirmPassword" id="confirmPassword"
+                                            class="form-control" placeholder="Enter Confirm Password" required
+                                            autofocus>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex-center">
+
+                                <button [disabled]="!signUp .valid"
+                                    class="btn btn-lg btn-danger btn-block text-uppercase my-3 w-50" type="submit">
+                                    Create account
+                                    <app-spiner [loader]="loader"></app-spiner>
+                                </button>
+                            </div>
+                        </form>
+                        <span class="font-14 d-flex-center mt-2"> Already have an account? &nbsp; <a
+                                [routerLink]="['/authentication']" class="text-danger">Log In</a> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

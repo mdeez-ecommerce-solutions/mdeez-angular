@@ -1,0 +1,152 @@
+<section class="bg-color-login">
+  <!-- <mat-toolbar class="bg-transparent">
+        <span>My Application</span>
+    </mat-toolbar> -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="auth-padding-left-text auth-img">
+          <h2 class="mt-80">Constituency Management System</h2>
+          <ul class="pl-0 list-style-none mt-5">
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Visitor Management
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Scheduling and Planning
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Workers Management
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Knowledge Management System
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Projects
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Household Analytics
+            </li>
+            <li>
+              <img
+                class="img-fluid"
+                src="../../../../assets/images/checked.svg"
+                alt="check"
+              />
+              Leader's Progress Tracker
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="my-5 login_med">
+          <div class="mt-6">
+            <h5 class="card-title text-center">Welcome</h5>
+            <form
+              [formGroup]="login"
+              (ngSubmit)="submit()"
+              class="login-half-width"
+            >
+              <div class="form-label-group">
+                <label for="inputEmail">Email address</label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  id="inputEmail"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  required
+                  autofocus
+                />
+                <!-- <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+                                    <div *ngIf="f.username.errors.required">username is required.</div>
+                                    <div *ngIf="f.username.errors.username">Please, enter valid email address.</div>
+                                </div> -->
+              </div>
+
+              <div class="form-label-group">
+                <label for="inputPassword">Password</label>
+                <input
+                  type="password"
+                  formControlName="password"
+                  id="inputPassword"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+
+              <div class="custom-control custom-checkbox mb-4 mt-4">
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe"
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customCheck1"
+                />
+                <label class="custom-control-label" for="customCheck1"
+                  >Remember me</label
+                >
+
+                <span class="float-right">
+                  <a
+                    href="javascript:void(0)"
+                    (click)="forgetPassword()"
+                    class="font-14 text-danger"
+                    >Forgot your password?</a
+                  >
+                </span>
+              </div>
+
+              <button
+                [disabled]="!login.valid"
+                class="btn btn-lg btn-danger btn-block text-uppercase"
+                type="submit"
+              >
+                LOGIN
+                <app-spiner [loader]="loader"></app-spiner>
+              </button>
+            </form>
+            <!-- <span class="font-14 d-flex-center mt-2">
+              Don't have an account? &nbsp;
+              <a [routerLink]="['/signup']" class="text-danger"
+                >Create an account</a
+              >
+            </span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spinner-container" *ngIf="loading == true">
+    <mat-progress-spinner color="warn" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+</section>

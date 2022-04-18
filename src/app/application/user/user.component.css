@@ -1,0 +1,76 @@
+
+
+#custom-search-input button {
+  border: 0;
+  background: none;
+  /** belows styles are working good */
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -28px;
+  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: inherit;
+}
+
+.search-query:focus+button {
+  z-index: 3;
+}
+
+#custom-search-input .material-icons {
+  font-size: 30px;
+  position: absolute;
+  right: -10px;
+  top: -2px;
+}
+
+
+th:last-child,
+td:last-child {
+  position: sticky;
+  right: 0px;
+}
+
+.table td,
+.table th {
+  font-size: 14px;
+}
+
+th:last-child{
+  background-color: #585C67 !important;
+}
+.mat-stroked-button:not(.mat-button-disabled) {
+  border-color: inherit;
+}
+.mat-datepicker-toggle,
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+  color: inherit;
+  position: relative;
+  top: 5px;
+}
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+ 
+}
+@media (min-width: 1024px) and (max-width: 1112px) {
+.height-i{
+  height: 87%;
+}
+
+.footer {
+    padding: 20px 0;
+    margin-top: 60px !important;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+}

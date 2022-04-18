@@ -1,0 +1,34 @@
+
+
+
+/* for left side dropdown */
+.dropdown-menu.more_filter{
+    left: auto!important;
+    right: 0px;
+    background: #282F41;
+}
+.dropdown-menu.more_filter .dropdown-item, .dropdown-menu.more_filter .dropdown-item:hover{
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 10px;
+    
+}
+.dropdown-menu.more_filter .dropdown-item:hover, .dropdown-menu.more_filter .dropdown-item:focus{
+   background-color: #282b35;
+}
+
+/* for right side dropdown */
+.dropdown-menu.more_filter_right{
+    left: auto!important;
+    right: 0px;
+    background: #282F41;
+}
+.dropdown-menu.more_filter_right .dropdown-item, .dropdown-menu.more_filter_right .dropdown-item:hover{
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 10px;
+    
+}
+.dropdown-menu.more_filter_right .dropdown-item:hover, .dropdown-menu.more_filter_right .dropdown-item:focus{
+   background-color: #282b35;
+}

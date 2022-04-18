@@ -1,0 +1,30 @@
+<div *ngIf="data?.label === 'signUpOtp'">
+  <div mat-dialog-content>
+    <p>Enter OTP</p>
+    <small
+      >The otp sent to this email address - <b>{{ data.email }}</b></small
+    >
+    <mat-form-field class="mt-3">
+      <input matInput [(ngModel)]="otpValue" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [disabled]="!otpValue" (click)="sendOtp()" cdkFocusInitial>Ok</button>
+  </div>
+</div>
+
+<div *ngIf="data?.label === 'forgetPassword'">
+  <div mat-dialog-content>
+    <p>Enter Email Address</p>
+    <mat-form-field class="">
+      <input matInput [(ngModel)]="emailAddress" email />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [disabled]="!emailAddress" [mat-dialog-close]="emailAddress" cdkFocusInitial>
+      Ok <app-spiner [loader]="loader"></app-spiner>
+    </button>
+  </div>
+</div>

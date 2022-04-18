@@ -1,0 +1,18 @@
+.personal-detail div {
+    margin-bottom: 15px;
+}
+.id-width{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* Media query for tablate */
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+   .visitor_img {
+    height: auto!important;
+  }
+  .pl-5.list-mar{
+    padding-left: 0rem!important;
+  }
+  }

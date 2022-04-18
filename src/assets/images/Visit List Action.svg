@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.589" height="20.625" viewBox="0 0 21.589 20.625">
+  <g id="Group_2184" data-name="Group 2184" transform="translate(-1252.156 -332.444)">
+    <path id="ic_person_outline_24px" d="M12,5.9A2.1,2.1,0,1,1,9.9,8,2.1,2.1,0,0,1,12,5.9m0,9c2.97,0,6.1,1.46,6.1,2.1v1.1H5.9V17c0-.64,3.13-2.1,6.1-2.1M12,4a4,4,0,1,0,4,4A4,4,0,0,0,12,4Zm0,9c-2.67,0-8,1.34-8,4v3H20V17C20,14.34,14.67,13,12,13Z" transform="translate(1252.66 332.719)" fill="#5c5c5c" stroke="#fff" stroke-width="0.7"/>
+    <g id="Group_2" data-name="Group 2" transform="translate(1015.66 -3072.281)">
+      <path id="Path_110" data-name="Path 110" d="M257.407,3416.132s1.242-10.151-8.637-10.063-8.781,10.063-8.781,10.063" transform="translate(0 -0.743)" fill="none" stroke="#5c5c5c" stroke-linecap="round" stroke-width="1.2"/>
+      <path id="Path_111" data-name="Path 111" d="M237.34,3413.12l2.7,3.32,2.807-3.32" transform="translate(0 0.14)" fill="none" stroke="#5c5c5c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+    </g>
+  </g>
+</svg>
