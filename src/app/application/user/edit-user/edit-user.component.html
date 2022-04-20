@@ -1,0 +1,66 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 m-auto">
+                <div class="my-5">
+                    <div class="mt-6">
+                        <h5 class="card-title text-center">Create New User</h5>
+                        <form [formGroup]="signUp" (ngSubmit)="submit()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="firstName">Name</label>
+                                        <input type="email" formControlName="name" id="name"
+                                            class="form-control" placeholder="Enter your  name" required autofocus>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="emailId">Email </label>
+                                        <input type="emailId" formControlName="email" id="emailId" class="form-control"
+                                            placeholder="Enter your email id" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                               
+                                <div class="col-md-6">
+                                    <div class="whome-meet">
+                                        <label>Select User Role* </label>
+                                    </div>
+                                   
+                                    <select formControlName="role" class="custom-select form-control">
+                                        <option class="option-class" selected>Select User Role</option>
+                                        <option class="option-class" 
+                                        *ngFor="let whomVisitorMeet of whomVisitorMeets" 
+                                        [value]="whomVisitorMeet">{{whomVisitorMeet}}</option>
+                                      </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="inputPassword">Password</label>
+                                        <input type="password" formControlName="password" id="inputPassword"
+                                            class="form-control" placeholder="Enter Password" required>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+
+                            <div class="d-flex-center">
+
+                                <button [disabled]="!signUp .valid"
+                                    class="btn btn-lg btn-danger btn-block text-uppercase my-3 w-50" type="submit">
+                                    Submit
+                                    <app-spiner [loader]="loader"></app-spiner>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

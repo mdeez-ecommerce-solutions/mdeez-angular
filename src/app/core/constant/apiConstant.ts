@@ -4,7 +4,7 @@ export const APIConstant = {
     SIGN_UP: `/users/register`,
     VERIFY_SIGNUP_OTP: '/users/verifyotp',
     LOGIN: '/auth/local',
-    GET_USER: '/auth/all-user',
+    GET_USER: '/users/all-user',
     FORGET_PASSWORD: '/users/forgotPassword',
     CHANGE_PASSWORD: '/users/ResetPassword',
     VISITOR_INFORMATION_FORM: '/visitor/add',

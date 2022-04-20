@@ -13,6 +13,7 @@ import { VisitorCategoryGraphComponent } from './graphs/visitor-category-graph/v
 import { VisitorOccupationGraphComponent } from './graphs/visitor-occupation-graph/visitor-occupation-graph.component';
 import { VisitorAreaGraphComponent } from './graphs/visitor-area-graph/visitor-area-graph.component';
 import { SamajwadiPartyGraphComponent } from './graphs/samajwadi-party-graph/samajwadi-party-graph.component';
+import { AreaMapComponent } from './graphs/area-map/area-map.component';
 const route: Routes = [
   {
     path: '',
@@ -33,6 +34,7 @@ const route: Routes = [
     VisitorOccupationGraphComponent,
     VisitorAreaGraphComponent,
     SamajwadiPartyGraphComponent,
+    AreaMapComponent
     ],
   imports: [
     CommonModule,

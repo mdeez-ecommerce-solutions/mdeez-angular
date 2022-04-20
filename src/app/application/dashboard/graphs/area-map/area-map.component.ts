@@ -6,11 +6,11 @@ import * as $ from "jquery"
 import * as data from "../states-map/Delhi.json"
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  selector: 'app-area-map',
+  templateUrl: './area-map.component.html',
+  styleUrls: ['./area-map.component.css']
 })
-export class MapComponent implements OnInit {
+export class AreaMapComponent implements OnInit {
  
   public name: string = "d3";
   delhData = data 

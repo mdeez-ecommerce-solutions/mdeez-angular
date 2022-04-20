@@ -287,4 +287,21 @@ export class TotalVisitListComponent implements OnInit {
     yourPageChangeLogic(event){
 
     }
+    filterByName(value){
+      this.filterValue=value
+      this.filterInitial=''
+      this.range.reset()
+      this.filterTable()
+    }
+    filterPurpose(value){
+      this.filterInitial=value
+      this.filterValue=''
+      this.range.reset()
+      this.filterTable()
+    }
+    filterDate(){
+      this.filterInitial=''
+      this.filterValue=''
+      this.filterTable()
+    }
   }

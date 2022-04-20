@@ -172,20 +172,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // this.getFilterCaste()
     // this.getFilterOccupation()
     // this.getFilterPpi()
-    // this.getFilterPurpose()
+    this.getFilterPurpose()
     // this.getFilterTimeFrame()
     // this.getFilterVisitorCategory()
     // this.getFilterVisitorMeet()
     this.getVisitorList(1);
     // this.rangeSelection();
-    //this.getVisitorPurposeOptionData();
+    // this.getVisitorPurposeOptionData();
    // this.getCasteOptionData();
    // this.getVisitorPoliticalInclinationOptionData();
    // this.getVisitorCategoryOptionData();
     //this.getWhomToMeetOptionData();
    // this.getVisitorLocationOfMeetingOptionData();
     this.getVisitAnalyticData();
-   // this.getVisitorOccupationData();
+   this.getVisitorOccupationData();
 
     // Graph Data Calling
     // this.getVisitAnalyticGraphData();
@@ -197,7 +197,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this._snackBar.open("Please wait while we are downloading your data..", "", {
       duration: 5000,
     });
-    console.log("this.isLoaderHappen", this.isLoaderHappen);
+    // console.log("this.isLoaderHappen", this.isLoaderHappen);
     // this.userService.download(this.baseApiUrl)
     //   .subscribe(blob => {saveAs(blob, 'VisitorList')
     //   this._snackBar.dismiss();});
@@ -364,7 +364,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           currentSeries = regionalSeries[data.target].series;
           currentSeries.show();
         });
-    console.log("series",series)
+    // console.log("series",series)
         return series;
       }
 
@@ -372,8 +372,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let currentSeries;
 
       function setupStores(data) {
-        console.log("data 1 ",data)
-        console.log("regionalSeries ",regionalSeries)
+        // console.log("data 1 ",data)
+        // console.log("regionalSeries ",regionalSeries)
 
         // Init country-level series
         regionalSeries.IN = {
@@ -383,7 +383,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
         // Set current series
         currentSeries = regionalSeries.IN.series;
-        console.log("currentSeries ",currentSeries)
+        // console.log("currentSeries ",currentSeries)
 
         // Process data
         array.each(data.query_results, (data: any) => {
@@ -403,7 +403,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           if (regionalSeries[store.state] == undefined) {
             let statePolygonForGeo: any = polygonSeries.getPolygonById("IN-" + store.state);
             if (statePolygonForGeo) {
-                console.log("statePolygonForGeo", statePolygonForGeo)
+                // console.log("statePolygonForGeo", statePolygonForGeo)
               // Add state data
               regionalSeries[store.state] = {
                 target: store.state,
@@ -426,7 +426,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
             regionalSeries[store.state].stores++;
             regionalSeries[store.state].count += store.count;
-            console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
+            // console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
 
           }
 
@@ -447,7 +447,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           } else {
             regionalSeries[store.city].stores++;
             regionalSeries[store.city].count += store.count;
-            console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
+            // console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
 
           }
 
@@ -464,7 +464,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         });
 
         regionalSeries.IN.series.data = regionalSeries.IN.markerData;
-        console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
+        // console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
 
       }
 
@@ -649,7 +649,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
                 if (regionalSeries1[store.state] == undefined) {
                   let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
                   if (statePolygonForGeo) {
-                    console.log("statePolygonForGeo",statePolygonForGeo)
+                    // console.log("statePolygonForGeo",statePolygonForGeo)
                     // Add state data
                     regionalSeries1[store.state] = {
                       target: store.state,
@@ -970,6 +970,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.userService.getVisitorOccupation().subscribe(
       (response: any) => {
         if (response.error === false) {
+          console.log(response.data)
           this.visitorOccupationOption = response.data;
         }
       },
@@ -986,7 +987,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             let chartGeo = create("geoMap1", am4maps.MapChart);
             chartGeo.logo.disabled = true;
             chartGeo.maxZoomLevel = 64;
-            console.log("dfgh")
+            // console.log("dfgh")
             chartGeo.geodata = am4geodata_indiaHigh;
             // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
       
@@ -1574,9 +1575,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   getVisitorPurposeOptionData() {
     this.userService.getVisitorPurposeOptionData().subscribe(
       (response: any) => {
-        if (response.error === false) {
+          console.log("response.data",response.data)
           this.purposes = response.data;
-        }
       },
       (error) => {
         this._snackBar.open(error.message, "", {
@@ -1614,11 +1614,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 //       }
 //     );
 //   }
-
+filterByName(value){
+  this.filterValue=value
+  this.filterInitial=''
+  this.range.reset()
+  this.filterTable()
+}
+filterPurpose(value){
+  this.filterInitial=value
+  this.filterValue=''
+  this.range.reset()
+  this.filterTable()
+}
+filterDate(){
+  this.filterInitial=''
+  this.filterValue=''
+  this.filterTable()
+}
   filterTable(): void {
     this.isLoadingResults = true;
-    this.userService
-      .getVisitorByFilter(
+    this.userService.getVisitorByFilter(
         this.filterInitial,
         this.filterValue,
         this.range.value,
@@ -1691,6 +1706,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       date: this.range.value,
       }
       this.getFilterMeetStatus()
+      this.filterTable()
     //this.getVisitorList(1);
   }
 
@@ -2034,7 +2050,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           if(filterObj?.key == 'meetingStatus'){
             this.filteredVisitorCount=response.data[0].count;
           }
-        
+         
           this.meetingStatusGraphData = response.data;
           this.userService.graphDataLoader.next(false);
          this.getFilterArea(filterObj)
@@ -2241,8 +2257,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           this.purposes = response.data;
           this.getFilterTimeFrame(filterObj)
           if(filterObj?.key == 'purpose'){
+            console.log("purpose", this.filteredVisitorCount)
             this.filteredVisitorCount=response.data[0].count;
-           // console.log("purpose", this.filteredVisitorCount)
           }
           this.graphDataLoader= false;
         }

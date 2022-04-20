@@ -24,12 +24,12 @@ export class UserComponent implements OnInit {
   visitorId: any;
   VisitorName: any;
   exportVisitorListFileName = 'visitorVisit.xlsx';
-  displayedColumns: string[] = ['S.No.', 'Name', 'Email', 'Role', 'Action'];
-  dataSource = [
-    {name:'Himanshu', email:"himanshuarora2188@gmail.com", role:"Admin"},
-    {name:'Test', email:"test@example.com", role:"Editors"}
-   ]
-  // dataSource: any;
+  displayedColumns: string[] = ['S.No.', 'Name', 'Email', 'Role','Action'];
+  // dataSource = [
+  //   {name:'Himanshu', email:"himanshuarora2188@gmail.com", role:"Admin"},
+  //   {name:'Test', email:"test@example.com", role:"Editors"}
+  //  ]
+  dataSource: any;
   authData
   adminRole=environment.ADMIN_ROLE
   editorRole=environment.EDITOR_ROLE
@@ -42,44 +42,47 @@ export class UserComponent implements OnInit {
     this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
   this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
   
- this.getTotalVisitList(1);
- this.getAllUser()
+ this.getAllUser();
+//  this.getAllUser()
   }
   getAllUser(){
     this.userService.getAllUser().subscribe((res:any)=>{
-      console.log(res)
+      console.log(res.data)
+      this.visitorLists = res.data;
+      this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+      this.dataSource.paginator = this.paginator;
     })
   }
-  getTotalVisitList(pageIndexOfListingTable?:any): void {
+  // getAllUser(pageIndexOfListingTable?:any): void {
 
-    this.userService.getVisitorList(pageIndexOfListingTable).subscribe((response: any) => {
-      if (response.error === false) {
-          this.visitorLists = response.data.response;
-          // this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+  //   this.userService.getAllUser(pageIndexOfListingTable).subscribe((response: any) => {
+  //     if (response.error === false) {
+  //         this.visitorLists = response.data;
+  //         this.dataSource = new MatTableDataSource<any>(this.visitorLists);
          
-          // this.dataSource.paginator = this.paginator;
-      }
-    }, (error) => {
-      this._snackBar.open(error.message, '', {
-        duration: 5000,
-      });
-    });
-  }
+  //         this.dataSource.paginator = this.paginator;
+  //     }
+  //   }, (error) => {
+  //     this._snackBar.open(error.message, '', {
+  //       duration: 5000,
+  //     });
+  //   });
+  // }
   
   openAction(item) {
 
-    const dialogRef = this.dialog.open(TotalVisitComponent, {
-      width: "700px",
-    //  height: '700px',
-     data: item,
-    });
+    // const dialogRef = this.dialog.open(TotalVisitComponent, {
+    //   width: "700px",
+    // //  height: '700px',
+    //  data: item,
+    // });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
-      this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
+    //   this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
       
-     this.getTotalVisitList(this.visitorId);
-    });
+    // //  this.getTotalVisitList(this.visitorId);
+    // });
   }
 
   exportTable() {

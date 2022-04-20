@@ -82,7 +82,7 @@
             <div class="nav-item dropdown text-right">
               <a
                 class="nav-link m-0 p-0 dropdown-toggle"
-                href="#"
+                
                 id="geo"
                 role="button"
                 data-toggle="dropdown"
@@ -92,9 +92,9 @@
                 Filter
               </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
-                <a class="dropdown-item" href="#">By Week</a>
-                <a class="dropdown-item" href="#">By Month</a>
-                <a class="dropdown-item" href="#">By Year</a> -->
+                <a class="dropdown-item" >By Week</a>
+                <a class="dropdown-item" >By Month</a>
+                <a class="dropdown-item" >By Year</a> -->
           <!-- <div class="dropdown-item" href="javascript:void(0)">
                                     <mat-form-field appearance="fill">
                                         <mat-date-range-input [formGroup]="geoDateRange"
@@ -122,7 +122,8 @@
         <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
           This graph not available at the moment.
         </p> -->
-        <div id="geoMap" class="mt-3" style="width: 100%; height: 350px"></div>
+        <!-- <div id="geoMap" class="mt-3" style="width: 100%; height: 350px"></div> -->
+        <app-area-map></app-area-map>
       </div>
     </div>
 
@@ -152,32 +153,13 @@
         </div>
         <div class="col-md-6">
           <div class="nav-item dropdown text-right">
-            <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="purposeDropdown" role="button"
+            <a class="nav-link m-0 p-0 dropdown-toggle"  id="purposeDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               FILTER
             </a>
             <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="purpose">
-              
-              <!-- <a class="dropdown-item cursor-pointer" (click)="purposeFilter(purpose?._id)"
-                *ngFor="let purpose of purposeGraph?.data ">{{ purpose?._id }}</a> -->
-              <!-- <a class="dropdown-item cursor-pointer" (click)="purposeFilter(purpose.purpose)"
-                *ngFor="let purpose of purposes">{{ purpose?.purpose }}</a> -->
-
-              <!-- <div class="dropdown-item" >
-                                  <mat-form-field appearance="fill">
-                                      <mat-date-range-input [formGroup]="PurposeDateRange" [rangePicker]="PurposeRangePicker">
-                                          <input matStartDate formControlName="fromDate" placeholder="Start date">
-                                          <input matEndDate formControlName="toDate" placeholder="End date">
-                                      </mat-date-range-input>
-                                      <mat-datepicker-toggle matSuffix [for]="PurposeRangePicker"></mat-datepicker-toggle>
-                                      <mat-date-range-picker #PurposeRangePicker></mat-date-range-picker>
-  
-                                      <mat-error *ngIf="PurposeDateRange.controls.fromDate.hasError('matStartDateInvalid')">Invalid
-                                          start date</mat-error>
-                                      <mat-error *ngIf="PurposeDateRange.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
-                                      </mat-error>
-                                  </mat-form-field>
-                              </div> -->
+                <a class="dropdown-item" (click)="purposeFilter(purpose?._id)"
+                *ngFor="let purpose of purposes">{{ purpose?._id }}</a>
             </div>
           </div>
         </div>
@@ -205,7 +187,7 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="genderDropdown" role="button"
+              <a class="nav-link m-0 p-0 dropdown-toggle"  id="genderDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 FILTER
               </a>
@@ -251,7 +233,7 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="timeFrameDropdown" role="button"
+              <a class="nav-link m-0 p-0 dropdown-toggle"  id="timeFrameDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 FILTER
               </a>
@@ -316,12 +298,12 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="genderDropdown" role="button"
+              <a class="nav-link m-0 p-0 dropdown-toggle"  id="genderDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 FILTER              </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
-                <!-- <a class="dropdown-item cursor-pointer" (click)="casteFilter(caste._id)"
-                  *ngFor="let caste of casteGraph?.data">{{ caste?._id }}</a> -->
+                <a class="dropdown-item cursor-pointer" (click)="casteFilter(caste._id)"
+                  *ngFor="let caste of casteGraph?.data">{{ caste?._id |titlecase}}</a>
               </div>
             </div>
           </div>
@@ -390,12 +372,12 @@
             <!-- <a href="https://www.projectyz.thensight.in/api/v1/visitor/download-csv?limit=6000" target="_self">  <button class="mr-2 margin-bot" mat-flat-button color="accent"> -->
               <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
                 
-                  <!-- <a (click)="openInNewTab()"> 
+                  <a (click)="openInNewTab()"> 
                     
                 <button class="mr-2 margin-bot" mat-flat-button color="accent">
              
               EXPORT ALL DATA
-            </button></a> -->
+            </button></a>
           
             <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
               EXPORT EXCEL
@@ -420,8 +402,9 @@
                                         <input matInput [(ngModel)]="filterValue" class="search-query form-control"
                                         placeholder="Name / Unique Id / Mobile / city..." />
                                       </mat-form-field> -->
-                <input type="text" [(ngModel)]="filterValue" class="search-query form-control" style="width: 20em"
-                  placeholder="Name / Unique Id / Mobile" (keydown.enter)="filterTable()" />
+                <input type="text"  [ngModel]="filterValue"
+                 class="search-query form-control" style="width: 20em"
+                  placeholder="Name / Unique Id / Mobile"  (ngModelChange)="filterByName($event)" />
                 <span class="input-group-btn" style="margin-right: 1em">
                   <button class="btn btn-danger" type="button">
                     <span class="material-icons" style="cursor: default;"> search </span>
@@ -436,7 +419,7 @@
                 <span class="search-label">FILTER BY PURPOSE : </span>
                 <mat-form-field appearance="fill">
                   <!-- <mat-label>Select purpose</mat-label> -->
-                  <mat-select [(ngModel)]="filterInitial" aria-placeholder="">
+                  <mat-select [(ngModel)]="filterInitial" (ngModelChange)="filterPurpose($event)">
                     <mat-option value="" selected disabled>All</mat-option>
                     <mat-option *ngFor="let purpose of purposes" [value]="purpose._id">
                       {{ purpose?._id }}
@@ -447,39 +430,44 @@
             </div>
           </div>
           <div class="form-group" style="margin-right: 1em">
-            <div id="visitorRangeDatem-0" class="float-right">
-              <div class="input-group margin-bot">
-                <span class="search-label">FILTER BY DATE : </span>
-                <mat-form-field appearance="fill">
-                  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                    <input matStartDate formControlName="fromDate" placeholder="Start date" readonly />
-                    <input matEndDate formControlName="toDate" placeholder="End date" readonly />
-                  </mat-date-range-input>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-date-range-picker #picker></mat-date-range-picker>
-
-                  <mat-error *ngIf="
-                      range.controls.fromDate.hasError('matStartDateInvalid')
-                    ">Invalid start date</mat-error>
-                  <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
-                  </mat-error>
-                </mat-form-field>
-              </div>
+            <form [formGroup]="range">
+            <div class="row">
+              <div class="col-md-8">
+                <div id="visitorRangeDatem-0" class="float-right">
+                  <div class="input-group margin-bot">
+                    <span class="search-label">FILTER BY DATE : </span>
+                    <mat-form-field appearance="fill">
+                      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                        <input matStartDate formControlName="fromDate" placeholder="Start date" readonly />
+                        <input matEndDate formControlName="toDate" placeholder="End date" readonly />
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
+    
+                      <mat-error *ngIf="
+                          range.controls.fromDate.hasError('matStartDateInvalid')
+                        ">Invalid start date</mat-error>
+                      <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+              <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em" (click)="filterTable()">
+                SEARCH
+              </button>
+            </div>
+            <div class="col-md-2">
+              <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
+                RESET
+              </button>
             </div>
           </div>
-
-          <div class="form-group filter-btn">
-            <!-- <button  (click)="filterTable();" class="mr-2" mat-flat-button >Search</button>
-                            <button   (click)="resetFilter()" class="mr-2" mat-flat-button >Reset</button> -->
-            <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em" (click)="filterTable()">
-              SEARCH
-            </button>
-
-            <!-- <button class="mt-1" mat-stroked-button (click)="filterTable();">Search</button> -->
-            <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
-              RESET
-            </button>
+        </form>
           </div>
+
+       
         </div>
 
         <div class="row">
