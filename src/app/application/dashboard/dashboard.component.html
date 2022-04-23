@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item dashboard for_bold">
-              <a class="font-13">VISITOR MANANGEMENT ANALYTICS</a>
+              <a class="myheading">ANALYTICS</a>
             </li>
           </ol>
         </nav>
@@ -13,23 +13,31 @@
           (click)="getVisitAnalyticGraphData()">
           RESET GRAPH
         </button>getFilterMeetStatus() -->
-        <button *ngIf="viewGraphresetBtn == true" class="resetGraph" mat-stroked-button
-        (click)="getFilterMeetStatus()">
-        RESET GRAPH
-      </button>
-        <button mat-raised-button color="warn" class="viewVisitorUI" (click)="setToPollingTableView()">
+        <!-- <button mat-raised-button color="warn" class="viewVisitorUI" (click)="setToPollingTableView()">
           VIEW VISITOR LIST
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
-  <div class="row mt-3">
+
+  <div *ngIf="viewGraphresetBtn == true" class="card filters-applied">
+    <span style="font-size: 9px;margin-top: 3px;text-align: center;color: #b9b9b9;">Filters are Applied</span>
+
+    <button  class="resetGraph" mat-stroked-button
+      style=" background: #414654; margin: auto; margin-top: 2px;left: 0; border: 1px springgreen;right: 0; display: flex;position: relative !important; /* text-align: center; */align-items: center;justify-content: center;width: 79px; border: 1px solid #8a8b8e;letter-spacing: 2px; font-size: 12px; line-height: 30px;"
+      (click)="getFilterMeetStatus()">
+      <i class="fa fa-filter" aria-hidden="true"></i> RESET
+    </button>
+
+  </div>
+
+  <div class="row">
     <div class="col-md-3">
       <div class="card card-padding card-hig">
         <div class="text-center">
           <img class="img-fluid mb-2" width="30" src="../../../assets/images/usericon.png" alt="icon" />
           <h5 class="mb-0">{{ anlyticData?.totalVisits || "0" }}</h5>
-          <small>TOTAL NUMBER OF VISITORS</small>
+          <small>TOTAL VISITORS</small>
         </div>
       </div>
     </div>
@@ -63,7 +71,7 @@
   </div>
   <div class="row" *ngIf="viewGraphresetBtn">
     <div class="col-md-12">
-      <div class="card card-padding mt-3">
+      <div class="card card-padding">
         <div class="text-center">
           FILTERED VISITOR COUNT: {{filteredVisitorCount || 0}}
         </div>
@@ -72,13 +80,13 @@
   </div>
   <!-- geo -->
   <div class="row">
-    <div class="col-md-12 col-lg-6">
-      <div class="card card-padding mt-3">
+    <!-- <div class="col-md-12 col-lg-6">
+      <div class="card card-padding">
         <div class="row">
           <div class="col-md-6">
             <h6>GEO: AC FOOTPRINT</h6>
           </div>
-          <!-- <div class="col-md-6">
+           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
               <a
                 class="nav-link m-0 p-0 dropdown-toggle"
@@ -95,7 +103,7 @@
                 <a class="dropdown-item" >By Week</a>
                 <a class="dropdown-item" >By Month</a>
                 <a class="dropdown-item" >By Year</a> -->
-          <!-- <div class="dropdown-item" href="javascript:void(0)">
+    <!-- <div class="dropdown-item" href="javascript:void(0)">
                                     <mat-form-field appearance="fill">
                                         <mat-date-range-input [formGroup]="geoDateRange"
                                             [rangePicker]="geoDateRangePicker">
@@ -114,26 +122,26 @@
                                             Invalid end date
                                         </mat-error>
                                     </mat-form-field>
-                                </div> -->
-          <!-- </div>
+                                </div> 
+           </div>
             </div>
-          </div> -->
+          </div>
         </div>
-        <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
+     <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
           This graph not available at the moment.
-        </p> -->
-        <!-- <div id="geoMap" class="mt-3" style="width: 100%; height: 350px"></div> -->
+        </p> 
+       <div id="geoMap" class="mt-3" style="width: 100%; height: 350px"></div> 
         <app-area-map></app-area-map>
       </div>
-    </div>
+    </div> -->
 
     <div class="col-md-12 col-lg-6">
-      <div class="card card-padding mt-3">
+      <div class="card card-padding">
         <div class="row">
           <div class="col-md-6">
             <h6>GEO: DISTRICT FOOTPRINT</h6>
           </div>
-        
+
         </div>
         <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
           This graph not available at the moment.
@@ -141,43 +149,58 @@
         <div id="geoMap1" class="mt-3" style="width: 100%; height: 350px"></div>
       </div>
     </div>
-  </div>
-<!-- purpose -->
-<div class="row">
- 
-  <div class="col-md-12 col-lg-6">
-    <div class="card card-padding mt-3">
-      <div class="row">
-        <div class="col-md-6">
-          <h6>PURPOSE</h6>
+
+    <div class="col-md-12 col-lg-6">
+      <div class="card card-padding">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Another Graph</h6>
+          </div>
+
         </div>
-        <div class="col-md-6">
-          <div class="nav-item dropdown text-right">
-            <a class="nav-link m-0 p-0 dropdown-toggle"  id="purposeDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              FILTER
-            </a>
-            <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="purpose">
-                <a class="dropdown-item" (click)="purposeFilter(purpose?._id)"
-                *ngFor="let purpose of purposes">{{ purpose?._id }}</a>
+        <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
+          This graph not available at the moment.
+        </p> -->
+      </div>
+    </div>
+
+  </div>
+  <!-- purpose -->
+  <div class="row">
+
+    <div class="col-md-12 col-lg-6">
+      <div class="card card-padding">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>PURPOSE</h6>
+          </div>
+          <div class="col-md-6">
+            <div class="nav-item dropdown text-right">
+              <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                FILTER
+              </a>
+              <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="purpose">
+                <a class="dropdown-item" (click)="purposeFilter(purpose?._id)" *ngFor="let purpose of purposes">{{
+                  purpose?._id }}</a>
+              </div>
             </div>
           </div>
         </div>
+        <div class="example-loading-shade bg-none" *ngIf="graphDataLoader">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div id="purpose" class="mt-3" style="width: 100%; height: 350px"></div>
       </div>
-      <div class="example-loading-shade bg-none" *ngIf="graphDataLoader">
-        <mat-spinner></mat-spinner>
-      </div>
-      <div id="purpose" class="mt-3" style="width: 100%; height: 350px"></div>
+    </div>
+    <!-- app-visitor-occupation-graph -->
+    <div class="col-lg-6 col-md-12 ipro_ip">
+      <app-visitor-occupation-graph [visitorOccupationData]="visitorOccupatioData"
+        [visitorOccupationOptionVar]="visitorOccupationOption"
+        (visitorOccupationFilterObj)="visitorOccupationFilter($event)">
+      </app-visitor-occupation-graph>
     </div>
   </div>
-  <!-- app-visitor-occupation-graph -->
-  <div class="col-lg-6 col-md-12 ipro_ip">
-    <app-visitor-occupation-graph [visitorOccupationData]="visitorOccupatioData"
-      [visitorOccupationOptionVar]="visitorOccupationOption"
-      (visitorOccupationFilterObj)="visitorOccupationFilter($event)">
-    </app-visitor-occupation-graph>
-  </div>
-</div>
   <div class="row">
     <div class="col-md-5">
       <div class="card card-padding mt-3">
@@ -187,9 +210,9 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle"  id="genderDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                FILTER
+              <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                {{ appliedFilters?.gender ? appliedFilters.gender : 'FILTER' }}
               </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
                 <a class="dropdown-item" (click)="genderFilter('Male')">MALE</a>
@@ -233,8 +256,8 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle"  id="timeFrameDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 FILTER
               </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
@@ -273,22 +296,20 @@
       </div>
     </div>
   </div>
-<!-- app-visitor-area-graph -->
-<div class="row">
-  <div class="col-lg-6 col-md-12 ipro_ip">
-    <app-visitor-area-graph 
-       [visitorAreaGraphData]="visitorAreaData"
-      (visitorAreaFilterObj)="visitorAreaFilter($event)">
-    </app-visitor-area-graph>
+  <!-- app-visitor-area-graph -->
+  <div class="row">
+    <div class="col-lg-6 col-md-12 ipro_ip">
+      <app-visitor-area-graph [visitorAreaGraphData]="visitorAreaData"
+        (visitorAreaFilterObj)="visitorAreaFilter($event)">
+      </app-visitor-area-graph>
+    </div>
+    <!-- app-samajwadi-party-graph -->
+    <div class="col-lg-6 col-md-12 ipro_ip">
+      <app-samajwadi-party-graph [samajwadiPartyData]="samajwadiPartyGraphData"
+        (samajwadiPartyFilterObj)="samajwadiPartyFilter($event)">
+      </app-samajwadi-party-graph>
+    </div>
   </div>
-  <!-- app-samajwadi-party-graph -->
-  <div class="col-lg-6 col-md-12 ipro_ip">
-    <app-samajwadi-party-graph  [samajwadiPartyData]="samajwadiPartyGraphData"
-     
-      (samajwadiPartyFilterObj)="samajwadiPartyFilter($event)">
-    </app-samajwadi-party-graph >
-  </div>
-</div>
   <div class="row">
     <div class="col-md-12">
       <div class="card card-padding mt-3">
@@ -298,9 +319,9 @@
           </div>
           <div class="col-md-6">
             <div class="nav-item dropdown text-right">
-              <a class="nav-link m-0 p-0 dropdown-toggle"  id="genderDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                FILTER              </a>
+              <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                FILTER </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
                 <a class="dropdown-item cursor-pointer" (click)="casteFilter(caste._id)"
                   *ngFor="let caste of casteGraph?.data">{{ caste?._id |titlecase}}</a>
@@ -361,7 +382,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row d-none">
     <div class="col-md-12">
       <div class="card card-padding mt-3">
         <div class="row">
@@ -370,15 +391,15 @@
           </div>
           <div class="col-md-5" align="right">
             <!-- <a href="https://www.projectyz.thensight.in/api/v1/visitor/download-csv?limit=6000" target="_self">  <button class="mr-2 margin-bot" mat-flat-button color="accent"> -->
-              <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
-                
-                  <a (click)="openInNewTab()"> 
-                    
-                <button class="mr-2 margin-bot" mat-flat-button color="accent">
-             
-              EXPORT ALL DATA
-            </button></a>
-          
+            <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
+
+            <a (click)="openInNewTab()">
+
+              <button class="mr-2 margin-bot" mat-flat-button color="accent">
+
+                EXPORT ALL DATA
+              </button></a>
+
             <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
               EXPORT EXCEL
             </button>
@@ -402,9 +423,8 @@
                                         <input matInput [(ngModel)]="filterValue" class="search-query form-control"
                                         placeholder="Name / Unique Id / Mobile / city..." />
                                       </mat-form-field> -->
-                <input type="text"  [ngModel]="filterValue"
-                 class="search-query form-control" style="width: 20em"
-                  placeholder="Name / Unique Id / Mobile"  (ngModelChange)="filterByName($event)" />
+                <input type="text" [ngModel]="filterValue" class="search-query form-control" style="width: 20em"
+                  placeholder="Name / Unique Id / Mobile" (ngModelChange)="filterByName($event)" />
                 <span class="input-group-btn" style="margin-right: 1em">
                   <button class="btn btn-danger" type="button">
                     <span class="material-icons" style="cursor: default;"> search </span>
@@ -431,43 +451,44 @@
           </div>
           <div class="form-group" style="margin-right: 1em">
             <form [formGroup]="range">
-            <div class="row">
-              <div class="col-md-8">
-                <div id="visitorRangeDatem-0" class="float-right">
-                  <div class="input-group margin-bot">
-                    <span class="search-label">FILTER BY DATE : </span>
-                    <mat-form-field appearance="fill">
-                      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                        <input matStartDate formControlName="fromDate" placeholder="Start date" readonly />
-                        <input matEndDate formControlName="toDate" placeholder="End date" readonly />
-                      </mat-date-range-input>
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-date-range-picker #picker></mat-date-range-picker>
-    
-                      <mat-error *ngIf="
+              <div class="row">
+                <div class="col-md-8">
+                  <div id="visitorRangeDatem-0" class="float-right">
+                    <div class="input-group margin-bot">
+                      <span class="search-label">FILTER BY DATE : </span>
+                      <mat-form-field appearance="fill">
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                          <input matStartDate formControlName="fromDate" placeholder="Start date" readonly />
+                          <input matEndDate formControlName="toDate" placeholder="End date" readonly />
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+
+                        <mat-error *ngIf="
                           range.controls.fromDate.hasError('matStartDateInvalid')
                         ">Invalid start date</mat-error>
-                      <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
-                      </mat-error>
-                    </mat-form-field>
+                        <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
                 </div>
-            </div>
-            <div class="col-md-2">
-              <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em" (click)="filterTable()">
-                SEARCH
-              </button>
-            </div>
-            <div class="col-md-2">
-              <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
-                RESET
-              </button>
-            </div>
-          </div>
-        </form>
+                <div class="col-md-2">
+                  <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em"
+                    (click)="filterTable()">
+                    SEARCH
+                  </button>
+                </div>
+                <div class="col-md-2">
+                  <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
+                    RESET
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
 
-       
+
         </div>
 
         <div class="row">
@@ -565,8 +586,8 @@
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{
-                          element?.politicalinfo?.visitorCategory ||
-                            "NA"
+                        element?.politicalinfo?.visitorCategory ||
+                        "NA"
                         }}
                       </td>
                     </ng-container>
@@ -600,7 +621,7 @@
                     </ng-container>
                     <ng-container matColumnDef="refrenceName">
                       <th mat-header-cell *matHeaderCellDef>
-                        Reference Name 
+                        Reference Name
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{ element?.politicalinfo?.refrenceName || 'NA' }}
@@ -609,7 +630,7 @@
                     </ng-container>
                     <ng-container matColumnDef="refrenceMobile">
                       <th mat-header-cell *matHeaderCellDef>
-                        Reference Mobile 
+                        Reference Mobile
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{ element?.politicalinfo?.refrenceMobile || 'NA' }}
@@ -618,7 +639,7 @@
                     </ng-container>
                     <ng-container matColumnDef="refrenceRemark">
                       <th mat-header-cell *matHeaderCellDef>
-                        Reference Remark 
+                        Reference Remark
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{ element?.politicalinfo?.refrenceRemark || 'NA' }}
@@ -628,7 +649,7 @@
 
                     <ng-container matColumnDef="accompliceName">
                       <th mat-header-cell *matHeaderCellDef>
-                        ASccomplice Name 
+                        Accomplice Name
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{ element?.politicalinfo?.accompliceName || 'NA' }}
@@ -654,15 +675,15 @@
                       </td>
 
                     </ng-container>
-                    
+
                     <ng-container matColumnDef="captureDetailsOfAnyAccompliceWithTheVisitor">
                       <th mat-header-cell *matHeaderCellDef>
                         Capture details of any accomplice with the visitor
                       </th>
                       <td mat-cell *matCellDef="let element">
                         {{
-                          element?.accomplicedDetails ||
-                            "Not Available"
+                        element?.accomplicedDetails ||
+                        "Not Available"
                         }}
                       </td>
 
@@ -723,11 +744,8 @@
                   </div>
                 </div>
               </div>
-              <mat-paginator
-              [length]="pageLength"
-              [pageSizeOptions]="[20]"
-              (page)="yourPageChangeLogic($event)">
-              showFirstLastButtons></mat-paginator>
+              <mat-paginator [length]="pageLength" [pageSizeOptions]="[20]" (page)="yourPageChangeLogic($event)">
+                showFirstLastButtons></mat-paginator>
             </div>
           </div>
         </div>

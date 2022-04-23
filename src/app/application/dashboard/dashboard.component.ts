@@ -140,6 +140,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   samajwadiPartyGraphData:any;
   exportAllDataVar:any;
   baseApiUrl:any;
+  appliedFilters = {}
   authData
   adminRole=environment.ADMIN_ROLE
   editorRole=environment.EDITOR_ROLE
@@ -1693,6 +1694,7 @@ filterDate(){
 
 
   resetFilter() {
+    this.appliedFilters = {}; 
     this.paginator.pageIndex = 0;
     this.visitorListsTotalLength = 1;
     this.filterInitial = "";
@@ -1707,6 +1709,7 @@ filterDate(){
       }
       this.getFilterMeetStatus()
       this.filterTable()
+      console.log(this.appliedFilters)
     //this.getVisitorList(1);
   }
 
@@ -1939,6 +1942,9 @@ filterDate(){
       key: "gender",
       value: value,
     };
+
+    this.appliedFilters['gender'] = value;
+
     this.getFilterMeetStatus(filterObj)
     
   }
@@ -2026,6 +2032,7 @@ filterDate(){
     }
     else{
       this.viewGraphresetBtn = false;
+      this.appliedFilters = {};
     }
     //table
     this. isLoaderHappen = true;

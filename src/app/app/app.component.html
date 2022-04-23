@@ -1,43 +1,37 @@
-<app-header *ngIf="this.authData?.token" [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-header>
-<div class="conatiner-fluid">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="text-center p-2">
-                <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight"
-                        style="margin-right: 1em;" />
-                    <span style="font-size: 0.9em;">
-                        <span>Powered by NSIGHT Consulting</span>
-                    </span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="row">
-    <div class="col-md-1" *ngIf="this.authData?.token">
+    <div class="col-md-1" *ngIf="this.authData?.token" style="border-right: 1px solid var(--cardBorder); background-color: inherit; box-shadow: 0px 3px 6px #00000029;/* position: fixed; *//* height: 100%; */padding: 0;position: relative;top: 0;display: flex;/* align-items: center; */justify-content: center; margin:0; z-index: 1111;background: #1a1f2e;">
         <div class="log-position">
         
-        <div class="log-icon">LOGO</div>
+        <div class="log-icon"><img _ngcontent-iib-c169="" src="../../../../assets/images/login/rednsignt.png" width="100%"></div>
 
         <ng-container *ngIf="this.authData.role===adminRole">
-            <a href="Javascript:void(0)" routerLink="add-visitor">
-                <img src="../../assets/images/side-nav/add-new-visitor.jpg" class="image-size">
-                <div class="pb-45" >Add Visitor</div>
+            <a class="active" href="Javascript:void(0)" routerLink="add-visitor">
+                <img src="../../assets/images/side-nav/entry.png" class="image-size">
+                <div class="pb-45" >Add-Visitor</div>
             </a>
-
             <a href="Javascript:void(0)" routerLink="dashboard">
                 <img src="../../assets/images/side-nav/dashboard.png" class="image-size">
                 <div class="pb-45" >Analytics</div>
             </a>
             <a href="Javascript:void(0)" routerLink="total-visit-list">
-                <img src="../../assets/images/side-nav/visitor-list.jpg" class="image-size">
-                <div class="pb-45" >Visitor List</div>
+                <img src="../../assets/images/side-nav/userlist.png" class="image-size">
+                <div class="pb-45" >Visitors</div>
             </a>
            
             <a routerLink="user/list" href="Javascript:void(0)">
-                <img src="../../assets/images/side-nav/user.png" class="image-size">
-                <div class="pb-45" >User List</div>
+                <img src="../../assets/images/side-nav/users.png" class="image-size">
+                <div class="pb-45" >Users</div>
             </a>
+
+            <a routerLink="user/list" href="Javascript:void(0)">
+                <img src="../../assets/images/side-nav/logout.png" class="image-size">
+                <div class="pb-45" >Logout</div>
+            </a>
+
+            <div class="version_side">
+                V1.2.3
+            </div>
          
         </ng-container>
         
@@ -45,11 +39,11 @@
         <ng-container *ngIf="this.authData.role===(editorRole)">
 
             <a href="Javascript:void(0)" routerLink="add-visitor">
-                <img src="../../assets/images/side-nav/add-new-visitor.jpg" class="image-size">
+                <img src="../../assets/images/side-nav/entry.png" class="image-size">
                 <div class="pb-45" >Add Visitor</div>
             </a>
             <a href="Javascript:void(0)" routerLink="total-visit-list">
-                <img src="../../assets/images/side-nav/visitor-list.jpg" class="image-size">
+                <img src="../../assets/images/side-nav/userlist.png" class="image-size">
                 <div class="pb-45" >Visitor List</div>
             </a>
       
@@ -66,17 +60,28 @@
 
 
 
-
-
-
-
-
-
-
     </div>
-    <div class="col-md-11">
+    <div [ngClass]="this.authData?.token ? 'col-md-11' : 'col-md-12'" style="margin: 0;
+    margin-bottom: 4rem;">
+        <app-header *ngIf="this.authData?.token" [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-header>
+        <div class="conatiner-fluid" *ngIf="this.authData?.token">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="text-center p-2">
+                        <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight"
+                                style="margin-right: 1em;" />
+                            <span style="font-size: 0.9em;">
+                                <span>Powered by NSIGHT Consulting sadas</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
+
+
 </div>
 <app-footer [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-footer>
 <button *ngIf="isShow" (click)="gotoTop()"><span class="material-icons">

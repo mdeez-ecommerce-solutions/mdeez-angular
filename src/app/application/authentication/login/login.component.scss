@@ -41,6 +41,100 @@ ul li {
   background-repeat: no-repeat;
 }
 
+.loginform-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginform-group .form-icon{
+  height: 35px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  background: #141720;
+  font-size: 15px;
+  justify-content: center;
+  color: #626a7f;
+}
+
+.loginform-group input{
+  background: #191f2d;
+  border-radius: 0;
+  border: none;
+  height: 35px;
+  font-size: 13px;
+}
+
+.mybutton{
+  height: 32px;
+  line-height: 16px;
+  border-radius: 3px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  background: #8d3232;
+}
+
+.myform{
+  max-width: 340px;
+    margin: auto;
+}
+
+.bg-color-login{
+background: none !important;
+}
+
+.col-md-11{
+  margin: auto;
+}
+
+
+.shine {
+  position: absolute;
+  background: #ffffff;
+  top: 0;
+  width: 0px;
+  box-shadow: -1px -1px 96px 52px #ff0800;
+  height: 100%;
+  z-index: 99;
+  /* transform: translateX(594px) rotate(59deg); */
+  /* transform: translateX(328px); */
+  animation-name: shining;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-duration: 3.2s;
+  animation-timing-function: ease-in-out;
+}
+
+#skroll-body {
+  height: 100%;
+  width: 100%;
+  min-height: 1px;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  opacity: 0.8;
+}
+
+@keyframes shining {
+  from {
+    transform: translateX(-44px) rotate(0deg);
+  }
+
+  to {
+    transform: translateX(400px) rotate(60deg);
+  }
+
+}
+
+
+
 /* Fallback for Edge
 -------------------------------------------------- */
 

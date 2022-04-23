@@ -20,6 +20,7 @@ export class VisitorListComponent implements OnInit {
   ngOnInit(): void {
       this.visitorId = this.route.snapshot.paramMap.get('id');
       this.getVisitorDetail(this.visitorId);
+
   }
 
   getVisitorDetail(id): void {
@@ -35,6 +36,8 @@ export class VisitorListComponent implements OnInit {
         });
     });
   }
+
+
 
   getVisitorImage(id): void {
     this.userService.getVisitorImage(id).subscribe((response: any) => {

@@ -77,6 +77,21 @@ export class TotalVisitListComponent implements OnInit {
   }
 
 
+  pinColumn(e){
+  
+    e.preventDefault();
+
+      // var index = $("#exportVisitorListTable th a").index(e.target);
+      const index = Array.from($("#exportVisitorListTable th")).indexOf(e.target.parentElement) + 1;
+      console.log('indi:',index);
+
+      $(e.target).toggleClass("active");
+      $("th:nth-child(" + index + "), td:nth-child(" + index + ")").toggleClass("pinned");
+
+ 
+  }
+
+
 
   exportTable() {
     /* table id is passed over here */

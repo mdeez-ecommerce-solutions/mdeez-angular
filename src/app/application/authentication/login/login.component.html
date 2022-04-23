@@ -2,6 +2,114 @@
   <!-- <mat-toolbar class="bg-transparent">
         <span>My Application</span>
     </mat-toolbar> -->
+
+  <div class="container-fluid">
+    <div style="display: flex; align-items: center; justify-content: space-between;position: relative;z-index: 10;">
+      <div style="font-size: 18px; color: #cfcfcf; text-transform: uppercase; padding: 12px 0;">NCT of Delhi <span
+          style="margin-top: -4px; display: block; font-size: 13px;">WARD 256</span></div>
+      <div style="position: absolute; width: 100%; text-align: center;font-size: 20px;font-weight: 900;letter-spacing: 2px;">
+        CONSTITUENCY INTELLIGENCE SYSTEM
+      </div>
+      <div style="padding: 12px 0;">
+        <img src="../../../../assets/images/login/rednsignt.png" width="150px"
+          style="display: block;margin-left: -17px;">
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div id="scr" style=" margin: auto; margin-top: -60px;
+        position: relative;
+        z-index: 0; " data-0="transform: scale(2.5) translateY(100px);" data-400="transform:scale(1) translateY(0px); "
+          data-401="transform:scale(1) translateY(0px);" class="skrollable skrollable-between">
+
+          <div style="
+              background: #ffffff;
+              width: 270px;
+              height: 270px;
+              /* min-width: 400px; */
+              /* min-width: 150px; */
+              /* min-height: 83px; */
+              /* max-width: 800px; */
+              /* max-height: 662px; */
+              /* position: absolute; */
+              overflow: hidden;
+              position: relative;
+              margin: auto;
+              ">
+
+
+            <div class="shine"></div>
+            <img src="../../../../assets/images/login/bhavan.svg" width="100%" style="
+              position: relative;
+              top: 0;
+              z-index: 1000;
+              width: 100%;
+              left: 0;
+              height: 100%;
+              /* filter: invert(1); */
+              ">
+          </div>
+
+        </div>
+        <div style="margin-top: -65px;">
+          <div class="my-5 login_med">
+            <div>
+              <!-- <h5 class="card-title text-center">Welcome</h5> -->
+              <form [formGroup]="login" (ngSubmit)="submit()" class="login-half-width myform">
+                <div class="form-label-group loginform-group">
+                  <div class="form-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <input type="email" formControlName="email" id="inputEmail" class="form-control"
+                    placeholder="Enter your email" required autofocus />
+                  <!-- <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+                                      <div *ngIf="f.username.errors.required">username is required.</div>
+                                      <div *ngIf="f.username.errors.username">Please, enter valid email address.</div>
+                                  </div> -->
+                </div>
+
+                <div class="form-label-group loginform-group">
+                  <div class="form-icon">
+                    <i class="fa fa-lock"></i>
+                  </div>
+                  <!-- <label for="inputPassword">Password</label> -->
+                  <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                    placeholder="Enter your password" required />
+                </div>
+
+                <div class="custom-control custom-checkbox mb-4 mt-4">
+                  <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe" type="checkbox"
+                    class="custom-control-input" id="customCheck1" />
+                  <label class="custom-control-label" for="customCheck1">Remember me</label>
+
+                  <span class="float-right">
+                    <a href="javascript:void(0)" (click)="forgetPassword()" class="font-14 text-danger">Forgot your
+                      password?</a>
+                  </span>
+                </div>
+
+                <button [disabled]="!login.valid" class="btn btn-lg btn-danger btn-block mybutton text-uppercase"
+                  type="submit">
+                  LOGIN
+                  <app-spiner [loader]="loader"></app-spiner>
+                </button>
+              </form>
+              <!-- <span class="font-14 d-flex-center mt-2">
+                Don't have an account? &nbsp;
+                <a [routerLink]="['/signup']" class="text-danger"
+                  >Create an account</a
+                >
+              </span> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- 
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
@@ -9,59 +117,31 @@
           <h2 class="mt-80">Constituency Management System</h2>
           <ul class="pl-0 list-style-none mt-5">
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Visitor Management
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Scheduling and Planning
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Workers Management
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Knowledge Management System
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Projects
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Household Analytics
             </li>
             <li>
-              <img
-                class="img-fluid"
-                src="../../../../assets/images/checked.svg"
-                alt="check"
-              />
+              <img class="img-fluid" src="../../../../assets/images/checked.svg" alt="check" />
               Leader's Progress Tracker
             </li>
           </ul>
@@ -71,80 +151,59 @@
         <div class="my-5 login_med">
           <div class="mt-6">
             <h5 class="card-title text-center">Welcome</h5>
-            <form
-              [formGroup]="login"
-              (ngSubmit)="submit()"
-              class="login-half-width"
-            >
+            <form [formGroup]="login" (ngSubmit)="submit()" class="login-half-width">
               <div class="form-label-group">
                 <label for="inputEmail">Email address</label>
-                <input
-                  type="email"
-                  formControlName="email"
-                  id="inputEmail"
-                  class="form-control"
-                  placeholder="Enter your email"
-                  required
-                  autofocus
-                />
-                <!-- <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+                <input type="email" formControlName="email" id="inputEmail" class="form-control"
+                  placeholder="Enter your email" required autofocus />
+              
+
+                  comment it
+                    <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
                                     <div *ngIf="f.username.errors.required">username is required.</div>
                                     <div *ngIf="f.username.errors.username">Please, enter valid email address.</div>
-                                </div> -->
+                                </div> 
+
+
+
+
               </div>
 
               <div class="form-label-group">
                 <label for="inputPassword">Password</label>
-                <input
-                  type="password"
-                  formControlName="password"
-                  id="inputPassword"
-                  class="form-control"
-                  placeholder="Enter your password"
-                  required
-                />
+                <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                  placeholder="Enter your password" required />
               </div>
 
               <div class="custom-control custom-checkbox mb-4 mt-4">
-                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe"
-                  type="checkbox"
-                  class="custom-control-input"
-                  id="customCheck1"
-                />
-                <label class="custom-control-label" for="customCheck1"
-                  >Remember me</label
-                >
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe" type="checkbox"
+                  class="custom-control-input" id="customCheck1" />
+                <label class="custom-control-label" for="customCheck1">Remember me</label>
 
                 <span class="float-right">
-                  <a
-                    href="javascript:void(0)"
-                    (click)="forgetPassword()"
-                    class="font-14 text-danger"
-                    >Forgot your password?</a
-                  >
+                  <a href="javascript:void(0)" (click)="forgetPassword()" class="font-14 text-danger">Forgot your
+                    password?</a>
                 </span>
               </div>
 
-              <button
-                [disabled]="!login.valid"
-                class="btn btn-lg btn-danger btn-block text-uppercase"
-                type="submit"
-              >
+              <button [disabled]="!login.valid" class="btn btn-lg btn-danger btn-block text-uppercase" type="submit">
                 LOGIN
                 <app-spiner [loader]="loader"></app-spiner>
               </button>
             </form>
-            <!-- <span class="font-14 d-flex-center mt-2">
+           
+            comment it too
+            <span class="font-14 d-flex-center mt-2">
               Don't have an account? &nbsp;
               <a [routerLink]="['/signup']" class="text-danger"
                 >Create an account</a
               >
-            </span> -->
+            </span>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="spinner-container" *ngIf="loading == true">
     <mat-progress-spinner color="warn" mode="indeterminate">
     </mat-progress-spinner>

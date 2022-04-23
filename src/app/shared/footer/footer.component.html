@@ -1,4 +1,14 @@
-<mat-toolbar class="bg-transparent footer-position" *ngIf="!showDashboardMenu">
+<div [ngClass]="showDashboardMenu ? 'footer-dashboard' : 'footer-login'"  _ngcontent-kub-c165=""
+    style="position: absolute; bottom: 0; display: flex; align-items: center; width: 100%; justify-content: space-between; color: #c4c4c4; height: 30px; font-size: 60px; /* padding: 0 10px;">
+    <div _ngcontent-kub-c165="" class="foot-ver" style="font-size: 13px; padding: 0 21px;"> Version 1.2.3 </div>
+    <div _ngcontent-kub-c165="" style="position: absolute;width: 100%;text-align: center; font-size: 13px; padding: 0 21px; /* margin-left: 394px; */">Powered By 
+       <a href="https://thensight.com/"> <b
+            _ngcontent-kub-c165="" style="color: #c40000;font-size: 16px;">NSIGHT</b>
+        </a>
+        </div>
+    <div _ngcontent-kub-c165="" style="font-size: 11px; padding: 0 21px;">©️ NSIGHT 2022. All rights reserved.</div>
+</div>
+<!-- <mat-toolbar class="bg-transparent footer-position" *ngIf="!showDashboardMenu">
     <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight" /> <span
             class="footer-text">
             <span>Powered by NSIGHT Consulting</span>
@@ -8,17 +18,17 @@
 
 <div class="footer mt-3" *ngIf="showDashboardMenu">
     <div class="container-fluid">
-        <div class="row">
-            <!-- <div class="col-md-4">
+        <div class="row"> -->
+<!-- <div class="col-md-4">
                 <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight" style="margin-right: 1em;" />
                     <span style="font-size: 0.9em;">
                         <span>Powered by NSIGHT Consulting</span>
                     </span>
                 </span>
             </div> -->
-            <div class="col-md-12">
+<!-- <div class="col-md-12">
                 <div class="font-13 text-center" style="font-size: 0.9em;">Copyright © 2006-2021, NSIGHT Consulting. All rights reserved.</div>
             </div>
         </div>
     </div>
-</div>
+</div> -->

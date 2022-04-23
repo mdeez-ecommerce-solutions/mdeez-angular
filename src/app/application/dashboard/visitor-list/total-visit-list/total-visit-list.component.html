@@ -1,73 +1,95 @@
+
+<div class="container-fluid">
 <div class="row">
-    <div class="col-md-12">
-      <div class="card card-padding mt-3">
-        <div class="row">
-          <div class="col-md-7">
-            <h6 class="mb-0 mt-2">List of Visitors</h6>
-          </div>
-          <div class="col-md-5" align="right">
-            <!-- <a href="https://www.projectyz.thensight.in/api/v1/visitor/download-csv?limit=6000" target="_self">  <button class="mr-2 margin-bot" mat-flat-button color="accent"> -->
-              <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
-                
-                  <a (click)="openInNewTab()"> 
-                    
-                <button class="mr-2 margin-bot" mat-flat-button color="accent">
-             
+  <div class="col-md-12">
+    <div class="mt-3 card">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item dashboard for_bold">
+            <a class="myheading">VISITORS LIST</a>
+          </li>
+        </ol>
+      </nav>
+      <!-- <button *ngIf="viewGraphresetBtn == true" class="resetGraph" mat-stroked-button
+        (click)="getVisitAnalyticGraphData()">
+        RESET GRAPH
+      </button>getFilterMeetStatus() -->
+      <!-- <button mat-raised-button color="warn" class="viewVisitorUI" (click)="setToPollingTableView()">
+        VIEW VISITOR LIST
+      </button> -->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-padding mt-3">
+      <div class="row">
+        <div class="col-md-7">
+          <h6 class="mb-0 mt-2">List of Visitors</h6>
+        </div>
+        <div class="col-md-5" align="right">
+          <!-- <a href="https://www.projectyz.thensight.in/api/v1/visitor/download-csv?limit=6000" target="_self">  <button class="mr-2 margin-bot" mat-flat-button color="accent"> -->
+          <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
+
+          <a (click)="openInNewTab()">
+
+            <button class="mr-2 margin-bot" mat-flat-button color="accent">
+
               EXPORT ALL DATA
             </button></a>
-          
-            <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
+
+          <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
               EXPORT EXCEL
             </button>
             <button (click)="exportTableInPDF()" class="mr-2 margin-bot" mat-flat-button color="primary">
               EXPORT PDF
             </button> -->
-            <button class="mr-2" mat-flat-button color="warn" [routerLink]="['/add-visitor']"
-              routerLinkActive="router-link-active">
-              + ADD NEW VISITOR
-            </button>
-          </div>
+          <button class="mr-2" mat-flat-button color="warn" [routerLink]="['/add-visitor']"
+            routerLinkActive="router-link-active">
+            + ADD NEW VISITOR
+          </button>
         </div>
-        <hr />
-        <div class="form-inline">
-          <div class="form-group">
-            <div id="custom-search-input">
-              <div class="input-group margin-bot">
-                <span class="search-label">SEARCH: </span>
-                <!-- <mat-form-field  style="    height: 2.7em !important;
+      </div>
+      <hr />
+      <div class="form-inline">
+        <div class="form-group">
+          <div id="custom-search-input">
+            <div class="input-group margin-bot">
+              <span class="search-label">SEARCH: </span>
+              <!-- <mat-form-field  style="    height: 2.7em !important;
                                     width: 13.3em;">
                                         <input matInput [(ngModel)]="filterValue" class="search-query form-control"
                                         placeholder="Name / Unique Id / Mobile / city..." />
                                       </mat-form-field> -->
-                <input type="text"  [ngModel]="filterValue"
-                 class="search-query form-control" style="width: 20em"
-                  placeholder="Name / Unique Id / Mobile"  (ngModelChange)="filterByName($event)" />
-                <span class="input-group-btn" style="margin-right: 1em">
-                  <button class="btn btn-danger" type="button">
-                    <span class="material-icons" style="cursor: default;"> search </span>
-                  </button>
-                </span>
-              </div>
+              <input type="text" [ngModel]="filterValue" class="search-query form-control" style="width: 20em"
+                placeholder="Name / Unique Id / Mobile" (ngModelChange)="filterByName($event)" />
+              <span class="input-group-btn" style="margin-right: 1em">
+                <button class="btn btn-danger" type="button">
+                  <span class="material-icons" style="cursor: default;"> search </span>
+                </button>
+              </span>
             </div>
           </div>
-          <div class="form-group" style="margin-right: 1em">
-            <div id="filterByPurpose">
-              <div class="input-group margin-bot">
-                <span class="search-label">FILTER BY PURPOSE : </span>
-                <mat-form-field appearance="fill">
-                  <!-- <mat-label>Select purpose</mat-label> -->
-                  <mat-select [(ngModel)]="filterInitial" (ngModelChange)="filterPurpose($event)">
-                    <mat-option value="" selected disabled>All</mat-option>
-                    <mat-option *ngFor="let purpose of purposes" [value]="purpose._id">
-                      {{ purpose?._id }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
+        </div>
+        <div class="form-group" style="margin-right: 1em">
+          <div id="filterByPurpose">
+            <div class="input-group margin-bot">
+              <span class="search-label">FILTER BY PURPOSE : </span>
+              <mat-form-field appearance="fill">
+                <!-- <mat-label>Select purpose</mat-label> -->
+                <mat-select [(ngModel)]="filterInitial" (ngModelChange)="filterPurpose($event)">
+                  <mat-option value="" selected disabled>All</mat-option>
+                  <mat-option *ngFor="let purpose of purposes" [value]="purpose._id">
+                    {{ purpose?._id }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
           </div>
-          <div class="form-group" style="margin-right: 1em">
-            <form [formGroup]="range">
+        </div>
+        <div class="form-group" style="margin-right: 1em">
+          <form [formGroup]="range">
             <div class="row">
               <div class="col-md-8">
                 <div id="visitorRangeDatem-0" class="float-right">
@@ -80,7 +102,7 @@
                       </mat-date-range-input>
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-date-range-picker #picker></mat-date-range-picker>
-    
+
                       <mat-error *ngIf="
                           range.controls.fromDate.hasError('matStartDateInvalid')
                         ">Invalid start date</mat-error>
@@ -89,101 +111,132 @@
                     </mat-form-field>
                   </div>
                 </div>
+              </div>
+              <div class="col-md-2">
+                <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em"
+                  (click)="filterTable()">
+                  SEARCH
+                </button>
+              </div>
+              <div class="col-md-2">
+                <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
+                  RESET
+                </button>
+              </div>
             </div>
-            <div class="col-md-2">
-              <button class="mt-1 d-inline-block" mat-stroked-button style="margin-right: 1em" (click)="filterTable()">
-                SEARCH
-              </button>
-            </div>
-            <div class="col-md-2">
-              <button class="mt-1 d-inline-block" mat-stroked-button (click)="resetFilter()">
-                RESET
-              </button>
-            </div>
-          </div>
-        </form>
-          </div>
-
-       
+          </form>
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="example-container mat-elevation-z8">
-              <div class="example-loading-shade" *ngIf="isLoaderHappen">
-                <mat-spinner></mat-spinner>
-              </div>
-              <div class="table-responsive">
-                <div class="mat-elevation-z8 mt-3">
-                  <table id="exportVisitorListTable" mat-table [dataSource]="dataSource">
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="S.No.">
-                      <th mat-header-cell *matHeaderCellDef>S.No.</th>
-                      <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
-                    </ng-container>
 
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="Unique Visitor ID">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Unique Visitor ID
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element.uniqueVisitorId || 'NA' }}
-                      </td>
-                    </ng-container>
+      </div>
 
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="Visitor_Name">
-                      <th mat-header-cell *matHeaderCellDef>Visitor Name</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element.fullName || 'NA'}}
-                      </td>
-                    </ng-container>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="example-container mat-elevation-z8">
+            <div class="example-loading-shade" *ngIf="isLoaderHappen">
+              <mat-spinner></mat-spinner>
+            </div>
+            <div class="table-responsive">
+              <div class="mat-elevation-z8 mt-3">
+                <table id="exportVisitorListTable" mat-table [dataSource]="dataSource">
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="S.No.">
+                    <th mat-header-cell *matHeaderCellDef>S.No.
+                      <a role="button" (click)="pinColumn($event)"
+                      class="cpin">
+                      <i class="fa fa-thumb-tack"
+                       ></i>
+                     </a>
+                    </th>
+                    <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+                  </ng-container>
 
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="Address">
-                      <th mat-header-cell *matHeaderCellDef>Address</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.address?.houseNumber }} {{ element?.address?.line1 }}
-                        <!-- {{ element.address?.line2 }} -->
-                      </td>
-                    </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="Unique Visitor ID">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Unique Visitor ID
+                      <a role="button" (click)="pinColumn($event)"
+                      class="cpin">
+                      <i class="fa fa-thumb-tack"
+                       ></i>
+                     </a>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.uniqueVisitorId || 'NA' }}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Date">
-                      <th mat-header-cell *matHeaderCellDef>Created Date</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.createdAt | date: "dd/MM/yyyy" }}
-                      </td>
-                    </ng-container>
-                    <ng-container matColumnDef="enrollmentDate">
-                      <th mat-header-cell *matHeaderCellDef>Enrollment Date</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.enrollmentDate | date: "dd/MM/yyyy" }}
-                      </td>
-                    </ng-container>
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="Visitor_Name">
+                    <th mat-header-cell *matHeaderCellDef>Visitor Name
+                      <a role="button" (click)="pinColumn($event)"
+                        class="cpin">
+                        <i class="fa fa-thumb-tack"
+                         ></i>
+                       </a>     
+
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.fullName || 'NA'}}
+                    </td>
+                  </ng-container>
+
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="Address">
+                    <th mat-header-cell *matHeaderCellDef>Address 
+                      <a role="button" (click)="pinColumn($event)"
+                      class="cpin">
+                      <i class="fa fa-thumb-tack"
+                       ></i>
+                     </a>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.address?.houseNumber }} {{ element?.address?.line1 }}
+                      <!-- {{ element.address?.line2 }} -->
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Date">
+                    <th mat-header-cell *matHeaderCellDef>Created Date
+                      <a role="button" (click)="pinColumn($event)"
+                      class="cpin">
+                      <i class="fa fa-thumb-tack"
+                       ></i>
+                     </a>
+
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.createdAt | date: "dd/MM/yyyy" }}
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="enrollmentDate">
+                    <th mat-header-cell *matHeaderCellDef>Enrollment Date</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.enrollmentDate | date: "dd/MM/yyyy" }}
+                    </td>
+                  </ng-container>
 
 
 
 
-                    <ng-container matColumnDef="Mobile">
-                      <th mat-header-cell *matHeaderCellDef>Mobile</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.mobile || 'NA'}}
-                      </td>
-                    </ng-container>
+                  <ng-container matColumnDef="Mobile">
+                    <th mat-header-cell *matHeaderCellDef>Mobile</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.mobile || 'NA'}}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Purpose_of_Visit">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Purpose of Visit
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.revisits[0]?.visitPurposeCategory || 'NA'}}
-                      </td>
-                    </ng-container>
+                  <ng-container matColumnDef="Purpose_of_Visit">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Purpose of Visit
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.revisits[0]?.visitPurposeCategory || 'NA'}}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Status">
-                      <th mat-header-cell *matHeaderCellDef>Status</th>
-                      <td mat-cell [ngClass]="[
+                  <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell [ngClass]="[
                           element?.revisits[0]?.status == 'In Progress'
                             ? 'text-warning'
                             : '' || element?.revisits[0]?.status == 'Unresolved'
@@ -192,122 +245,122 @@
                             ? 'text-success'
                             : ''
                         ]" *matCellDef="let element">
-                        {{ element?.revisits[0]?.status || 'NA'}}
-                      </td>
-                    </ng-container>
+                      {{ element?.revisits[0]?.status || 'NA'}}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Visitor_Category">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Visitor Category
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{
-                          element?.politicalinfo?.visitorCategory ||
-                            "NA"
-                        }}
-                      </td>
-                    </ng-container>
+                  <ng-container matColumnDef="Visitor_Category">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Visitor Category
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{
+                      element?.politicalinfo?.visitorCategory ||
+                      "NA"
+                      }}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Total_no_of_Visits">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Total no of Visits
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.totalVisits || 'NA' }}
-                      </td>
-                    </ng-container>
+                  <ng-container matColumnDef="Total_no_of_Visits">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Total no of Visits
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.totalVisits || 'NA' }}
+                    </td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="Remarks">
-                      <th mat-header-cell *matHeaderCellDef>Remarks</th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.objectiveinfo?.remark || 'NA' }}
-                      </td>
+                  <ng-container matColumnDef="Remarks">
+                    <th mat-header-cell *matHeaderCellDef>Remarks</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.objectiveinfo?.remark || 'NA' }}
+                    </td>
 
-                      <td></td>
-                    </ng-container>
+                    <td></td>
+                  </ng-container>
 
-                    <ng-container matColumnDef="politicalInformationRemarks">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Remarks (In case if the visitor comes with some reference)*
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.remarks || 'NA' }}
-                      </td>
+                  <ng-container matColumnDef="politicalInformationRemarks">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Remarks (In case if the visitor comes with some reference)*
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.remarks || 'NA' }}
+                    </td>
 
-                      <td></td>
-                    </ng-container>
-                    <ng-container matColumnDef="refrenceName">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Reference Name 
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.refrenceName || 'NA' }}
-                      </td>
+                    <td></td>
+                  </ng-container>
+                  <ng-container matColumnDef="refrenceName">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Reference Name
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.refrenceName || 'NA' }}
+                    </td>
 
-                    </ng-container>
+                  </ng-container>
 
-                    <ng-container matColumnDef="refrenceMobile">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Reference Mobile 
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.refrenceMobile || 'NA' }}
-                      </td>
+                  <ng-container matColumnDef="refrenceMobile">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Reference Mobile
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.refrenceMobile || 'NA' }}
+                    </td>
 
-                    </ng-container>
-                    <ng-container matColumnDef="refrenceRemark">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Reference Remark 
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.refrenceRemark || 'NA' }}
-                      </td>
+                  </ng-container>
+                  <ng-container matColumnDef="refrenceRemark">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Reference Remark
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.refrenceRemark || 'NA' }}
+                    </td>
 
-                    </ng-container>
+                  </ng-container>
 
-                    <ng-container matColumnDef="accompliceName">
-                      <th mat-header-cell *matHeaderCellDef>
-                        ASccomplice Name 
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.accompliceName || 'NA' }}
-                      </td>
+                  <ng-container matColumnDef="accompliceName">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Accomplice Name
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.accompliceName || 'NA' }}
+                    </td>
 
-                    </ng-container>
-                    <ng-container matColumnDef="accompliceMobile">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Accomplice Mobile
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.accompliceMobile || 'NA' }}
-                      </td>
+                  </ng-container>
+                  <ng-container matColumnDef="accompliceMobile">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Accomplice Mobile
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.accompliceMobile || 'NA' }}
+                    </td>
 
-                    </ng-container>
-                    <ng-container matColumnDef="accompliceRemark">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Accomplice Remark
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{ element?.politicalinfo?.accompliceRemark || 'NA' }}
-                      </td>
+                  </ng-container>
+                  <ng-container matColumnDef="accompliceRemark">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Accomplice Remark
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.politicalinfo?.accompliceRemark || 'NA' }}
+                    </td>
 
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="captureDetailsOfAnyAccompliceWithTheVisitor">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Capture details of any accomplice with the visitor
-                      </th>
-                      <td mat-cell *matCellDef="let element">
-                        {{
-                          element?.accomplicedDetails ||
-                            "Not Available"
-                        }}
-                      </td>
+                  </ng-container>
 
-                      <td></td>
-                    </ng-container>
+                  <ng-container matColumnDef="captureDetailsOfAnyAccompliceWithTheVisitor">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Capture details of any accomplice with the visitor
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{
+                      element?.accomplicedDetails ||
+                      "Not Available"
+                      }}
+                    </td>
 
-                    <!-- <ng-container matColumnDef="Thank_You_Acknowledgment_message_sent">
+                    <td></td>
+                  </ng-container>
+
+                  <!-- <ng-container matColumnDef="Thank_You_Acknowledgment_message_sent">
                       <th mat-header-cell *matHeaderCellDef>
                         Thank You Acknowledgment message sent
                       </th>
@@ -334,41 +387,40 @@
                       </td>
                     </ng-container> -->
 
-                    <ng-container matColumnDef="Action">
-                      <th mat-header-cell *matHeaderCellDef>Action</th>
-                      <td mat-cell *matCellDef="let element">
-                        <a [routerLink]="[
+                  <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                      <a [routerLink]="[
                             '/visitor-list',
                             element?.uniqueVisitorId
                           ]" routerLinkActive="router-link-active" href="javascript:void(0)"><img width="30"
-                            src="../../../assets/images/View.svg" alt="view" /></a>
-                        &nbsp;
-                        <a (click)="getVisitorDetail(element?.uniqueVisitorId)" href="javascript:void(0)"><img
-                            width="20" src="../../../assets/images/edit.svg" alt="edit" /></a>
-                      </td>
+                          src="../../../assets/images/View.svg" alt="view" /></a>
+                      &nbsp;
+                      <a (click)="getVisitorDetail(element?.uniqueVisitorId)" href="javascript:void(0)"><img width="20"
+                          src="../../../assets/images/edit.svg" alt="edit" /></a>
+                    </td>
 
-                      <td></td>
-                    </ng-container>
+                    <td></td>
+                  </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-                  </table>
-                  <div class="no-table-msg" *ngIf="
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+                <div class="no-table-msg" *ngIf="
                       dataSource?.filteredData?.length === 0 ||
                       dataSource?.length === 0
                     ">
-                    No data found
-                  </div>
+                  No data found
                 </div>
               </div>
-              <mat-paginator
-              [length]="pageLength"
-              [pageSizeOptions]="[20]"
-              (page)="yourPageChangeLogic($event)">
-              showFirstLastButtons></mat-paginator>
             </div>
+            <mat-paginator [length]="pageLength" [pageSizeOptions]="[20]" (page)="yourPageChangeLogic($event)">
+              showFirstLastButtons></mat-paginator>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+</div>

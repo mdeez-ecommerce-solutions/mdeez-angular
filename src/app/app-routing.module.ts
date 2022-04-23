@@ -5,7 +5,7 @@ import { TotalVisitListComponent } from './application/dashboard/visitor-list/to
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "dashboard",
+    redirectTo: "add-visitor",
     pathMatch: "full",
   },
   // {
