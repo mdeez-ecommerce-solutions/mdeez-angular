@@ -65,6 +65,8 @@ export class AgeGroupGraphComponent implements OnInit {
 
   ngAfterViewInit() {
     // Chart code goes in here
+    setTimeout(() => {
+
     this.browserOnly(() => {
       useTheme(am4themes_animated);
       // Create chart instance
@@ -157,6 +159,7 @@ export class AgeGroupGraphComponent implements OnInit {
         }
       });
     });
+  })
   }
 
 

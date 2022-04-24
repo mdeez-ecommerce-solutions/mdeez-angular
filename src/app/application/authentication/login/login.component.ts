@@ -104,12 +104,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loading = true;
     this.auth.loginUp(this.login.value).subscribe(
       (response: any) => {
-        if (response.error === false) {
-          this.router.navigate(["/dashboard"]);
+        console.log(response)
+        this.auth.login(response.data.role)
+        // if (response.error === false) {
+          // this.router.navigate(["/add-visitor"]);
           this.util.setLocalStorage("SignInUserData", response.data);
           this.loader = false;
          if (response.data.role === environment.ADMIN_ROLE) {
-              this.router.navigateByUrl('/dashboard').then(() => {
+              this.router.navigateByUrl('/add-visitor').then(() => {
                 window.location.reload();
              });
             }else if(response.data.role === environment.EDITOR_ROLE){
@@ -128,7 +130,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             localStorage.removeItem('credential');
           }
       
-        }
+        // }
       },
       (error) => {
         this.loading = false;

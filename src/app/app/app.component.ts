@@ -77,7 +77,10 @@ export class AppComponent implements OnInit {
     console.log(this.idleState);
   }
 
-
+  logOut() {
+    this.util.removeLocalStorage('SignInUserData');
+    this.router.navigate(['/authentication']);
+  }
   @HostListener('window:scroll')
   checkScroll() {
 

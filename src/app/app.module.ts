@@ -23,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
 import { MomentModule } from 'angular2-moment';
 
+import { AuthGuard } from './app.routing.guard';
 
 
 
@@ -46,6 +47,7 @@ import { MomentModule } from 'angular2-moment';
   ],
   providers: [
     AuthService,
+    AuthGuard,
     UtilService,
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],

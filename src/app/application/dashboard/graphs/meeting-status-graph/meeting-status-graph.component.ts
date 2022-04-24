@@ -29,7 +29,7 @@ export class MeetingStatusGraphComponent implements OnInit, AfterViewInit {
   meetingStatusGraph: any;
   @Input() set meetingStatusGraphData(data) {
     if (data) {
-      this.meetingStatusGraph.data = data;
+      this.meetingStatusGraph = data;
     }
   }
   graphDataLoader: boolean;
@@ -51,6 +51,8 @@ export class MeetingStatusGraphComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    setTimeout(() => {
+
     // Chart code goes in here
     this.browserOnly(() => {
       useTheme(am4themes_animated);
@@ -105,6 +107,7 @@ this.user.themeValueBehavior.subscribe((value) => {
 
 
     });
+  })
   }
 
   meetingStatusGraphFilter(value): void {

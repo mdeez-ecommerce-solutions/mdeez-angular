@@ -53,6 +53,8 @@ export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // Chart code goes in here
+    setTimeout(() => {
+
     this.browserOnly(() => {
       useTheme(am4themes_animated);
       // Create chart instance
@@ -123,6 +125,7 @@ export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
       });
 
     });
+  })
   }
 
   whomVisitorMeetFilter(value): void {

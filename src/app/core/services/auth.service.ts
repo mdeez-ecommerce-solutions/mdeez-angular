@@ -3,6 +3,8 @@ import { HttpParams, HttpClient } from "@angular/common/http";
 import { ApiService } from "./apiService";
 import { APIConstant } from "../constant/apiConstant";
 import { Observable } from "rxjs";
+import {Role} from "./../../shared/modals/role"
+import {User} from "./../../shared/modals/user"
 
 @Injectable({
   providedIn: "root",
@@ -28,5 +30,23 @@ export class AuthService {
 
   changePassword(passwordObj): Observable<any> {
     return this.apiService.post(APIConstant.CHANGE_PASSWORD, passwordObj);
+  }
+
+  private user: User;
+
+  isAuthorized() {
+      return !!this.user;
+  }
+
+  hasRole(role: Role) {
+      return this.isAuthorized() && this.user.role === role;
+  }
+
+  login(role: Role) {
+    this.user = { role: role };
+  }
+
+  logout() {
+    this.user = null;
   }
 }

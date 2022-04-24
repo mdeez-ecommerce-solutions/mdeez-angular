@@ -49,6 +49,8 @@ export class SamajwadiPartyGraphComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    setTimeout(() => {
+
     // Chart code goes in here
     this.browserOnly(() => {
       useTheme(am4themes_animated);
@@ -106,6 +108,7 @@ this.user.themeValueBehavior.subscribe((value) => {
 
 
     });
+  })
   }
 
   visitorAreaGraphFilter(value): void {

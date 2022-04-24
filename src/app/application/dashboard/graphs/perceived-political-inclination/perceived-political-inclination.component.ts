@@ -56,6 +56,8 @@ export class PerceivedPoliticalInclinationComponent implements OnInit, AfterView
 
   ngAfterViewInit() {
     // Chart code goes in here
+    setTimeout(() => {
+
     this.browserOnly(() => {
       useTheme(am4themes_animated);
      
@@ -177,7 +179,10 @@ this.user.themeValueBehavior.subscribe((value) => {
 });
 
     });
+  })
   }
+
+  
   perceiveFilter(value): void {
    // this.perceivedPoliticalInclination;
     this.perceivedFilterObj.emit({

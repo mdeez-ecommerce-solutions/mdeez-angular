@@ -36,6 +36,8 @@ export class PpiGraphComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    setTimeout(() => {
+
     // Chart code goes in here
     this.browserOnly(() => {
       useTheme(am4themes_animated);
@@ -171,6 +173,7 @@ export class PpiGraphComponent implements OnInit, AfterViewInit {
       // VAlue Color Change 
       categoryAxis.renderer.labels.template.fill = color("#fff"); 
     });
+  })
   }
 
 }

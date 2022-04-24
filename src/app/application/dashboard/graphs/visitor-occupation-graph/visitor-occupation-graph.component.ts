@@ -60,6 +60,8 @@ export class VisitorOccupationGraphComponent implements OnInit {
 
   ngAfterViewInit() {
     // Chart code goes in here
+    setTimeout(() => {
+
     this.browserOnly(() => {
       useTheme(am4themes_animated);
 
@@ -127,6 +129,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
       categoryAxis.sortBySeries = series;
       this.visitorCategoryGraph.data = [];
     });
+  })
   }
 
 

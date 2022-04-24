@@ -144,6 +144,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   authData
   adminRole=environment.ADMIN_ROLE
   editorRole=environment.EDITOR_ROLE
+  loader = false;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId,
     private zone: NgZone,
@@ -222,7 +224,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit() {
-   
+    setTimeout(() => {
     // Chart code goes in here
     this.browserOnly(() => {
      
@@ -949,6 +951,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         }
       });
     });
+  })
   }
 
   
@@ -1373,6 +1376,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
             })
           }
+          console.log(this.dataSource)
+          console.log(this.visitorLists)
           this.dataSource = new MatTableDataSource < any > (this.visitorLists);
           this.pageLength =response.data.length;
           // this.dataSource.paginator = this.paginator;
@@ -1718,13 +1723,17 @@ filterDate(){
   }
 
   getVisitAnalyticData() {
+    this.loader = true;
+
     this.userService.getVisitAnalyticData().subscribe(
       (response: any) => {
         if (response.error === false) {
+          this.loader = false;
           this.anlyticData = response.data;
         }
       },
       (error) => {
+        this.loader = false;
         this._snackBar.open(error.message, "", {
           duration: 5000,
         });
@@ -1950,11 +1959,11 @@ filterDate(){
   }
 
   casteFilter(value): void {
-    const filterObj = {
-      key: "caste",
-      value: value,
-    };
-    this.getFilterMeetStatus(filterObj)
+    // const filterObj = {
+    //   key: "caste",
+    //   value: value,
+    // };
+    // this.getFilterMeetStatus(filterObj)
   
   }
 

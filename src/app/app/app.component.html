@@ -3,28 +3,32 @@
     <div class="col-md-1" *ngIf="this.authData?.token" style="border-right: 1px solid var(--cardBorder); background-color: inherit; box-shadow: 0px 3px 6px #00000029;/* position: fixed; *//* height: 100%; */padding: 0;position: relative;top: 0;display: flex;/* align-items: center; */justify-content: center; margin:0; z-index: 1111;background: #1a1f2e;">
         <div class="log-position">
         
-        <div class="log-icon"><img _ngcontent-iib-c169="" src="../../../../assets/images/login/rednsignt.png" width="100%"></div>
+        <div class="log-icon"><img  src="../../../../assets/images/login/rednsignt.png" width="100%"></div>
 
         <ng-container *ngIf="this.authData.role===adminRole">
-            <a class="active" href="Javascript:void(0)" routerLink="add-visitor">
+            <a class="" href="Javascript:void(0)" routerLink="add-visitor"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/entry.png" class="image-size">
                 <div class="pb-45" >Add-Visitor</div>
             </a>
-            <a href="Javascript:void(0)" routerLink="dashboard">
+            <a href="Javascript:void(0)" routerLink="dashboard"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/dashboard.png" class="image-size">
                 <div class="pb-45" >Analytics</div>
             </a>
-            <a href="Javascript:void(0)" routerLink="total-visit-list">
+            <a href="Javascript:void(0)" routerLink="total-visit-list"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/userlist.png" class="image-size">
                 <div class="pb-45" >Visitors</div>
             </a>
            
-            <a routerLink="user/list" href="Javascript:void(0)">
+            <a routerLink="user/list" href="Javascript:void(0)"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/users.png" class="image-size">
                 <div class="pb-45" >Users</div>
             </a>
 
-            <a routerLink="user/list" href="Javascript:void(0)">
+            <a routerLink="user/list" href="Javascript:void(0)"  (click)="logOut()">
                 <img src="../../assets/images/side-nav/logout.png" class="image-size">
                 <div class="pb-45" >Logout</div>
             </a>
@@ -38,15 +42,23 @@
 
         <ng-container *ngIf="this.authData.role===(editorRole)">
 
-            <a href="Javascript:void(0)" routerLink="add-visitor">
+            <a href="Javascript:void(0)" routerLink="add-visitor"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/entry.png" class="image-size">
                 <div class="pb-45" >Add Visitor</div>
             </a>
-            <a href="Javascript:void(0)" routerLink="total-visit-list">
+            <a href="Javascript:void(0)" routerLink="total-visit-list"
+            [routerLinkActive]="['active']">
                 <img src="../../assets/images/side-nav/userlist.png" class="image-size">
                 <div class="pb-45" >Visitor List</div>
             </a>
-      
+            <a routerLink="user/list" href="Javascript:void(0)" (click)="logOut()">
+                <img src="../../assets/images/side-nav/logout.png" class="image-size">
+                <div class="pb-45" >Logout</div>
+            </a>
+            <div class="version_side">
+                V1.2.3
+            </div>
        
         </ng-container>
 
@@ -61,8 +73,9 @@
 
 
     </div>
-    <div [ngClass]="this.authData?.token ? 'col-md-11' : 'col-md-12'" style="margin: 0;
+    <div [ngClass]="this.authData?.token ? 'col-md-11' : 'col-md-11'" style="margin: 0;
     margin-bottom: 4rem;">
+    
         <app-header *ngIf="this.authData?.token" [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader"></app-header>
         <div class="conatiner-fluid" *ngIf="this.authData?.token">
             <div class="col-md-12">
@@ -78,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <router-outlet (activate)="onActivate($event)"></router-outlet>
+        <router-outlet  (activate)="onActivate($event)"></router-outlet>
     </div>
 
 
