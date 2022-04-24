@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { TotalVisitComponent } from 'src/app/shared/modals/total-visit/total-visit.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
@@ -66,7 +66,7 @@ export class TotalVisitListComponent implements OnInit {
   ];
   constructor(
     private userService: UserService, private _snackBar: MatSnackBar, private dialog: MatDialog,
-     private route: ActivatedRoute, ) {
+     private route: ActivatedRoute,private router:Router ) {
       this.baseApiUrl = environment.api_base_url +'/visitor/download-csv?limit=100000';
 
      }
@@ -76,6 +76,10 @@ export class TotalVisitListComponent implements OnInit {
     this.getVisitorList(1)
   }
 
+  
+  getVisitorDetail(visitorId): void {
+    this.router.navigate(["/add-visitor", visitorId]);
+  }
 
   pinColumn(e){
   

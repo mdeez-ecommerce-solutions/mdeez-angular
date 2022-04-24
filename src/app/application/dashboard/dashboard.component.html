@@ -410,17 +410,6 @@
                 EXPORT ALL DATA
               </button></a>
 
-              <button mat-flat-button (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Talha'}})">Excel</button>
-              <button mat-flat-button (click)="exporter.exportTable('csv')">Csv</button>
-              <button mat-flat-button (click)="exporter.exportTable('json')">Json</button>
-              <button mat-flat-button (click)="exporter.exportTable('txt')">Txt</button>
-
-            <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
-              EXPORT EXCEL
-            </button>
-            <button (click)="exportTableInPDF()" class="mr-2 margin-bot" mat-flat-button color="primary">
-              EXPORT PDF
-            </button> -->
             <button class="mr-2" mat-flat-button color="warn" [routerLink]="['/add-visitor']"
               routerLinkActive="router-link-active">
               + ADD NEW VISITOR
@@ -433,11 +422,7 @@
             <div id="custom-search-input">
               <div class="input-group margin-bot">
                 <span class="search-label">SEARCH: </span>
-                <!-- <mat-form-field  style="    height: 2.7em !important;
-                                    width: 13.3em;">
-                                        <input matInput [(ngModel)]="filterValue" class="search-query form-control"
-                                        placeholder="Name / Unique Id / Mobile / city..." />
-                                      </mat-form-field> -->
+              
                 <input type="text" [ngModel]="filterValue" class="search-query form-control" style="width: 20em"
                   placeholder="Name / Unique Id / Mobile" (ngModelChange)="filterByName($event)" />
                 <span class="input-group-btn" style="margin-right: 1em">
@@ -453,7 +438,6 @@
               <div class="input-group margin-bot">
                 <span class="search-label">FILTER BY PURPOSE : </span>
                 <mat-form-field appearance="fill">
-                  <!-- <mat-label>Select purpose</mat-label> -->
                   <mat-select [(ngModel)]="filterInitial" (ngModelChange)="filterPurpose($event)">
                     <mat-option value="" selected disabled>All</mat-option>
                     <mat-option *ngFor="let purpose of purposes" [value]="purpose._id">
@@ -510,21 +494,16 @@
           
           <div class="col-md-12">
             <div class="example-container mat-elevation-z8">
-              <div class="example-loading-shade" >
-                <mat-spinner></mat-spinner>
-              </div>
+             
               <div class="table-responsive">
                 <div class="mat-elevation-z8 mt-3">
-                  <mat-table></mat-table>
-                  <table id="exportVisitorListTable" matTableExporter mat-table [dataSource]="dataSource"
+                  <table id="exportVisitorListTable" mat-table [dataSource]="dataSource"
                   >
-                    <!-- Position Column -->
                     <ng-container matColumnDef="S.No.">
                       <th mat-header-cell *matHeaderCellDef>S.No.</th>
                       <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container matColumnDef="Unique Visitor ID">
                       <th mat-header-cell *matHeaderCellDef>
                         Unique Visitor ID
@@ -534,7 +513,6 @@
                       </td>
                     </ng-container>
 
-                    <!-- Weight Column -->
                     <ng-container matColumnDef="Visitor_Name">
                       <th mat-header-cell *matHeaderCellDef>Visitor Name</th>
                       <td mat-cell *matCellDef="let element">
@@ -542,12 +520,10 @@
                       </td>
                     </ng-container>
 
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="Address">
                       <th mat-header-cell *matHeaderCellDef>Address</th>
                       <td mat-cell *matCellDef="let element">
                         {{ element?.address?.houseNumber }} {{ element?.address?.line1 }}
-                        <!-- {{ element.address?.line2 }} -->
                       </td>
                     </ng-container>
 
@@ -708,32 +684,7 @@
                       <td></td>
                     </ng-container>
 
-                    <!-- <ng-container matColumnDef="Thank_You_Acknowledgment_message_sent">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Thank You Acknowledgment message sent
-                      </th>
-                      <td class="text-center" mat-cell *matCellDef="let element">
-                        {{
-                          (element?.politicalinfo?.isAcknowledgementSent
-                            ? "Yes"
-                            : "No") || 'NA'
-                        }}
-                      </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="Information_sent_to_the_booth_village_coordinator_of_the_visitor">
-                      <th mat-header-cell *matHeaderCellDef>
-                        Information sent to the booth/Village coordinator of the
-                        visitor
-                      </th>
-                      <td class="text-center" mat-cell *matCellDef="let element">
-                        {{
-                          (element?.politicalinfo?.isInfoSentToBooth
-                            ? "Yes"
-                            : "No") || 'NA'
-                        }}
-                      </td>
-                    </ng-container> -->
+                  
 
                     <ng-container matColumnDef="Action">
                       <th mat-header-cell *matHeaderCellDef>Action</th>

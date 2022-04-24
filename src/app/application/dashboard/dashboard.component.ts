@@ -1341,7 +1341,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   getVisitorList(pageIndexOfListingTable?:any): void {
-    this.isLoadingResults = true;
+    // this.isLoadingResults = true;
     var currentTime = new Date();
     var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
     const range = {fromDate:fromdate,toDate:currentTime}
@@ -1376,12 +1376,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
             })
           }
-          console.log(this.dataSource)
-          console.log(this.visitorLists)
+
+          // console.log(this.dataSource)
+          // console.log(this.visitorLists)
           this.dataSource = new MatTableDataSource < any > (this.visitorLists);
           this.pageLength =response.data.length;
           // this.dataSource.paginator = this.paginator;
-          this.paginator.pageIndex = 0;
+          // this.paginator.pageIndex = 0;
           // this.pageLength = this.visitorListsTotalLength;
        
           this.isLoadingResults = false;

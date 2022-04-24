@@ -163,7 +163,7 @@
                                     <div class="row">
                                         <span class="label-key col-5">Total Visits </span> <span class="pl-5 col-7 list-mar">:
                                             {{visitorDetail?.totalRevisits || 'Not Available'}} 
-                                            <a (click)=" openTotalVisit(visitorDetail?.visitor?.fullName)"
+                                            <a (click)="openAction(visitorDetail)"
                                             ><img
                                               width="20"
                                               style="margin-left: 0.2em"
