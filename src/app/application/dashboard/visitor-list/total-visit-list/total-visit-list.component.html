@@ -91,14 +91,14 @@
         <div class="form-group" style="margin-right: 1em">
           <form [formGroup]="range">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div id="visitorRangeDatem-0" class="float-right">
                   <div class="input-group margin-bot">
                     <span class="search-label">FILTER BY DATE : </span>
                     <mat-form-field appearance="fill">
                       <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
                         <input matStartDate formControlName="fromDate" placeholder="Start date" readonly />
-                        <input matEndDate formControlName="toDate" placeholder="End date" readonly />
+                        <input matEndDate  formControlName="toDate" placeholder="End date" readonly />
                       </mat-date-range-input>
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-date-range-picker #picker></mat-date-range-picker>
@@ -123,8 +123,22 @@
                   RESET
                 </button>
               </div>
+             
             </div>
           </form>
+          <div class="row">
+            <div class="col-md-2">
+              <select class="custom-select"
+               (change)="selecteRingSize($event.target.value)">
+                <option value="1Day">Today</option>
+                <option value="7Day">Last 7 Day</option>
+                <option value="14Day">Last 14 Day</option>
+                <option value="30Day">Last 30 Day</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+              </select>
+            </div>
+          </div>
         </div>
 
 

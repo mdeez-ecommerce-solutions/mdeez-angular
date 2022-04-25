@@ -130,6 +130,7 @@ visitorRevisit(userdata): Observable < any > {
     if (filterByPurpose) params = params.append('purpose', filterByPurpose);
     if (filterBySearch) params = params.append('search', filterBySearch);
     if ((FilterByDate.fromDate) && (FilterByDate.toDate)) {
+      console.log(FilterByDate)
       const formatDate = {
         fromDate: new Date(FilterByDate.fromDate.getTime() - FilterByDate.fromDate.getTimezoneOffset() * 60000),
         toDate: new Date(FilterByDate.toDate.getTime() - FilterByDate.toDate.getTimezoneOffset() * 60000),

@@ -18,6 +18,7 @@ loading:boolean=false;
    }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.status = this.data.status;
     this.remark = this.data.meetingRemark;
   }
@@ -26,7 +27,8 @@ loading:boolean=false;
     this.dialogRef.close();
   }
   confirm(){
-  
+    console.log(this.data)
+
     if(this.remark &&this.status){
       var userdata={
         "visitId": this.data._id,
