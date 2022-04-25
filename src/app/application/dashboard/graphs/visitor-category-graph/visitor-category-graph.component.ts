@@ -35,6 +35,7 @@ export class VisitorCategoryGraphComponent implements OnInit {
   }
   visitorCategoryGraph: any;
   graphDataLoader: boolean;
+  categoryfilter: any;
   @Output() visitorCategoryFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
@@ -123,6 +124,7 @@ export class VisitorCategoryGraphComponent implements OnInit {
       key: 'visitorCategory',
       value: value
     })
+    this.categoryfilter = value;
   }
 
 }

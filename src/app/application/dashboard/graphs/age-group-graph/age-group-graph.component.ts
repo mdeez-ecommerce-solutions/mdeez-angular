@@ -46,6 +46,7 @@ export class AgeGroupGraphComponent implements OnInit {
   }
   
   ageGraph: any;
+  agefilter:any;
   @Input() set ageGraphData(data) {
     if (data) {
       this.ageGraph.data = data;
@@ -163,10 +164,14 @@ export class AgeGroupGraphComponent implements OnInit {
   }
 
 
+
   ageFilter(value): void {
     this.ageFilterObj.emit({
         key: 'ageGroup',
         value: value
     })
+
+    this.agefilter = value;
+
   }
 }

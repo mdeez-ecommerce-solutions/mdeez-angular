@@ -28,6 +28,7 @@ useTheme(am4themes_animated);
 export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
   @Input() whomVisitorMeetsOptionVar: any;
   whomVisitorMeetGraph: any;
+  whommeetfilter: any;
   @Input() set whomVisitorMeetGraphData(data) {
     if (data) {
       this.whomVisitorMeetGraph.data = data;
@@ -133,6 +134,7 @@ export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
         key: 'whomVsistorMeet',
         value: value
     })
+    this.whommeetfilter = value;
   }
 
 }

@@ -29,17 +29,22 @@ export class MeetingStatusGraphComponent implements OnInit, AfterViewInit {
   meetingStatusGraph: any;
   @Input() set meetingStatusGraphData(data) {
     if (data) {
-      this.meetingStatusGraph = data;
+      this.meetingStatusGraph.data = data;
     }
   }
   graphDataLoader: boolean;
+  statusfilter:any;
   @Output() meetingStatusGraphFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
     this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.meetingStatusGraph = [];
+
+  }
 
   // Run the function only in the browser
   browserOnly(f: () => void) {
@@ -115,6 +120,7 @@ this.user.themeValueBehavior.subscribe((value) => {
         key: 'meetingStatus',
         value: value
     })
+    this.statusfilter = value;
   } 
 
 }

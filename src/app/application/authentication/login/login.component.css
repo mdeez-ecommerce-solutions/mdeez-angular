@@ -1,0 +1,202 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 0.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+ul li {
+  margin-bottom: 25px;
+}
+
+.auth-img {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.loginform-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loginform-group .form-icon {
+  height: 35px;
+  width: 38px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #141720;
+  font-size: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #626a7f;
+}
+
+.loginform-group input {
+  background: #191f2d;
+  border-radius: 0;
+  border: none;
+  height: 35px;
+  font-size: 13px;
+}
+
+.mybutton {
+  height: 32px;
+  line-height: 16px;
+  border-radius: 3px;
+  letter-spacing: 2px;
+  font-size: 15px;
+  background: #8d3232;
+}
+
+.myform {
+  max-width: 340px;
+  margin: auto;
+}
+
+.bg-color-login {
+  background: none !important;
+}
+
+.col-md-11 {
+  margin: auto;
+}
+
+.shine {
+  position: absolute;
+  background: #ffffff;
+  top: 0;
+  width: 0px;
+  -webkit-box-shadow: -1px -1px 96px 52px #ff0800;
+          box-shadow: -1px -1px 96px 52px #ff0800;
+  height: 100%;
+  z-index: 99;
+  /* transform: translateX(594px) rotate(59deg); */
+  /* transform: translateX(328px); */
+  -webkit-animation-name: shining;
+          animation-name: shining;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-duration: 3.2s;
+          animation-duration: 3.2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+#skroll-body {
+  height: 100%;
+  width: 100%;
+  min-height: 1px;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  opacity: 0.8;
+}
+
+@-webkit-keyframes shining {
+  from {
+    -webkit-transform: translateX(-44px) rotate(0deg);
+            transform: translateX(-44px) rotate(0deg);
+  }
+  to {
+    -webkit-transform: translateX(400px) rotate(60deg);
+            transform: translateX(400px) rotate(60deg);
+  }
+}
+
+@keyframes shining {
+  from {
+    -webkit-transform: translateX(-44px) rotate(0deg);
+            transform: translateX(-44px) rotate(0deg);
+  }
+  to {
+    -webkit-transform: translateX(400px) rotate(60deg);
+            transform: translateX(400px) rotate(60deg);
+  }
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  stroke: white !important;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .auth-padding-left-text, .my-5.login_med {
+    margin: 260px 0px !important;
+  }
+}
+/*# sourceMappingURL=login.component.css.map */

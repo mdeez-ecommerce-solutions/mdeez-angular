@@ -15,9 +15,11 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, create, Scrollbar,color,percent, type, array, Label, Circle, ZoomOutButton, DataSource } from '@amcharts/amcharts4/core';
+import { useTheme,options, create, Scrollbar,color,percent, type, array,PlayButton, Label, Circle, ZoomOutButton, DataSource } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
+// import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected"; 
 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { environment } from '../../../environments/environment';
@@ -50,9 +52,17 @@ import {
   toBase64String
 } from "@angular/compiler/src/output/source_map";
 
+import * as data from "./graphs/states-map/geojson.json";
+
 /* Chart code */
 // Themes begin
 useTheme(am4themes_animated);
+// options.queue = false;
+// // options.animationsEnabled = true;
+// // options.deferredDelay = 0;
+// options.onlyShowOnViewport = true;
+
+
 declare var require: any
 const FileSaver = require('file-saver');
 @Component({
@@ -72,8 +82,1262 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     toDate: new FormControl(),
   });
 
+  geodatajson = data;
+
   visitorLists: any;
   exportList: any = [];
+  allData = {
+    "2003": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+  
+      {
+        "network": "Water Problem",
+        "MAU": 4470000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 0
+      }
+    ],
+    "2004": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 3675135
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 5970054
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 980036
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 4900180
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 0
+      }
+    ],
+    "2005": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 7399354
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 7459742
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 9731610
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 19490059
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 9865805
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 1946322
+      }
+    ],
+    "2006": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 14949270
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 8989854
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 19932360
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 54763260
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 14966180
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 248309
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 19878248
+      }
+    ],
+    "2007": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 29299875
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 24253200
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 29533250
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 69299875
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 26916562
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 488331
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 143932250
+      }
+    ],
+    "2008": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 100000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 30000000
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 51008911
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 55045618
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 72408233
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 44357628
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 1944940
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 294493950
+      }
+    ],
+    "2009": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 276000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 41834525
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 28804331
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 57893524
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 70133095
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 47366905
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 3893524
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 413611440
+      }
+    ],
+    "2010": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 517750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 54708063
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 166029650
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 59953290
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 68046710
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 49941613
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 43250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 19532900
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 480551990
+      }
+    ],
+    "2011": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 766000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 66954600
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 46610848
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 46003536
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 47609080
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 92750000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 47818400
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 48691040
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 642669824
+      }
+    ],
+    "2012": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 979750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 79664888
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 107319100
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 45067022
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 146890156
+      },
+      {
+        "network": "Hiring",
+        "MAU": 160250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 118123370
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 79195730
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 844638200
+      }
+    ],
+    "2013": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1170500000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 80000000
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 205654700
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 117500000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 293482050
+      },
+      {
+        "network": "Hiring",
+        "MAU": 223675000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 196523760
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 118261880
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 300000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1065223075
+      }
+    ],
+    "2014": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1334000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 254859015
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 250000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 135786956
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 388721163
+      },
+      {
+        "network": "Hiring",
+        "MAU": 223675000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 444232415
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 154890345
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 498750000
+      },
+      {
+        "network": "Education",
+        "MAU": 1249451725
+      }
+    ],
+    "2015": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1516750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 298950015
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 400000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 163346676
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 475923363
+      },
+      {
+        "network": "Hiring",
+        "MAU": 304500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 660843407
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 208716685
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 800000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1328133360
+      }
+    ],
+    "2016": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1753500000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 398648000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 550000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 143250000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 238972480
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 238648000
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 565796720
+      },
+      {
+        "network": "Hiring",
+        "MAU": 314500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 847512320
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 281026560
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1399053600
+      }
+    ],
+    "2017": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 2035750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 495657000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 750000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 195000000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 297394200
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 239142500
+      },
+      {
+        "network": "Business",
+        "MAU": 593783960
+      },
+      {
+        "network": "Hiring",
+        "MAU": 328250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 921742750
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 357569030
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1333333333
+      },
+      {
+        "network": "Education",
+        "MAU": 1495657000
+      }
+    ],
+    "2018": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 2255250000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 430000000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 246500000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 355000000
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 500000000
+      },
+      {
+        "network": "Business",
+        "MAU": 624000000
+      },
+      {
+        "network": "Hiring",
+        "MAU": 329500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 431000000
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1433333333
+      },
+      {
+        "network": "Education",
+        "MAU": 1900000000
+      }
+    ]
+  }
+  
   displayedColumns: string[] = [
     "S.No.",
     "Unique Visitor ID",
@@ -99,6 +1363,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // "Information_sent_to_the_booth_village_coordinator_of_the_visitor",
     "Action",
   ];
+  liveyear = 2003;
   dataSource: any;
   rangeDate: any;
   filterInitial = "";
@@ -113,6 +1378,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   statePolygonForGeo: any;
   visitorAreaData:any;
   purposeGraph: any;
+  livepurposeGraph ?: any;
   genderGraph: any;
   casteGraph: any;
   visitorCategoryData: any;
@@ -164,6 +1430,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit(): void {
+
+    // this.livepurposeGraph = [];
+    // this.genderGraph = [];
+    // this.casteGraph = [];
+    // this.paginator = null;
     
     this.getFilterMeetStatus()
     // this.getFilterArea()
@@ -478,7 +1749,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             chartGeo.logo.disabled = true;
             chartGeo.maxZoomLevel = 64;
       
-            chartGeo.geodata = am4geodata_indiaHigh;
+            // chartGeo.geodata = am4geodata_indiaHigh;
+            chartGeo.geodataSource.url = "./graphs/states-map/geojson.json";
+
             // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
       
             // Set projection
@@ -744,6 +2017,445 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         }
       });
 
+
+//live purpose chart
+
+this.livepurposeGraph = create("livepurpose", am4charts.XYChart);
+this.livepurposeGraph.padding(40, 40, 40, 40);
+
+this.livepurposeGraph.numberFormatter.bigNumberPrefixes = [
+  { "number": 1e+3, "suffix": "K" },
+  { "number": 1e+6, "suffix": "M" },
+  { "number": 1e+9, "suffix": "B" }
+];
+
+let label = this.livepurposeGraph.plotContainer.createChild(Label);
+label.x = percent(97);
+label.y = percent(95);
+label.horizontalCenter = "right";
+label.verticalCenter = "middle";
+label.dx = -15;
+label.fontSize = 50;
+
+let playButton = this.livepurposeGraph.plotContainer.createChild(PlayButton);
+playButton.x = percent(97);
+playButton.y = percent(95);
+playButton.dy = -2;
+playButton.verticalCenter = "middle";
+playButton.events.on("toggled", function(event) {
+  if (event.target.isActive) {
+    play();
+  }
+  else {
+    stop();
+  }
+})
+
+
+let stepDuration = 4000;
+
+let categoryAxis = this.livepurposeGraph.yAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.dataFields.category = "network";
+categoryAxis.renderer.minGridDistance = 1;
+categoryAxis.renderer.inversed = true;
+categoryAxis.renderer.grid.template.disabled = true;
+
+var valuex = this.livepurposeGraph.xAxes.push(new am4charts.ValueAxis());
+valuex.min = 0;
+// valuex.rangeChangeEasing = ease.linear;
+// valuex.rangeChangeDuration = stepDuration;
+valuex.extraMax = 0.1;
+
+let series = this.livepurposeGraph.series.push(new am4charts.ColumnSeries());
+series.dataFields.categoryY = "network";
+series.dataFields.valueX = "MAU";
+series.tooltipText = "{valueX.value}"
+series.columns.template.strokeOpacity = 0;
+series.columns.template.column.cornerRadiusBottomRight = 5;
+series.columns.template.column.cornerRadiusTopRight = 5;
+series.interpolationDuration = stepDuration;
+// series.interpolationEasing = ease.linear;
+
+let labelBullet = series.bullets.push(new am4charts.LabelBullet())
+labelBullet.label.horizontalCenter = "right";
+labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+labelBullet.label.textAlign = "end";
+labelBullet.label.dx = -10;
+
+this.livepurposeGraph.zoomOutButton.disabled = true;
+
+
+this.userService.themeValueBehavior.subscribe((value) => {
+  if (value === "dark") {
+    valuex.renderer.labels.template.fill = color("#fff");
+    categoryAxis.renderer.labels.template.fill = color("#fff");
+    valuex.title.fill = color("#fff");
+    label.fill = color("#fff");
+categoryAxis.title.fill= color("#fff");
+  } else {
+    valuex.renderer.labels.template.fill = color("#2B2C2D");
+    categoryAxis.renderer.labels.template.fill = color("#2B2C2D");
+    valuex.title.fill = color("#2B2C2D");
+    label.fill = color("#2B2C2D");
+categoryAxis.title.fill=  color("#2B2C2D");
+  }
+});
+
+
+// as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+series.columns.template.adapter.add("fill", (fill, target) => {
+  return this.livepurposeGraph.colors.getIndex(target.dataItem.index);
+});
+
+this.liveyear = 2003;
+label.text = this.liveyear.toString();
+
+let interval;
+
+function play() {
+  interval = setInterval(function(){
+    nextYear();
+  }, stepDuration)
+  nextYear();
+}
+
+function stop() {
+  if (interval) {
+    clearInterval(interval);
+  }
+}
+
+
+let nextYear = () => {
+this.liveyear++;
+
+  if (this.liveyear > 2018) {
+    this.liveyear = 2003;
+  }
+
+  let newData = this.allData[this.liveyear];
+  let itemsWithNonZero = 0;
+  for (var i = 0; i < this.livepurposeGraph.data.length; i++) {
+    this.livepurposeGraph.data[i].MAU = newData[i].MAU;
+    if (this.livepurposeGraph.data[i].MAU > 0) {
+      itemsWithNonZero++;
+    }
+  }
+
+  if (this.liveyear == 2003) {
+    series.interpolationDuration = stepDuration / 4;
+    valueAxis.rangeChangeDuration = stepDuration / 4;
+  }
+  else {
+    series.interpolationDuration = stepDuration;
+    valueAxis.rangeChangeDuration = stepDuration;
+  }
+
+  this.livepurposeGraph.invalidateRawData();
+  label.text = this.liveyear.toString();
+
+  categoryAxis.zoom({ start: 0, end: itemsWithNonZero / categoryAxis.dataItems.length });
+}
+
+
+categoryAxis.sortBySeries = series;
+
+
+   
+this.livepurposeGraph.data = JSON.parse(JSON.stringify(this.allData[this.liveyear]));
+console.log("LIVEDATA::",this.livepurposeGraph);
+
+
+categoryAxis.zoom({ start: 0, end: 1 / this.livepurposeGraph.data.length });
+
+series.events.on("inited", function() {
+  setTimeout(function() {
+    // playButton.isActive = true; // this starts interval
+    console.log("new");
+  }, 2000)
+})
+
+
+
+//endlive purpose chart
+
+
+//bubblecastchart
+
+let bubblechart = create("bubblechart", am4plugins_forceDirected.ForceDirectedTree);
+
+let networkSeries = bubblechart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
+
+
+networkSeries.data = [{
+  name: 'Singh',
+  children: [{
+    name: 'Black Tea', value: 1
+  }, {
+    name: 'Floral',
+    children: [{
+      name: 'Chamomile', value: 1
+    }, {
+      name: 'Rose', value: 1
+    }, {
+      name: 'Jasmine', value: 1
+    }]
+  }]
+}, {
+  name: 'Khan',
+  children: [{
+    name: 'Berry',
+    children: [{
+      name: 'Blackberry', value: 1
+    }, {
+      name: 'Raspberry', value: 1
+    }, {
+      name: 'Blueberry', value: 1
+    }, {
+      name: 'Strawberry', value: 1
+    }]
+  }, {
+    name: 'Dried Fruit',
+    children: [{
+      name: 'Raisin', value: 1
+    }, {
+      name: 'Prune', value: 1
+    }]
+  }, {
+    name: 'Other Fruit',
+    children: [{
+      name: 'Coconut', value: 1
+    }, {
+      name: 'Cherry', value: 1
+    }, {
+      name: 'Pomegranate', value: 1
+    }, {
+      name: 'Pineapple', value: 1
+    }, {
+      name: 'Grape', value: 1
+    }, {
+      name: 'Apple', value: 1
+    }, {
+      name: 'Peach', value: 1
+    }, {
+      name: 'Pear', value: 1
+    }]
+  }, {
+    name: 'Citrus Fruit',
+    children: [{
+      name: 'Grapefruit', value: 1
+    }, {
+      name: 'Orange', value: 1
+    }, {
+      name: 'Lemon', value: 1
+    }, {
+      name: 'Lime', value: 1
+    }]
+  }]
+}, {
+  name: 'Sour/Fermented',
+  children: [{
+    name: 'Sour',
+    children: [{
+      name: 'Sour Aromatics', value: 1
+    }, {
+      name: 'Acetic Acid', value: 1
+    }, {
+      name: 'Butyric Acid', value: 1
+    }, {
+      name: 'Isovaleric Acid', value: 1
+    }, {
+      name: 'Citric Acid', value: 1
+    }, {
+      name: 'Malic Acid', value: 1
+    }]
+  }, {
+    name: 'Alcohol/Fremented',
+    children: [{
+      name: 'Winey', value: 1
+    }, {
+      name: 'Whiskey', value: 1
+    }, {
+      name: 'Fremented', value: 1
+    }, {
+      name: 'Overripe', value: 1
+    }]
+  }]
+}, {
+  name: 'Green/Vegetative',
+  children: [{
+    name: 'Olive Oil', value: 1
+  }, {
+    name: 'Raw', value: 1
+  }, {
+    name: 'Green/Vegetative',
+    children: [{
+      name: 'Under-ripe', value: 1
+    }, {
+      name: 'Peapod', value: 1
+    }, {
+      name: 'Fresh', value: 1
+    }, {
+      name: 'Dark Green', value: 1
+    }, {
+      name: 'Vegetative', value: 1
+    }, {
+      name: 'Hay-like', value: 1
+    }, {
+      name: 'Herb-like', value: 1
+    }]
+  }, {
+    name: 'Beany', value: 1
+  }]
+}, {
+  name: 'Other',
+  children: [{
+    name: 'Papery/Musty',
+    children: [{
+      name: 'Stale', value: 1
+    }, {
+      name: 'Cardboard', value: 1
+    }, {
+      name: 'Papery', value: 1
+    }, {
+      name: 'Woody', value: 1
+    }, {
+      name: 'Moldy/Damp', value: 1
+    }, {
+      name: 'Musty/Dusty', value: 1
+    }, {
+      name: 'Musty/Earthy', value: 1
+    }, {
+      name: 'Animalic', value: 1
+    }, {
+      name: 'Meaty Brothy', value: 1
+    }, {
+      name: 'Phenolic', value: 1
+    }]
+  }, {
+    name: 'Chemical',
+    children: [{
+      name: 'Bitter', value: 1
+    }, {
+      name: 'Salty', value: 1
+    }, {
+      name: 'Medicinal', value: 1
+    }, {
+      name: 'Petroleum', value: 1
+    }, {
+      name: 'Skunky', value: 1
+    }, {
+      name: 'Rubber', value: 1
+    }]
+  }]
+}, {
+  name: 'Roasted',
+  children: [{
+    name: 'Pipe Tobacco', value: 1
+  }, {
+    name: 'Tobacco', value: 1
+  }, {
+    name: 'Burnt',
+    children: [{
+      name: 'Acrid', value: 1
+    }, {
+      name: 'Ashy', value: 1
+    }, {
+      name: 'Smoky', value: 1
+    }, {
+      name: 'Brown, Roast', value: 1
+    }]
+  }, {
+    name: 'Cereal',
+    children: [{
+      name: 'Grain', value: 1
+    }, {
+      name: 'Malt', value: 1
+    }]
+  }]
+}, {
+  name: 'Spices',
+  children: [{
+    name: 'Pungent', value: 1
+  }, {
+    name: 'Pepper', value: 1
+  }, {
+    name: 'Brown Spice',
+    children: [{
+      name: 'Anise', value: 1
+    }, {
+      name: 'Nutmeg', value: 1
+    }, {
+      name: 'Cinnamon', value: 1
+    }, {
+      name: 'Clove', value: 1
+    }]
+  }]
+}, {
+  name: 'Nutty/Cocoa',
+  children: [{
+    name: 'Nutty',
+    children: [{
+      name: 'Peanuts', value: 1
+    }, {
+      name: 'Hazelnut', value: 1
+    }, {
+      name: 'Almond', value: 1
+    }]
+  }, {
+    name: 'Cocoa',
+    children: [{
+      name: 'Chocolate', value: 1
+    }, {
+      name: 'Dark Chocolate', value: 1
+    }]
+  }]
+}, {
+  name: 'Sweet',
+  children: [{
+    name: 'Brown Sugar',
+    children: [{
+      name: 'Molasses', value: 1
+    }, {
+      name: 'Maple Syrup', value: 1
+    }, {
+      name: 'Caramelized', value: 1
+    }, {
+      name: 'Honey', value: 1
+    }]
+  }, {
+    name: 'Vanilla', value: 1
+  }, {
+    name: 'Vanillin', value: 1
+  }, {
+    name: 'Overall Sweet', value: 1
+  }, {
+    name: 'Sweet Aromatics', value: 1
+  }]
+}];
+
+networkSeries.dataFields.linkWith = "linkWith";
+networkSeries.dataFields.name = "name";
+networkSeries.dataFields.id = "name";
+networkSeries.dataFields.value = "value";
+networkSeries.dataFields.children = "children";
+networkSeries.links.template.distance = 1;
+networkSeries.nodes.template.tooltipText = "{name} {children.length}";
+networkSeries.nodes.template.fillOpacity = 1;
+networkSeries.nodes.template.outerCircle.scale = 1;
+
+networkSeries.nodes.template.label.text = "{name}"
+networkSeries.fontSize = 8;
+networkSeries.nodes.template.label.hideOversized = true;
+networkSeries.nodes.template.label.truncate = true;
+networkSeries.minRadius = percent(2);
+networkSeries.manyBodyStrength = -5;
+networkSeries.links.template.strokeOpacity = 0;
+
+//endbubblechart
+
+
       // Chart for gender
       this.genderGraph = create("gender", am4charts.PieChart);
       this.genderGraph.hiddenState.properties.opacity = 0; // this creates initial fade-in
@@ -951,7 +2663,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         }
       });
     });
-  })
+  },1000);
   }
 
   
@@ -1937,12 +3649,17 @@ filterDate(){
       key: "purpose",
       value: value,
     };
+
+    this.appliedFilters['purpose'] = value;
+
     this.getFilterMeetStatus(filterObj)
    
   }
 
   visitorAreaFilter(filterObj): void {
     this.getFilterMeetStatus(filterObj)
+
+    this.appliedFilters['area'] = filterObj;
  
   }
 
@@ -1954,55 +3671,67 @@ filterDate(){
 
     this.appliedFilters['gender'] = value;
 
+    console.log(this.appliedFilters);
     this.getFilterMeetStatus(filterObj)
     
   }
 
   casteFilter(value): void {
-    // const filterObj = {
-    //   key: "caste",
-    //   value: value,
-    // };
-    // this.getFilterMeetStatus(filterObj)
+    const filterObj = {
+      key: "caste",
+      value: value,
+    };
+    this.appliedFilters['caste'] = value;
+    this.getFilterMeetStatus(filterObj)
   
   }
 
   ageFilter(filterObj): void {
     this.getFilterMeetStatus(filterObj)
+    this.appliedFilters['age'] = filterObj;
+    console.log(this.appliedFilters);
 
   }
 
   perceiveFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['perceive'] = filterObj;
    
   }
 
   samajwadiPartyFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['aapMember'] = filterObj;
   
   }
 
   visitorCategoryFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['category'] = filterObj;
 
   }
 
   visitorOccupationFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['occupation'] = filterObj;
 
   }
   whomVisitorMeetFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['whomMeet'] = filterObj;
+
     
   }
 
   meetingStatusGraphFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
-  
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['meetStatus'] = filterObj;
   }
 
   meetingLocationGraphFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['meetLocation'] = filterObj;
+
 
   }
 

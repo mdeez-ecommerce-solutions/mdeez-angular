@@ -35,6 +35,7 @@ export class MeetingLocationGraphComponent implements OnInit {
   }
 
   graphDataLoader: boolean;
+  locationfilter:any;
   @Output() meetingLocationGraphFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
@@ -114,6 +115,7 @@ this.user.themeValueBehavior.subscribe((value) => {
         key: 'meetingLocation',
         value: value
     })
+    this.locationfilter = value;
   }
 
 }
