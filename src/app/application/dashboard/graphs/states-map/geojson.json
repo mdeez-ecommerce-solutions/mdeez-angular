@@ -1,0 +1,3064 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203588,
+            28.639536
+          ]
+        },
+        "properties": {
+          "psno": 1,
+          "locality": "Mandir Marg",
+          "area": "1 - N.D.M.C. FLATS,BALMIKI SADAN, MANDIR MARG, NEW DELHI, 2 - N.D.M.C. FLATS,BALMIKI SADAN, MANDIR MARG, NEW DELHI, 3 - JHUGGI NEAR N.D.M.C FLATS,BALMIKI SADAN MANDIR MARG, NEW DELHI",
+          "address": "ST THOMAS SCHOOL MANDIR MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.205535,
+            28.638427
+          ]
+        },
+        "properties": {
+          "psno": 2,
+          "locality": "Mandir Marg",
+          "area": "1 - GANDHI SADAN,MANDIR MARG, NEW DELHI, 2 - TYPE-I QTRS, DOUBLE STORY,MANDIR MARG, NEW DELHI",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA, R. K. ASHRAM MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203696,
+            28.639423
+          ]
+        },
+        "properties": {
+          "psno": 3,
+          "locality": "Mandir Marg",
+          "area": "1 - STAFF QTRS, HAR COURT BUTLER SR SCHOOL ,MANDIR MARG, NEW DELHI, 10 - N.D.M.C. HOUSING COMPLEX AUTO WORK SHOP,MANDIR MARG, NEW DELHI, 11 - FLATS, BALMIKI SADAN ,MANDIR MARG, NEW DELHI, 12 - MANDIR, BALMIKI SADAN,MANDIR MARG, NEW DELHI, 13 - PRESIDENT HOUSE AKHIL BHARAT HINDU MAHA SABHA,HINDU MAHASABHA BHAWAN, MANDIR MARG, NEW DELHI, 14 - BARRACK, POLICE STATIONMANDIR MARG, NEW DELHI, 15 - IMAMIAHALL, PANCHKUIANROAD,NEWDELHI, 16 - DELHITRANSPORTWELLFARE.CO-OPSOCIETY,WORKSHOP, PANCHKUIANROAD,NEWDELHI, 17 - JAGJIVANVIDHYABHAWAN, LINKROAD,NEWDELHI, 18 - BHARTIYAADIMJATISEVAKSANGH, LINKROAD,NEWDELHI, 19 - LALDWARAMANDIR, LINKROAD,NEWDELHI, 2 - STAFF QTRS, AKHIL BHARTIYA HINDU MAHA SABHA,MANDIR MARG, NEW DELHI, 20 - T-HUTS,BEHINDBAGGABAJAJSHOWROOM, LINKROAD,NEWDELHI, 21 - POLICEWIRELESSQUATERS, VANDEMATRAMMARG,NEWDELHI, 22 - BHULIBHATIYARITANK, VANDEMATRAMMARG,NEWDELHI, 23 - NATHUKIBAGICHI, P.K.ROAD,NEWDELHI, 3 - N.D.M.C. STAFF QTRS, BEHIND N.P. BOYS SCHOOL,MANDIR MARG, NEW DELHI, 4 - STAFF QTRS, RAISINA BENGALI SCHOOL,MANDIR MARG, NEW DELHI, 5 - ARYA SAMAJ, ( ANARKALI),MANDIR MARG, NEW DELHI, 6 - STAFF QTRS, DAYANAND MODEL SCHOOL ,MANDIR MARG , NEW DELHI, 7 - DELHI POLICE OFFICERS FLATS,MANDIR MARG, NEW DELHI, 8 - STAFF QTRS, ST. THOMAS CHURCH ,MANDIR MARG, NEW DELHI, 9 - STAFF QTRS, ST. THOMAS SCHOOL,MANDIR MARG, NEW DELHI",
+          "address": "ST THOMAS SCHOOL MANDIR MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203602,
+            28.636474
+          ]
+        },
+        "properties": {
+          "psno": 4,
+          "locality": "Mandir Marg",
+          "area": "1 - BLOCK-D, TYPE-II QTRS,MANDIR MARG, NEW DELHI, 2 - BLOCK -66, TYPE- I QTRS,MANDIR MARG, NEW DELHI, 3 - BLOCK-67, TYPE- I QTRS.,MANDIR MARG, NEW DELHI",
+          "address": "NAVYUG SCHOOL PESHWA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.201088,
+            28.636221
+          ]
+        },
+        "properties": {
+          "psno": 5,
+          "locality": "Mandir Marg",
+          "area": "1 - TYPE-II QTRS, SECTOR-II, D.I.Z AREA,PESHWA ROAD, NEW DELHI, 2 - TYPE-III QTRS, SECTOR-II, D.I.Z. AREA,PESHWA ROAD, NEW DELHI, 3 - BLOCK-A, M.S. FLATS,PESHWA ROAD, NEW DELHI, 4 - BLOCK-B, M.S. FLATS,PESHWA ROAD, NEW DELHI, 5 - GARRAGE, M.S. FLATS,PESHWA ROAD, NEW DELHI",
+          "address": "ATAL ADARSH BAL VIDYALAYA, MANDIR MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.199035,
+            28.628019
+          ]
+        },
+        "properties": {
+          "psno": 6,
+          "locality": "Kali Bari Marg",
+          "area": "1 - BLOCK-H, TYPE-II QTRS,KALI BARI MARG, NEW DELHI",
+          "address": "KENDRIYA VIDYALAYA KALI BARI MARG GOLE MARKET"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.199065,
+            28.627988
+          ]
+        },
+        "properties": {
+          "psno": 7,
+          "locality": "Tal Katora Road",
+          "area": "1 - BANGABANDHU SHEIKH MUJIBAR ROAD, 10 - KOTHI, NEAR TALKATORA STADIUM,BANGABANDHU SHEIKH MUJIBAR LANE, 11 - KOTHI, NEAR TALKATORA STADIUM,PARK LANE, NEW DELHI, 12 - M.E.S. PUMPNEAR SWATI HOSTEL MANDIR MARG, NEW DELHI, 13 - BUNGALOW, PRESIDENTS ESTATE,TALKATORA ROAD, NEW DELHI, 2 - JHUGGI, NEAR TALKATORA GARDEN ,BANGABANDHU SHEIKH MUJIBAR LANE, 3 - CENTRAL SECRETARIAT CLUB,PARK STREET,TALKATORA ROAD, NEW DELHI, 4 - STAFF QTRS, PRESIDENT ESTATE,READING LANE, NEW DELHI, 5 - SWATI HOSTEL,MANDIR MARG, NEW DELHI, 6 - STAFF QTRS,BIRLA MANDIR MANDIR MARG, NEW DELHI, 7 - BUDHA MANDIR,MANDIR MARG, NEW DELHI, 8 - BUDH LANE,MANDIR MARG, NEW DELHI, 9 - VIVEKANAND BHAWAN, KALIBARI MANDIR,MANDIR MARG, NEW DELHI",
+          "address": "KENDRIYA VIDYALAYA KALI BARI MARG GOLE MARKET"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.194575,
+            28.620499
+          ]
+        },
+        "properties": {
+          "psno": 8,
+          "locality": "President Estate",
+          "area": "1 - SCHEDULE -B,PRESIDENT ESTATE, NEW DELHI, 10 - M I - ROOM, PRESIDENT ESTATE ,RASHTRAPATI BHAWAN, NEW DELHI, 11 - SCHEDULE-B, OFFICER RESIDENCE,PRESIDENT ESTATE, NEW DELHI, 12 - TYPE-G QTRS,PRESIDENT ESTATE, NEW DELHI, 13 - TYPE-II, SCHEDULE -B, JHELAM APPARTMENTPRESIDENT ESTATE, NEW DELHI, 14 - SERVANT QTRS,PRESIDENT ESTATE, NEW DELHI, 15 - SCHEDULE-B, PRESIDENT ESTATE,RASTRAPATI BHAWAN, NEW DELHI, 16 - BLOCK-7,PRESIDENT ESTATE, NEW DELHI, 17 - 1 W C QTRS,PRESIDENT ESTATE, NEW DELHI, 18 - TYPE-IV QTRS,PRESIDENT ESTATE, NEW DELHI, 19 - PRESIDENT'S ESTATEGURUDWARA RAKAB GANJ ROAD, NEW DELHI, 2 - TYPE-IV QTRS. SCHEDULE -B ,PRESIDENT ESTATE, NEW DELHI, 3 - C-II,SCHEDULE-B,PRESIDENTS ESTATE, NEW DELHI, 4 - TYPE-II, SCHEDULE-B, GANGA APPARTMENT,PRESIDENTS ESTATE, NEW DELHI, 5 - 2-WC QTRS., SCHEDULE-B,PRESIDENT ESTATE, NEW DELHI, 6 - 3- W. C. PRESIDENT ESTATE,RASHTRAPATI BHAWAN, NEW DELHI, 7 - J.C.O.S QTRS. PRESIDENT ESTATE ,RASHTRAPATI BHAWAN, NEW DELHI, 8 - 4 -W. C. PRESIDENT ESTATE,RASHTRAPATI BHAWAN, NEW DELHI, 9 - PRESIDENT BODY GUARD QTRS, PRESIDENT ESTATE,RASHTRAPATI BHAWAN, NEW DELHI",
+          "address": "DR. RAJENDER PRASAD KENDRIYA VIDYALAYA, PRESIDENT ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.19456,
+            28.620645
+          ]
+        },
+        "properties": {
+          "psno": 9,
+          "locality": "President Estate",
+          "area": "1 - BLOCK-12 , SCHEDULE-B ,PRESIDENT ESTATE, NEW DELHI, 2 - TYPE-II, SCHEDULE -B, NARMDA APPARTMENTPRESIDENT ESTATE, NEW DELHI, 3 - TYPE-III, SCHEDULE -B, NARMDA APPARTMENT,PRESIDENT ESTATE, NEW DELHI, 4 - FAMILY WING OFRASHTRAPATI BHAVAN NEW DELHI-110004",
+          "address": "DR. RAJENDER PRASAD KENDRIYA VIDYALAYA, PRESIDENT ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.194693,
+            28.620466
+          ]
+        },
+        "properties": {
+          "psno": 10,
+          "locality": "President Estate",
+          "area": "1 - TYPE -II QTRS, SCHEDULE -B,PRESIDENT ESTATE, NEW DELHI, 2 - TYPE -III QTRS, SCHEDULE -B,PRESIDENT ESTATE, NEW DELHI, 3 - TYPE-II QTRS, SCHEDULE-B,BRAMPUTRA PRESIDENT ESTATE, NEW DELHI, 4 - BLOCK-4, TYPE-II, SCHEDULE-B,PRESIDENT ESTATE, NEW DELHI, 5 - G-I, NEAR FLOUR MILL,PRESIDENT ESTATE, NEW DELHI, 6 - YAMUNA APPARTMENT,SCHEDULE-B PRESIDENT ESTATE, NEW DELHI, 7 - TYPE-II, SCHEDULE -B, KAVERI APPARTMENTPRESIDENT ESTATE, NEW DELHI",
+          "address": "DR. RAJENDER PRASAD KENDRIYA VIDYALAYA, PRESIDENT ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.194682,
+            28.620564
+          ]
+        },
+        "properties": {
+          "psno": 11,
+          "locality": "President Estate",
+          "area": "1 - TYPE- I QTRS, PRESIDENT ESTATE.RASHTRAPATI BHAWAN, NEW DELHI, 10 - POCKET-II, SHEDUEL-A,PRISEDENT EASTATE, NEW DELHI, 11 - A.D.C. ROOMRASHTRAPATI BHAWAN, NEW DELHI, 12 - CLOCK TOWER,SCHEDULE-BPRESIDENT ESTATE, NEW DELHI, 13 - D-II TYPE OFFICER'S QURTER, SCHEDULE APRESIDENT ESTATE, NEW DELHI, 2 - SERVANT QTRS, TYPE-V,PRESIDENT ESTATE, NEW DELHI, 3 - POCKET-I QTRS,PRESIDENT ESTATE, NEW DELHI, 4 - SCHEDULE-A,PRESIDENT ESTATE, NEW DELHI, 5 - TYPE-II, SCHEDULE -B, TAPTI APPARTMENT,PRESIDENT ESTATE, NEW DELHI, 6 - BUNGLOW NO.PRESIDENT ESTATE, NEW DELHI, 7 - TYPE-V QTRS,PRESIDENT ESTATE, NEW DELHI, 8 - WASHING STORE & OFFICERS MESS,PRESIDNET ESTATE, NEW DELHI, 9 - TYPE-IV D-II SERVANT QTRS,PRESIDENT ESTATE, NEW DELHI",
+          "address": "DR. RAJENDER PRASAD KENDRIYA VIDYALAYA, PRESIDENT ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203646,
+            28.627254
+          ]
+        },
+        "properties": {
+          "psno": 12,
+          "locality": "Baba Kharag Singh Marg",
+          "area": "1 - SARKARI AWAS,BABA KHARAK SINGH MARG, NEW DELHI, 2 - DRS. HOSTEL, R. M. L . HOSPITAL,R K ASHRAM MARG, NEW DELHI, 3 - S D MANDIR SARKARI AWASHBABA KHARAK SINGH MARG, NEW DELHI, 4 - DR. MESS/CANTEEN R.M.L.HOSPITAL,R K ASHRAM MARG, NEW DELHI, 5 - AKSHARA THEATRE,BABA KHARAK SINGH MARG, NEW DELHI",
+          "address": "ATAL ADARSH VIDHYALYA, HAVLOCK SQUARE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203676,
+            28.627255
+          ]
+        },
+        "properties": {
+          "psno": 13,
+          "locality": "Kali Bari Marg",
+          "area": "1 - BLOCK-K, TYPE-III, SECTOR- II,D I Z AREA, MANDIR MARG, NEW DELHI, 2 - BLOCK- J, SECTOR-II, D.I.Z. AREA,MANDIR MARG, NEW DELHI, 3 - C.P.W.D. QTRS, SECTOR-II,DIZ AREA,MANDIR MARG, NEW DELHI, 4 - KALI BARI APPARTMENTS , SECTOR-II,D.I.Z. AREA, UDYAN MARG NEW DELHI, 5 - GAURD ROOM KALI BARI APPARTMENT ,SEC-II D.I.Z. AREA UDYAN MARG, NEW DELHI",
+          "address": "ATAL ADARSH VIDHYALYA, HAVLOCK SQUARE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203609,
+            28.627262
+          ]
+        },
+        "properties": {
+          "psno": 14,
+          "locality": "Kali Bari Marg",
+          "area": "1 - JHUGGI, G- POINT,KALI BARI MARG, NEW DELHI, 2 - QTRS, N.P.GIRLS SCHOOL, HAVLOC SQUARE,KALI BARI MARG, NEW DELHI, 3 - TYPE-3, G-POINT, PRESIDENTS ESTATE QTRS,KALI BARI MARG, NEW DELHI, 4 - TYPE-1 QTRS,G-POINT, PRESIDENT EASTATE QTRS.KALI BARI MARG, NEW DELHI, 5 - SARKARIAWAS, KALIBARIMARG,NEWDELHI, 6 - G-POINTQTRS&TEMPLE, KALIBARIMARG,NEWDELHI",
+          "address": "ATAL ADARSH VIDHYALYA, HAVLOCK SQUARE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.204092,
+            28.630684
+          ]
+        },
+        "properties": {
+          "psno": 15,
+          "locality": "Kali Bari Marg",
+          "area": "1 - P & T TYPE - III QTRS (UDHYAN MARG) ,KALI BARI MARG, NEW DELHI, 2 - B.S.N.L. TYPE-IV QTRS (UDYAN MARG)KALI BARI MARG, NEW DELHI, 3 - P & T QTRS, (UDHYAN MARG)KALIBARI MARG, NEW DELHI, 4 - P & T QTRS, TYPE-VUDYAN MARG, NEW DELHI",
+          "address": "ATAL ADARSH BENGALI BALIKA VIDYALAYA, GOLE MARKET, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203979,
+            28.630731
+          ]
+        },
+        "properties": {
+          "psno": 16,
+          "locality": "Kali Bari Marg",
+          "area": "1 - SECTOR-II,DIZ AREA,KALI BARI MARG, NEW DELHI, 2 - SCETOR-II, D.I.Z. AREA, NEAR B.S.N.L. PARK,KALI BARI MARG, NEW DELHI, 3 - SECTOR-II, D.I.Z. AREA, NEAR B.S.N.L. PARK,KALI BARI MARG, NEW DELHI, 4 - SECTOR-II, D.I.Z. AREA, NEAR B.S.N.L. PARK ,KALI BARI MARG, NEW DELHI",
+          "address": "ATAL ADARSH BENGALI BALIKA VIDYALAYA, GOLE MARKET, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.204188,
+            28.630726
+          ]
+        },
+        "properties": {
+          "psno": 17,
+          "locality": "Kali Bari Marg",
+          "area": "1 - P & T QTRS,KALI BARI MARG, NEW DELHI, 2 - STAFF. QTRS, N .P. BENGALI GIRLS SR. SEC. SCHOOL,BHAI VIR SINGH MAR, NEW DELHI, 3 - N.D.M.C. QTRS, N.P. GIRLS SR. SEC. SCHOOL,BHAI VIR SINGH MARG, NEW DELHI",
+          "address": "ATAL ADARSH BENGALI BALIKA VIDYALAYA, GOLE MARKET, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.198934,
+            28.628004
+          ]
+        },
+        "properties": {
+          "psno": 18,
+          "locality": "Kali Bari Marg",
+          "area": "1 - BLOCK- H, TYPE-II QTRS,KALI BARI MARG, NEW DELHI, 2 - BLOCK-K, KALIBARIMARG,NEWDELHI",
+          "address": "KENDRIYA VIDYALAYA KALI BARI MARG GOLE MARKET"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.20407,
+            28.630738
+          ]
+        },
+        "properties": {
+          "psno": 19,
+          "locality": "Kali Bari Marg",
+          "area": "1 - TYPE-I QTRS, LAL BAHADUR SADAN,BHAIVEER SINGH MARG, NEW DELHI, 2 - TYPE-II QTRS, LAL BAHADUR SADAN,BHAIVEER SINGH MARG, NEW DELHI, 3 - TYPE-III QTRS, LAL BAHADUR SADAN,BHAIVEER SINGH MARG, NEW DELHI, 4 - CYCLE STAND, LAL BAHADUR SADAN,BHAIVEER SINGH MARG NEW DELHI, 5 - SECTOR-II, D.I.Z. AREA,KALI BARI MARG. NEW DELHI",
+          "address": "ATAL ADARSH BENGALI BALIKA VIDYALAYA, GOLE MARKET, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.201131,
+            28.636225
+          ]
+        },
+        "properties": {
+          "psno": 20,
+          "locality": "Peshwa Road",
+          "area": "1 - TYPE-III QTRS, SECTOR- II,D.I.Z. AREA, PESHWA ROAD, NEW DELHI, 2 - T-HUTS , D.I.Z. AREA SECTOR- II ,PESHWA ROAD, NEW DELHI, 3 - T-HTUS, D.I.Z. AREA SECTOR- II,PESHWA ROAD, NEW DELHI, 4 - T-HUTS, BEHIND C.G.H.S. DISPENSARY,PESHWA ROAD, NEW DELHI, 5 - MAHESHWAR ASHARM, BLOCK-18, D.I.Z AREA,SEC- II, PESHWA ROAD, NEW DELHI, 6 - TYPE-II QTRS, SECTOR -II,D.I.Z. AREA, PESHWA ROAD, NEW DELHI",
+          "address": "ATAL ADARSH BAL VIDYALAYA, MANDIR MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.199175,
+            28.627963
+          ]
+        },
+        "properties": {
+          "psno": 21,
+          "locality": "Mandir Marg",
+          "area": "1 - BLOCK-J,TYPE-II QTRS,MANDIR MARG, NEW DELHI, 2 - STAFF QTRS, KENDRIYA VIDYALAYA ,LAKE SQUARE, UDYAN MARG, NEW DELHI",
+          "address": "KENDRIYA VIDYALAYA KALI BARI MARG GOLE MARKET"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.204269,
+            28.631042
+          ]
+        },
+        "properties": {
+          "psno": 22,
+          "locality": "Peshwa Road",
+          "area": "1 - TYPE-II QTRS, SECTOR-II , D.I.Z. AREA,PESHWA ROAD NEW DELHI, 2 - TYPE-III QTRS, SECTOR-II, D.I.Z. AREA ,PESHWA ROAD, NEW DELHI",
+          "address": "ATAL ADARSH BENGALI BALIKA VIDYALAYA, GOLE MARKET, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200616,
+            28.63576
+          ]
+        },
+        "properties": {
+          "psno": 23,
+          "locality": "Kali Bari Marg",
+          "area": "1 - C-31, T- HUTS, NEAR P & T QTRS,KALI BARI MARG, NEW DELHI",
+          "address": "ATAL ADARSH BAL VIDYALAYA, MANDIR MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.198907,
+            28.628049
+          ]
+        },
+        "properties": {
+          "psno": 24,
+          "locality": "Kali Bari Marg",
+          "area": "1 - BLOCK-H, TYPE-I FLATS,KALI BARI MARG, NEW DELHI, 2 - B.S.S.K. SHIV MANDIR, BLOCK-H,KALI BARI MARG, NEW DELHI, 3 - C-33, T- HUTS, NEAR BLOCK-K,KALI BARI MARG, NEW DELHI",
+          "address": "KENDRIYA VIDYALAYA KALI BARI MARG GOLE MARKET"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203552,
+            28.636463
+          ]
+        },
+        "properties": {
+          "psno": 25,
+          "locality": "Mandir Marg",
+          "area": "1 - TYPE-III QTRS, SECTOR-D,MANDIR MARG, NEW DELHI",
+          "address": "NAVYUG SCHOOL PESHWA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203644,
+            28.636486
+          ]
+        },
+        "properties": {
+          "psno": 26,
+          "locality": "Peshwa Road",
+          "area": "1 - C.P.W.D QTRS,PESHWA ROAD NEW DELHI, 2 - SECTOR -C, ALBERT SQUARE,SAHEED MATAVAR SINGH NEGI MARG, NEW DELHI, 3 - SECTOR-I, D.I.Z. AREA,R. K. ASHRAM MARG, NEW DELHI, 4 - DARGAH HAZRAT, KALALI BAGH,R .K ASHRAM MARG, NEW DELHI",
+          "address": "NAVYUG SCHOOL PESHWA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203601,
+            28.636642
+          ]
+        },
+        "properties": {
+          "psno": 27,
+          "locality": "Rama Krishna Ashram Marg",
+          "area": "1 - SECTOR-C, ALBERT SQUARE,R. K. ASHRAM MARG, NEW DELHI, 2 - NEW EXTERNAL AFFAIRS HOSTEL ,R. K. ASHRAM MARG, NEW DELHI, 3 - MASJID KALALI BAGH,R .K. ASHRAM MARG, NEW DELHI",
+          "address": "NAVYUG SCHOOL PESHWA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.206894,
+            28.637389
+          ]
+        },
+        "properties": {
+          "psno": 28,
+          "locality": "Panchkuian Road",
+          "area": "1 - TYPE-I QTRS,R K ASHRAM LANE, NEW DELHI, 2 - TYPE-I QTRS,R K ASHRAM LANE, NEW DELHI, 3 - PALIKA VAS,R K ASHRAM LANE, NEW DELHI, 4 - STAFF QTRS, ANDH VIDYALYA ,PANCHKUIAN ROAD.NEW DELHI, 5 - ANDH MAHAVIDYALYAPANCHKUIAN ROAD, NEW DELHI",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA, R. K. ASHRAM MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207076,
+            28.637314
+          ]
+        },
+        "properties": {
+          "psno": 29,
+          "locality": "Panchkuian Road",
+          "area": "1 - DARGAH SYAID HUSSAIN,PANCHKUIAN ROAD. NEW DELHI, 2 - SMART HOUSE, NEAR PREMNATH MOTOR WORKSHOPMANDIR MARG, NEW DELHI, 3 - STAFF QTRS, ANDH VIDHYALAYAP K ROAD, NEW DELHI",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA, R. K. ASHRAM MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207312,
+            28.637351
+          ]
+        },
+        "properties": {
+          "psno": 30,
+          "locality": "Rama Krishna Ashram Marg",
+          "area": "1 - TYPE-I QTR,R K ASHRAM MARG, NEW DELHI, 2 - PALIKA NIKETAN,R .K. ASHRAM MARG, NEW DELHI, 3 - NORTH END COMPLEX,R K ASHRAM MARG, NEW DELHI, 4 - NDMC FLATS, PALIKA NILAY,R K ASHRAM MARG, NEW DELHI, 5 - PALIKA PLACE,PANCHKUIAN ROAD ROAD, NEW DELHI",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA, R. K. ASHRAM MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.210555,
+            28.631189
+          ]
+        },
+        "properties": {
+          "psno": 31,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - BLOCK-D, P & T QTRS, TELEGRAPH PLACE,BANGLA SAHIB ROAD, NEW DELHI, 2 - TELEGRAPH PLACE, L.H.M.C. RESIDENTIAL COMPLEX ,BANGLA SAHIB ROAD, NEW DELHI, 3 - T-HUTS, BACK SIDE T.T. PLACE,BANGLA SAHIB ROAD, NEW DELHI, 4 - T.T. PLACE, L.H.M.C. RESIDENTIAL COMPLEX,BANGLA SAHIB ROAD, NEW DELHI, 5 - BLOCK NO-112 TYPE-1 QTRS L.H.M.CBANGLA SAHIB ROAD, NEW DELHI, 6 - BLOCK-45, L.H.M.C. RESIDENTIAL COMPLEX,BANGLA SAHIB ROAD, NEW DELHI, 7 - MANDIR, BLOCK-85,BANGLA SAHIB ROAD, NEW DELHI, 8 - 85, BLOCK,L H M C ,RESI COMPLEX, NEW DELHI, 9 - STAFF QTRS, TYPE-III , L.H.M.C.,BANGLA SAHIB ROAD, NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.210557,
+            28.631124
+          ]
+        },
+        "properties": {
+          "psno": 32,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - TYPE-I QTRS,R .K. ASHRAM MARG, NEW DELHI, 2 - HANUMAN SHIV MANDIR,R.K. ASHRAM MARG, NEW DELHI, 3 - BLOCK-85, NEAR P.K. ROAD,R.K. ASHRAM MARG, NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.210498,
+            28.631162
+          ]
+        },
+        "properties": {
+          "psno": 33,
+          "locality": "Rama Krishna Ashram Marg",
+          "area": "1 - TELEGRAPH SQUARE,BANGALA SAHIB ROAD, NEW DELHI, 2 - SECTOR-3 , TYPE-II QTRS, NEAR PANCHKUIA .ROAD,R.K. ASHARAM MARG, NEW DELHI, 3 - SECTOR-3 , TYPE-III QTRSR.K. ASHARAM MARG, NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200713,
+            28.636127
+          ]
+        },
+        "properties": {
+          "psno": 34,
+          "locality": "Rama Krishna Ashram Marg",
+          "area": "1 - SECTOR -E QTRS,R. K. ASHRAM MARG, NEW DELHI, 2 - DIZ AREA , SECTOR-1 QTRS,R.K. ASHRAM MARG, NEW DELHI",
+          "address": "ATAL ADARSH BAL VIDYALAYA, MANDIR MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.205952,
+            28.629587
+          ]
+        },
+        "properties": {
+          "psno": 35,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - T- HUTS, PALIKA DHAM,BANGLA SAHIB ROAD, NEW DELHI, 10 - PRACHIN SHIV HANUMAN MANDIR,BHAI VEER SINGH LANE, NEW DELHI, 11 - 1-ARADHANA, ASHOK CHURCH,BHAI VEER SINGH MARG, NEW DELHI, 12 - 1-A.B. HOUSE, SNEHAL, ASHOK CHURCH,BHAI VEER SINGH MARG, NEW DELHI, 13 - SACRED HEART CATHEDRAL,1ASHOK PLACE, NEW DELHI, 14 - 1-BISHOP HOUSE, ASHOK CHURCH,BHAI VEER SINGH MARG, NEW DELHI, 15 - SHOPS/ FLATS,BANGLA SAHIB ROAD, NEW DELHI, 16 - SHOP/FLATS, BLOCK-M,BHAGAT SINGH MARKET, BANGLA SAHIB MARG, NEW DELHI, 17 - F-BLOCK, BHAGAT SINGH MARKET,BHAGAT SINGH MARG, NEW DELHI, 18 - SHOPS, BHAGAT SINGH MARKET,BHAGAT SINGH MARG, NEW DELHI, 19 - RESIDANCE, BHAGAT SINGH MARKET,BHAGAT SINGH MARG, NEW DELHI, 2 - BLOCK- S, MALI QTRS, PALIKA DHAM,BANGLA SAHIB ROAD , NEW DELHI, 20 - JAIN BHAWAN,BHAGAT SINGH MARG, NEW DELHI, 21 - TAXI STAND, DOCTOR LANE,GOLE MARKET, NEW DELHI, 22 - DOCTOR LANE,GOLE MARKET. NEW DELHI, 23 - COAL DEPOT QTRS,GOLE MARKET. NEW DELHI, 24 - HANUMAN MANDIR, BHAGAT SINGH MARKET LANE,GOLE MARKET. NEW DELHI, 25 - SHOPS-FLATS, BAIRD LANE MARKET,GOLE MARKET. NEW DELHI, 3 - STAFF QTRS, ST. COLUMBUS SCHOOL,BHAI VEER SINGH MARG, NEW DELHI, 4 - STAFF QTRS, SAHITYA SADAN,BHAI VEER SINGH MARG, NEW DELHI, 5 - OPP . ST. CLOUMBUS SCHOOL,BHAI VEER SINGH MARG, NEW DELHI, 6 - SHYAM NIWAS ,BHAI VEER SINGH LANE, NEW DELHI, 7 - BHAI VEER SINGH LANE.NEW DELHI, 8 - FATHER'S ROOM, ST. COLUMBUS SCHOOLBHAI VEER SINGH MARG, NEW DELHI, 9 - BUNGLOW, SAHITYA SADAN,BHAI VEER SINGH MARG, NEW DELHI",
+          "address": "ST COLUMBUS SCHOOL ASHOK PLACE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.20594,
+            28.629573
+          ]
+        },
+        "properties": {
+          "psno": 36,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - BLOCK-A, PALIKA DHAM,BANGLA SAHIB ROAD, NEW DELHI, 10 - T- HUTS, BACK SIDE BLOCK -G, PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 11 - STAFF QTRS, CONVENT OF JESUS & MARRY SCHOOL,BANGLA SAHIB ROAD, NEW DELHI, 12 - 1-CBCI CENTRE, ASHOKA PLACE,BHAI VEER SINGH MARG. NEW DELHI, 13 - 1-ASHOK CHURCH, ASHOKA PLACE,BHAI VEER SINGH MARG. NEW DELHI, 2 - BLOCK-B, PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 3 - BLOCK-C, PALIKA DHAM,BANGLA SAHIB ROAD, NEW DELHI, 4 - BLOCK-D, PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 5 - BLOCK-E, PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 6 - BLOCK-F, N.D.M.C. FLATS PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 7 - BLOCK-G, PALIKA DHAM,BANGLA SAHIB ROAD. NEW DELHI, 8 - BLOCK-H, PALIKA DHAM,BANGLA SAHIB ROAD, NEW DELHI, 9 - KALI MANDIR, NEAR B.S.N.L FLATS.BANGLA SAHIB ROAD. NEW DELHI",
+          "address": "ST COLUMBUS SCHOOL ASHOK PLACE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.205939,
+            28.629554
+          ]
+        },
+        "properties": {
+          "psno": 37,
+          "locality": "Baba Kharag Singh Marg",
+          "area": "1 - FLATS,BABA KHARAK SINGH MARG.NEW DELHI, 2 - M. S. FLATS,BABA KHARAK SINGH MARG. NEW DELHI, 3 - SERVENT QTRS, M .S. FLATS,BABA KHARAK SINGH MARG. NEW DELHI, 4 - KOTHI,BISHAMBER DAS. MARG. NEW DELHI, 5 - STAFF QTRS, SHIV MANDIR,BISHAMBER DAS. MARG. NEW DELHI, 6 - M. S. FLATS, BRAHMA PUTRA,BISHAMBER DAS MARG , NEW DELHI, 7 - M .P. SERVENT QTRS,BISHAMBER DAS . MARG. NEW DELHI, 8 - SWARN JAYANTI SADANBISHAMBER DAS . MARG NEW DELHI",
+          "address": "ST COLUMBUS SCHOOL ASHOK PLACE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.205844,
+            28.629617
+          ]
+        },
+        "properties": {
+          "psno": 38,
+          "locality": "North Avenue",
+          "area": "1 - SERVANTS QTRS,NORTH AVENUE, NEW DELHI, 10 - DHOBI GHAT NO-5,NORTH AVENUE, NEW DELHI, 11 - M P CLUB ( BARSATI),NORTH AVENUE, NEW DELHI, 12 - S O FALTS, CPWD,NORTH AVENUE , NEW DELHI, 2 - SHOP OLD MARKET,NORTH AVENUE, NEW DELHI, 3 - SHOP NEW MARKET,NORTH AVENUE NEW DELHI, 4 - M.P. FLATS, GRRAGE,NORTH AVENUE , NEW DELHI, 5 - T- HUTS,B. K. S. MARG , NEW DELHI, 6 - KOTHI,TALKATORA ROAD, NEW DELHI, 7 - NURSES HOSTAL,R. M. L. HOSPITAL, B. K. S. MARG, NEW DELHI, 8 - M.P. FLATS,NORTH AVENUE, NEW DELHI, 9 - DOCTOR'S FLATS,NORTH AVENUE, NEW DELHI",
+          "address": "ST COLUMBUS SCHOOL ASHOK PLACE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.19987,
+            28.62239
+          ]
+        },
+        "properties": {
+          "psno": 39,
+          "locality": "North Avenue",
+          "area": "1 - M.P. FLATS,NORTH AVENUE. NEW DELHI, 10 - AKALI OFFICE,GURUDWARA RAKAB GANJ NEW DELHI, 2 - SERVANT QTRS,NORTH AVENUE . NEW DELHI, 3 - N- BLOCK ,NORTH AVENUE. NEW DELHI, 4 - GARAGE,NORTH AVENUE. NEW DELHI, 5 - NORTH AVENUE,NEAR PRESIDENT ESTATE CLINIC NEW DELHI, 6 - JALEBI CHOWK ,NORTH BLOCK NEW DELHI, 7 - DHOBI GHAT NO-4GURUDWARA RAKAB GANJ ROAD NEW DELHI, 8 - PRESS QTRS,GURUDWARA RAKAB GANJ NEW DELHI, 9 - CHURCH LANE,CENTRAL SECRETARIAT, NEW DELHI",
+          "address": "CPWD SERVICE CENTRE NORTH AVENUE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.168938,
+            28.60085
+          ]
+        },
+        "properties": {
+          "psno": 40,
+          "locality": "Army Public School",
+          "area": "1 - ARMY PUBLIC SCHOOL STAFF. QTRS ,DHAULA KUAN, NEW DELHI, 2 - HOSTAL ARMY PUBLIC SCHOOL ,DHAULA KUAN, NEW DELHI, 3 - MASJID DARGAH,SARDAR PATEL MARG, NEW DELHI",
+          "address": "ARMY PUBLIC SCHOOL DHAULA KAUN"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.202295,
+            28.604467
+          ]
+        },
+        "properties": {
+          "psno": 41,
+          "locality": "Teen Murti Marg",
+          "area": "1 - INSIDE COMPOUND, TEEN MURTI HOUSE,TEEN MURTI MARG. NEW DELHI, 10 - T. HUTS, NEAR KOTHI NO-18 ,TEEN MURTI LANE NEW DELHI, 11 - BUNGLOW, MOTHERTERESACRESCENT.NEWDELHI, 12 - BUNGLOW, MOTHERTERESSACRESCENT,NEWDELHI, 13 - PALIKAVIHAR, MOTHERTERESSACRESCENT,NEWDELHI, 14 - PALIKAKUTUMB, SARDARPATELMARG.NEWDELHI, 15 - TRAFFICPOLICELINE, MOTHERTERESSACRESCENTMARG.NEWDELHI, 16 - KOTHI, SARDARPATELMARG,NEWDELHI, 17 - DARGAHKHAWAJASAYYEDEBRAHIM, PREDGROUND,MOTHERTERESACRISENTROAD,NEWDELHI, 18 - MOTHERTERESACRESCENT PRESIDENT'SESTATE,NEWDELHI, 2 - OUTSIDE COMPOUND, TEEN MURTI HOUSE,TEEN MUTRI MARG. NEW DELHI, 3 - BARRACKS , NEHRU PLANETARIUM,TEEN MURTI MARG. NEW DELHI, 4 - POLICE COMPOUND,TEEN MURTI MARG. NEW DELHI, 5 - T- HUTS, NEAR POLICE COMPOUND,TEEN MURTI MARG. NEW DELHI, 6 - C. P.W.D. QTRS,TEEN MURTI LANE. NEW DELHI, 7 - KOTHI,TEEN MURTI LANE. NEW DELHI, 8 - CPWD STAFF QTRS,TEEN MURTI LANE NEW DELHI, 9 - SERVANT QTRS.TEEN MURTI LANE NEW DELHI",
+          "address": "LIONS VIDYA MANDIR SECONDARY SCHOOL KASHMIR HOUSE BEHIND KUSHAK LANE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.198497,
+            28.608601
+          ]
+        },
+        "properties": {
+          "psno": 42,
+          "locality": "South Avenue",
+          "area": "1 - M.P. FLATS,SOUTH AVENUE. NEW DELHI, 10 - SERVENT QTRS,SOUTH AVENUE LANE NEW DELHI, 11 - T- HUTS, DHOBI GHAT,SOUTH AVENUE LANE, NEW DELHI, 12 - C.P.W.D, QTRS.,SOUTH AVENUE LANE, NEW DELHI, 13 - TEMPLE,SOUTH AVENUE LANE, NEW DELHI, 14 - SHOPS,SOUTH AVENUE LANE, NEW DELHI, 15 - MANDIR,SOUTH AVENUE LANE, NEW DELHI, 2 - STAFF QTRS, P. O. BLDG,SOUTH AVENUE, NEW DELHI, 3 - SERVANT QTRS,SOUTH AVENUE. NEW DELHI, 4 - TAXI STAND,(BEHIND POST OFFICE) ,SOUTH AVENUE. NEW DELHI, 5 - SHIV MANDIR,(BEHIND POST OFFICE),SOUTH AVENUE. NEW DELHI, 6 - SHOP,(NEAR SHIV MANDIR),SOUTH AVENUE. NEW DELHI, 7 - C.P.W.D. ENQUIRY,SOUTH AVENUE., NEW DELHI, 8 - BARSATI, M.P. CLUB,SOUTH AVENUE NEW DELHI, 9 - SERVANT QTRS,SOUTH AVENUE NEW DELHI",
+          "address": "CPWD ENQUIRY OFFICE SOUTH AVENUE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.202992,
+            28.618985
+          ]
+        },
+        "properties": {
+          "psno": 43,
+          "locality": "Gurudwara Rakab Ganj Road",
+          "area": "1 - BUNGLOW,GURUDWARA RAKAB GANJ ROAD. NEW DELHI, 10 - STAFF BARECK, (NEAR LANGAR HALL)GURUDWARA RAKAB GANJ ROAD, NEW DELHI, 11 - DERA KAR SEWA,GURUDWARA RAKAB GANJ ROAD. NEW DELHI, 2 - SERVENT QTRS,GURUDWARA RAKAB GANJ ROAD, NEW DELHI, 3 - STAFF QTRS, NEAR SABHA HALL,GURUDWARA, RAKAB GANJ ROAD, NEW DELHI, 4 - FLAT COMPOUND, GURUDWARA RAKAB GANJ,GURUDWARA RAKAB GANJ ROAD, NEW DELHI, 5 - SATAFF QTRS. DOC OFFICE,RAKAB GANJ ROAD. NEW DELHI, 6 - MASJID COMPOUND,GURUDWARA RAKAB GANJ ROAD. NEW DELHI, 7 - DOGRA TAXI STAND,GURUDWARA, RAKAB GANJ ROAD. NEW DELHI, 8 - MAHAVIR MANDIR, (NEAR BUNGLOW NO. 28),GURUDWARA RAKAB GANJ ROAD , NEW DELHI, 9 - THE CATHEDRAL CHURCH OF REDEMPTION,CHURCH ROAD , NEW DELHI",
+          "address": "NDMC SERVICE CENTRE CHURCH LANE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.212122,
+            28.62776
+          ]
+        },
+        "properties": {
+          "psno": 44,
+          "locality": "Ashok Road",
+          "area": "1 - STAFF QTRS, I.R.C.S,RED CROSS ROAD. NEW DELHI, 10 - DHOBI GHAT NO-6 ,MAHADEV ROAD, NEW DELHI, 11 - FREE CHURCH ,PANDIT PANT MARG, NEW DELHI, 12 - MAHADEV ROADNEW DELHI, 2 - MASJID, I.R.C.S,RED CROSS ROAD, NEW DELHI, 3 - STAFF QTRS, A. I. F. A. C . S,RAFI MARG NEW DELHI, 4 - STAFF QTRS., FIRE STATION,GURUDWARA RAKAB GANJ ROAD NEW DELHI, 5 - M. P. BANGLOW,PANDIT PANT MARG NEW DELHI, 6 - M .P . BANGLOW ,ASHOKA ROAD. NEW DELHI, 7 - M. P. BANGLOW,MAHADEV ROAD. NEW DELHI, 8 - DURGA SARIFF HAZARAT CHISTHI,NEAR NIRWACHAN AYOG ASHOK ROAD NEW DELHI, 9 - T.B. ASSOCIATION OF INDIA 3,RED CROSS ROAD, NEW DELHI",
+          "address": "ATAL ADARSH VIDYALYA, HANUMAN ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.212084,
+            28.627722
+          ]
+        },
+        "properties": {
+          "psno": 45,
+          "locality": "Hanuman Road",
+          "area": "1 - BLOCK -C, TYPE-II QTRS,HANUMAN ROAD. NEW DELHI, 2 - SERVANTS QTRS, Y.M.C.A,MESSY HALL JAI SINGH ROAD, NEW DELHI, 3 - N.D.M.C. QUARTERS, ELECTRIC SUB STATION,HANUMAN ROAD. NEW DELHI, 4 - BUNGLOW,HANUMAN ROAD. NEW DELHI, 5 - Y.W.C.A HOSTEL,BANGLA SAHIB ROAD , NEW DELHI, 6 - BUNGLOW, HANUMANROAD.NEWDELHI, 7 - BUNGLOW, HANUMANLANE.NEWDELHI, 8 - FLATSOFND.Y.M.C.A, JAISINGHROAD,NEWDELHI, 9 - SERVENTQTRS, NCOFY.M.C.A,HANUMANROAD,NEWDELHI",
+          "address": "ATAL ADARSH VIDYALYA, HANUMAN ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.21062,
+            28.631399
+          ]
+        },
+        "properties": {
+          "psno": 46,
+          "locality": "Baba Kharag Singh Marg",
+          "area": "1 - SECTOR-IV, D.I.Z. AREA ,BABA KHARG SINGH MARG, NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.210535,
+            28.631218
+          ]
+        },
+        "properties": {
+          "psno": 47,
+          "locality": "Baba Kharag Singh Marg",
+          "area": "1 - SECTOR-IV,TYPE-I QRTS, D.I.Z. AREA,KALI MANDIR LANE. NEW DELHI, 2 - SECTOR-IV, TYPE- I QTRS, DIZ AREA,KALI MANDIR LANE NEW DELHI, 3 - SECTOR-IV, TYPE-II QTRS, DIZ AREA,BABA KHARAG SINGH MARG. NEW DELHI, 4 - SECTOR-IV, TYPE-II QTRS, DIZ AREA,BABA KHARAG SINGH MARG. NEW DELHI, 5 - SECTOR-IV, TYPE-II, DIZ AREA ,BABA KHARG SINGH MARG . NEW DELHI, 6 - VIDYA BHAWAN SCHOOL, SECTOR -IV, D.I.Z. AREA,KALI MANDIR LANE. NEW DELHI, 7 - N.D.M.C MARKET SECTOR-IV, D I Z AREA ,B K S MARG , NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.210493,
+            28.631167
+          ]
+        },
+        "properties": {
+          "psno": 48,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - SECTOR -IV, D.I.Z AREA,BANGLA SAHIB ROAD NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.21063,
+            28.631192
+          ]
+        },
+        "properties": {
+          "psno": 49,
+          "locality": "Shaheed Bhagat Singh Marg",
+          "area": "1 - SEC-IV, DIZ AREA, RAJA BAZAR,SAHEED BHAGAT SINGH MARG NEW DELHI, 2 - STAFF QTRS.,LHH, SEC-IV,DIZ AREA, RAJA BAZAR,SHAHEED BHAGAT SINGH MARG. NEW DELHI, 3 - TYPE-IV FLATS, SECTOR-IV, DIZ AREA,RAJA BAZAR, NEW DELHI",
+          "address": "THE UNION ACADEMY SR SEC SCHOOL RAJA BAZAAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.212004,
+            28.627713
+          ]
+        },
+        "properties": {
+          "psno": 50,
+          "locality": "Baba Khadak Singh Marg",
+          "area": "1 - STAFF FLATS,PARLIAMENT STREET POLICE STATION. NEW DELHI, 2 - FLATS, TYPE-I ,PARLIAMENT STREET, POLICE SATION. NEW DELHI, 3 - REGAL BUILDING,CONNAUGHT PLACE. NEW DELHI, 4 - STAFF QTRS, GURDWARA , BANGLA SAHIB,BABA KHARAK SINGH MARG . NEW DELHI, 5 - STAFF QTRS, HANUMAN MANDIR,BABA KHARAK SINGH MARG. NEW DELHI, 6 - SHIV MANDIR,B K S MARG NEW DELHI, 7 - HANUMAN MANDIR,B K S MARG NEW DELHI, 8 - JAI SINGH ROADPARLIAMENT STREET NEW DELHI, 9 - DERA KAR SEWA,GURUDWARA BANGLA SAHIBBABA KHARAK SINGH MARG, NEW DELHI",
+          "address": "ATAL ADARSH VIDYALYA, HANUMAN ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.212707,
+            28.6307
+          ]
+        },
+        "properties": {
+          "psno": 51,
+          "locality": "Raja Bazar",
+          "area": "1 - JAIN MANDIR,RAJA BAZAR, JAIN MANDIR ROAD, NEW DELHI, 2 - KHANDELWAL JAIN MANDIR, RAJA BAZAR,JAIN MANIDR ROAD . NEW DELHI, 3 - SECTORE-IV, D.I.Z.AREA,SHAHEED BHAGAT SINGH MARG. NEW DELHI",
+          "address": "RAGHUMAL ARYA GIRL'S SR. SEC SCHOOL RAJA BAZAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.212675,
+            28.630649
+          ]
+        },
+        "properties": {
+          "psno": 52,
+          "locality": "Raja Bazar",
+          "area": "1 - SEC-IV, DIZ.AREA,RAJA BAZAR,JAIN MANDIR ROAD. NEW DELHI, 10 - P- BLOCK, CONNAUGHT PLACE, MADRAS HOTAL,BABA KHARAK SINGH . MARG NEW DELHI, 11 - SHIV MANDIR,RAJA BAZAR JAIN MANDIR ROAD NEW DELHI, 12 - UNION ACADMIC SR. SEC. SCHOOL ,RAJA BAZAR, NEW DELHI, 13 - P- BLOCK CONNAUGHT PLACE,MADRAS HOTEL BABA KHARAK SINGH MARG NEW DELHI, 2 - C.P.W.D. QTRS, SEC-IV, D I Z AREA, RAJA BAZAR,JAIN MANDIR ROAD. NEW DELHI, 3 - KOTHI, NEAR SHIVAJI STADIUM,JAIN MANDIR ROAD. NEW DELHI, 4 - BLOCK-A, STAFF QTRS, STATE EMPORIUM BUILDING,BABA KHARAK SINGH MARG MARG, NEW DELHI, 5 - BLOCK-B, STAFF QTRS, STATES EMPORIUM BLDG,BABA KHARAK SINGH MARG , NEW DELHI, 6 - BLOCK- C, STAFF QTRS, STATES EMPORIUM BLDG,BABA KHARAK SINGH MARG, NEW DELHI, 7 - PIPLESHWAR MANDIR, NEAR COFFEE HOME,BABA KHARAK SINGH MARG , NEW DELHI, 8 - NDMC QTRS, NEAR RAGHUMAL ARYA, SR. SEC. SCHOOL,RAJA BAZAR NEW DELHI, 9 - ARYA PUBLIC SCHOOL,ARYA PUBLIC LANE NEW DELHI",
+          "address": "RAGHUMAL ARYA GIRL'S SR. SEC SCHOOL RAJA BAZAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.201064,
+            28.636227
+          ]
+        },
+        "properties": {
+          "psno": 53,
+          "locality": "Bangla Sahib Road",
+          "area": "1 - STAFF QTRS TYPE-|| B-1 BLOCK-2 L.H.M.C.BANGLA SAHIB ROAD. NEW DELHI, 10 - UNDER GRADUATE HOSTEL,SOUTH BLOCK, L.H.M.C, BANGLA SAHIB ROAD NEW DELHI, 11 - UNDER GRADUATE HOSTEL,WEST BLOCK, L.H.M.C, BANGLA SAHIB ROAD NEW DELHI, 12 - KALAWATI BLOCK,L.H.M.C, BANGLA SAHIB ROAD NEW DELHI, 13 - T-HUTS COMPOUND OF KALAWATI SARAN CHILDREN HOSPITALBANGLA SAHIB ROAD. NEW DELHI, 2 - STAFF QTRS TYPE-IV L.H.M.BANGLA SAHIB ROAD. NEW DELHI, 3 - FACULTY FLATS, L.H.M.C,BANGLA SAHIB ROAD. NEW DELHI, 4 - NURSES HOSTEL L.H.M.C,BANGLA SAHIB ROAD. NEW DELHI, 5 - MASJID & DARGAH HZT. SHAH MOHD. ABDUL SALAM FARIDI, OPP. MARINA HOTELCONNUGHT PLACE. NEW DELHI, 6 - SERVANTS QTRS, L.H.M.CBANGLA SAHIB ROAD. NEW DELHI, 7 - STAFF QTRS, L.H.M. HOSPITAL,BAGLA SAHIB ROAD NEW DELHI, 8 - DIRECTOR’S BUNGALOW L.H.M.CBANGLA SAHIB ROAD NEW DELHI, 9 - UNDER GRADUATE HOSTEL,NORTH BLOCK, L.H.M.C, BANGLA SAHIB ROAD, NEW DELHI",
+          "address": "ATAL ADARSH BAL VIDYALAYA, MANDIR MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.213113,
+            28.617709
+          ]
+        },
+        "properties": {
+          "psno": 54,
+          "locality": "Basant Lane",
+          "area": "1 - RAILWAY OFFICERS COLONY, OPP. RAILWAY HOSPITAL,BASANT LANE. NEW DELHI, 2 - RAILWAY COLONY, KARNAIL SINGH STADIUM,BASANT MARG. NEW DELHI, 3 - RAILWAY COLONY, KARNAIL SINGH STADIUM ,BASANT MARG. NEW DELHI, 4 - RAILWAY COLONY KARNAIL SINGH STADIUM,BASANT MARG NEW DELHI, 5 - RAILWAY OFFICER ENCLAVEP. K. ROAD, NEW DELHI",
+          "address": "O/o DRM CHELMS FORD ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.213087,
+            28.617711
+          ]
+        },
+        "properties": {
+          "psno": 55,
+          "locality": "Chelmsford Road",
+          "area": "1 - SHIV MANDIR ,CHELMS FORD ROAD NEW DELHI, 10 - JAIN HAPPY SCHOOL SQ,SHAHEED BHAGAT SINGH MARG GOLE MARKET NEW DELHI, 11 - BALIKA CHAMAN, M.A.E.S.J.S.C,DD VASHISTH ROAD NEW DELHI, 12 - T-HUTS NEAR RAILWAY SERVENT QTRS,CHELMS FORD ROAD NEW DELHI, 2 - TYPE-III QTRS., CENTRAL HOSPITAL RAILWAY,CHELMS FORD ROAD. NEW DELHI, 3 - RAILWAY OFFICERS FLATS,CHELMS FORD ROAD. NEW DELHI, 4 - KOTHI , RAILWAY OFFICER ,CHELMS FORD ROAD. NEW DELHI, 5 - RAILWAY SERVANT QTRS,CHELMS FORD ROAD NEW DELHI, 6 - RAILWAY SERVANT QTRS,CHELMS FORD ROAD , NEW DELHI, 7 - RAILWAY SERVANT QTRS.STATE ENTRY ROAD. NEW DELHI, 8 - RAILWAY REST HOUSE/ QTRS ,STATE ENTRY ROAD. NEW DELHI, 9 - TRANSIT CAMP ,STATE ENTRY ROAD NEW DELHI",
+          "address": "O/o DRM CHELMS FORD ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.229136,
+            28.629184
+          ]
+        },
+        "properties": {
+          "psno": 56,
+          "locality": "Connaught Place",
+          "area": "1 - BLOCK-A,CONNAUGHT PLACE NEW DELHI, 10 - BLOCK-K,CONNAUGHT PLACE NEW DELHI, 11 - BLOCK-L ,CONNAUGHT PLACE NEW DELHI, 12 - BLOCK-M,CONNAUGHT PLACE, NEW DELHI, 13 - BLOCK-N,CONNAUGHT PLACE, NEW DELHI, 14 - DASHMESH TAXI STAND ,BARAKHAMBA ROAD, NEW DELHI, 15 - TANSEN MARG , NEW DELHI, 2 - KASTURBA GANDHI MARG NEW DELHI, 3 - TOLSTOY MARG NEW DELHI, 4 - BLOCK-B,CONNAUGHT PLACE NEW DELHI, 5 - BLOCK-DCONNAUGHT PLACE NEW DELHI, 6 - BLOCK-E ,CONNAUGHT PLACE NEW DELHI, 7 - BLOCK-F ,CONNAUGHT PLACE, NEW DELHI, 8 - BLOCK-G ,CONNAUGHT PLACE NEW DELHI, 9 - BLOCK-H ,CONNAUGHT PLACE NEW DELHI",
+          "address": "MODERN SCHOOL BARAKHAMBA ROAD,SIR SHANKAR LAL HALL"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.228648,
+            28.62918
+          ]
+        },
+        "properties": {
+          "psno": 57,
+          "locality": "Barakhamba Road",
+          "area": "1 - OFFICERS FLATS,MODERN SCHOOL,BARAKHAMBA ROAD, NEW DELHI, 10 - NEPAL EMBASSY S.Q.,BARAKHAMBA ROAD, NEW DELHI, 11 - B S HOME ,SHANKAR MARKET, NEW DELHI, 12 - DURGA MANDIR ,SHANKAR MARKET, NEW DELHI, 13 - HUT RLY OFFICE COMPLEX ,SHANKAR MARKET, NEW DELHI, 14 - JHUGGI , NEAR RLY QTRS,SHANKAR MARKET, NEW DELHI, 15 - UPPER FLOOR.,TODAR MAL ROAD, NEW DELHI, 16 - PRINCIPALS RESIDENCE MODERN SCHOOL ,BARAKHAMBA ROAD, NEW DELHI, 17 - SHIV MANDIRSHANKAR MARKE, NEW DELHI, 2 - SAPRU HOUSE,BARAKHAMBA ROAD, NEW DELHI, 3 - SERVANT QTRS, MODERN SCHOOL,BARAKHAMBA ROAD NEW DELHI, 4 - TODARMAL ROAD,NEW DELHI, 5 - TRIVANI KALA SANGAM,TANSEN MARG NEW DELHI, 6 - TODARMAL SQUARE(NEAR MODERN SCHOOL),NEW DELHI, 7 - FIRE SERVICE STATION,CONNAUGHT PLACE, NEW DELHI, 8 - FLATS,SHANKAR MARKET , NEW DELHI, 9 - RLY QTRS,SHANKAR MARKET, NEW DELHI",
+          "address": "MODERN SCHOOL BARAKHAMBA ROAD,SIR SHANKAR LAL HALL"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.228927,
+            28.629217
+          ]
+        },
+        "properties": {
+          "psno": 58,
+          "locality": "Hailey Road",
+          "area": "1 - HAILEY ROAD, NEW DELHI, 2 - D.P. SADAN,HAILEY LANE, NEW DELHI, 3 - VAKIL LANE,HAILEY ROAD, NEW DELHI, 4 - BARAKHAMBA ROAD, NEW DELHI, 5 - KASTURBA GANDHI MARG, NEW DELHI, 6 - NILGIRI APPARTMENT9, BARAKHAMBA ROAD, NEW DELHI",
+          "address": "MODERN SCHOOL BARAKHAMBA ROAD,SIR SHANKAR LAL HALL"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218595,
+            28.626792
+          ]
+        },
+        "properties": {
+          "psno": 59,
+          "locality": "Janpath",
+          "area": "1 - NDMC FLATS ELECTRIC SUB STATION NO. IIIH. C. MATHUR LANE JANPATH, 10 - GARRAGE, SHANTI NIWAS,JANPATH LANE., 11 - RAJA MASJID,JANPATH LANE., 12 - T- HUTS,JANPATH LANE., 13 - KOTHI, WINDSOR MANSIONSJANPATH LANE., 14 - PARTAP SINGH BLDG,JANPATH LANE., 15 - T-HUTS,NEAR W. M. LAB, JANPATH LANE., 2 - SCINDIA HOUSE,JANPATH ., 3 - SERVENT QTRS,KASHTURBA GANDHI MARG., 4 - KOTHI,TOLSTOY LANE., 5 - L.I.C. STAFF QTRS.,TOLSTOY LANE., 6 - KOTHI/FLATS,JANPATH ROAD., 7 - J J CAMP H.C. MATHUR LANE,JANPATH, 8 - SERVENT QTRS, WINDSER PLACE,JANPATH ROAD., 9 - SHANTI NIWAS,JANPATH LANE.",
+          "address": "FREE MASONS HALL NEAR IMPERIAL HOTEL JANPATH"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.223805,
+            28.620644
+          ]
+        },
+        "properties": {
+          "psno": 60,
+          "locality": "Atul Grover Road",
+          "area": "1 - BUNGLOW,KASTURBA GANDHI MARG., 10 - TAXI STAND,ATUL GROVE ROAD., 11 - TYPE-II QTRS ,BEHAIND KIDWAI BHAWAN, 2 - SERVENT QTRS,KASTURBA GANDHI MARG., 3 - BLOCK- T,ATUL GROVE ROAD., 4 - P & T, CHAMMERY QTRS,ATUL GROVE ROAD., 5 - MS-1 QTRS,ATUL GROVE ROAD., 6 - P & T QTRS., TYPE -1,SINGLE STORY, ATUL GROVE ROAD., 7 - BLOCK -Q, MTNL STAFF QTRS.,ATUL GROVE ROAD., 8 - MS-2, QTRS.,ATUL GROVE ROAD., 9 - SHOPS/FLATS,ATUL GROVE ROAD.",
+          "address": "LADY IRWIN SR SEC SCHOOL SHRIMANT MADHAV RAO SCINDIA MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.21852,
+            28.626785
+          ]
+        },
+        "properties": {
+          "psno": 61,
+          "locality": "Janpath",
+          "area": "1 - KOTHI/FLATS,JANTAR MANTAR ROAD., 2 - STAFF QTRS, JANPATH HOTEL,JANPATH., 3 - STAFF QTRS , WESTERN COURT, (NEW BLOCK)JANPATH., 4 - R.B.I. BANK QTRS,ANNEXY BUILDING, SANSAD MARG., 5 - KOTHI NO 10, CHURCH QTRS,SANSAD MARG., 6 - SERVENT QTRS, C.P.W.D. ,WESTERN COURT, JANPATH ., 7 - FLATS, LIC GUEST HOUSE,JEEVAN DEEP BLDG. SANSAD MARG, 8 - BYSIDE OF GATE NO. 3, JEEVAN TARA BLDG,PARLIAMENT STREET",
+          "address": "FREE MASONS HALL NEAR IMPERIAL HOTEL JANPATH"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.222382,
+            28.623381
+          ]
+        },
+        "properties": {
+          "psno": 62,
+          "locality": "Ashok Road",
+          "area": "1 - N.D.M.C. FLATS.,ADITYA SADAN, ASHOKA ROAD., 2 - DHOBI GHAT, ADITYA SADAN,ASHOKA ROAD., 3 - SERVENT QTRS , V.B.P. HOUSE,RAFI MARG., 4 - M. P. FLATS,VITHAL BHAI PATEL HOUSE, RAFI MARG, 5 - GARAGE, M. P. FLATS,VITHAL BHAI PATEL HOUSE, RAFI MARG., 6 - JHUGGI, CHELMS FORD CLUB,RAISINA ROAD, 7 - CONSTITUTION CLUB,RAFI MARG, 8 - VITHAL BHAI PATEL HOUSE SHIV MANDIRRAFI MARG",
+          "address": "RECEPTION CENTER P & T BLDG SANCHAR BHAWAN"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.2238,
+            28.620693
+          ]
+        },
+        "properties": {
+          "psno": 63,
+          "locality": "Janpath",
+          "area": "1 - SARVANT QTRS, RAKSHA BHAWAN,ASHOKA ROAD., 10 - CPWD, QTRS, BEHIND 21A,JANPATH ROAD, 11 - JHUGGI, NEAR N.D.M.C. ENQURIY,DR RAJENDRA PRASAD LANE, 12 - T-HUTS NEAR BUNGLOW NO-1JANTER MANTER ROAD, 2 - BUNGLOW,DR. R. P. ROAD., 3 - CPWD,QTRS.DR.RP LANE,JANPATH., 4 - JHUGGI, BEHIND 21A,JANPATH ROAD., 5 - TAXI STAND, LE MERIDIAN HOTEL,JANPATH., 6 - BUNGLOW,RAISINA ROAD., 7 - BUNGLOW,JANTAR MANTAR ROAD., 8 - PRACHIN SHIV SHAKTI MANDIR,DR RAJENDRA PRASAD ROAD, 9 - GARRAGE BEHIND 21/A,JANPATH ROAD",
+          "address": "LADY IRWIN SR SEC SCHOOL SHRIMANT MADHAV RAO SCINDIA MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.206641,
+            28.605678
+          ]
+        },
+        "properties": {
+          "psno": 64,
+          "locality": "South Avenue",
+          "area": "1 - KASHMIR HOUSE QTRS,RAJAJI MARG., 10 - BUNGLOW,RAJAJI MARG., 11 - SERVENT QTR,.RAJAJI MARG., 12 - BUNGLOW,SOUTH AVENUE LANE,, 13 - STAFF QRTS NAVY HOUSERAJA JI MARG, 14 - ARMED FORCES DENTAL CLINIC,TYAG RAJ MARG, 15 - BUNGLOW, TYAGRAJ MARG, 2 - C.P.W.D.QTRS, KASHMIR HOUSE,RAJAJI MARG., 3 - T- HUTS, KASHMIR HOUSE,RAJAJI MARG., 4 - BANGLOW,TEEN MURTI MARG., 5 - SERVENT QTRS,TEEN MURTI MARG ., 6 - BUNGLOW,KUSHAK ROAD., 7 - SERVENT QTRS,KHUSHAK ROAD., 8 - C.P.W.D. INQUARY QTRS.,KHUSHAK RAOD., 9 - SERVENT QTRS,TYAG RAJ MARG.",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA, K KAMRAJ LANE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200188,
+            28.594368
+          ]
+        },
+        "properties": {
+          "psno": 65,
+          "locality": "Race Course Road",
+          "area": "1 - T- HUTS, B.R. CAMP,RACE COURSE ROAD.",
+          "address": "AIR FORCE SCHOOL JUNIOR WING O W C RACE COURCE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200142,
+            28.59438
+          ]
+        },
+        "properties": {
+          "psno": 66,
+          "locality": "Race Course Road",
+          "area": "1 - T- HUTS, B.R. CAMP,RACE COURSE ROAD.",
+          "address": "AIR FORCE SCHOOL JUNIOR WING O W C RACE COURCE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.201844,
+            28.604406
+          ]
+        },
+        "properties": {
+          "psno": 67,
+          "locality": "South Avenue",
+          "area": "1 - M.P. FLATS ,SOUTH AVENUE., 10 - DHOBI GHAT,KRISHNA MENON LANE, 11 - SHOPS,KRISHNA MENON LANE, 12 - DURGA MANDIR,KRISHNA MENON LANE, 13 - NDMC PRY. SCHOOL, STAFF QTRS.DUPLEX LANE, 14 - MINI MARKET ,KRISHNA MENON LANE, 2 - SERVANT QTRS, M.P. FLATS,SOUTH AVENUE., 3 - GARRAGES,M.P. FLATS,SOUTH AVENUE, 4 - BLOCK-S,GARREGES, M.P. FLATS,SOUTH AVENUE, 5 - BANGLOW,KRISHNA MENON MARG, 6 - SERVENT QTRS.KRISHNA MENON MARG., 7 - BANGLOW,K KAMRAJ MARG, 8 - BANGLOW,K KAMRAJ LANE, 9 - DHOBI GHAT NO-17,KRISHNA MENON LANE",
+          "address": "LIONS VIDYA MANDIR SECONDARY SCHOOL KASHMIR HOUSE BEHIND KUSHAK LANE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200191,
+            28.594474
+          ]
+        },
+        "properties": {
+          "psno": 68,
+          "locality": "Safdarjung Airport",
+          "area": "1 - DHOBI GHAT, AIR FORCE STATION,KAMAL ATATRUK ROAD., 10 - M.I. ROOM,SAFDERJUNG AIRPORT., 11 - DELHI FLYING CLUB QTRS,SAFDERJUNG AIRPORT., 12 - T- HUTS, DELHI FLYING CLUB,SAFDERJUNG AIRPORT., 13 - STAFF QTRS R.C.F. KAPOORTHALA HOUSE,SAFDERJUNG AIRPORT, 2 - CLASS-I OFFICER FLATS,NORTHERN RAILWAY COMPLEX , SAFDERJUNG AIRPORT., 3 - T-HUTS, RAILWAY COLONY ,SAFDERJUNG AIRPORT., 4 - NORTHARN RAILWAY OFFICER FLATS, C.R.I.S,SAFDERJUNG AIRPORT., 5 - STAFF QTRS, R. C. F.(KAPOOR THALA HOUSE) ,SAFDERJUNG AIRPORT., 6 - NORTHERN RAILWAYS, STAFF QTRS, MALIS,SAFDERJUNG AIRPORT., 7 - STAFF QTRS, SHIV MANDIR,SAFDARJUNG AIRPORT., 8 - STAFF QTRS.,SAFDARJUNG AIRPORT., 9 - A.R.S.I. (NEAR M.I.ROOM),SAFDARJUNG AIRPORT.",
+          "address": "AIR FORCE SCHOOL JUNIOR WING O W C RACE COURCE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.209655,
+            28.593624
+          ]
+        },
+        "properties": {
+          "psno": 69,
+          "locality": "Sunehri Bagh",
+          "area": "1 - BUNGLOW,AKBAR ROAD., 10 - BUNGLOW,TEES JANUARY MARG., 11 - GANDHI SMRITY,TEES JANUARY MARG., 12 - BUNGLOW,TEES JANUARY LANE., 13 - BUNGLOW,TUGHLAK ROAD., 14 - STAFF QRTS, NATIONAL DEFENCE COLLEGE ,TEES JANUARY MARG, 2 - (CPWD) , 33 QTRS.,AKBAR ROAD., 3 - BUNGLOW /SERVANT,SUNEHRI BAGH ROAD., 4 - DHOBI GHAT QTRS,SUNEHRI BAGH LANE., 5 - MASJID,SUNEHRI BAGH ROAD., 6 - T-HUTS, NEAR DHOBI GHAT QTRS,SUNEHRI BAGH LANE, 7 - SERVANT QTRS,JANPATH., 8 - BUNGLOW,JANPATH., 9 - TAXI STAND,TEES JANUARY MARG.",
+          "address": "NDMC SCHOOL OF SCIENCE AND HUMANITIES EDUCATION, TUGHLAK CRESCENT, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.224014,
+            28.62026
+          ]
+        },
+        "properties": {
+          "psno": 70,
+          "locality": "Jaswant Singh Road",
+          "area": "1 - STAFF QTRS, HYDERABAD HOUSE,JASWANT SINGH LANE., 10 - PATUDI HOUSE,SRIMANTH MADHAV RAO SCINDIA MARG,, 11 - A P BHAWAN CANTEEN GODAVARI BLACKASHOKA ROAD, 12 - GARGE, PATAUDI HOUSESHRIMANT MADHAV RAO SCINDHIA MARG, 13 - BAHAI HOUSE,SHRIMANT MADHAV RAO SCINDIA MARG, 2 - NURSHING HOSTEL,STAFF QTRS,ANDHRA PRADESH BHAWAN JASWANT SINGH ROAD, 3 - BLOCK-B, STAFF QTRS, A.P. BHAWAN COMPLEX,JASWANT SINGH LANE., 4 - BLOCK-C, STAFF QTRS, ANDHRA PRADESH BHAWAN,JASWANT SINGH LANE., 5 - BLOCK-D, STAFF QTRS, ANDHRA BHAWAN COMPLEX,JASWANT SINGH LANE., 6 - OFFICERS BANGLOW, ANDHRA BHAWAN COMPLEX,JASWANT SINGH ROAD., 7 - TEMPLE, ANDHRA BHAWAN COMPLEX,JASWANT SINGH ROAD., 8 - MASJID, ANDHRA BHAWAN COMPLEX,JASWANT SINGH ROAD., 9 - STAFF QTRS,ANDHRA PRADESH BHAWAN,PATAUDI HOUSE,SHRIMANT MADHAV RAO SCINDHIA MARG .",
+          "address": "LADY IRWIN SR SEC SCHOOL SHRIMANT MADHAV RAO SCINDIA MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.223339,
+            28.620053
+          ]
+        },
+        "properties": {
+          "psno": 71,
+          "locality": "K G Marg",
+          "area": "1 - BLOCK-A, M .S. APARTMENTS,KASTURBA GANDHI MARG., 10 - M.P.FLATS, FEROZSHAHROAD., 11 - SERVANTQTRS, FEROZSHAHROAD., 12 - SERVANTQTRS, HARISHCHANDERMATHURLANE., 13 - PALIKANIKUNJ, HARISHCHANDMATHURLANE., 14 - PALIKASADANFLATS, HARISHCHANDARMATHURLANE,, 15 - SERVANTQTRS,PALIKASADAN, HARISHCHANDMATHURLANE., 16 - N.D.M.C.STAFFQTRS, HARISHCHANDARMATHURLANE., 17 - TELEGRAPHLANE., 18 - SERVANTQTRS, TELEGRAPHLANE., 19 - PALIKANIKUNJ, TELEGRAPHLANE., 2 - BLOCK-B, M S APARTMENT,KASTURBA GANDHI MARG., 20 - FLATS, TELEGRAPHLANE, 21 - FLATS,C.P.W.D.ENQUIRYOFFICE, FEROZSHAHROAD, 3 - BLOCK-C, M S APARTMENT,KASTURBA GANDHI MARG., 4 - BLOCK-D, M S APARTMENT,KASTURBA GANDHI MARG., 5 - BLOCK-S-1, SERVENT QTRS, M S APARTMENT,KASTURBA GANDHI MARG., 6 - BLOCK-S-2, SERVENT QTRS, M S APARTMENT,KASTURBA GANDHI MARG., 7 - BLOCK-S-3, SERVENT QTRS,M S APARTMENT,KASTURBA GANDHI MARG., 8 - M.P.FLATS, PTRAVISHANKARSHUKLAMARG., 9 - SERVANTQTRS, P.T.RAVISHANKARSUKLAMARG.",
+          "address": "LADY IRWIN SR SEC SCHOOL SHRIMANT MADHAV RAO SCINDIA MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.223704,
+            28.619912
+          ]
+        },
+        "properties": {
+          "psno": 72,
+          "locality": "K G Marg",
+          "area": "1 - BLOCK-F, M. S. APPARTMENT ,KASTURBA GANDHI MARG., 10 - GARAGE ASIA HOUSE,K G MARG, 11 - BLOCK-D, M.E.A. HOSTELKASTURBA GANDHI MARG, 2 - BLOCK- C , E A HOSTEL,KASTURBA GANDHI MARG., 3 - JAWALA ICE FACTORY,P.T. RAVI SHANKAR SHUKLA MARG., 4 - ASIA HOUSE,KASTURBA GANDHI MARG., 5 - SARVENT QTRS, M. S. APPARTMENT,KASTURBA GANDHI MARG., 6 - STAFF QTRS, LADY IRWIN SR.SEC.SCHOOL,SHRIMANT MADHAV RAO SCINDIA MARG., 7 - MASJID,KASTURBA GANDHI MARG ., 8 - BLOCK-E, M. S. APPARTMENT,KASTURBA GANDHI MARG., 9 - BLOCK-B, M.E.A. HOSTEL,KASTURBA GANDHI MARG",
+          "address": "LADY IRWIN SR SEC SCHOOL SHRIMANT MADHAV RAO SCINDIA MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.228719,
+            28.629006
+          ]
+        },
+        "properties": {
+          "psno": 73,
+          "locality": "Firozshah Road",
+          "area": "1 - FLATS,FIROZSHAH ROAD, 10 - GIRDHAR APARTMENT,FIROZSHAH ROAD, 11 - DIWANSHREE APARTMENTFEROZSHAH ROAD, 12 - SILVER ARCH APARTMENT,FEROZSHAH ROAD, 13 - ADISHWAR APARTMENT,FEROZSHAH ROAD, 2 - PT. RAVI SHANKAR SHUKLA MARG, (CANNING LANE)KASTURBA GANDHI MARG, 3 - BALWANT.RAI.MEHTA LANEKASTURBA GANDHI MARG, 4 - KAPURTHALA, PLOT ,COPERNICUS MARG, 5 - COPERNICUS MARG,KASTURBA GANDHI MARG, 6 - BHARTIYA KALA KENDRA,COPPERNICUS MARG, 7 - BHARTIYA VIDHYA BHAWAN STAFF QTRS,KASTURBA GANDHI MARG, 8 - TRAVANCORE HOUSE COMPOUND ,KASTURBA GANDHI MARG, 9 - SERVANT QTRS ,FIROZSHAH ROAD",
+          "address": "MODERN SCHOOL BARAKHAMBA ROAD,SIR SHANKAR LAL HALL"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233538,
+            28.620629
+          ]
+        },
+        "properties": {
+          "psno": 74,
+          "locality": "Copernicus Marg",
+          "area": "1 - FARIDKOT HOUSE, (COPERNICUS MARG) ,FARIDKOT HOUSE LANE, 2 - KUM KUM BUNGLOW 7,FARIDKOT HOUSE LANE, 3 - BLOCK-G, PRINCESS PARK ,COPERNICUS MARG, 4 - BLOCK-D, PRINCESS PARK,COPERNICUS MARG, 5 - BLOCK-S, PRINCESS PARK ,COPERNICUS MARG, 6 - PRINCESS PARK OFFICERS HOSTEL,COPERNICUS MARG",
+          "address": "ATAL ADARSH VIDYALAYA, SANGLI MESS, MAHATMA JYOTI RAO PHULE MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.230061,
+            28.630876
+          ]
+        },
+        "properties": {
+          "psno": 75,
+          "locality": "Bangali Market",
+          "area": "1 - CENTRAL LANE,BENGALI MARKET, 10 - RAILWAY . QTRS,BABAR ROAD, 11 - FIRE BRIGADE LANE,, 12 - G B MANDIR, BANGALI MARKET,TODER MAL LANE, 13 - REFUGI MARKET,BABAR LANE, 14 - RAILWAY QTRS, BANGALI MARKET,BABAR ROAD, 2 - CENTRAL PLACE,BENGALI MARKET, 3 - BAZAR LANE,BENGALI MARKET, 4 - SCHOOL LANE,BENGALI MARKET, 5 - SAFDAR HASMI MARG,BENGALI MARKET., 6 - TODAR MAL LANEBENGALI MARKET, 7 - BABAR PLACE,BENGALI MARKET, 8 - BABAR LANE,BENGALI MARKET, 9 - BABAR ROAD,BENGALI MARKET",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA NO. 3, BABAR ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.23644,
+            28.626218
+          ]
+        },
+        "properties": {
+          "psno": 76,
+          "locality": "Sikandra Road",
+          "area": "1 - RAILWAY QUARTERS ,COLLEGE LANE, 10 - BLOCK-A, NABHA HOUSE, PUNJAB ESTATE,SIKANDRA ROAD, 11 - BLOCK-B, NABHA HOUSE, PUNJAB ESTATE,SIKANDRA ROAD, 12 - COLLEGE CAMPUS, LADY IRWIN COLLEGE,SIKENDRA ROAD, 2 - TYPE-D, RLY QTRS,COLLEGE LANE,SIKENDRA ROAD, 3 - NEAR TILAK BRIDGE, COLLEGE LANE,SIKENDRA ROAD, 4 - T-HUTS, NEAR TILAK BRIDGE , COLLEGE LANE,SIKENDRA ROAD, 5 - LADY IRWIN COLLEGE STAFF QTRS,SIKANDRA ROAD, 6 - KOTHI,SIKANDRA ROAD, 7 - BLOCK-D, NABHA HOUSE, PUNJAB ESTATE,SIKANDRA ROAD, 8 - BLOCK- M, RAILWAY DISPENSARY QTRS,COLLEGE LANE SINKENDRA ROAD, 9 - TYPE-E, RAILWAY QTRS, COLLEGE LANE,SIKENDRA ROAD",
+          "address": "LADY IRWIN COLLEGE SIKANDRA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.229696,
+            28.630857
+          ]
+        },
+        "properties": {
+          "psno": 77,
+          "locality": "Babar Road",
+          "area": "1 - HARYANA ESTATE,SIKANDRA ROAD, 10 - TODARMAL LANE,NEAR NATHU SWEETS, 11 - MASJID BHOCHOWALI,TODARMAL ROAD, 12 - SHIV MANDIR, HARYANA ESTATE,SIKANDRA ROAD, 13 - NDMC DISPENSERY, SERVENT QUARTER,BABAR ROAD, 14 - T-HUTS, NEAR HARYANA ESTATESIKANDRA ROAD, 2 - HIMACHAL BHAWAN,SIKANDRA ROAD, 3 - BABAR ROAD,BANGALI MARKET, 4 - TYPE-IV, N.D.M.C. FLATS,BABAR ROAD, 5 - N.D.M.C. TYPE -III QTRS ,BABAR ROAD, 6 - N D M C FLATS ,BABAR ROAD, 7 - TODARMAL ROAD ,NEAR BABAR PLACE, 8 - ABUL FAZAL ROAD,NEAR BABAR ROAD, 9 - NDMC FLATS,ABUL FAZAL ROAD",
+          "address": "ATAL ADARSH PRATHMIK VIDYALYA NO. 3, BABAR ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233409,
+            28.620591
+          ]
+        },
+        "properties": {
+          "psno": 78,
+          "locality": "Copernicus Marg",
+          "area": "1 - BLOCK-A , SANGLI APPTS.,COPERNICUS MARG, 2 - BLOCK-B , SANGLI APPTS,COPERNICUS MARG, 3 - GILL TAXI STAND,COPERNICUS MARG, 4 - BLOCK-C , SANGLI APARTMENT,COPERNICUS MARG, 5 - BLOCK-D , SANGLI APARTMENT,COPERNICUS MARG",
+          "address": "ATAL ADARSH VIDYALAYA, SANGLI MESS, MAHATMA JYOTI RAO PHULE MARG, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.214218,
+            28.611222
+          ]
+        },
+        "properties": {
+          "psno": 79,
+          "locality": "Maulana Azad Road",
+          "area": "1 - OFFICERS FLATS,MEENA BAGH ., 10 - SERVENT QTRS,JANPATH., 11 - BUNGLOW,AKBAR ROAD., 12 - SERVENT QTRS,AKBAR ROAD., 13 - T- HUTS,AKBAR ROAD., 14 - JABTA GANJ MASJID,MAN SINGH ROAD., 2 - SERVENT QTRS,MEENA BAGH., 3 - BUNGLOW ,MOTI LAL NEHRU MARG., 4 - SERVENT QTRS,MOTILAL NEHRU MARG., 5 - BUNGLOW,MAULANA AZAD ROAD, 6 - SERVENT QTRS,MAULANA AZAD ROAD., 7 - BUNGLOW ,MOTILAL NEHRU PLACE., 8 - SERVENT QTRS,MOTILAL NEHRU PLACE., 9 - BUNGLOW ,JANPATH.",
+          "address": "RECEPTION ROOM Min. OF HEATH GOI NIRMAN BHAWAN MAULANA AZAD ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.213274,
+            28.611372
+          ]
+        },
+        "properties": {
+          "psno": 80,
+          "locality": "Man Singh Road",
+          "area": "1 - BUNGLOW,ASHOKA ROAD., 10 - BUNGLOW / FLATS,Dr. A.P.J. ABDUL KALAM ROAD, 11 - DARGAH HAZRAT PIR GAZI ,NEAR AKBAR ROAD,DARBHANGA HOUSE LANE., 12 - KIOSK AT Q- POINT MAN SINGH ROAD NEAR PETROL PUMPMAN SINGH ROAD CIRCLE, 13 - T- HUTS, DARBHANGA GHAT, MAN SINGH ROAD,MAN SINGH ROAD, 14 - 13 MOTI LAL NEHRU MARGMASJID MAJEEDIA, 2 - WINDSOR PLACE,ASHOKA ROAD., 3 - T- HUTS, DARBHANGA GHAT,MAN SINGH ROAD., 4 - BUNGLOW,MAN SINGH ROAD., 5 - DARBHANGA GHAT,MAN SINGH ROAD., 6 - TAXI STAND, DARBHANGA GHAT,MAN SINGH ROAD., 7 - BUNGLOW,AKBAR ROAD., 8 - BUNGLOW,MOTI LAL NEHRU MARG., 9 - BUNGLOW,JANPATH.",
+          "address": "RECEPTION ROOM Min. OF HEATH GOI NIRMAN BHAWAN MAULANA AZAD ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.216361,
+            28.597791
+          ]
+        },
+        "properties": {
+          "psno": 81,
+          "locality": "South End Lane",
+          "area": "1 - KOTHI ,AURANGZEB LANE., 2 - KOTHI,TUGLAK ROAD., 3 - KOTHI,TUGHLAK LANE., 4 - T-HUTS,TUGHLAK LANE., 5 - KOTHI,SOUTH END ROAD., 6 - KOTHI,SOUTH END LANE., 7 - GAURI APARTMENT,SOUTH END LANE., 8 - N .P. QTRS, TYPE-V,SOUTH END LANE., 9 - NDMC OFFICERS FLATS,AURANGZEB LANE.",
+          "address": "ATAL ADARSH VIDYALYA, AURANGZEB LANE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.215846,
+            28.598694
+          ]
+        },
+        "properties": {
+          "psno": 82,
+          "locality": "Aurangzeb Road",
+          "area": "1 - KOTHI,Dr. A.P.J. ABDUL KALAM ROAD, 10 - TEXI STAND HOTEL CLARIDGE,Dr. A.P.J. ABDUL KALAM ROAD, 11 - DHOBI GHATTUGHLAK CRESCENT, 12 - SAFDARJUNG LANE, 2 - NAGALAND HOUSE,Dr. A.P.J. ABDUL KALAM ROAD, 3 - KOTHI,TUGLAK ROAD., 4 - N.D.M.C STAFF QTRS, TYPE-1 ,TUGLAK CRESCENT., 5 - KOTHI,TUGLAK CRESENT., 6 - P.S. STAFF QTRS,TUGLAK ROAD., 7 - OLD P.M.HOUSE,SQ,SAFDARJUNG LANE., 8 - KOTHI,SAFDARJUNG ROAD., 9 - TEXI STAND,Dr. A.P.J. ABDUL KALAM ROAD",
+          "address": "ATAL ADARSH VIDYALYA, AURANGZEB LANE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.199955,
+            28.594487
+          ]
+        },
+        "properties": {
+          "psno": 83,
+          "locality": "Race Course Road",
+          "area": "1 - T- HUTS, A.S.C. ,SAFDARJUNG ROAD., 2 - T-HUTS, D.I.D,SAFDARJUNG ROAD., 3 - T- HUTS, RACE COURSE CLUB,RACE COURSE ROAD., 4 - SHOP, RACE COURSE,RACE COURSE ROAD., 5 - STABLE, RACE COURSE,RACE COURSE ROAD ., 6 - CLUB, RACE COURSE,RACE COURSE ROAD., 7 - SHIV HANUMAN MANDIR NEAR SAFDERJUNG MADARSA,ARVINDO MARG., 8 - POLICE BILET AIR FORCE STATION,RACE COURCE, 9 - AIR FORCE STATIONRACE COURSE",
+          "address": "AIR FORCE SCHOOL JUNIOR WING O W C RACE COURCE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.200255,
+            28.594402
+          ]
+        },
+        "properties": {
+          "psno": 84,
+          "locality": "Race Course",
+          "area": "1 - MASJID, JAIPUR POLO GROUND,MUSTAFA KAMAL ATATURK MARG., 10 - NEW WILLINGDON CAMP,MUSTAFA KAMAL ATATURK MARG, 2 - NEW WILLINGDON CAMP,MUSTAFA KAMAL ATATURK MARG,, 3 - OLD WILLINGDON CAMP,MUSTAFA KAMAL ATATURK MARG., 4 - BUNGLOW,RACE COURSE ROAD, 5 - DELHI GYMKAHANA CLUB COTTAGE 2SAFDARJUNG ROAD, 6 - AIR FORCE SPORT COMPLEXMUSTFA KEMAL ATATURK MARG, 7 - C P W D QTRS OLD WILLINGDON CAMP,MUSTAFA KAMAL ATATURK MARG, 8 - MASJID, JAIPUR POLO GROUND,MUSTAFA KAMAL ATATURK MARG, 9 - OFFICE, JAIPUR POLO GROUND,MUSTAFA KAMAL ATATURK MARG",
+          "address": "AIR FORCE SCHOOL JUNIOR WING O W C RACE COURCE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.192538,
+            28.574956
+          ]
+        },
+        "properties": {
+          "psno": 85,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-I, (EVEN),SAROJINI NAGAR, 10 - BLOCK-M, (ODD),SAROJINI NAGAR, 11 - JHUGGI NEAR M - 253, BLOCK - M,SAROJINI NAGAR, 12 - JHUGGI NEAR M - 333, BLOCK -M,SAROJINI NAGAR, 2 - BLOCK-J,(EVEN ODD),SAROJINI NAGAR, 3 - BLOCK-J,(ODD),SAROJINI NAGAR, 4 - BLOCK-J,(EVEN ODD),SAROJINI NAGAR, 5 - BLOCK-K,(EVEN ODD),SAROJINI NAGAR, 6 - BLOCK-K,(EVEN ODD),SAROJINI NAGAR, 7 - BLOCK-L, (ODD),SAROJINI NAGAR, 8 - BLOCK-L,(EVEN & ODD),SAROJINI NAGAR, 9 - BLOCK-K, (EVEN & ODD),SAROJINI NAGAR",
+          "address": "NAVYUG SCHOOL BLOCK-I,SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.192559,
+            28.574947
+          ]
+        },
+        "properties": {
+          "psno": 86,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK- H (EVEN),SAROJINI NAGAR, 2 - BLOCK- I (ODD),SAROJINI NAGAR, 3 - BLOCK- I (ODD),SAROJINI NAGAR, 4 - BLOCK- I (ODD),SAROJINI NAGAR, 5 - BLOCK- HPT (EVEN & ODD),SAROJINI NAGAR, 6 - NAVYUG SCHOOL,SAROJINI NAGAR, 7 - SANATAN DHARAM MANDIR,SAROJINI NAGAR, 8 - JHUGGI, NEAR I-509, BLOCK-I,SAROJINI NAGAR, 9 - JHUGGI NEAR I-525, BLOCK-I,SAROJINI NAGAR",
+          "address": "NAVYUG SCHOOL BLOCK-I,SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.192498,
+            28.574956
+          ]
+        },
+        "properties": {
+          "psno": 87,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-EPT,SAROJINI NAGAR, 2 - BLOCK-LPT,SAROJINI NAGAR, 3 - BLOCK-MPT,SAROJINI NAGAR, 4 - ESI DISPENSARY, TYPE VI FLATS,3RD CROSS ROAD, SAROJINI NAGAR, 5 - ESI DISPENSARY, TYPE IV FLATS,3RD CROSS ROAD, SAROJINI NAGAR, 6 - ESI DISPENSARY, TYPE II FLATS,3RD CROSS ROAD, SAROJINI NAGAR, 7 - ESI DISPENSARY, TYPE I FLATS,3RD CROSS ROAD, SAROJINI NAGAR, 8 - JHUGGI, NEAR EPT 149, BLOCK EPT,SAROJINI NAGAR",
+          "address": "NAVYUG SCHOOL BLOCK-I,SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.195634,
+            28.572633
+          ]
+        },
+        "properties": {
+          "psno": 88,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK - G I,SAROJINI NAGAR, 10 - JHUGGI, NEAR SHOP - 20,22, R R MARKET,SAROJINI NAGAR, 2 - BLOCK - I,SAROJINI NAGAR, 3 - R.R. MARKET SHOPS,SAROJINI NAGAR, 4 - SERVENT QTRS, SCINDIA POTTERY,SAROJINI NAGAR, 5 - JHUGGI, NEAR SCINDIA POTTERY,SAROJINI NAGAR, 6 - LEKHA VIHAR IN SCINDIA POTTERY ,SAROJINI NAGAR, 7 - SPACE SCINDIA POTTERY,SAROJINI NAGAR, 8 - T- HUT IN SCINDIA POTTERY,SAROJINI NAGAR, 9 - SCINDIA VILLA, SCINDIA POTTERY ,SAROJINI NAGAR",
+          "address": "GOVT BOYS SR SEC SCHOOL NO 3 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.197164,
+            28.573065
+          ]
+        },
+        "properties": {
+          "psno": 89,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK GI ,SAROJINI NAGAR, 2 - ARYA SAMAJ MANDIR, NEAR G-39,NAUROJI NAGAR, 3 - GURUDWARA , NEAR G-337,NAUROJI NAGAR, 4 - SANATAN DHARAM MANDIR, NEAR G-272,NAUROJI NAGAR, 5 - JHUGGI BEHIND G-221,NAUROJI NAGAR, 6 - JHUGGI BEHIND F-99,NAUROJI NAGAR, 7 - SHOP, NDMC MARKET,NAUROJI NAGAR, 8 - BLOCK- BD,SAROJINI NAGAR, 9 - JHUGGI NEAR BD-843,874, BLOCK-BD,SAROJINI NAGAR",
+          "address": "VINAY NAGAR BENGALI SR SEC SCHOOL SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.2034,
+            28.579524
+          ]
+        },
+        "properties": {
+          "psno": 90,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK - A , PALIKA AWAS ,SAROJINI NAGAR, 10 - BLOCK - J, PALIKA AWAS,SAROJINI NAGAR, 11 - BLOCK - K, PALIKA AWAS,SAROJINI NAGAR, 12 - BLOCK - L, PALIKA AWAS,SAROJINI NAGAR, 13 - BLOCK - M, PALIKA AWAS,SAROJINI NAGAR, 14 - RAILWAY BOARD OFFICERS FLATS,SAROJINI NAGAR, 15 - RAILWAY QTRS,SAROJINI NAGAR, 16 - RAILWAY QTRS,SAROJINI NAGAR, 17 - DDA SLUM QTRS ,SAROJINI NAGAR, 2 - BLOCK - B, PALIKA AWAS,SAROJINI NAGAR, 3 - BLOCK - C, PALIKA AWAS ,SAROJINI NAGAR, 4 - BLOCK - D, PALIKA AWAS ,SAROJINI NAGAR, 5 - BLOCK - E, PALIKA AWAS,SAROJINI NAGAR, 6 - BLOCK - F, PALIKA AWAS,SAROJINI NAGAR, 7 - BLOCK - G, PALIKA AWAS,SAROJINI NAGAR, 8 - BLOCK - H, PALIKA AWAS,SAROJINI NAGAR, 9 - BLOCK - I, PALIKA AWAS,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203486,
+            28.579505
+          ]
+        },
+        "properties": {
+          "psno": 91,
+          "locality": "Sarojini Nagar",
+          "area": "1 - RAILWAY QTRS,SAROJINI NAGAR, 10 - C.P.W.D NURSERY CORNER, NEAR F-BLOCK,SAROJINI NAGAR, 11 - BLOCK A (EVEN) ,SAROJINI NAGAR, 12 - BLOCK - B (EVEN & ODD),SAROJINI NAGAR, 13 - BLOCK - C (ODD),SAROJINI NAGAR, 2 - RAILWAY QTRS,.SAROJINI NAGAR, 3 - BLOCK-C [EVEN],SAROJINI NAGAR, 4 - BLOCK-D [EVEN & ODD],SAROJINI NAGAR, 5 - BLOCK-E [ODD],SAROJINI NAGAR, 6 - BLOCK-F [EVEN],SAROJINI NAGAR, 7 - JHUGGI NEAR C-110, BLOCK-C,SAROJINI NAGAR, 8 - JHUGGI NEAR D-157, BLOCK-D,SAROJINI NAGAR, 9 - STAFF QTRS, MUKERJEE PUBLIC SCHOOL,SAROJNI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.195775,
+            28.57479
+          ]
+        },
+        "properties": {
+          "psno": 92,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK -G (EVEN),SAROJINI NAGAR, 10 - BLOCK - A {EVEN & ODD},SAROJINI NAGAR, 11 - BLOCK -B {EVEN & ODD},SAROJINI NAGAR, 12 - CPWD ENQ OFFICE FLATS,SAROJINI NAGAR, 13 - CPWD ENQ OFFICE WC FLATS,SAROJINI NAGAR, 14 - 5-JHUGGI NEAR B-133 , BLOCK- B ,SAROJINI NAGAR, 2 - BLOCK - G (EVEN),SAROJINI NAGAR, 3 - BLOCK -G (EVEN & ODD),SAROJINI NAGAR, 4 - BLOCK - H (EVEN & ODD),SAROJINI NAGAR, 5 - BLOCK - H (EVEN & ODD),SAROJINI NAGAR, 6 - BLOCK - H (ODD),SAROJINI NAGAR, 7 - BLOCK - EF (EVEN),SAROJINI NAGAR, 8 - JHUGGI NEAR , BLOCK-G,SAROJINI NAGAR, 9 - JHUGGI NEAR , BLOCK - H,SAROJINI NAGAR",
+          "address": "GOVT BOYS SR SEC SCHOOL NO 4 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.195903,
+            28.574705
+          ]
+        },
+        "properties": {
+          "psno": 93,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-D (ODD),SAROJINI NAGAR, 10 - JHUGI, NEAR D -618 ,SAROJINI NAGAR, 11 - BLOCK-G (EVEN & ODD),SAROJINI NAGAR, 12 - BLOCK-H (EVEN AND ODD),SAROJINI NAGAR, 13 - BLOCK-I (EVEN & ODD),SAROJINI NAGAR, 14 - BLOCK- I (ODD),SAROJINI NAGAR, 15 - JHUGGI NEAR H-122, BLOCK-H,SAROJINI NAGAR, 16 - JHUGGI NEAR G-142, BLOCK-G,SAROJINI NAGAR, 17 - JHUGGI NEAR G-96 BLOCK- G,SAROJINI NAGAR, 18 - JHUGGI NEAR I-151 BLOCK -I ,SAROJINI NAGAR, 2 - BLOCK-D (ODD),SAROJINI NAGAR, 3 - BLOCK-D (EVEN & ODD),SAROJINI NAGAR, 4 - BLOCK -D (ODD),SAROJINI NAGAR, 5 - BLOCK- C (EVEN),SAROJINI NAGAR, 6 - BLOCK-C (EVEN & ODD),SAROJINI NAGAR, 7 - BLOCK- EF (ODD),SAROJINI NAGAR, 8 - JHUGGI ,NEAR D-632, BLOCK-D,SAROJINI NAGAR, 9 - JHUGGI, NEAR C-721, BLOCK-C,SAROJINI NAGAR",
+          "address": "GOVT BOYS SR SEC SCHOOL NO 4 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220458,
+            28.585421
+          ]
+        },
+        "properties": {
+          "psno": 94,
+          "locality": "Khan Market",
+          "area": "1 - BLOCK-A , NEAR AMBESSEDOR HOTEL,SUJAN SINGH PARK, 10 - BLOCK-E , PRITHVI RAJ LANE,KHAN MARKET, 11 - BLOCK-M , NEAR SHIV MANDIR,PRITHVI RAJ LANE, 12 - MAHARISHI BALMIKI MANDIRPRITHVI RAJ LANE, 13 - T-HUT NEAR TRIPPLE STOREY QTRS,PRITHVI RAJ LANE, 2 - BLOCK-F, NEAR AMBASSDOR HOTEL,SUJAN SINGH PARK, 3 - BLOCK-G , NEAR AMBASSODOR HOTEL,SUJAN SINGH PARK, 4 - LUCKY TAXI STAND,NEAR KAMAL NURSARY,SUJAN SINGH PARK, 5 - FLAT,KHAN MARKET, 6 - GOPAL MANDIR,KHAN MARKET, 7 - N D M C FLATS,PRITHVI RAJ MARKET, 8 - DOUBLE STOREY QTRS,PRITHVI RAJ LANE, 9 - TRIPPLE STOREY QTRS,PRITHVI RAJ LANE",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.227459,
+            28.603602
+          ]
+        },
+        "properties": {
+          "psno": 95,
+          "locality": "Sujan Singh Park",
+          "area": "1 - C-I FLATS,HUMAYUN ROAD., 10 - BLOCK-A ,SUJAN SINGH PARK, 11 - JUDAHHYAM HALL,HUMAYUN ROAD, 12 - BLOCK-J-1,SUJAN SINGH PARK., 13 - BLOCK-J-2,SUJAN SINGH PARK., 14 - BLOCK-J-3,SUJAN SINGH PARK., 15 - BLOCK-K,SUJAN SINGH PARK., 16 - BLOCK-L,SUJAN SINGH PARK., 17 - BLOCK-M,SUJAN SINGH PARK., 2 - C-I FLATS ( SERVENT QTRS),HUMAYUN ROAD., 3 - TEA STALL,HUMAYUN ROAD., 4 - A B- BLOCK,SHAHJAHAN ROAD., 5 - A B- BOLCK, (SERVANT QTRS),SHAHJAHAN ROAD., 6 - C -II FLATS,SHAHJAHAN ROAD., 7 - C-II FLATS ( SERVANT QTRS) ,SHAHJAHAN ROAD., 8 - D-II FLATS,SHAHJAHAN ROAD., 9 - D-II FLATS (SERVANT QTRS) ,SHAHJAHAN ROAD.",
+          "address": "RS JUNIOR MODERN SCHOOL HUMAYUN ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.227588,
+            28.60363
+          ]
+        },
+        "properties": {
+          "psno": 96,
+          "locality": "Pandara Road",
+          "area": "1 - AB- BLOCK,PANDARA ROAD., 10 - BLOCK-M,SUJAN SINGH PARK, 11 - JAM NAGAR HOUSE,SHAH JAHAN ROAD., 12 - KOTA HOUSE ,SHAH JAHAN ROAD., 13 - TAXI STAND,MAN SINGH ROAD., 14 - TAXI STAND, JAM NAGAR HOUSE,AKBAR ROAD., 15 - JAISLMER HOUSE QTRS,MAN SINGH ROAD., 16 - JHUGGI, JAISLMER HOUSE,MAN SINGH ROAD., 17 - DOUBLE STORYEY QTRS, JAISLMER HOUSE,MAN SINGH ROA, 18 - STAFF. QTRS, UPSC,SHAHJAHAN ROAD, 19 - STAFF QRTS NOMA KOTA HOUSE ,SHAJAHAN ROAD, 2 - BLOCK-B,PANDARA ROAD., 20 - SHIV MANDIR, JAMNAGAR HOUSE,MAN SINGH ROAD, 3 - N. D .M .C . FLATS,PANDARA ROAD ., 4 - T-HUTS,PANDARA ROAD., 5 - STAFF QTRS, NIRMAL PRIMARY SCHOOL,PANDARA ROAD., 6 - JHUGGI BEHIND BLOCK- AB-17, 7 - PANDARA ROADMARKET, 8 - BLOCK-N,SUJAN SINGH PARK., 9 - BLOCK-P,SUJAN SINGH PARK.",
+          "address": "RS JUNIOR MODERN SCHOOL HUMAYUN ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233474,
+            28.605217
+          ]
+        },
+        "properties": {
+          "psno": 97,
+          "locality": "Pandara Road",
+          "area": "1 - OFFICERS FLATS, JODHPUR HOSTEL,PANDARA ROAD., 10 - C-I,PANDARA PARK, 11 - AAKASH AIR FORCE OFFICER MESSDR.ZAKIR HUSSAIN MARG, 2 - SERVANT QTRS, JODHPUR HOSTEL,PANDARA PARK., 3 - C-I, OFFICERS FLATS,PANDARA PARK., 4 - BUNGLOW,DR, ZAKIR HUSSAIN MARG,, 5 - QTRS , BIKANER HOUSE,SHAHJAHAN ROAD., 6 - M.S. FLATS,SHAHJAHAN ROAD., 7 - C-1, FLATS (SERVANT QTRS),PANDARA PARK., 8 - BLOCK-B , DR ZAKIR HUSSAIN MARG ,PANDARA PARK., 9 - M. S. FLATS, SERVANT QTRS,SAHAJAHAN ROAD.",
+          "address": "SARVODAYA KANYA VIDYALAYA PANDARA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.238379,
+            28.623192
+          ]
+        },
+        "properties": {
+          "psno": 98,
+          "locality": "Tilak Marg",
+          "area": "1 - POLICE STATION STAFF QTRS,TILAK MARG LANE, 10 - LAXMI MENON WORKING WOMEN HOSTEL SAROJINI HOUSE,6, BHAGWAN DASS ROAD, 11 - 6, TILAK MARG,NEW DELHI, 12 - SAROJINI HOUSE,6, BHAGWAN DASS ROAD, 13 - KAMLA DEVI WORKING WOMEN HOSTEL,6 BHAGWAN DASS ROAD, 14 - STAFF QTRS SAROJINI HOUSE,6 BHAGWAN DASS ROAD, 15 - ARADHNA SR. CITIZEN HOME,BHAGWAN DASS LANE, 16 - AAKANSHA WORKING WOMEN HOSTEL,BHAGWAN DASS LANE, 2 - 3, BHAGRIA HOUSE,TILAK MARG LANE, 3 - MS FLATS ,TILAK LANE, 4 - ELECTRIC SUB-STATION,TILAK MARG LANE, 5 - C-II FLATS,TILAK LANE, 6 - C-I, FLATS,TILAK MARG, 7 - MATER DEI CONVENTTILAK LANE, 8 - SAGAR APPARTMENTS,6-TILAK MARG, 9 - DELHI ADMN FLATS,TILAK MARG",
+          "address": "COLLEGE OF ARTS TILAK MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.238446,
+            28.623208
+          ]
+        },
+        "properties": {
+          "psno": 99,
+          "locality": "Bhagwan Dass Road",
+          "area": "1 - BABA JYOTI RAO PHULE MARG,BHAGWAN DASS ROAD, 2 - BABA JYOTI RAO PHULE MARG, SANGLI MESS,T-HUTS,BHAGWAN DASS ROAD, 3 - OLD COMPOUND MANDI HOUSE, BABA JYOTI RAO PHULE MARG,BHAGWAN DASS ROAD, 4 - OLD COMPOUND, MANDI HOUSE,BHAGWAN DASS ROAD, 5 - ARADHNA OLD AGE HOUSE,BHAGWAN DASS ROAD, 6 - INTERNATIONAL LAW SOCIETY,BHAGWAN DAS ROAD, 7 - NATIONAL SCHOOL OF DRAMA ,BHAGWAN DAS ROAD, 8 - LAUNDRY HARYANA BHAWAN,COPERNICUS MARG, 9 - AAKANKSHA WORKING WOMEN HOSTELBHAGWAN DASS ROAD",
+          "address": "COLLEGE OF ARTS TILAK MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.238296,
+            28.62323
+          ]
+        },
+        "properties": {
+          "psno": 100,
+          "locality": "Bhagwan Dass Road",
+          "area": "1 - DDA FLATS,7, BHAGWAN DASS ROAD, 10 - STAFF QTR, POLAND EMBASSY,TILAK MARG, 11 - SA EMBESSEY,TILAK MARG, 12 - PUNJAB HOUSE,COPERNICUS MARG, 13 - TILAK MARG, 14 - KOTI NO.12 ,TILAK MARG, 15 - HARYANA BHAVAN,COPPERNICUS MARG, 16 - MAHARASHTRA SADAN,COPPERNICUS MARG, 17 - BUNGALOW,COPERNICUS LANE, 2 - WHITE HOUSE,BHAGWAN DASS ROAD, 3 - BHAGWAN DASS ROAD, 4 - INDIAN LAW INSTITUTE ,BHAGWAN DASS ROAD, 5 - TAXI STAND,BHAGWAN DASS ROAD, 6 - BHAGAL PUR HOUSE,BHAGWAN DASS ROAD, 7 - SUPREME COURT STAFF QTRS,TILAK MARG, 8 - PAKISTAN HOUSE,TILAK MARG, 9 - IRAN CULTURE HOUSE,TILAK MARG",
+          "address": "COLLEGE OF ARTS TILAK MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.23839,
+            28.623303
+          ]
+        },
+        "properties": {
+          "psno": 101,
+          "locality": "Purana Quilla Road",
+          "area": "1 - NSCI STAFF QTRS,PURANA QUILLA ROAD, 2 - NSCI,T-HUTS,PURANA QUILLA ROAD, 3 - SAI QTRS,NATIONAL STADIUM SHERSHAH ROAD, 4 - NATIONAL CINEMA QTRS,MATHURA ROAD, 5 - PURANA QUILA ROAD, 6 - MATHURA ROAD",
+          "address": "COLLEGE OF ARTS TILAK MARG"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.238714,
+            28.602529
+          ]
+        },
+        "properties": {
+          "psno": 102,
+          "locality": "Bapa Nagar",
+          "area": "1 - C-I FLATS, DR. ZAKIR HUSSAIN MARG,BAPA NAGAR, 2 - DELHI HIGH COURT COMPLEX STAFF QTRS,BAPA NAGAR, 3 - C-II FLATS, (SERVANTS QRTS) DR. ZAKIR HUSSAIN MARG,BAPA NAGAR, 4 - C-II FLATS, DR. ZAKIR HUSSAIN MARG,BAPA NAGAR",
+          "address": "ATAL ADARSH PRATHMIK VIDYALAYA, KAKA NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233346,
+            28.605085
+          ]
+        },
+        "properties": {
+          "psno": 103,
+          "locality": "Pandara Park",
+          "area": "1 - STAFF QTRS ,C.G.H.S.DISP. , PANDARA PARK., 10 - TYPE - II (OLD) C.P.W.D. INQUIRY,SHAHJAHAN ROAD ., 11 - FLATS , C.P.W.D, INQUIRY,SHAHJAHAN ROAD., 12 - JHUGGI NEAR D-II FLATS (CORNIWALIS ROAD)PANDARA ROAD, 13 - STAFF QTRS, SARVODAYA KANYA VIDYALAYA,PANDARA PARK, 2 - BLOCK- CRD-II, FLATS ,PANDARA PARK., 3 - N.D.M.C. QTRS,PANDARA PARK., 4 - M.S. FLATS ,PANDARA PARK, 5 - D-II FLATS, S.B. MARG,PANDARA PARK., 6 - MASJID,PANDARA ROAD., 7 - STAFF QTRS, G.B.S.S.SCHOOL,PANDARA PARK., 8 - BLOCK-CRD-II SERVENT QTRS,PANDARA PARK., 9 - D-II, FLATS, (CORNWALLIS ROAD),PANDARA ROAD",
+          "address": "SARVODAYA KANYA VIDYALAYA PANDARA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233486,
+            28.605067
+          ]
+        },
+        "properties": {
+          "psno": 104,
+          "locality": "Pandara Road",
+          "area": "1 - BLOCK-A,PANDARA ROAD.",
+          "address": "SARVODAYA KANYA VIDYALAYA PANDARA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.233604,
+            28.605151
+          ]
+        },
+        "properties": {
+          "psno": 105,
+          "locality": "Pandara Road",
+          "area": "1 - D-II, FLATS ,PANDARA ROAD, 2 - T-HUTS,PANDARA ROAD., 3 - JHUGGI, BEHIND D-II FLATS NO-361,PANDARA ROAD",
+          "address": "SARVODAYA KANYA VIDYALAYA PANDARA ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.215693,
+            28.597435
+          ]
+        },
+        "properties": {
+          "psno": 106,
+          "locality": "Prithvi Raj Road",
+          "area": "1 - BUNGLOW,AMRITA SHERGILL MARG., 2 - FLATS,AMRITA SHERGIL MARG ., 3 - BUNGLOW,PRITHVI RAJ ROAD., 4 - FLATS,PRITHVI RAJ ROAD.",
+          "address": "ATAL ADARSH VIDYALYA, AURANGZEB LANE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.238157,
+            28.604563
+          ]
+        },
+        "properties": {
+          "psno": 107,
+          "locality": "Kaka Nagar",
+          "area": "1 - D-II FLATS,KAKA NAGAR, 10 - RED CROSS SEWAK AWAS,KAKA NAGAR, 11 - D-IIFLATS, KAKANAGAR, 12 - N.D.M.C.TYPE-IIFLATS, KAKANAGAR, 2 - MASJID,KAKA NAGAR, 3 - NDMC FLATS, TYPE-1 ,KAKA NAGAR, 4 - CUSTOM AND EXCISE QTRS. F-TYPE ,KAKA NAGAR, 5 - CUSTOM AND EXCISE QTR. G-TYPE,KAKA NAGAR, 6 - RED CROSS OFFICERS FLAT,KAKA NAGAR, 7 - ARCADIA NURSURY ,KAKA NAGAR, 8 - NDMC FLATS, TYPE-2 ,KAKA NAGAR, 9 - NDMC FLATS, TYPE-4,KAKA NAGAR",
+          "address": "ATAL ADARSH PRATHMIK VIDYALAYA, KAKA NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220608,
+            28.585299
+          ]
+        },
+        "properties": {
+          "psno": 108,
+          "locality": "Sujan Singh Park",
+          "area": "1 - BLOCK-B, BEHIND DERA GURUDWARA,SUJAN SINGH PARK, 10 - BLOCK-D ,SUJAN SINGH PARK, 11 - BLOCK-E ,SUJAN SINGH PARK, 2 - BLOCK-C, BEHIND DERA GURUDWARA,SUJAN SINGH PARK, 3 - BLOCK-D, BEHIND DERA GURUDWARA,SUJAN SINGH PARK, 4 - BLOCKE- E, BEHIND DERA GURUDWARA,SUJAN SINGH PARK, 5 - H- JHUGGI AREA BEHIND DERA GURDWARA,SUJAN SINGH PARK, 6 - GOLF APPARTMENTS,SUJAN SINGH PARK, 7 - DERA GURUDWARA ,SUJAN SINGH PARK, 8 - BLOCK-B ,SUJAN SINGH PARK, 9 - BLOCK-C ,SUJAN SINGH PARK",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ESTATE, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203888,
+            28.635115
+          ]
+        },
+        "properties": {
+          "psno": 109,
+          "locality": "Golf Links",
+          "area": "1 - GOLF LINK, 2 - REDCROSS STAFF QTRS, COMMUNITY CENTREGOLF LINKS",
+          "address": "NDMC COMMUNITY CENTRE GOLF LINK"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.227965,
+            28.598285
+          ]
+        },
+        "properties": {
+          "psno": 110,
+          "locality": "Ravindra Nagar",
+          "area": "1 - D-I FLATS,RABINDRA NAGAR, 2 - C- I FLATS , LODHI GARDEN ,SOUTH END ROAD, 3 - T- HUTS, LABOUR CAMP,HUMAYUN ROAD, 4 - SCIENCE CENTERK.K. BIRLA LANE NEAR LODHI GARDEN",
+          "address": "DELHI KANNAD SR SEC SCHOOL LODHI ESTATE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.226699,
+            28.594558
+          ]
+        },
+        "properties": {
+          "psno": 111,
+          "locality": "Lodhi Estate",
+          "area": "1 - LODHI ESTATE, 2 - JHUGGI,LODHI ESTATE, 3 - SARDAR PATEL SCHOOL,LODHI ESTATE, 4 - DTEA SCHOOL,LODHI ESTATE, 5 - VIDYA BHAWAN SCHOOL,LODHI ESTATE, 6 - KANNADA SCHOOL ,LODHI ESTATE",
+          "address": "VIDYA BHAWAN MAHAVIDYALAYA SR SEC SCHOOL LODHI ESTATE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203727,
+            28.635124
+          ]
+        },
+        "properties": {
+          "psno": 112,
+          "locality": "Golf Links",
+          "area": "1 - GOLF LINK, 2 - TYPE- II NDMC FLATS GOLF LINK SADANGOLF LINK NEW DELHI, 3 - T- HUTS, CPWD COMPOUND, BHARTI NAGAR,GOLF LINK, 4 - BLIND RELIEF ASSOCIATION DELHI,GOLF LINK, 5 - TAXI STAND OBRAI HOTEL AND TEA STALL,GOLF LINK, 6 - HAZRAT IMADUDDIN FIRDOSI, 11SHASTRI ROAD, 7 - TYPE- V NDMC FLATS GOLF LINK SADANGOLF LINK NEW DELHI, 8 - TYPE-IV NDMC FLATS GOLF LINK SADANGOLF LINK NEW DELHI",
+          "address": "NDMC COMMUNITY CENTRE GOLF LINK"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.226592,
+            28.594567
+          ]
+        },
+        "properties": {
+          "psno": 113,
+          "locality": "Maharishi Raman Marg",
+          "area": "1 - D-I FLATS, BHARTI NAGAR,MAHARSHI RAMAN MARG, 2 - SEWRAGE PUMP ,MAHARISHI RAMAN MARG, 3 - T-HUTS, BHARTI NAGAR ,MAHARSHI RAMAN MARG, 4 - HANUMAN MANDIR,MAHARISHI RAMAN MARG",
+          "address": "VIDYA BHAWAN MAHAVIDYALAYA SR SEC SCHOOL LODHI ESTATE"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218647,
+            28.587824
+          ]
+        },
+        "properties": {
+          "psno": 114,
+          "locality": "Jor Bagh",
+          "area": "1 - JOR BAGH., 2 - BLOCK- A, FIRE STATION,JOR BAGH, 3 - BLOCK-B, FIRE STATION,JOR BAGH, 4 - BARRACKS FIRE STATION,JOR BAGH, 5 - FLATS FIRE STATION,JOR BAGH",
+          "address": "SARVODAYA VIDYALAYA JOR BAGH"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203518,
+            28.579515
+          ]
+        },
+        "properties": {
+          "psno": 115,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203368,
+            28.579393
+          ]
+        },
+        "properties": {
+          "psno": 116,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.202875,
+            28.579525
+          ]
+        },
+        "properties": {
+          "psno": 117,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.202735,
+            28.579553
+          ]
+        },
+        "properties": {
+          "psno": 118,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.195646,
+            28.574743
+          ]
+        },
+        "properties": {
+          "psno": 119,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "GOVT BOYS SR SEC SCHOOL NO 4 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.195914,
+            28.57478
+          ]
+        },
+        "properties": {
+          "psno": 120,
+          "locality": "Pillangi Village",
+          "area": "1 - VILLAGE PILLANJI,SAROJINI NAGAR",
+          "address": "GOVT BOYS SR SEC SCHOOL NO 4 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.194768,
+            28.577282
+          ]
+        },
+        "properties": {
+          "psno": 121,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-XY,SAROJINI NAGAR, 10 - BLOCK -Y (EVEN) ,SAROJINI NAGAR, 11 - BLOCK -Y (EVEN),SAROJINI NAGAR, 12 - BLOCK -Y EVEN ODD,SAROJINI NAGAR, 13 - ARYA SAMAJ MANDIR BLOCK Y,SAROJINI NAGAR, 14 - JAIN SABHA, BLOCK-Y,SAROJINI NAGAR, 15 - RAM MANDIR, S MANDIR Y-BLOCKSAROJINI NAGAR, 16 - PRIVATE HOUSE NEAR ARYA SAMAJ SCHOOL .BLOCK Y, SAROJINI NAGAR, 17 - JHUGGI NEAR X -238 AND Y-210,SAROJINI NAGAR, 18 - FACTORY ROAD,ANSARI NAGAR (WEST), 19 - ACE EARTH,ANSARI NAGAR (WEST), 2 - BLOCK-Z,SAROJINI NAGAR, 20 - TAJ APPT.,ANSARI NAGAR (WEST), 21 - HANUMAN MANDIR,ANSARI NAGAR (WEST), 3 - BLOCK-YZ,SAROJINI NAGAR, 4 - BLOCK-YZ (T-HUTS),SAROJINI NAGAR, 5 - GURUDWARA, VEER HAKIKAT RAI MARG,SAROJINI NAGAR, 6 - BLOCK -X EVEN ODD,SAROJINI NAGAR, 7 - BLOCK -X EVEN ODD,SAROJINI NAGAR, 8 - BLOCK -X (EVEN),SAROJINI NAGAR, 9 - BLOCK -X (EVEN) ,SAROJINI NAGAR",
+          "address": "ATAL ADARSH PRATHMIK VIDYALAYA, B-AVENUE, SAROJINI NAGAR BEHIND VINAY NAGAR POLICE STATION, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.196602,
+            28.575586
+          ]
+        },
+        "properties": {
+          "psno": 122,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-A (ODD),SAROJINI NAGAR, 10 - BLOCK-F, NDMC FLATS, M & CWC,SAROJINI NAGAR, 11 - BLOCK-R, NDMC FLATS, M & CWC,SAROJINI NAGAR, 12 - BLOCK-H, POLICE STATION,SAROJINI NAGAR, 13 - BLOCK-G, POLICE STATION,SAROJINI NAGAR, 14 - BLOCK-F, POLICE STATION,SAROJINI NAGAR, 15 - JHUGGI, NEAR C-BLOCK,SAROJINI NAGAR, 16 - JHUGGI, NEAR A-226,SAROJINI NAGAR, 17 - BARRACK, POLICE STATIONSAROJINI NAGAR, 18 - BLOCK-A(ODD), SAROJININAGAR, 19 - BLOCK-A(EVEN&ODD), SAROJININAGAR, 2 - BLOCK-A (EVEN),SAROJINI NAGAR, 20 - BLOCK-B(EVEN), SAROJININAGAR, 21 - BLOCK-B(EVEN), SAROJININAGAR, 22 - BLOCK-B(EVEN&ODD), SAROJININAGAR, 23 - BLOCK-C(EVEN), SAROJININAGAR, 24 - BLOCK-C(ODD), SAROJININAGAR, 25 - BLOCK-RC, SAROJININAGAR, 26 - JHUGGINEARC-629, SAROJININAGAR, 27 - SAROJINISADAN, SAROJININAGAR, 28 - SAROJINISADAN, SAROJININAGAR, 29 - SAROJINISADAN, SAROJININAGAR, 3 - BLOCK-B (ODD),SAROJINI NAGAR, 30 - SAROJINISADAN, SAROJININAGAR, 31 - SAROJINISADAN, SAROJININAGAR, 32 - POSTOFFICEFLAT, SAROJININAGAR, 4 - BLOCK-B (EVEN),SAROJINI NAGAR, 5 - BLOCK-C (ODD),SAROJINI NAGAR, 6 - BLOCK-C (ODD),SAROJINI NAGAR, 7 - BLOCK-C (EVEN),SAROJINI NAGAR, 8 - BLOCK-C (ODD),SAROJINI NAGAR, 9 - BLOCK-H, NDMC FLATS,M & CWC,SAROJINI NAGAR",
+          "address": "GOVT GIRLS SR SEC SCHOOL NO 3 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.197163,
+            28.572994
+          ]
+        },
+        "properties": {
+          "psno": 123,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK- DG,SAROJINI NAGAR, 2 - BLOCK-AB, SAROJININAGAR, 3 - VINAYAKTEMPLE,BLOCK-AB, SAROJININAGAR, 4 - T-HUTS,NEARDG-869,883,971,1045 BLOCK-DG,SAROJININAGAR, 5 - JHUGGI,NEARVINAYAKTEMPLE, BLOCK-AB,SAROJININAGAR",
+          "address": "VINAY NAGAR BENGALI SR SEC SCHOOL SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.19479,
+            28.577754
+          ]
+        },
+        "properties": {
+          "psno": 124,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK-H, (EVEN) ,SAROJINI NAGAR, 10 - BLOCK-I,T-HUT NEAR,I-254,222,210,209,SAROJINI NAGAR, 11 - T-HUT, BLOCK-J NEAR J-221,209,206,SAROJINI NAGAR, 12 - DMS BOOTH BLOCK -I ,SAROJINI NAGAR, 13 - FLATS & SHOPS, SAROJINI NAGAR MARKET,SAROJINI NAGAR, 14 - SABZI MARKET,SAROJINI NAGAR, 15 - SIDH MATA MANDIR, SAROJINI NAGAR MARKET,SAROJINI NAGAR, 16 - HANUMAN MANDIR, SAROJINI NAGAR MARKET,SAROJINI NAGAR, 17 - DURGA MANDIR, SAROJINI NAGAR MARKET,SAROJINI NAGAR, 18 - PEEPAL MAHADEV MANDIR SAROJINI NAGAR MARKETSAROJINI NAGAR, 19 - BHARAT SEVAK SAMAJ ,SAROJINI NAGAR, 2 - BLOCK-H,(EVEN),SAROJINI NAGAR, 3 - BLOCK-I,SAROJINI NAGAR, 4 - BLOCK-I, (EVEN&ODD),SAROJINI NAGAR, 5 - BLOCK-J,(EVEN & ODD),SAROJINI NAGAR, 6 - BLOCK-J, (ODD),SAROJINI NAGAR, 7 - BLOCK-J, (ODD),SAROJINI NAGAR, 8 - BLOCK-K, (EVEN & ODD),SAROJINI NAGAR, 9 - BLOCK-H,T-HUT NEAR H-NO-358,206,171,SAROJINI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, BABU MARKET, SAROJINI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.196742,
+            28.575491
+          ]
+        },
+        "properties": {
+          "psno": 125,
+          "locality": "Sarojini Nagar",
+          "area": "1 - BLOCK - A, (EVEN & ODD),SAROJINI NAGAR, 2 - BLOCK - B, (EVEN & ODD),SAROJINI NAGAR, 3 - BLOCK - C, (EVEN),SAROJINI NAGAR, 4 - BLOCK - C, (EVEN & ODD),SAROJINI NAGAR, 5 - BLOCK - D,(ODD),SAROJINI NAGAR, 6 - BLOCK - D, (ODD),SAROJINI NAGAR, 7 - JHUGGI NEAR D-305, D-225, B-310, AND C-210SAROJINI NAGAR, 8 - JHUGGI NEAR D-325,SAROJINI NAGAR",
+          "address": "GOVT GIRLS SR SEC SCHOOL NO 3 SAROJINI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.194702,
+            28.577089
+          ]
+        },
+        "properties": {
+          "psno": 126,
+          "locality": "Kidwai Nagar West",
+          "area": "1 - BLOCK-C,TYPE IV, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR {WEST}, 10 - BLOCK-C, TYPE I, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR [WEST], 11 - BLOCK-D,TYPE I, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR [WEST], 12 - BLOCK-H, TYPE I, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR [WEST], 13 - BLOCK-I, TYPE I, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR [WEST], 14 - NDMC STAFF QTRS, PALIKA GRAM PHASE-I, VEER HAKIKAT RAI MARG,SAROJINI NAGAR, 15 - NDMC STAFF QTRS, PALIKA GRAM PHASE-II,LAXMI BAI NAGAR, 16 - BLOCK-XY NDMC FLATS, SAROJINI VIHAR,SAROJINI NAGAR, 17 - BLOCK-F,TYPE-III, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR WEST, 18 - BLOCK-A,TYPE IV, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR {WEST], 19 - BLOCK-B,TYPE IV, SAFDARJUNG HOSPITAL STAFF QTRS,]KIDWAI NAGAR WEST, 2 - BLOCK-D,TYPE IV, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR [WEST], 20 - BLOCK-C, TYPE- III SUFDARJUNG HOSPITAL ,STAFF QTRS, KIDWAI NAGAR (WEST), 21 - BLOCK-A, TYPE-III, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR (WEST), 22 - BLOCK-B, TYPE-III, SAFDARJUNG HOSPITAL, STAFF QTRS,KIDWAI NAGAR (WEST), 3 - BLOCK-D,TYPE-III, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST]., 4 - BLOCK-E,TYPE III, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST], 5 - BLOCK-B,TYPE II, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST], 6 - BLOCK-H,TYPE II, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST], 7 - BLOCK-I,TYPE II, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST], 8 - BLOCK-J,TYPE II, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST], 9 - BLOCK-B,TYPE I, SAFDARJUNG HOSPITAL STAFF QTRS,KIDWAI NAGAR[WEST]",
+          "address": "ATAL ADARSH PRATHMIK VIDYALAYA, B-AVENUE, SAROJINI NAGAR BEHIND VINAY NAGAR POLICE STATION, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.204406,
+            28.574642
+          ]
+        },
+        "properties": {
+          "psno": 127,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR ., 2 - MARKET FLATS,LAXMI BAI NAGAR, 3 - NDMC FLATS,LAXMI BAI NAGAR, 4 - NDMC FLATS,LAXMI BAI NAGAR, 5 - SHIV MANDIR NEAR S.J.FLYOVER,LAXMI BAI NAGAR, 6 - MANDIR,LAXMI BAI NAGAR",
+          "address": "NAVYUG SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203357,
+            28.57949
+          ]
+        },
+        "properties": {
+          "psno": 128,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - DDA QTRS,LAXMI BAI NAGAR, 2 - LAXMI BAI NAGAR, 3 - LAXMI BAI NAGAR, 4 - T-HUTS COAL DEPOT,LAXMI BAI NAGAR, 5 - NEW RAILWAY COLONY,LAXMI BAI NAGAR, 6 - RAILWAY Q T R S,LAXMI BAI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203416,
+            28.579502
+          ]
+        },
+        "properties": {
+          "psno": 129,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR ..",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.20332,
+            28.579538
+          ]
+        },
+        "properties": {
+          "psno": 130,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR.., 2 - T - HUTS,LAXMI BAI NAGAR, 3 - GURUDWARA,LAXMI BAI NAGAR, 4 - MANDIR { BRIJ } ,LAXMI BAI NAGAR, 5 - INDIRA NIKETAN HOSTEL,LAXMI BAI NAGAR, 6 - COMMUNITY CENTRE RAILWAY BOARDLAXMI BAI NAGAR, 7 - SHIV SHAKTI MANDIR,LAXMI BAI NAGAR",
+          "address": "ATAL ADARSH VIDYALAYA, LAXMI BAI NAGAR, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218058,
+            28.581781
+          ]
+        },
+        "properties": {
+          "psno": 131,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - BLOCK-K,B.K.DUTT COLONY, 2 - MASJID,B.K.DUTT COLONY, 3 - DARGAH,B.K. DUTT COLONY, 4 - DAFTRI TYPE QTRS, ALI GANJ,LODHI ROAD, 5 - SHIV MANDIR, ALI GANJ,LODHI ROAD, 6 - C.P.W.D SHOPS (NEAR BARAT GHAR),ALI GANJ, LODHI ROAD, 7 - SHOP , SHIV MANDIR ALI GANJ ,LODHI ROAD, 8 - GURUDWARA, ALI GANG,LODHI ROAD",
+          "address": "SGTB KHALSA GIRLS SR SEC SCHOOL ALIGANJ LODHI ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.217951,
+            28.581706
+          ]
+        },
+        "properties": {
+          "psno": 132,
+          "locality": "Palika Kunj",
+          "area": "1 - BLOCK-A, NDMC FLATS,PALIKA KUNJ, 10 - BLOCK-T, ELECTRIC SUB STATION,ARVINDO MARG, 11 - TYPE-II QTRS,C A D COLONY, 12 - BANGLOW,KARBLA LANE, OPP. S.J AIRPORT,B K DUTT COLONY, 13 - TYPE-V FLATS,C A D COLONY, 14 - BLOCK-E, NDMC FLATS,PALIKA KUNJ, 15 - BLOCK-D, AIR PORT LANE,OPP SAFDARJUNG AIRPORT, 16 - BLOCK-D,JOR BAGH ROAD, 17 - PALIKA KUNJ MARKET, OPP SAFDARJUNG AIRPORTB K DUTT COLONY, 18 - TYPE-IV,ELECTRIC SUB STATION,AUROBINDO MARG, JOR BAGH, 2 - BLOCK-B, NDMC FLATS,PALIKA KUNJ, 3 - BLOCK-C, NDMC FLATS,PALIKA KUNJ, 4 - BLOCK-D, NDMC FLATS,PALIKA KUNJ, 5 - C A D COLONY, 6 - BLOCK-E,C A D COLONY, 7 - T-HUTS UNDER S J FLYOVER, 8 - RAJDHANI NURSERY,B K DUTT COLONY, 9 - BLOCK-S, ELECTRIC SUB STATION,ARVINDO MARG",
+          "address": "SGTB KHALSA GIRLS SR SEC SCHOOL ALIGANJ LODHI ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.22049,
+            28.585308
+          ]
+        },
+        "properties": {
+          "psno": 133,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - BLOCK- C,B.K. DUTT COLONY, 2 - BLOCK- D,B.K. DUTT COLONY, 3 - BLOCK-G, AIRPORT AUTHORITY STAFF QTRS,KARBLA LANE",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220409,
+            28.585334
+          ]
+        },
+        "properties": {
+          "psno": 134,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - BLOCK-B,B.K.DUTT COLONY, 2 - POLICE QTRS (FRRO),B.K.DUTT COLONY",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220554,
+            28.585348
+          ]
+        },
+        "properties": {
+          "psno": 135,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - MARKET SHOPSB. K. DUTT COLONY, 2 - SANATAN DHARAM MANDIR,B. K. DUTT COLONY, 3 - JHUGGI, NEAR POLICE QTRS (FRRO),B.K.DUTT COLONY, 4 - BLOCK-23,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218808,
+            28.587777
+          ]
+        },
+        "properties": {
+          "psno": 136,
+          "locality": "Jor Bagh",
+          "area": "1 - BLOCK - 19,LODHI COLONY, 10 - PALIKA COMPLEX,JOR BAGH, 11 - PALIKA COMPLEX,JOR BAGH, 12 - PALIKA COMPLEX,JOR BAGH, 2 - BLOCK- 21,LODHI COLONY, 3 - PEON QTRS (NEAR BLOCK- 19),LODHI COLONY, 4 - JHUGGI (NEAR PEON QTRS BLOCK- 19),LODHI COLONY, 5 - JOR BAGH, 6 - SHIV MANDIR,JOR BAGH, 7 - POST OFFICE FLATS,JOR BAGH, 8 - NAV BHARAT TAXI STAND (NEAR P.O),JOR BAGH, 9 - MARKET- CUM - FLATS,JOR BAGH",
+          "address": "SARVODAYA VIDYALAYA JOR BAGH"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220608,
+            28.585638
+          ]
+        },
+        "properties": {
+          "psno": 137,
+          "locality": "Lodhi Colony",
+          "area": "1 - BLOCK-16,LODHI COLONY, 2 - BLOCK-H, METEROLOGICAL HOUSING COMPLEX,LODHI ROAD, 3 - BLOCK-M, METEROLOGICAL HOUSING COMPLEX,LODHI ROAD",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218053,
+            28.581676
+          ]
+        },
+        "properties": {
+          "psno": 138,
+          "locality": "Lodhi Colony",
+          "area": "1 - DAFTRI TYPE QTRS, ALI GANJ,LODHI COLONY, 2 - TRIPPLE STOREY 1ST FLOOR ALI GANJ,LODHI COLONY, 3 - TRIPPLE STOREY GROUND FLOOR ALI GANJ,LODHI COLONY, 4 - TRIPPLE STOREY 2ND FLOOR ALI GANJ,LODHI COLONY, 5 - NDMC QTRS. COMMUNITY CENTRE,ALI GANJ, LODHI COLONY",
+          "address": "SGTB KHALSA GIRLS SR SEC SCHOOL ALIGANJ LODHI ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218128,
+            28.581724
+          ]
+        },
+        "properties": {
+          "psno": 139,
+          "locality": "Ali Ganj",
+          "area": "1 - DAFTRI TYPE QUARTERS, ALI GANJ,LODHI ROAD, 2 - S.GT.B KHALSA SCHOOL, ALI GANJ,LODHI ROAD, 3 - ALIGANJLODHI ROAD",
+          "address": "SGTB KHALSA GIRLS SR SEC SCHOOL ALIGANJ LODHI ROAD"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.224113,
+            28.582306
+          ]
+        },
+        "properties": {
+          "psno": 140,
+          "locality": "Ali Ganj",
+          "area": "1 - N.D.M.C QTRS. BARAT GHAR COMPLEX, ALI GANJ,LODHI ROAD, 10 - JHUGGI NEAR H. NO. 564 ,ALI GANJ, 2 - KHANNA MARKET SHOPS,LODHI COLONY, 3 - MULTY STORY, NDMC QTRS., ALI GANJ,LODHI ROAD, 4 - TAXI STAND NEAR TAJDAR BABAR MKT.,LODHI COLONY, 5 - C.P.W.D. TRANSIT HOSTEL & GUEST HOUSE, ALI GANJ,LODHI ROAD, 6 - SHIV MAHAKALI MANDIR, MULTY STORY, ALI GANJ,LODHI ROAD, 7 - HANUMAN MANDIR NEAR BARAT GHAR, ALI GANJ,LODHI ROAD, 8 - CGHS DISPENSARY BUILDING, ALI GANJ,LODHI COLONY, 9 - DAFTRI TYPE QTRS, ALI GANJ,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.223964,
+            28.582288
+          ]
+        },
+        "properties": {
+          "psno": 141,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - BLOCK-E,B K DUTT COLONY",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.224318,
+            28.582316
+          ]
+        },
+        "properties": {
+          "psno": 142,
+          "locality": "B. K. Dutt Colony",
+          "area": "1 - BLOCK-F,B.K.DUTT COLONY, 2 - BLOCK-G,B.K.DUTT COLONY, 3 - BLOCK-H,B.K.DUTT COLONY, 4 - BLOCK-J,B. K. DUTT COLONY, 5 - SUBHASH COAL CO, BLOCK-G,B. K. DUTT COLONY, 6 - ALIGANJ MKT JOR BAGH LANE,LODHI ROAD",
+          "address": "ATAL ADARSH VIDYALYA, ALIGANJ, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220372,
+            28.585318
+          ]
+        },
+        "properties": {
+          "psno": 143,
+          "locality": "Lodhi Colony",
+          "area": "1 - CWC FLATS, CWC HOUSING COMPLEX,LODHI COLONY, 2 - CWC FLATS, CWC HOUSING COMPLEX,LODHI COLONY, 3 - CWC FLATS, CWC HOUSING COMPLEX,LODHI COLONY, 4 - CWC FLATS, CWC HOUSING COMPLEX,LODHI COLONY, 5 - CWC FLATS, CWC HOUSING COMPLEX,LODHI COLONY, 6 - BLOCK-13,LODHI COLONY, 7 - BLOCK-17,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220586,
+            28.585355
+          ]
+        },
+        "properties": {
+          "psno": 144,
+          "locality": "Lodhi Colony",
+          "area": "1 - BLOCK-8,LODHI COLONY, 2 - BLOCK-11,LODHI COLONY, 3 - BLOCK-14,LODHI COLONY, 4 - CENTRAL MARKET-CUM-FLATS,LODHI COLONY, 5 - DHABA NEAR TANGA STAND,CENTRAL MARKET,LODHI COLONY, 6 - CENTRAL MARKET,S T D BOOTHS,NEAR,CENTRAL PARK, LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220533,
+            28.585242
+          ]
+        },
+        "properties": {
+          "psno": 145,
+          "locality": "Lodhi Colony",
+          "area": "1 - BLOCK-5,LODHI` COLONY, 2 - BLOCK-6,LODHI COLONY, 3 - BLOCK-9,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207865,
+            28.570786
+          ]
+        },
+        "properties": {
+          "psno": 146,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - D-II FLATS (OFFICERS FLATS),KIDWAI NAGAR (WEST), 10 - BOY'S HOSTEL, VMMCSAFDARJUNG HOSPITAL, 11 - RESIDENT DOCTOR'S HOSTEL, VMMCSAFDARJUNG HOSPITAL, 12 - D- II FLATS, SERVANT QTRS,KIDWAI NAGAR (WEST), 13 - TYPE-II, SAFDARJUNG DHARAMSHALAKIDWAI NAGAR WEST, 2 - NDMC FLATS,KIDWAI NAGAR (WEST), 3 - PLOT,KIDWAI NAGAR (WEST), 4 - VOC. TECH. INSTITUTE,KIDWAI NAGAR (WEST), 5 - BALMIKI MANDIR,KIDWAI NAGAR (WEST), 6 - D J. SAMAJ,KIDWAI NAGAR (WEST), 7 - SAFDARJUNG HOSPITAL STAFF QTRSKIDWAI NAGAR (WEST), 8 - DHRUV BUILDING,KIDWAI NAGAR {WEST}, 9 - NURSES'S HOSTEL, VMMCSAFDARJUNG HOSPITAL",
+          "address": "O/o EX.ENGG D DIVISION CPWD D-II-26/28,KIDWAI NAGAR WEST"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.206905,
+            28.577946
+          ]
+        },
+        "properties": {
+          "psno": 147,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR., 2 - JHUGGI (NEAR H NO-685 & 713),LAXIMI BAI NAGAR",
+          "address": "DTEA SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.206756,
+            28.577937
+          ]
+        },
+        "properties": {
+          "psno": 148,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR.., 2 - MANDIR (NEAR 1965),LAXMI BAI NAGAR, 3 - JHUGGI (NEAR 1857) ,LAXMI BAI NAGAR, 4 - GOVT.CO.ED.SR.SEC. SCHOOL,LAXMI BAI NAGAR, 5 - JHUGGI (NEAR 1951),LAXMI BAI NAGAR",
+          "address": "DTEA SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207121,
+            28.57789
+          ]
+        },
+        "properties": {
+          "psno": 149,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - CGHS QUATERS,LAXMI BAI NAGAR, 2 - LAXMI BAI NAGAR .., 3 - LAXMI BAI NAGAR..",
+          "address": "DTEA SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.206885,
+            28.577777
+          ]
+        },
+        "properties": {
+          "psno": 150,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR., 2 - JHUGGI, NEAR H.NO-1545,LAXMI BAI NAGAR",
+          "address": "DTEA SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207271,
+            28.577814
+          ]
+        },
+        "properties": {
+          "psno": 151,
+          "locality": "Laxmi Bai Nagar",
+          "area": "1 - LAXMI BAI NAGAR.",
+          "address": "DTEA SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.204492,
+            28.574651
+          ]
+        },
+        "properties": {
+          "psno": 152,
+          "locality": "Kidwai Nagar (East)",
+          "area": "1 - T-HUTS,KIDWAI NAGAR[EAST], 10 - COAL DEPOT, CENTRAL MARKET,KIDWAI NAGAR [EAST], 11 - J K NALA,KIDWAI NAGAR [EAST], 12 - MAZAR,KIDWAI NAGAR [EAST], 13 - CENTRAL MARKET FLATS,KIDWAI NAGAR [EAST], 14 - JHUGGI NEAR CENTRAL MKT, JJ CAMP, D-BLOCK,KIDWAI NAGAR [EAST], 15 - CENTRAL MARKET SHOPS,KIDWAI NAGAR [EAST], 2 - T-HUTS( JHUGGI),KIDWAI NAGAR [EAST], 3 - DURGA SARASWATI MANDIR,KIDWAI NAGAR [EAST], 4 - GURUDWARA,KIDWAI NAGAR [EAST], 5 - GEETA MANDIR,KIDWAI NAGAR [EAST], 6 - JHUGGI NEAR D-567, BLOCK-D,KIDWAI NAGAR [EAST], 7 - T-HUTS,KIDWAI NAGAR [EAST], 8 - MANDIR,KIDWAI NAGAR [EAST], 9 - CHURCH,KIDWAI NAGAR [EAST]",
+          "address": "NAVYUG SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.205246,
+            28.564806
+          ]
+        },
+        "properties": {
+          "psno": 153,
+          "locality": "Ansari Nagar (West)",
+          "area": "1 - BLOCK-F,ANSARI NAGAR [WEST], 10 - S-WING, NEW BOYS HOSTEL, SAFDARJUNG HOSPITAL,ANSARI NAGAR [WEST], 11 - W-WING, NEW NURSES HOSTEL, SAFDARJUNG HOSPITAL,ANSARI NAGAR[WEST], 12 - HOSTEL, AIIMSANSARI NAGAR, 2 - D-II FLATS,ANSARI NAGAR [WEST], 3 - BLOCK-E,ANSARI NAGAR [WEST], 4 - NDMC SCHOOL,ANSARI NAGAR [WEST], 5 - NDMC SCHOOL,ANSARI NAGAR [WEST], 6 - SHIV SANATAN DHARAM MANDIR (NEAR BLOCK F) ,ANSARI NAGAR, 7 - OLD HOSTEL SAFDARJUNG HOSPITAL,ANSARI NAGAR [WEST], 8 - RAJ GHADIA VISHRAM SADAN, SAFDARJUNG HOSPITAL,ANSARI NAGAR [WEST], 9 - N-WING, NEW NURSES HOSTEL, SAFDARJUNG HOSPITAL,ANSARI NAGAR [WEST]",
+          "address": "ATAL ADARSH VIDYALYA, ANSARI NAGAR WEST, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.203615,
+            28.566238
+          ]
+        },
+        "properties": {
+          "psno": 154,
+          "locality": "Ansari Nagar (West)",
+          "area": "1 - BLOCK-I,ANSARI NAGAR [WEST]",
+          "address": "ATAL ADARSH VIDYALYA, ANSARI NAGAR WEST, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.209703,
+            28.563131
+          ]
+        },
+        "properties": {
+          "psno": 155,
+          "locality": "Ansari Nagar (East)",
+          "area": "1 - BLOCK-I,ANSARI NAGAR [EAST], 2 - GURUDAWARA,ANSARI NAGAR [EAST], 3 - HANUMAN MANDIR,ANSARI NAGAR [EAST]",
+          "address": "PRY SCHOOL COMMUNITY CENTRE ANSARI NAGAR EAST"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.209532,
+            28.563188
+          ]
+        },
+        "properties": {
+          "psno": 156,
+          "locality": "Ansari Nagar (East)",
+          "area": "1 - C-I FLATSANSARI NAGAR [EAST], 2 - C-II FLATS,ANSARI NAGAR [EAST], 3 - D-II FLATS ,ANSARI NAGAR [EAST], 4 - BLOCK-E,ANSARI NAGAR [EAST], 5 - DIRECTOR-BUNGLOW, AIIMS,ANSARI NAGAR [EAST], 6 - BLOCK-G,ANSARI NAGAR [EAST], 7 - C-I FLATS (SERVANT QTRS),ANSARI NAGAR [EAST], 8 - C-II FLATS (SERVANT QTRS),ANSARI NAGAR [EAST], 9 - BLOCK- G,ANSARI NAGAR [EAST]",
+          "address": "PRY SCHOOL COMMUNITY CENTRE ANSARI NAGAR EAST"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.207544,
+            28.576661
+          ]
+        },
+        "properties": {
+          "psno": 157,
+          "locality": "Kidwai Nagar (East)",
+          "area": "1 - T-HUTS,KIDWAI NAGAR [EAST], 10 - SOUTH MARKET SHOP,KIDWAI NAGAR [EAST], 11 - SLUM FLAT,KIDWAI NAGAR [EAST], 12 - NDMC FLAT [SLUM],KIDWAI NAGAR [EAST], 2 - BL0CK-B, MANDIR,KIDWAI NAGAR [EAST], 3 - SHOPS, BLOCK-A, MKT.KIDWAI NAGAR EAST, 4 - B N MANDIR,KIDWAI NAGAR {EAST}, 5 - NDMC SCHOOL OPPOSITE BLOCK-D,KIDWAI NAGAR {EAST}, 6 - NDMC FLATS,KIDWAI NAGAR [EAST], 7 - NDMC FLATS,KIDWAI NAGAR [EAST], 8 - JHUGGI,NEAR E-77,BLOCK-E,KIDWAI NAGAR [EAST], 9 - NDMC FLATS, SOUTH MARKET,KIDWAI NAGAR [EAST]",
+          "address": "GOVT CO-ED SR SEC SCHOOL LAXMI BAI NAGAR"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220554,
+            28.585326
+          ]
+        },
+        "properties": {
+          "psno": 158,
+          "locality": "Lodhi Colony",
+          "area": "1 - BLOCK-22,LODHI COLONY, 2 - RAILWAY QTRS,LODHI COLONY, 3 - TYPE I, RAILWAY QTRS,LODHI COLONY, 4 - SHIV MANDIR, KHANNA MARKET,LODHI COLONY, 5 - KHANNA MARKET FLATS,LODHI COLONY, 6 - NEW KHANNA MARKET,LODHI COLONY, 7 - KHANNA MARKET FUEL DEPOT,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.22042,
+            28.585378
+          ]
+        },
+        "properties": {
+          "psno": 159,
+          "locality": "Lodhi Colony",
+          "area": "1 - C-III FLATS,LODHI COLONY, 2 - C-III/F FLATS,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.220511,
+            28.585389
+          ]
+        },
+        "properties": {
+          "psno": 160,
+          "locality": "Palika Niwas",
+          "area": "1 - BLOCK- A, PALIKA NIWAS,LODHI COLONY, 10 - SHIV MANDIR, PALIKA NIWAS,LODHI COLONY, 11 - D-1 FLATS,LODHI COLONY, 12 - D-1/A FLATS,LODHI COLONY, 13 - MOTHER DAIRY SAFAL BOOTH,LODHI COLONY, 2 - BLOCK- B, PALIKA NIWAS,LODHI COLONY, 3 - BLOCK- C, PALIKA NIWAS,LODHI COLONY, 4 - BLOCK- D, PALIKA NIWAS,LODHI COLONY, 5 - BLOCK- E, PALIKA NIWAS,LODHI COLONY, 6 - BLOCK-F, PALIKA NIWAS,LODHI COLONY, 7 - BLOCK-G, PALIKA NIWAS,LODHI COLONY, 8 - BLOCK-H, PALIKA NIWAS,LODHI COLONY, 9 - BLOCK-J, PALIKA NIWAS,LODHI COLONY",
+          "address": "ATAL ADARSH VIDYALYA, LODHI ROAD, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218442,
+            28.573955
+          ]
+        },
+        "properties": {
+          "psno": 161,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - TOWER 9, TYPE-II FLATSKIDWAI NAGAR (EAST), NEW DELHI, 2 - TOWER 10, TYPE-II FLATSKIDWAI NAGAR (EAST), NEW DELHI, 3 - TOWER 11, TYPE-II FLATSKIDWAI NAGAR (EAST), NEW DELHI, 4 - TOWER 12, TYPE-II FLATSKIDWAI NAGAR (EAST), NEW DELHI",
+          "address": "ATAL ADARSH VIDYALAYA, KIDWAI NAGAR EAST, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218389,
+            28.573949
+          ]
+        },
+        "properties": {
+          "psno": 162,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - TOWER 1, TYPE-3 FLATSKIDWAI NAGAR (EAST), NEW DELHI, 10 - Tower 19, Type 3 Flats, Kidwai Nagar(East), New Delhi, 2 - TOWER 22, TYPE-III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 3 - TOWER 23, TYPE-III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 4 - TOWER 13, TYPE III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 5 - TOWER 14, TYPE III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 6 - TOWER 15, TYPE III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 7 - TOWER 16, TYPE III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 8 - TOWER 17, TYPE III FLATSKIDWAI NAGAR (EAST), NEW DELHI, 9 - Tower 18, Type 3 Flats, Kidwai Nagar(East), New Delhi",
+          "address": "ATAL ADARSH VIDYALAYA, KIDWAI NAGAR EAST, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.218472,
+            28.573931
+          ]
+        },
+        "properties": {
+          "psno": 163,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - Tower 15, Type 4 Flats, Kidwai Nagar(East), New Delhi , 10 - Tower 9, Type 4 Flats, Kidwai Nagar(East), New Delhi , 11 - Tower 10, Type 4 Flats, Kidwai Nagar(East), New Delhi , 12 - Tower 13, Type 4 Flats, Kidwai Nagar(East), New Delhi , 13 - Tower 14, Type 4 Flats, Kidwai Nagar(East), New Delhi , 2 - TOWER 16, TYPE-IV FLATSKIDWAI NAGAR (EAST), NEW DELHI, 3 - TOWER 17, TYPE IV FLATSKIDWAI NAGAR (EAST), NEW DELHI, 4 - TOWER 11,TYPE IV FLATSKIDWAI NAGAR (EAST), NEW DELHI, 5 - TOWER 1,TYPE IV FLATSKIDWAI NAGAR (EAST), NEW DELHI, 6 - Tower 4, Type 4 Flats, Kidwai Nagar(East), New Delhi , 7 - Tower 5, Type 4 Flats, Kidwai Nagar(East), New Delhi , 8 - TOWER 6,TYPE IV FLATSKIDWAI NAGAR (EAST), NEW DELHI, 9 - Tower 8, Type 4 Flats, Kidwai Nagar(East), New Delhi",
+          "address": "ATAL ADARSH VIDYALAYA, KIDWAI NAGAR EAST, NEW DELHI"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.217587,
+            28.574812
+          ]
+        },
+        "properties": {
+          "psno": 164,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - TOWER 13, TYPE-V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 10 - TOWER 9, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 11 - TOWER 10, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 12 - TOWER 11, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 2 - TOWER 14, TYPE-V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 3 - TOWER 15, TYPE-V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 4 - Tower 16, Type 5A Flats, Kidwai Nagar(East), New Delhi , 5 - TOWER 17, TYPE-V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 6 - Tower 12, Type 5A Flats, Kidwai Nagar(East), New Delhi , 7 - TOWER 6, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 8 - TOWER 7, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 9 - TOWER 8, TYPE V A FLATSKIDWAI NAGAR (EAST), NEW DELHI",
+          "address": "SARVODAYA VIDYALAYA (RANI DURGAWATI), KIDWAI NAGAR EAST"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.217667,
+            28.574832
+          ]
+        },
+        "properties": {
+          "psno": 165,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - Tower 3, Type 6A Flats, Kidwai Nagar(East), New Delhi , 10 - TOWER 10, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 2 - Tower 2, Type 6A Flats, Kidwai Nagar(East), New Delhi , 3 - Tower 1, Type 6A Flats, Kidwai Nagar(East), New Delhi , 4 - TOWER 4, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 5 - TOWER 5, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 6 - TOWER 6, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 7 - TOWER 7, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 8 - TOWER 8, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI, 9 - TOWER 9, TYPE-VI A FLATSKIDWAI NAGAR (EAST), NEW DELHI",
+          "address": "SARVODAYA VIDYALAYA (RANI DURGAWATI), KIDWAI NAGAR EAST"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.217544,
+            28.574785
+          ]
+        },
+        "properties": {
+          "psno": 166,
+          "locality": "Kidwai Nagar (West)",
+          "area": "1 - TOWER 8, TYPE-VII FLATSKIDWAI NAGAR (EAST), NEW DELHI, 10 - Tower 2, Type V A Flats, Kidwai Nagar(East), New Delhi, 11 - Tower 5, Type V A Flats, Kidwai Nagar(East), New Delhi, 12 - Tower 6, Type V A Flats, Kidwai Nagar(East), New Delhi, 13 - Tower 18, Type V A Flats, Kidwai Nagar(East), New Delhi, 14 - Tower 19, Type VA Flats, Kidwai Nagar(East), New Delhi, 15 - Tower 3, Type IV Flats, Kidwai Nagar(East), New Delhi, 16 - Tower 7, Type IV Flats, Kidwai Nagar(East), New Delhi, 17 - Tower 20, Type III Flats, Kidwai Nagar(East), New Delhi, 18 - Tower 2, Type II Flats, Kidwai Nagar(East), New Delhi, 19 - Tower 3, Type II Flats, Kidwai Nagar(East), New Delhi, 2 - TOWER 4, TYPE VII FLATSKIDWAI NAGAR (EAST), NEW DELHI, 20 - Tower 4, Type II Flats, Kidwai Nagar(East), New Delhi, 21 - Tower 7, Type II Flats, Kidwai Nagar(East), New Delhi, 22 - Tower 8, Type II Flats, Kidwai Nagar(East), New Delhi, 3 - TOWER 7, TYPE VII FLATSKIDWAI NAGAR (EAST), NEW DELHI, 4 - Tower 6, Type 7 Flats, Kidwai Nagar(East), New Delhi , 5 - Tower 5, Type 7 Flats, Kidwai Nagar(East), New Delhi , 6 - Tower 2, Type 7 Flats, Kidwai Nagar(East), New Delhi , 7 - Tower 1, Type 7 Flats, Kidwai Nagar(East), New Delhi , 8 - Tower 3, Type 7 Flats, Kidwai Nagar(East), New Delhi , 9 - TOWER 9, TYPE VII FLATSKIDWAI NAGAR (EAST), NEW DELHI",
+          "address": "SARVODAYA VIDYALAYA (RANI DURGAWATI), KIDWAI NAGAR EAST"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.16633796691895,
+                28.594356911225226
+              ],
+              [
+                77.18341827392578,
+                28.603663697437636
+              ],
+              [
+                77.18689441680907,
+                28.605585238891614
+              ],
+              [
+                77.19079971313477,
+                28.608561674899722
+              ],
+              [
+                77.19622850418091,
+                28.603663697437636
+              ],
+              [
+                77.19964027404785,
+                28.597936541920703
+              ],
+              [
+                77.19964027404785,
+                28.59620326228172
+              ],
+              [
+                77.19912528991699,
+                28.587272651151377
+              ],
+              [
+                77.200927734375,
+                28.581695344642934
+              ],
+              [
+                77.19627141952515,
+                28.581299646119326
+              ],
+              [
+                77.19079971313477,
+                28.58165765913341
+              ],
+              [
+                77.18966245651245,
+                28.579358817516095
+              ],
+              [
+                77.1900486946106,
+                28.5754958967318
+              ],
+              [
+                77.18940496444702,
+                28.5687684228941
+              ],
+              [
+                77.1912932395935,
+                28.5681276886651
+              ],
+              [
+                77.19221591949463,
+                28.567543486408955
+              ],
+              [
+                77.19298839569092,
+                28.567091198563812
+              ],
+              [
+                77.1945333480835,
+                28.56729849740082
+              ],
+              [
+                77.19672203063965,
+                28.56810884348168
+              ],
+              [
+                77.19773054122923,
+                28.569390308267614
+              ],
+              [
+                77.1992540359497,
+                28.569607025034173
+              ],
+              [
+                77.19935059547424,
+                28.567336188054576
+              ],
+              [
+                77.20024108886719,
+                28.565376256158583
+              ],
+              [
+                77.20077216625212,
+                28.562539943928623
+              ],
+              [
+                77.20188796520233,
+                28.562789655548922
+              ],
+              [
+                77.20313787460327,
+                28.56253523238293
+              ],
+              [
+                77.20446825027466,
+                28.56330321154743
+              ],
+              [
+                77.2048544883728,
+                28.56398166700618
+              ],
+              [
+                77.20893144607544,
+                28.559844905345702
+              ],
+              [
+                77.20906019210815,
+                28.56000510187571
+              ],
+              [
+                77.20913529396057,
+                28.56052338309655
+              ],
+              [
+                77.21039056777954,
+                28.56181907498399
+              ],
+              [
+                77.21094310283661,
+                28.56311475092161
+              ],
+              [
+                77.21263825893402,
+                28.564857998833986
+              ],
+              [
+                77.21440315246582,
+                28.565621249641804
+              ],
+              [
+                77.21642017364502,
+                28.567750784354974
+              ],
+              [
+                77.21696197986603,
+                28.568655352431314
+              ],
+              [
+                77.21813678741454,
+                28.572612746333593
+              ],
+              [
+                77.21903800964355,
+                28.574176818119987
+              ],
+              [
+                77.21848011016846,
+                28.57587277329718
+              ],
+              [
+                77.21826553344727,
+                28.576136586089582
+              ],
+              [
+                77.21461772918701,
+                28.573460739947137
+              ],
+              [
+                77.20942497253418,
+                28.573366518772037
+              ],
+              [
+                77.20977902412415,
+                28.57563722560204
+              ],
+              [
+                77.21105575561523,
+                28.578105739246315
+              ],
+              [
+                77.21167802810669,
+                28.580018326398623
+              ],
+              [
+                77.21699953079224,
+                28.57956609218193
+              ],
+              [
+                77.22187042236328,
+                28.579113856020754
+              ],
+              [
+                77.22212791442871,
+                28.57971683713688
+              ],
+              [
+                77.22281455993652,
+                28.579999483345077
+              ],
+              [
+                77.22502470016478,
+                28.579867581875774
+              ],
+              [
+                77.2236943244934,
+                28.590513382553855
+              ],
+              [
+                77.2291338443756,
+                28.591163400952524
+              ],
+              [
+                77.23300695419312,
+                28.592030085898706
+              ],
+              [
+                77.23767399787901,
+                28.59256705016091
+              ],
+              [
+                77.24348902702332,
+                28.593414882885153
+              ],
+              [
+                77.2415041923523,
+                28.596165581972098
+              ],
+              [
+                77.24082827568054,
+                28.597277145426816
+              ],
+              [
+                77.24001288414001,
+                28.609192743850866
+              ],
+              [
+                77.24031329154967,
+                28.616294362877376
+              ],
+              [
+                77.24069952964783,
+                28.61726444066539
+              ],
+              [
+                77.24052786827087,
+                28.618545306347006
+              ],
+              [
+                77.24069952964783,
+                28.620805619436435
+              ],
+              [
+                77.240731716156,
+                28.62194517550276
+              ],
+              [
+                77.24052786827087,
+                28.622416062827874
+              ],
+              [
+                77.24065661430357,
+                28.622962289479158
+              ],
+              [
+                77.24095702171324,
+                28.624167745135914
+              ],
+              [
+                77.24081754684447,
+                28.625570953427335
+              ],
+              [
+                77.24109649658203,
+                28.625975902668277
+              ],
+              [
+                77.23586082458495,
+                28.629036515012874
+              ],
+              [
+                77.23085045814514,
+                28.631371937631616
+              ],
+              [
+                77.2273313999176,
+                28.633085803426187
+              ],
+              [
+                77.2240376472473,
+                28.634620725406535
+              ],
+              [
+                77.22236394882202,
+                28.636391036988176
+              ],
+              [
+                77.22155928611754,
+                28.63840614254613
+              ],
+              [
+                77.22147345542908,
+                28.641381648209705
+              ],
+              [
+                77.22102284431458,
+                28.644827856252626
+              ],
+              [
+                77.2180724143982,
+                28.644197001497385
+              ],
+              [
+                77.2184693813324,
+                28.641899528231306
+              ],
+              [
+                77.2182548046112,
+                28.641824200387067
+              ],
+              [
+                77.21515417098998,
+                28.63801065759181
+              ],
+              [
+                77.2140061855316,
+                28.636268622786854
+              ],
+              [
+                77.20756888389587,
+                28.63984682513021
+              ],
+              [
+                77.20407128334045,
+                28.64189011225375
+              ],
+              [
+                77.20310568809509,
+                28.6428317058276
+              ],
+              [
+                77.19736576080322,
+                28.645270393891238
+              ],
+              [
+                77.19479084014893,
+                28.640355296613063
+              ],
+              [
+                77.1895122528076,
+                28.63395214251842
+              ],
+              [
+                77.18517780303955,
+                28.627171906422447
+              ],
+              [
+                77.18084335327148,
+                28.623593271900845
+              ],
+              [
+                77.1769380569458,
+                28.620052187146232
+              ],
+              [
+                77.1758222579956,
+                28.616209598373093
+              ],
+              [
+                77.17462062835693,
+                28.61428825125859
+              ],
+              [
+                77.1747064590454,
+                28.611500351767035
+              ],
+              [
+                77.17127323150635,
+                28.607582097675095
+              ],
+              [
+                77.16981410980225,
+                28.60411582800015
+              ],
+              [
+                77.16681003570555,
+                28.598878529735295
+              ],
+              [
+                77.16633796691895,
+                28.594356911225226
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  }

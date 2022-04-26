@@ -27,6 +27,7 @@ useTheme(am4themes_animated);
 })
 export class PerceivedPoliticalInclinationComponent implements OnInit, AfterViewInit {
   dataItem: any;
+  ppifilter: any;
   @Input() perceivedPoliticalInclinationsVar: any;
   graphDataLoader: boolean;
   @Output() perceivedFilterObj: EventEmitter<any> = new EventEmitter();
@@ -189,5 +190,6 @@ this.user.themeValueBehavior.subscribe((value) => {
       key: 'ppi',
       value: value
   })
+  this.ppifilter = value;
   }
 }

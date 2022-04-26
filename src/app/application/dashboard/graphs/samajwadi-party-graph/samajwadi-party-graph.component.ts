@@ -25,6 +25,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class SamajwadiPartyGraphComponent implements OnInit {
   visitorAreaGraph: any;
+  aapfilter: any;
   @Input() set samajwadiPartyData(data) {
     if (data) {
       this.visitorAreaGraph.data = data;
@@ -116,6 +117,7 @@ this.user.themeValueBehavior.subscribe((value) => {
         key: 'isSamajwadiPartyMember',
         value: value
     })
+    this.aapfilter = value;
   } 
 
 }

@@ -15,9 +15,13 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, create, Scrollbar,color,percent, type, array, Label, Circle, ZoomOutButton, DataSource } from '@amcharts/amcharts4/core';
+import { useTheme, options, create, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
+// import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+
+import am4geodata_worldLow from "@amcharts/amcharts4-geodata/indiaHigh";
+import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { environment } from '../../../environments/environment';
@@ -50,9 +54,17 @@ import {
   toBase64String
 } from "@angular/compiler/src/output/source_map";
 
+import * as data from "./graphs/states-map/geojson.json";
+
 /* Chart code */
 // Themes begin
 useTheme(am4themes_animated);
+// options.queue = false;
+// // options.animationsEnabled = true;
+// // options.deferredDelay = 0;
+// options.onlyShowOnViewport = true;
+
+
 declare var require: any
 const FileSaver = require('file-saver');
 @Component({
@@ -64,16 +76,1271 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   purposes: any;
   exportVisitorListFileName = "VisitorVisit.xlsx";
   pageEvent: PageEvent;
-  pageLength:any;
-  visitorOccupationOption:any;
+  pageLength: any;
+  visitorOccupationOption: any;
 
   range = new FormGroup({
     fromDate: new FormControl(),
     toDate: new FormControl(),
   });
 
+  geodatajson = data;
+
   visitorLists: any;
   exportList: any = [];
+  psData = {};
+  allData = {
+    "2003": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+
+      {
+        "network": "Water Problem",
+        "MAU": 4470000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 0
+      }
+    ],
+    "2004": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 3675135
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 5970054
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 980036
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 4900180
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 0
+      }
+    ],
+    "2005": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 7399354
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 7459742
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 9731610
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 19490059
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 9865805
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 1946322
+      }
+    ],
+    "2006": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 14949270
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 8989854
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 19932360
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 54763260
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 14966180
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 248309
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 19878248
+      }
+    ],
+    "2007": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 29299875
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 24253200
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 29533250
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 69299875
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 26916562
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 488331
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 143932250
+      }
+    ],
+    "2008": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 100000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 30000000
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 51008911
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 55045618
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 72408233
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 44357628
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 1944940
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 294493950
+      }
+    ],
+    "2009": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 276000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 41834525
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 28804331
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 57893524
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 70133095
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 47366905
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 3893524
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 0
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 0
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 413611440
+      }
+    ],
+    "2010": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 517750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 54708063
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 166029650
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 59953290
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 68046710
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 49941613
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 43250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 19532900
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 480551990
+      }
+    ],
+    "2011": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 766000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 66954600
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 46610848
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 46003536
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 47609080
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 0
+      },
+      {
+        "network": "Hiring",
+        "MAU": 92750000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 47818400
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 48691040
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 642669824
+      }
+    ],
+    "2012": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 979750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 79664888
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 107319100
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 45067022
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 146890156
+      },
+      {
+        "network": "Hiring",
+        "MAU": 160250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 118123370
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 79195730
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Education",
+        "MAU": 844638200
+      }
+    ],
+    "2013": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1170500000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 80000000
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 205654700
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 117500000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 0
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 293482050
+      },
+      {
+        "network": "Hiring",
+        "MAU": 223675000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 196523760
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 118261880
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 300000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1065223075
+      }
+    ],
+    "2014": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1334000000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 254859015
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 250000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 135786956
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 388721163
+      },
+      {
+        "network": "Hiring",
+        "MAU": 223675000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 444232415
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 154890345
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 498750000
+      },
+      {
+        "network": "Education",
+        "MAU": 1249451725
+      }
+    ],
+    "2015": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1516750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 170000000
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 298950015
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 400000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 0
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 163346676
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 475923363
+      },
+      {
+        "network": "Hiring",
+        "MAU": 304500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 660843407
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 208716685
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 800000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1328133360
+      }
+    ],
+    "2016": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 1753500000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 398648000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 550000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 143250000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 238972480
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 238648000
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 0
+      },
+      {
+        "network": "Business",
+        "MAU": 565796720
+      },
+      {
+        "network": "Hiring",
+        "MAU": 314500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 847512320
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 281026560
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Education",
+        "MAU": 1399053600
+      }
+    ],
+    "2017": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 2035750000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 495657000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 750000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 195000000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 297394200
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 239142500
+      },
+      {
+        "network": "Business",
+        "MAU": 593783960
+      },
+      {
+        "network": "Hiring",
+        "MAU": 328250000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 921742750
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 357569030
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1333333333
+      },
+      {
+        "network": "Education",
+        "MAU": 1495657000
+      }
+    ],
+    "2018": [
+      {
+        "network": "Electricity Problem",
+        "MAU": 2255250000
+      },
+      {
+        "network": "Regarding Job",
+        "MAU": 0
+      },
+      {
+        "network": "Water Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Invitation",
+        "MAU": 0
+      },
+      {
+        "network": "Sewer Problem",
+        "MAU": 430000000
+      },
+      {
+        "network": "Political Purpose",
+        "MAU": 0
+      },
+      {
+        "network": "Road Problem",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Service Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Unknown Problem",
+        "MAU": 0
+      },
+      {
+        "network": "Healthcare",
+        "MAU": 246500000
+      },
+      {
+        "network": "Human Welfare",
+        "MAU": 355000000
+      },
+      {
+        "network": "Society Issues",
+        "MAU": 0
+      },
+      {
+        "network": "Advertisement",
+        "MAU": 500000000
+      },
+      {
+        "network": "Business",
+        "MAU": 624000000
+      },
+      {
+        "network": "Hiring",
+        "MAU": 329500000
+      },
+      {
+        "network": "Foreign Issues",
+        "MAU": 1000000000
+      },
+      {
+        "network": "Help Seeking",
+        "MAU": 431000000
+      },
+      {
+        "network": "Marital Issues",
+        "MAU": 1433333333
+      },
+      {
+        "network": "Education",
+        "MAU": 1900000000
+      }
+    ]
+  }
+
   displayedColumns: string[] = [
     "S.No.",
     "Unique Visitor ID",
@@ -93,12 +1360,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     "refrenceRemark",
     "accompliceName",
     "accompliceMobile",
-    "accompliceRemark",    
+    "accompliceRemark",
     "captureDetailsOfAnyAccompliceWithTheVisitor",
     // "Thank_You_Acknowledgment_message_sent",
     // "Information_sent_to_the_booth_village_coordinator_of_the_visitor",
     "Action",
   ];
+  liveyear = 2003;
   dataSource: any;
   rangeDate: any;
   filterInitial = "";
@@ -111,17 +1379,18 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   whomVisitorMeetsOption = [];
   meetingLocationsOption = [];
   statePolygonForGeo: any;
-  visitorAreaData:any;
+  visitorAreaData: any;
   purposeGraph: any;
+  livepurposeGraph?: any;
   genderGraph: any;
   casteGraph: any;
   visitorCategoryData: any;
-  visitorOccupatioData:any;
+  visitorOccupatioData: any;
   ageGraphData: any;
   perceivedPoliticalInclinationData: any;
   meetingLocationGraphData: any;
   timeFrameGraphData: any;
-  timeFrameXText?:any ;
+  timeFrameXText?: any;
   whomVisitorMeetGraphData: any;
   meetingStatusGraphData: any;
   graphDataLoader: boolean;
@@ -130,20 +1399,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   graphDataLoader3: boolean;
   viewGraphresetBtn: boolean;
   geodata: any;
-  geodata1:any;
+  geodata1: any;
   filteredVisitorCount: any;
   visitorListsTotalLength: any;
   pageIndexOfListingTable: any;
   filterKeyword: any;
   isLoaderHappen: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  samajwadiPartyGraphData:any;
-  exportAllDataVar:any;
-  baseApiUrl:any;
+  samajwadiPartyGraphData: any;
+  exportAllDataVar: any;
+  baseApiUrl: any;
   appliedFilters = {}
   authData
-  adminRole=environment.ADMIN_ROLE
-  editorRole=environment.EDITOR_ROLE
+  adminRole = environment.ADMIN_ROLE
+  editorRole = environment.EDITOR_ROLE
   loader = false;
 
   constructor(
@@ -159,12 +1428,17 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     //   (res) => (this.graphDataLoader = res)
     // );
     this.userService.isLoadingVisitorList.subscribe((res) => this.isLoaderHappen = res);
-    this.baseApiUrl = environment.api_base_url +'/visitor/download-csv?limit=100000';
- 
+    this.baseApiUrl = environment.api_base_url + '/visitor/download-csv?limit=100000';
+
   }
 
   ngOnInit(): void {
-    
+
+    // this.livepurposeGraph = [];
+    // this.genderGraph = [];
+    // this.casteGraph = [];
+    // this.paginator = null;
+
     this.getFilterMeetStatus()
     // this.getFilterArea()
     // this.getFilterDistrictConstituency()
@@ -182,20 +1456,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.getVisitorList(1);
     // this.rangeSelection();
     // this.getVisitorPurposeOptionData();
-   // this.getCasteOptionData();
-   // this.getVisitorPoliticalInclinationOptionData();
-   // this.getVisitorCategoryOptionData();
+    // this.getCasteOptionData();
+    // this.getVisitorPoliticalInclinationOptionData();
+    // this.getVisitorCategoryOptionData();
     //this.getWhomToMeetOptionData();
-   // this.getVisitorLocationOfMeetingOptionData();
+    // this.getVisitorLocationOfMeetingOptionData();
     this.getVisitAnalyticData();
-   this.getVisitorOccupationData();
+    this.getVisitorOccupationData();
 
     // Graph Data Calling
     // this.getVisitAnalyticGraphData();
 
   }
   openInNewTab() {
-   // this._snackBar.open("Please wait while we are downloading your data..");
+    // this._snackBar.open("Please wait while we are downloading your data..");
     this.isLoaderHappen = false;
     this._snackBar.open("Please wait while we are downloading your data..", "", {
       duration: 5000,
@@ -206,9 +1480,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     //   this._snackBar.dismiss();});
     // FileSaver.saveAs(this.baseApiUrl, 'VisitorList');
     window.open(this.baseApiUrl, '_blank');
-   //window.open(this.baseApiUrl,'MyWindow','width=600,height=300'); return false;
-   }
- 
+    //window.open(this.baseApiUrl,'MyWindow','width=600,height=300'); return false;
+  }
+
   @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.ngOnChanges();
@@ -225,736 +1499,1283 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     setTimeout(() => {
-    // Chart code goes in here
-    this.browserOnly(() => {
-     
-      useTheme(am4themes_animated);
-    //  this.geoMapDistrict();
-      // Create geomap :AC instance
-      let chart = create("geoMap", am4maps.MapChart);
-      chart.logo.disabled = true;
-      chart.maxZoomLevel = 64;
+      // Chart code goes in here
+      this.browserOnly(() => {
 
-      chart.geodata = am4geodata_indiaHigh;
-      // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
+        useTheme(am4themes_animated);
+        //  this.geoMapDistrict();
+        // Create geomap :AC instance
+        let chart = create("geoMap", am4maps.MapChart);
+        chart.logo.disabled = true;
+        chart.maxZoomLevel = 64;
 
-      // Set projection
-      chart.projection = new am4maps.projections.Projection();
+        chart.geodata = am4geodata_indiaHigh;
+        // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
 
-      // Add button
-      let zoomOut = chart.tooltipContainer.createChild(ZoomOutButton);
-      zoomOut.align = "right";
-      zoomOut.valign = "top";
-      zoomOut.margin(20, 20, 20, 20);
-      zoomOut.events.on("hit", function () {
-        if (currentSeries) {
-          currentSeries.hide();
-        }
-        chart.goHome();
-        zoomOut.hide();
-        currentSeries = regionalSeries.IN.series;
-        currentSeries.show();
-      });
-      zoomOut.hide();
+        // Set projection
+        chart.projection = new am4maps.projections.Projection();
 
-      // Create map polygon series
-      let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-      polygonSeries.useGeodata = true;
-      polygonSeries.calculateVisualCenter = true;
-
-      // Configure series
-      let polygonTemplate = polygonSeries.mapPolygons.template;
-      polygonTemplate.tooltipText = "{name}";
-      polygonTemplate.fill = chart.colors.getIndex(9);
-      //shantam 
-      polygonSeries.include = ["IN-DL"];
-      chart.events.on("ready", loadStores);
-      //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
-      this.geodata = chart.series.push(new am4maps.MapImageSeries());
-      // let imageSeriesTemplate = imageSeries.mapImages.template;
-      let imageSeriesTemplate = this.geodata.mapImages.template;
-      let circle = imageSeriesTemplate.createChild(Circle);
-      circle.radius = 5;
-     // circle.fill = color("#B27799");
-      circle.fill = color("#ed3833");
-      circle.stroke = color("#FFFFFF");
-      circle.strokeWidth = 2;
-      circle.nonScaling = true;
-      circle.tooltipText = "{constituency}";
-      imageSeriesTemplate.propertyFields.latitude = "latitude";
-      imageSeriesTemplate.propertyFields.longitude = "longitude";
-
-      imageSeriesTemplate.tooltipText = "{constituency}: {count}";
-
-      function loadStores() {
-        let loader = new DataSource();
-        loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
-        loader.events.on("parseended", (ev: any) => {
-          setupStores(ev.target.data);
-        });
-        loader.load();
-      }
-
-      // Creates a series
-      function createSeries(heatfield) {
-        let series = chart.series.push(new am4maps.MapImageSeries());
-        series.dataFields.value = heatfield;
-
-        let template = series.mapImages.template;
-        template.verticalCenter = "middle";
-        template.horizontalCenter = "middle";
-        template.propertyFields.latitude = "lat";
-        template.propertyFields.longitude = "long";
-        template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
-        // template.dataItem
-
-        let circle = template.createChild(Circle);
-        circle.radius = 10;
-        circle.fillOpacity = 0.7;
-        circle.verticalCenter = "middle";
-        circle.horizontalCenter = "middle";
-        circle.nonScaling = true;
-
-        let label = template.createChild(Label);
-        label.text = "{stores}";
-        label.fill = color("#fff");
-        label.verticalCenter = "middle";
-        label.horizontalCenter = "middle";
-        label.nonScaling = true;
-
-        let heat = series.heatRules.push({
-          target: circle,
-          property: "radius",
-          min: 10,
-          max: 30
-        });
-
-        // Set up drill-down
-        series.mapImages.template.events.on("hit", (ev: any) => {
-
-          // Determine what we've clicked on
-          let data = ev.target.dataItem.dataContext;
-
-          // No id? Individual store - nothing to drill down to further
-          if (!data.target) {
-            return;
-          }
-
-          // Create actual series if it hasn't been yet created
-          if (!regionalSeries[data.target].series) {
-            regionalSeries[data.target].series = createSeries("count");
-            regionalSeries[data.target].series.data = data.markerData;
-          }
-
-          // Hide current series
+        // Add button
+        let zoomOut = chart.tooltipContainer.createChild(ZoomOutButton);
+        zoomOut.align = "right";
+        zoomOut.valign = "top";
+        zoomOut.margin(20, 20, 20, 20);
+        zoomOut.events.on("hit", function () {
           if (currentSeries) {
             currentSeries.hide();
           }
-
-          // Control zoom
-          if (data.type == "state") {
-            let statePolygon = polygonSeries.getPolygonById("IN-DL");
-            chart.zoomToMapObject(statePolygon);
-          } else if (data.type == "city") {
-            chart.zoomToGeoPoint({
-              latitude: data.lat,
-              longitude: data.long
-            }, 64, true);
-          }
-          zoomOut.show();
-
-          // Show new targert series
-          currentSeries = regionalSeries[data.target].series;
+          chart.goHome();
+          zoomOut.hide();
+          currentSeries = regionalSeries.IN.series;
           currentSeries.show();
         });
-    // console.log("series",series)
-        return series;
-      }
+        zoomOut.hide();
 
-      let regionalSeries: any = {};
-      let currentSeries;
+        // Create map polygon series
+        let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+        polygonSeries.useGeodata = true;
+        polygonSeries.calculateVisualCenter = true;
 
-      function setupStores(data) {
-        // console.log("data 1 ",data)
-        // console.log("regionalSeries ",regionalSeries)
+        // Configure series
+        let polygonTemplate = polygonSeries.mapPolygons.template;
+        polygonTemplate.tooltipText = "{name}";
+        polygonTemplate.fill = chart.colors.getIndex(9);
+        //shantam 
+        polygonSeries.include = ["IN-DL"];
+        chart.events.on("ready", loadStores);
+        //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
+        this.geodata = chart.series.push(new am4maps.MapImageSeries());
+        // let imageSeriesTemplate = imageSeries.mapImages.template;
+        let imageSeriesTemplate = this.geodata.mapImages.template;
+        let circle = imageSeriesTemplate.createChild(Circle);
+        circle.radius = 5;
+        // circle.fill = color("#B27799");
+        circle.fill = color("#ed3833");
+        circle.stroke = color("#FFFFFF");
+        circle.strokeWidth = 2;
+        circle.nonScaling = true;
+        circle.tooltipText = "{constituency}";
+        imageSeriesTemplate.propertyFields.latitude = "latitude";
+        imageSeriesTemplate.propertyFields.longitude = "longitude";
 
-        // Init country-level series
-        regionalSeries.IN = {
-          markerData: [],
-          series: createSeries("stores")
-        };
+        imageSeriesTemplate.tooltipText = "{constituency}: {count}";
 
-        // Set current series
-        currentSeries = regionalSeries.IN.series;
-        // console.log("currentSeries ",currentSeries)
+        function loadStores() {
+          let loader = new DataSource();
+          loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
+          loader.events.on("parseended", (ev: any) => {
+            setupStores(ev.target.data);
+          });
+          loader.load();
+        }
 
-        // Process data
-        array.each(data.query_results, (data: any) => {
+        // Creates a series
+        function createSeries(heatfield) {
+          let series = chart.series.push(new am4maps.MapImageSeries());
+          series.dataFields.value = heatfield;
 
-        //  console.log("data 2 ",data)
-          // Get store data
-          let store = {
-            state: data.MAIL_ST_PROV_C,
-            long: type.toNumber(data.LNGTD_I),
-            lat: type.toNumber(data.LATTD_I),
-            location: data.co_loc_n,
-            city: data.mail_city_n,
-            count: type.toNumber(data.count)
+          let template = series.mapImages.template;
+          template.verticalCenter = "middle";
+          template.horizontalCenter = "middle";
+          template.propertyFields.latitude = "lat";
+          template.propertyFields.longitude = "long";
+          template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
+          // template.dataItem
+
+          let circle = template.createChild(Circle);
+          circle.radius = 10;
+          circle.fillOpacity = 0.7;
+          circle.verticalCenter = "middle";
+          circle.horizontalCenter = "middle";
+          circle.nonScaling = true;
+
+          let label = template.createChild(Label);
+          label.text = "{stores}";
+          label.fill = color("#fff");
+          label.verticalCenter = "middle";
+          label.horizontalCenter = "middle";
+          label.nonScaling = true;
+
+          let heat = series.heatRules.push({
+            target: circle,
+            property: "radius",
+            min: 10,
+            max: 30
+          });
+
+          // Set up drill-down
+          series.mapImages.template.events.on("hit", (ev: any) => {
+
+            // Determine what we've clicked on
+            let data = ev.target.dataItem.dataContext;
+
+            // No id? Individual store - nothing to drill down to further
+            if (!data.target) {
+              return;
+            }
+
+            // Create actual series if it hasn't been yet created
+            if (!regionalSeries[data.target].series) {
+              regionalSeries[data.target].series = createSeries("count");
+              regionalSeries[data.target].series.data = data.markerData;
+            }
+
+            // Hide current series
+            if (currentSeries) {
+              currentSeries.hide();
+            }
+
+            // Control zoom
+            if (data.type == "state") {
+              let statePolygon = polygonSeries.getPolygonById("IN-DL");
+              chart.zoomToMapObject(statePolygon);
+            } else if (data.type == "city") {
+              chart.zoomToGeoPoint({
+                latitude: data.lat,
+                longitude: data.long
+              }, 64, true);
+            }
+            zoomOut.show();
+
+            // Show new targert series
+            currentSeries = regionalSeries[data.target].series;
+            currentSeries.show();
+          });
+          // console.log("series",series)
+          return series;
+        }
+
+        let regionalSeries: any = {};
+        let currentSeries;
+
+        function setupStores(data) {
+          // console.log("data 1 ",data)
+          // console.log("regionalSeries ",regionalSeries)
+
+          // Init country-level series
+          regionalSeries.IN = {
+            markerData: [],
+            series: createSeries("stores")
           };
 
-          // Process state-level data
-          if (regionalSeries[store.state] == undefined) {
-            let statePolygonForGeo: any = polygonSeries.getPolygonById("IN-" + store.state);
-            if (statePolygonForGeo) {
+          // Set current series
+          currentSeries = regionalSeries.IN.series;
+          // console.log("currentSeries ",currentSeries)
+
+          // Process data
+          array.each(data.query_results, (data: any) => {
+
+            //  console.log("data 2 ",data)
+            // Get store data
+            let store = {
+              state: data.MAIL_ST_PROV_C,
+              long: type.toNumber(data.LNGTD_I),
+              lat: type.toNumber(data.LATTD_I),
+              location: data.co_loc_n,
+              city: data.mail_city_n,
+              count: type.toNumber(data.count)
+            };
+
+            // Process state-level data
+            if (regionalSeries[store.state] == undefined) {
+              let statePolygonForGeo: any = polygonSeries.getPolygonById("IN-" + store.state);
+              if (statePolygonForGeo) {
                 // console.log("statePolygonForGeo", statePolygonForGeo)
-              // Add state data
-              regionalSeries[store.state] = {
-                target: store.state,
-                type: "state",
-                name: statePolygonForGeo.dataItem.dataContext.name,
+                // Add state data
+                regionalSeries[store.state] = {
+                  target: store.state,
+                  type: "state",
+                  name: statePolygonForGeo.dataItem.dataContext.name,
+                  count: store.count,
+                  stores: 1,
+                  lat: statePolygonForGeo.visualLatitude,
+                  long: statePolygonForGeo.visualLongitude,
+                  state: store.state,
+                  markerData: []
+                };
+                regionalSeries.IN.markerData.push(regionalSeries[store.state]);
+
+              } else {
+                // State not found
+                return;
+              }
+            } else {
+
+              regionalSeries[store.state].stores++;
+              regionalSeries[store.state].count += store.count;
+              // console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
+
+            }
+
+            // Process city-level data
+            if (regionalSeries[store.city] == undefined) {
+              regionalSeries[store.city] = {
+                target: store.city,
+                type: "city",
+                name: store.city,
                 count: store.count,
                 stores: 1,
-                lat: statePolygonForGeo.visualLatitude,
-                long: statePolygonForGeo.visualLongitude,
+                lat: store.lat,
+                long: store.long,
                 state: store.state,
                 markerData: []
               };
-              regionalSeries.IN.markerData.push(regionalSeries[store.state]);
-
+              regionalSeries[store.state].markerData.push(regionalSeries[store.city]);
             } else {
-              // State not found
-              return;
+              regionalSeries[store.city].stores++;
+              regionalSeries[store.city].count += store.count;
+              // console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
+
             }
-          } else {
 
-            regionalSeries[store.state].stores++;
-            regionalSeries[store.state].count += store.count;
-            // console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
-
-          }
-
-          // Process city-level data
-          if (regionalSeries[store.city] == undefined) {
-            regionalSeries[store.city] = {
-              target: store.city,
-              type: "city",
-              name: store.city,
+            // Process individual store
+            regionalSeries[store.city].markerData.push({
+              name: store.location,
               count: store.count,
               stores: 1,
               lat: store.lat,
               long: store.long,
-              state: store.state,
-              markerData: []
-            };
-            regionalSeries[store.state].markerData.push(regionalSeries[store.city]);
-          } else {
-            regionalSeries[store.city].stores++;
-            regionalSeries[store.city].count += store.count;
-            // console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
+              state: store.state
+            });
+
+          });
+
+          regionalSeries.IN.series.data = regionalSeries.IN.markerData;
+          // console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
+
+        }
+
+        // Chart for geo district
+        //Graph Geo Map District
+        // Create map instance
+        let chartGeo = create("geoMap1", am4maps.MapChart);
+        chartGeo.logo.disabled = true;
+        chartGeo.maxZoomLevel = 64;
+
+        chartGeo.geodata = this.geodatajson;
+
+
+        this.geodatajson.features.map(el => {
+          if (el.geometry.type == "Polygon") {
+            return el.geometry.coordinates.forEach(d => {
+              d.reverse();
+            });
+          }
+        });
+
+        // Set projection
+        chartGeo.projection = new am4maps.projections.Miller();
+
+        // Create map polygon series
+        let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
+        polygonSeries1.useGeodata = true;
+
+        // Configure series
+        var polygonTemplate1 = polygonSeries1.mapPolygons.template;
+        polygonTemplate1.tooltipText = "{geocoding.name}";
+        polygonTemplate1.fill = color("#a367dc");
+
+        // Create hover state and set alternative fill color
+        var hs = polygonTemplate1.states.create("hover");
+        hs.properties.fill = color("#8067dc");
+
+        //polling station points
+        let psPoints = chartGeo.series.push(new am4maps.MapImageSeries());
+        let imageSeriesTemplate1 = psPoints.mapImages.template;
+        let circle1 = imageSeriesTemplate1.createChild(Circle);
+        circle1.radius = 5;
+        // circle1.fill = color("#B27799");
+        circle1.fill = color("#1f3ad1");
+        circle1.stroke = color("#FFFFFF");
+        circle1.strokeWidth = 1;
+        circle1.nonScaling = true;
+        circle1.tooltipText = "{properties.locality} : {properties.psno}";
+        circle1.cursorOverStyle = MouseCursorStyle.pointer;
+
+        imageSeriesTemplate1.events.on("hit", (ev) => {
+
+          this.psData = ev.target.dataItem.dataContext['properties'];
+
+          if (this.psData) {
+
+            let pshtml = '<div class="psno">' + this.psData['psno'] + '</div>'
+              + '<div class="psloc">' + this.psData['locality'] + '</div>'
+              + '<div class="psaddr">' + this.psData['address'] + '</div>';
+
+            $("#psData").html(pshtml);
 
           }
 
-          // Process individual store
-          regionalSeries[store.city].markerData.push({
-            name: store.location,
-            count: store.count,
-            stores: 1,
-            lat: store.lat,
-            long: store.long,
-            state: store.state
-          });
-
         });
 
-        regionalSeries.IN.series.data = regionalSeries.IN.markerData;
-        // console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
 
-      }
 
-      // Chart for geo district
-       //Graph Geo Map District
-            // Create map instance
-            let chartGeo = create("geoMap1", am4maps.MapChart);
-            chartGeo.logo.disabled = true;
-            chartGeo.maxZoomLevel = 64;
-      
-            chartGeo.geodata = am4geodata_indiaHigh;
-            // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
-      
-            // Set projection
-            chartGeo.projection = new am4maps.projections.Projection();
-      
-            // Add button
-            let zoomOut1 = chartGeo.tooltipContainer.createChild(ZoomOutButton);
-            zoomOut1.align = "right";
-            zoomOut1.valign = "top";
-            zoomOut1.margin(20, 20, 20, 20);
-            zoomOut1.events.on("hit", function () {
-              if (currentSeries1) {
-                currentSeries1.hide();
-              }
-              chartGeo.goHome();
-              zoomOut1.hide();
-              currentSeries1 = regionalSeries1.IN.series;
-              currentSeries1.show();
-            });
-            zoomOut1.hide();
-      
-            // Create map polygon series
-            let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
-            polygonSeries1.useGeodata = true;
-            polygonSeries1.calculateVisualCenter = true;
-      
-            // Configure series
-            let polygonTemplate1 = polygonSeries1.mapPolygons.template;
-            polygonTemplate1.tooltipText = "{district}";
-            polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-            //shantam 
-            polygonSeries1.include = ["IN-DL"];
-            chartGeo.events.on("ready", loadStores1);
-            //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
-            this.geodata1 = chartGeo.series.push(new am4maps.MapImageSeries());
-            // let imageSeriesTemplate = imageSeries.mapImages.template;
-            let imageSeriesTemplate1 = this.geodata1.mapImages.template;
-            let circle1 = imageSeriesTemplate1.createChild(Circle);
-            circle1.radius = 5;
-            // circle1.fill = color("#B27799");
-             circle1.fill = color("#ed3833");
-             circle1.stroke = color("#FFFFFF");
-             circle1.strokeWidth = 2;
-            circle1.nonScaling = true;
-            circle1.tooltipText = "{district}";
-            imageSeriesTemplate1.propertyFields.latitude = "Latitude";
-            imageSeriesTemplate1.propertyFields.longitude = "Longitude";
-      
-            imageSeriesTemplate1.tooltipText = "{district}: {count}";
-            // circle1.tooltipText = "{constituency}";
-            // imageSeriesTemplate1.propertyFields.latitude = "latitude";
-            // imageSeriesTemplate1.propertyFields.longitude = "longitude";
-      
-            // imageSeriesTemplate1.tooltipText = "{constituency}: {count}";
 
-      
-            function loadStores1() {
-              let loader = new DataSource();
-              loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
-              loader.events.on("parseended", (ev: any) => {
-                setupStores1(ev.target.data);
-              });
-              loader.load();
+        psPoints.data = this.geodatajson.features.filter(data => {
+          return data.geometry.type == "Point";
+        }).map(points => {
+          return { ...points, "latitude": points.geometry.coordinates[1], "longitude": points.geometry.coordinates[0] }
+        });
+
+        // console.log("charditi",psPoints.data);
+
+        // imageSeriesTemplate1.propertyFields.latitude = "Latitude";
+        // imageSeriesTemplate1.propertyFields.longitude = "Longitude";
+
+        // imageSeriesTemplate1.tooltipText = "{district}: {count}";
+        // circle1.tooltipText = "{constituency}";
+        // imageSeriesTemplate1.dataItem.dataContext =  40;
+        imageSeriesTemplate1.propertyFields.latitude = "latitude";
+        imageSeriesTemplate1.propertyFields.longitude = "longitude";
+
+
+        // imageSeriesTemplate1.tooltipText = "{constituency}: {count}";
+
+
+        // Add zoom control
+        chartGeo.zoomControl = new am4maps.ZoomControl();
+
+
+        // chartGeo.geodataSource.url = "./graphs/states-map/geojson.json";
+        // chartGeo.geodata = am4geodata_worldLow;
+
+        // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
+
+        // Set projection
+        // chartGeo.projection = new am4maps.projections.Projection();
+
+        // // Add button
+        // let zoomOut1 = chartGeo.tooltipContainer.createChild(ZoomOutButton);
+        // zoomOut1.align = "right";
+        // zoomOut1.valign = "top";
+        // zoomOut1.margin(20, 20, 20, 20);
+        // zoomOut1.events.on("hit", function () {
+        //   if (currentSeries1) {
+        //     currentSeries1.hide();
+        //   }
+        //   chartGeo.goHome();
+        //   zoomOut1.hide();
+        //   currentSeries1 = regionalSeries1.IN.series;
+        //   currentSeries1.show();
+        // });
+        // zoomOut1.hide();
+
+        //   // Create map polygon series
+        //   let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
+        //   polygonSeries1.useGeodata = true;
+        //   polygonSeries1.calculateVisualCenter = true;
+
+        //   // Configure series
+        //   let polygonTemplate1 = polygonSeries1.mapPolygons.template;
+        //   polygonTemplate1.tooltipText = "{district}";
+        //   polygonTemplate1.fill = chartGeo.colors.getIndex(0);
+        //   //shantam 
+
+        // let dd =  this.geodatajson;           
+
+        // for(var i = 0; i < dd.features.length; i++) {
+        //   var feature = dd.features[i];
+        //   for(var x = 0; x < feature.geometry.coordinates.length; x++) {
+        //     if (feature.geometry.type == "MultiPolygon") {
+
+
+        //       feature.geometry.coordinates.forEach(element => {
+        //         // element[x][y].reverse();
+        //         });
+        //     }
+        //     else {
+        //       feature.geometry.coordinates.forEach(e=>{
+        //         e.reverse();
+        //       });
+        //     }
+        //   }
+        // }
+
+
+        // polygonSeries1.geodata = dd;
+        // chartGeo.events.on("ready", loadStores1);
+        //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
+        // this.geodata1 = chartGeo.series.push(new am4maps.MapImageSeries());
+        // // let imageSeriesTemplate = imageSeries.mapImages.template;
+        // let imageSeriesTemplate1 = this.geodata1.mapImages.template;
+        // let circle1 = imageSeriesTemplate1.createChild(Circle);
+        // circle1.radius = 5;
+        // // circle1.fill = color("#B27799");
+        //  circle1.fill = color("#ed3833");
+        //  circle1.stroke = color("#FFFFFF");
+        //  circle1.strokeWidth = 2;
+        // circle1.nonScaling = true;
+        // circle1.tooltipText = "{district}";
+        // imageSeriesTemplate1.propertyFields.latitude = "Latitude";
+        // imageSeriesTemplate1.propertyFields.longitude = "Longitude";
+
+        // imageSeriesTemplate1.tooltipText = "{district}: {count}";
+        // circle1.tooltipText = "{constituency}";
+        // imageSeriesTemplate1.propertyFields.latitude = "latitude";
+        // imageSeriesTemplate1.propertyFields.longitude = "longitude";
+
+        // imageSeriesTemplate1.tooltipText = "{constituency}: {count}";
+
+
+        // function loadStores1() {
+        //   let loader = new DataSource();
+        //   loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
+        //   loader.events.on("parseended", (ev: any) => {
+        //     setupStores1(ev.target.data);
+        //   });
+        //   loader.load();
+        // }
+
+        // Creates a series
+        // function createSeries1(heatfield) {
+        //   let series = chartGeo.series.push(new am4maps.MapImageSeries());
+        //   series.dataFields.value = heatfield;
+
+        //   let template = series.mapImages.template;
+        //   template.verticalCenter = "middle";
+        //   template.horizontalCenter = "middle";
+        //   template.propertyFields.latitude = "lat";
+        //   template.propertyFields.longitude = "long";
+        //   template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
+        //   // template.dataItem
+
+        //   let circle = template.createChild(Circle);
+        //   circle.radius = 10;
+        //   circle.fillOpacity = 0.7;
+        //   circle.verticalCenter = "middle";
+        //   circle.horizontalCenter = "middle";
+        //   circle.nonScaling = true;
+
+        //   let label = template.createChild(Label);
+        //   label.text = "{stores}";
+        //   label.fill = color("#fff");
+        //   label.verticalCenter = "middle";
+        //   label.horizontalCenter = "middle";
+        //   label.nonScaling = true;
+
+        //   let heat = series.heatRules.push({
+        //     target: circle,
+        //     property: "radius",
+        //     min: 10,
+        //     max: 30
+        //   });
+
+        //   // Set up drill-down
+        //   series.mapImages.template.events.on("hit", (ev: any) => {
+
+        //     // Determine what we've clicked on
+        //     let data = ev.target.dataItem.dataContext;
+
+        //     // No id? Individual store - nothing to drill down to further
+        //     if (!data.target) {
+        //       return;
+        //     }
+
+        //     // Create actual series if it hasn't been yet created
+        //     if (!regionalSeries1[data.target].series) {
+        //       regionalSeries1[data.target].series = createSeries1("count");
+        //       regionalSeries1[data.target].series.data = data.markerData;
+        //     }
+
+        //     // Hide current series
+        //     if (currentSeries1) {
+        //       currentSeries1.hide();
+        //     }
+
+        //     // Control zoom
+        //     if (data.type == "state") {
+        //       let statePolygon = polygonSeries1.getPolygonById("IN-PB");
+        //       chartGeo.zoomToMapObject(statePolygon);
+        //     } else if (data.type == "city") {
+        //       chartGeo.zoomToGeoPoint({
+        //         latitude: data.lat,
+        //         longitude: data.long
+        //       }, 64, true);
+        //     }
+        //     zoomOut1.show();
+
+        //     // Show new targert series
+        //     currentSeries1 = regionalSeries1[data.target].series; 
+        //     currentSeries1.show();
+        //   });
+
+        //   return series;
+        // }
+
+        // let regionalSeries1: any = {};
+        // let currentSeries1;
+
+        // function setupStores1(data) {
+
+        //   // Init country-level series
+        //   regionalSeries1.IN = {
+        //     markerData: [],
+        //     series: createSeries1("stores")
+        //   };
+
+        //   // Set current series
+        //   currentSeries1 = regionalSeries1.IN.series;
+
+        //   // Process data
+        //   array.each(data.query_results, (data: any) => {
+
+
+        //     // Get store data
+        //     let store = {
+        //       state: data.MAIL_ST_PROV_C,
+        //       long: type.toNumber(data.LNGTD_I),
+        //       lat: type.toNumber(data.LATTD_I),
+        //       location: data.co_loc_n,
+        //       city: data.mail_city_n,
+        //       count: 1000 + type.toNumber(data.count)
+        //     };
+
+        //     // Process state-level data
+        //     if (regionalSeries1[store.state] == undefined) {
+        //       let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
+        //       if (statePolygonForGeo) {
+        //         // console.log("statePolygonForGeo",statePolygonForGeo)
+        //         // Add state data
+        //         regionalSeries1[store.state] = {
+        //           target: store.state,
+        //           type: "state",
+        //           name: statePolygonForGeo.dataItem.dataContext.name,
+        //           count: 1000 + store.count,
+        //           stores: 1,
+        //           lat: statePolygonForGeo.visualLatitude,
+        //           long: statePolygonForGeo.visualLongitude,
+        //           state: store.state,
+        //           markerData: []
+        //         };
+        //         regionalSeries1.IN.markerData.push(regionalSeries1[store.state]);
+
+        //       } else {
+        //         // State not found
+        //         return;
+        //       }
+        //     } else {
+        //       regionalSeries1[store.state].stores++;
+        //       regionalSeries1[store.state].count += store.count;
+        //     }
+
+        //     // Process city-level data
+        //     if (regionalSeries1[store.city] == undefined) {
+        //       regionalSeries1[store.city] = {
+        //         target: store.city,
+        //         type: "city",
+        //         name: store.city,
+        //         count: 1000 + store.count,
+        //         stores: 1,
+        //         lat: store.lat,
+        //         long: store.long,
+        //         state: store.state,
+        //         markerData: []
+        //       };
+        //       regionalSeries1[store.state].markerData.push(regionalSeries1[store.city]);
+        //     } else {
+        //       regionalSeries1[store.city].stores++;
+        //       regionalSeries1[store.city].count += store.count;
+        //     }
+
+        //     // Process individual store
+        //     regionalSeries1[store.city].markerData.push({
+        //       name: store.location,
+        //       count: 1000 + store.count,
+        //       stores: 1,
+        //       lat: store.lat,
+        //       long: store.long,
+        //       state: store.state
+        //     });
+
+        //   });
+
+        //   regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
+        // }
+
+
+        // Chart for PURPOSE
+        this.purposeGraph = create("purpose", am4charts.PieChart);
+        this.purposeGraph.logo.disabled = true;
+        // Add data
+        this.purposeGraph.data = [];
+        // Add and configure Series
+        let pieSeries = this.purposeGraph.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "count";
+        pieSeries.dataFields.category = "_id";
+        pieSeries.innerRadius = percent(50);
+        pieSeries.ticks.template.disabled = true;
+        pieSeries.labels.template.disabled = true;
+
+
+        this.purposeGraph.legend = new am4charts.Legend();
+        this.purposeGraph.legend.position = "right";
+
+        this.userService.themeValueBehavior.subscribe((value) => {
+          if (value === "dark") {
+            this.purposeGraph.legend.labels.template.fill = color("#fff");
+            this.purposeGraph.legend.valueLabels.template.fill = color(
+              "#fff"
+            );
+          } else {
+            this.purposeGraph.legend.labels.template.fill = color(
+              "#2B2C2D"
+            );
+            this.purposeGraph.legend.valueLabels.template.fill = color(
+              "#2B2C2D"
+            );
+          }
+        });
+
+
+        //live purpose chart
+
+        this.livepurposeGraph = create("livepurpose", am4charts.XYChart);
+        this.livepurposeGraph.padding(40, 40, 40, 40);
+
+        this.livepurposeGraph.numberFormatter.bigNumberPrefixes = [
+          { "number": 1e+3, "suffix": "K" },
+          { "number": 1e+6, "suffix": "M" },
+          { "number": 1e+9, "suffix": "B" }
+        ];
+
+        let label = this.livepurposeGraph.plotContainer.createChild(Label);
+        label.x = percent(97);
+        label.y = percent(95);
+        label.horizontalCenter = "right";
+        label.verticalCenter = "middle";
+        label.dx = -15;
+        label.fontSize = 50;
+
+        let playButton = this.livepurposeGraph.plotContainer.createChild(PlayButton);
+        playButton.x = percent(97);
+        playButton.y = percent(95);
+        playButton.dy = -2;
+        playButton.verticalCenter = "middle";
+        playButton.events.on("toggled", function (event) {
+          if (event.target.isActive) {
+            play();
+          }
+          else {
+            stop();
+          }
+        })
+
+
+        let stepDuration = 4000;
+
+        let categoryAxis = this.livepurposeGraph.yAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.dataFields.category = "network";
+        categoryAxis.renderer.minGridDistance = 1;
+        categoryAxis.renderer.inversed = true;
+        categoryAxis.renderer.grid.template.disabled = true;
+
+        var valuex = this.livepurposeGraph.xAxes.push(new am4charts.ValueAxis());
+        valuex.min = 0;
+        // valuex.rangeChangeEasing = ease.linear;
+        // valuex.rangeChangeDuration = stepDuration;
+        valuex.extraMax = 0.1;
+
+        let series = this.livepurposeGraph.series.push(new am4charts.ColumnSeries());
+        series.dataFields.categoryY = "network";
+        series.dataFields.valueX = "MAU";
+        series.tooltipText = "{valueX.value}"
+        series.columns.template.strokeOpacity = 0;
+        series.columns.template.column.cornerRadiusBottomRight = 5;
+        series.columns.template.column.cornerRadiusTopRight = 5;
+        series.interpolationDuration = stepDuration;
+        // series.interpolationEasing = ease.linear;
+
+        let labelBullet = series.bullets.push(new am4charts.LabelBullet())
+        labelBullet.label.horizontalCenter = "right";
+        labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+        labelBullet.label.textAlign = "end";
+        labelBullet.label.dx = -10;
+
+        this.livepurposeGraph.zoomOutButton.disabled = true;
+
+
+        this.userService.themeValueBehavior.subscribe((value) => {
+          if (value === "dark") {
+            valuex.renderer.labels.template.fill = color("#fff");
+            categoryAxis.renderer.labels.template.fill = color("#fff");
+            valuex.title.fill = color("#fff");
+            label.fill = color("#fff");
+            categoryAxis.title.fill = color("#fff");
+          } else {
+            valuex.renderer.labels.template.fill = color("#2B2C2D");
+            categoryAxis.renderer.labels.template.fill = color("#2B2C2D");
+            valuex.title.fill = color("#2B2C2D");
+            label.fill = color("#2B2C2D");
+            categoryAxis.title.fill = color("#2B2C2D");
+          }
+        });
+
+
+        // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        series.columns.template.adapter.add("fill", (fill, target) => {
+          return this.livepurposeGraph.colors.getIndex(target.dataItem.index);
+        });
+
+        this.liveyear = 2003;
+        label.text = this.liveyear.toString();
+
+        let interval;
+
+        function play() {
+          interval = setInterval(function () {
+            nextYear();
+          }, stepDuration)
+          nextYear();
+        }
+
+        function stop() {
+          if (interval) {
+            clearInterval(interval);
+          }
+        }
+
+
+        let nextYear = () => {
+          this.liveyear++;
+
+          if (this.liveyear > 2018) {
+            this.liveyear = 2003;
+          }
+
+          let newData = this.allData[this.liveyear];
+          let itemsWithNonZero = 0;
+          for (var i = 0; i < this.livepurposeGraph.data.length; i++) {
+            this.livepurposeGraph.data[i].MAU = newData[i].MAU;
+            if (this.livepurposeGraph.data[i].MAU > 0) {
+              itemsWithNonZero++;
             }
-      
-            // Creates a series
-            function createSeries1(heatfield) {
-              let series = chartGeo.series.push(new am4maps.MapImageSeries());
-              series.dataFields.value = heatfield;
-      
-              let template = series.mapImages.template;
-              template.verticalCenter = "middle";
-              template.horizontalCenter = "middle";
-              template.propertyFields.latitude = "lat";
-              template.propertyFields.longitude = "long";
-              template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
-              // template.dataItem
-      
-              let circle = template.createChild(Circle);
-              circle.radius = 10;
-              circle.fillOpacity = 0.7;
-              circle.verticalCenter = "middle";
-              circle.horizontalCenter = "middle";
-              circle.nonScaling = true;
-      
-              let label = template.createChild(Label);
-              label.text = "{stores}";
-              label.fill = color("#fff");
-              label.verticalCenter = "middle";
-              label.horizontalCenter = "middle";
-              label.nonScaling = true;
-      
-              let heat = series.heatRules.push({
-                target: circle,
-                property: "radius",
-                min: 10,
-                max: 30
-              });
-      
-              // Set up drill-down
-              series.mapImages.template.events.on("hit", (ev: any) => {
-      
-                // Determine what we've clicked on
-                let data = ev.target.dataItem.dataContext;
-      
-                // No id? Individual store - nothing to drill down to further
-                if (!data.target) {
-                  return;
-                }
-      
-                // Create actual series if it hasn't been yet created
-                if (!regionalSeries1[data.target].series) {
-                  regionalSeries1[data.target].series = createSeries1("count");
-                  regionalSeries1[data.target].series.data = data.markerData;
-                }
-      
-                // Hide current series
-                if (currentSeries1) {
-                  currentSeries1.hide();
-                }
-      
-                // Control zoom
-                if (data.type == "state") {
-                  let statePolygon = polygonSeries1.getPolygonById("IN-PB");
-                  chartGeo.zoomToMapObject(statePolygon);
-                } else if (data.type == "city") {
-                  chartGeo.zoomToGeoPoint({
-                    latitude: data.lat,
-                    longitude: data.long
-                  }, 64, true);
-                }
-                zoomOut1.show();
-      
-                // Show new targert series
-                currentSeries1 = regionalSeries1[data.target].series;
-                currentSeries1.show();
-              });
-      
-              return series;
-            }
-      
-            let regionalSeries1: any = {};
-            let currentSeries1;
-      
-            function setupStores1(data) {
-      
-              // Init country-level series
-              regionalSeries1.IN = {
-                markerData: [],
-                series: createSeries1("stores")
-              };
-      
-              // Set current series
-              currentSeries1 = regionalSeries1.IN.series;
-      
-              // Process data
-              array.each(data.query_results, (data: any) => {
-      
-      
-                // Get store data
-                let store = {
-                  state: data.MAIL_ST_PROV_C,
-                  long: type.toNumber(data.LNGTD_I),
-                  lat: type.toNumber(data.LATTD_I),
-                  location: data.co_loc_n,
-                  city: data.mail_city_n,
-                  count: type.toNumber(data.count)
-                };
-      
-                // Process state-level data
-                if (regionalSeries1[store.state] == undefined) {
-                  let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
-                  if (statePolygonForGeo) {
-                    // console.log("statePolygonForGeo",statePolygonForGeo)
-                    // Add state data
-                    regionalSeries1[store.state] = {
-                      target: store.state,
-                      type: "state",
-                      name: statePolygonForGeo.dataItem.dataContext.name,
-                      count: store.count,
-                      stores: 1,
-                      lat: statePolygonForGeo.visualLatitude,
-                      long: statePolygonForGeo.visualLongitude,
-                      state: store.state,
-                      markerData: []
-                    };
-                    regionalSeries1.IN.markerData.push(regionalSeries1[store.state]);
-      
-                  } else {
-                    // State not found
-                    return;
-                  }
-                } else {
-                  regionalSeries1[store.state].stores++;
-                  regionalSeries1[store.state].count += store.count;
-                }
-      
-                // Process city-level data
-                if (regionalSeries1[store.city] == undefined) {
-                  regionalSeries1[store.city] = {
-                    target: store.city,
-                    type: "city",
-                    name: store.city,
-                    count: store.count,
-                    stores: 1,
-                    lat: store.lat,
-                    long: store.long,
-                    state: store.state,
-                    markerData: []
-                  };
-                  regionalSeries1[store.state].markerData.push(regionalSeries1[store.city]);
-                } else {
-                  regionalSeries1[store.city].stores++;
-                  regionalSeries1[store.city].count += store.count;
-                }
-      
-                // Process individual store
-                regionalSeries1[store.city].markerData.push({
-                  name: store.location,
-                  count: store.count,
-                  stores: 1,
-                  lat: store.lat,
-                  long: store.long,
-                  state: store.state
-                });
-      
-              });
-      
-              regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
-            }
-      
+          }
 
-      // Chart for PURPOSE
-      this.purposeGraph = create("purpose", am4charts.PieChart);
-      this.purposeGraph.logo.disabled = true;
-      // Add data
-      this.purposeGraph.data = [];
-      // Add and configure Series
-      let pieSeries = this.purposeGraph.series.push(new am4charts.PieSeries());
-      pieSeries.dataFields.value = "count";
-      pieSeries.dataFields.category = "_id";
-      pieSeries.innerRadius = percent(50);
-      pieSeries.ticks.template.disabled = true;
-      pieSeries.labels.template.disabled = true;
+          if (this.liveyear == 2003) {
+            series.interpolationDuration = stepDuration / 4;
+            valueAxis.rangeChangeDuration = stepDuration / 4;
+          }
+          else {
+            series.interpolationDuration = stepDuration;
+            valueAxis.rangeChangeDuration = stepDuration;
+          }
 
+          this.livepurposeGraph.invalidateRawData();
+          label.text = this.liveyear.toString();
 
-      this.purposeGraph.legend = new am4charts.Legend();
-      this.purposeGraph.legend.position = "right";
-
-      this.userService.themeValueBehavior.subscribe((value) => {
-        if (value === "dark") {
-          this.purposeGraph.legend.labels.template.fill = color("#fff");
-          this.purposeGraph.legend.valueLabels.template.fill = color(
-            "#fff"
-          );
-        } else {
-          this.purposeGraph.legend.labels.template.fill = color(
-            "#2B2C2D"
-          );
-          this.purposeGraph.legend.valueLabels.template.fill = color(
-            "#2B2C2D"
-          );
+          categoryAxis.zoom({ start: 0, end: itemsWithNonZero / categoryAxis.dataItems.length });
         }
+
+
+        categoryAxis.sortBySeries = series;
+
+
+
+        this.livepurposeGraph.data = JSON.parse(JSON.stringify(this.allData[this.liveyear]));
+        console.log("LIVEDATA::", this.livepurposeGraph);
+
+
+        categoryAxis.zoom({ start: 0, end: 1 / this.livepurposeGraph.data.length });
+
+        series.events.on("inited", function () {
+          setTimeout(function () {
+            // playButton.isActive = true; // this starts interval
+            console.log("new");
+          }, 2000)
+        })
+
+
+
+        //endlive purpose chart
+
+
+        //bubblecastchart
+
+        let bubblechart = create("bubblechart", am4plugins_forceDirected.ForceDirectedTree);
+
+        let networkSeries = bubblechart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
+
+
+        networkSeries.data = [{
+          name: 'Singh',
+          children: [{
+            name: 'Black Tea', value: 1
+          }, {
+            name: 'Floral',
+            children: [{
+              name: 'Chamomile', value: 1
+            }, {
+              name: 'Rose', value: 1
+            }, {
+              name: 'Jasmine', value: 1
+            }]
+          }]
+        }, {
+          name: 'Khan',
+          children: [{
+            name: 'Berry',
+            children: [{
+              name: 'Blackberry', value: 1
+            }, {
+              name: 'Raspberry', value: 1
+            }, {
+              name: 'Blueberry', value: 1
+            }, {
+              name: 'Strawberry', value: 1
+            }]
+          }, {
+            name: 'Dried Fruit',
+            children: [{
+              name: 'Raisin', value: 1
+            }, {
+              name: 'Prune', value: 1
+            }]
+          }, {
+            name: 'Other Fruit',
+            children: [{
+              name: 'Coconut', value: 1
+            }, {
+              name: 'Cherry', value: 1
+            }, {
+              name: 'Pomegranate', value: 1
+            }, {
+              name: 'Pineapple', value: 1
+            }, {
+              name: 'Grape', value: 1
+            }, {
+              name: 'Apple', value: 1
+            }, {
+              name: 'Peach', value: 1
+            }, {
+              name: 'Pear', value: 1
+            }]
+          }, {
+            name: 'Citrus Fruit',
+            children: [{
+              name: 'Grapefruit', value: 1
+            }, {
+              name: 'Orange', value: 1
+            }, {
+              name: 'Lemon', value: 1
+            }, {
+              name: 'Lime', value: 1
+            }]
+          }]
+        }, {
+          name: 'Sour/Fermented',
+          children: [{
+            name: 'Sour',
+            children: [{
+              name: 'Sour Aromatics', value: 1
+            }, {
+              name: 'Acetic Acid', value: 1
+            }, {
+              name: 'Butyric Acid', value: 1
+            }, {
+              name: 'Isovaleric Acid', value: 1
+            }, {
+              name: 'Citric Acid', value: 1
+            }, {
+              name: 'Malic Acid', value: 1
+            }]
+          }, {
+            name: 'Alcohol/Fremented',
+            children: [{
+              name: 'Winey', value: 1
+            }, {
+              name: 'Whiskey', value: 1
+            }, {
+              name: 'Fremented', value: 1
+            }, {
+              name: 'Overripe', value: 1
+            }]
+          }]
+        }, {
+          name: 'Green/Vegetative',
+          children: [{
+            name: 'Olive Oil', value: 1
+          }, {
+            name: 'Raw', value: 1
+          }, {
+            name: 'Green/Vegetative',
+            children: [{
+              name: 'Under-ripe', value: 1
+            }, {
+              name: 'Peapod', value: 1
+            }, {
+              name: 'Fresh', value: 1
+            }, {
+              name: 'Dark Green', value: 1
+            }, {
+              name: 'Vegetative', value: 1
+            }, {
+              name: 'Hay-like', value: 1
+            }, {
+              name: 'Herb-like', value: 1
+            }]
+          }, {
+            name: 'Beany', value: 1
+          }]
+        }, {
+          name: 'Other',
+          children: [{
+            name: 'Papery/Musty',
+            children: [{
+              name: 'Stale', value: 1
+            }, {
+              name: 'Cardboard', value: 1
+            }, {
+              name: 'Papery', value: 1
+            }, {
+              name: 'Woody', value: 1
+            }, {
+              name: 'Moldy/Damp', value: 1
+            }, {
+              name: 'Musty/Dusty', value: 1
+            }, {
+              name: 'Musty/Earthy', value: 1
+            }, {
+              name: 'Animalic', value: 1
+            }, {
+              name: 'Meaty Brothy', value: 1
+            }, {
+              name: 'Phenolic', value: 1
+            }]
+          }, {
+            name: 'Chemical',
+            children: [{
+              name: 'Bitter', value: 1
+            }, {
+              name: 'Salty', value: 1
+            }, {
+              name: 'Medicinal', value: 1
+            }, {
+              name: 'Petroleum', value: 1
+            }, {
+              name: 'Skunky', value: 1
+            }, {
+              name: 'Rubber', value: 1
+            }]
+          }]
+        }, {
+          name: 'Roasted',
+          children: [{
+            name: 'Pipe Tobacco', value: 1
+          }, {
+            name: 'Tobacco', value: 1
+          }, {
+            name: 'Burnt',
+            children: [{
+              name: 'Acrid', value: 1
+            }, {
+              name: 'Ashy', value: 1
+            }, {
+              name: 'Smoky', value: 1
+            }, {
+              name: 'Brown, Roast', value: 1
+            }]
+          }, {
+            name: 'Cereal',
+            children: [{
+              name: 'Grain', value: 1
+            }, {
+              name: 'Malt', value: 1
+            }]
+          }]
+        }, {
+          name: 'Spices',
+          children: [{
+            name: 'Pungent', value: 1
+          }, {
+            name: 'Pepper', value: 1
+          }, {
+            name: 'Brown Spice',
+            children: [{
+              name: 'Anise', value: 1
+            }, {
+              name: 'Nutmeg', value: 1
+            }, {
+              name: 'Cinnamon', value: 1
+            }, {
+              name: 'Clove', value: 1
+            }]
+          }]
+        }, {
+          name: 'Nutty/Cocoa',
+          children: [{
+            name: 'Nutty',
+            children: [{
+              name: 'Peanuts', value: 1
+            }, {
+              name: 'Hazelnut', value: 1
+            }, {
+              name: 'Almond', value: 1
+            }]
+          }, {
+            name: 'Cocoa',
+            children: [{
+              name: 'Chocolate', value: 1
+            }, {
+              name: 'Dark Chocolate', value: 1
+            }]
+          }]
+        }, {
+          name: 'Sweet',
+          children: [{
+            name: 'Brown Sugar',
+            children: [{
+              name: 'Molasses', value: 1
+            }, {
+              name: 'Maple Syrup', value: 1
+            }, {
+              name: 'Caramelized', value: 1
+            }, {
+              name: 'Honey', value: 1
+            }]
+          }, {
+            name: 'Vanilla', value: 1
+          }, {
+            name: 'Vanillin', value: 1
+          }, {
+            name: 'Overall Sweet', value: 1
+          }, {
+            name: 'Sweet Aromatics', value: 1
+          }]
+        }];
+
+        networkSeries.dataFields.linkWith = "linkWith";
+        networkSeries.dataFields.name = "name";
+        networkSeries.dataFields.id = "name";
+        networkSeries.dataFields.value = "value";
+        networkSeries.dataFields.children = "children";
+        networkSeries.links.template.distance = 1;
+        networkSeries.nodes.template.tooltipText = "{name} {children.length}";
+        networkSeries.nodes.template.fillOpacity = 1;
+        networkSeries.nodes.template.outerCircle.scale = 1;
+
+        networkSeries.nodes.template.label.text = "{name}"
+        networkSeries.fontSize = 8;
+        networkSeries.nodes.template.label.hideOversized = true;
+        networkSeries.nodes.template.label.truncate = true;
+        networkSeries.minRadius = percent(2);
+        networkSeries.manyBodyStrength = -5;
+        networkSeries.links.template.strokeOpacity = 0;
+
+        //endbubblechart
+
+
+        // Chart for gender
+        this.genderGraph = create("gender", am4charts.PieChart);
+        this.genderGraph.hiddenState.properties.opacity = 0; // this creates initial fade-in
+        this.genderGraph.logo.disabled = true;
+        this.genderGraph.data = [];
+        this.genderGraph.radius = percent(70);
+        this.genderGraph.innerRadius = percent(40);
+        this.genderGraph.startAngle = 180;
+        this.genderGraph.endAngle = 360;
+
+        let genderSeries = this.genderGraph.series.push(
+          new am4charts.PieSeries()
+        );
+
+        genderSeries.dataFields.value = "count";
+        genderSeries.dataFields.category = "_id";
+
+        genderSeries.slices.template.cornerRadius = 10;
+        genderSeries.slices.template.innerCornerRadius = 7;
+        genderSeries.slices.template.draggable = false;
+        genderSeries.slices.template.inert = true;
+        genderSeries.alignLabels = false;
+
+        genderSeries.hiddenState.properties.startAngle = 90;
+        genderSeries.hiddenState.properties.endAngle = 90;
+
+        genderSeries.labels.template.disabled = true;
+
+        genderSeries.colors.list = [
+          color("#1f3ad1"),
+          color("#439757"),
+        ];
+
+        this.genderGraph.legend = new am4charts.Legend();
+
+        this.userService.themeValueBehavior.subscribe((value) => {
+          if (value === "dark") {
+            this.genderGraph.legend.labels.template.fill = color("#fff");
+            this.genderGraph.legend.valueLabels.template.fill = color(
+              "#fff"
+            );
+          } else {
+            this.genderGraph.legend.labels.template.fill = color(
+              "#2B2C2D"
+            );
+            this.genderGraph.legend.valueLabels.template.fill = color(
+              "#2B2C2D"
+            );
+          }
+        });
+
+        // Chart for TIME FRAME
+        this.timeFrameGraphData = create("timeFrame", am4charts.XYChart);
+        this.timeFrameGraphData.logo.disabled = true;
+        // timeFrame.scrollbarX = new Scrollbar();
+
+        // Add data
+        this.timeFrameGraphData.data = [];
+
+        this.timeFrameXText = this.timeFrameGraphData.xAxes.push(
+          new am4charts.CategoryAxis()
+        );
+        this.timeFrameXText.dataFields.category = "_id";
+        this.timeFrameXText.renderer.grid.template.location = 0;
+        this.timeFrameXText.renderer.minGridDistance = 30;
+        this.timeFrameXText.title.text = "NO. OF MONTHS";
+
+        // this.timeFrameXText.renderer.labels.template.events.on("over", function(ev) {
+        //   var point = this.timeFrameXText?.categoryToPoint(ev.target.dataItem.category);
+        //   this.timeFrameGraphData.cursor.triggerMove(point, "soft");
+        // });
+
+        this.timeFrameXText?.renderer.labels.template.events.on("out", function (ev) {
+          if (this.timeFrameXText) {
+            var point = this.timeFrameXText?.categoryToPoint(ev.target.dataItem.category);
+            this.timeFrameGraphData.cursor.triggerMove(point, "none");
+          }
+        });
+
+
+        let valueAxis = this.timeFrameGraphData.yAxes.push(
+          new am4charts.ValueAxis()
+        );
+        valueAxis.title.text = "NO. OF PEOPLE VISITED";
+        //valueAxis.integersOnly = true;
+        valueAxis.tooltip.disabled = true;
+        // Create series
+        let timeFrameSeries = this.timeFrameGraphData.series.push(
+          new am4charts.ColumnSeries()
+        );
+        timeFrameSeries.dataFields.valueY = "count";
+        timeFrameSeries.dataFields.categoryX = "_id";
+        timeFrameSeries.name = "count";
+
+
+        timeFrameSeries.columns.template.tooltipText =
+          "{categoryX}: [bold]{valueY}[/]";
+        this.timeFrameGraphData.cursor = new am4charts.XYCursor();
+        this.timeFrameGraphData.cursor.lineY.disabled = true;
+        this.timeFrameGraphData.cursor.lineX.disabled = true;
+
+
+        timeFrameSeries.columns.template.fill = color("#203ad1");
+
+        let columnTemplate = timeFrameSeries.columns.template;
+        columnTemplate.strokeWidth = 0;
+        columnTemplate.strokeOpacity = 0;
+
+        this.userService.themeValueBehavior.subscribe((value) => {
+          if (value === "dark") {
+            this.timeFrameXText.renderer.labels.template.fill = color("#fff");
+            valueAxis.renderer.labels.template.fill = color("#fff");
+            valueAxis.title.fill = color("#fff");
+            this.timeFrameXText.title.fill = color("#fff");
+          } else {
+            this.timeFrameXText.renderer.labels.template.fill = color("#2B2C2D");
+            valueAxis.renderer.labels.template.fill = color("#2B2C2D");
+            valueAxis.title.fill = color("#2B2C2D");
+            this.timeFrameXText.title.fill = color("#2B2C2D");
+          }
+        });
+        // let label = this.timeFrameXText.renderer.labels.template;
+        // label.truncate = true;
+        // label.maxWidth = 120;
+
+        // Create CAST chart instance
+        this.casteGraph = create("caste", am4charts.XYChart);
+        this.casteGraph.logo.disabled = true;
+        // Add data
+        this.casteGraph.data = [];
+
+        // this.casteGraph.responsive.enabled = true;
+        // Create axes
+
+        let casteCategoryAxis = this.casteGraph.xAxes.push(
+          new am4charts.CategoryAxis()
+        );
+        casteCategoryAxis.dataFields.category = "_id";
+        casteCategoryAxis.renderer.grid.template.location = 0;
+        casteCategoryAxis.renderer.minGridDistance = 30;
+        casteCategoryAxis?.renderer.labels.template.events.on("out", function (ev) {
+          if (casteCategoryAxis) {
+            var point = casteCategoryAxis?.categoryToPoint(ev.target.dataItem.category);
+            casteCategoryAxis.cursor.triggerMove(point, "none");
+          }
+        });
+
+        // let label = this.timeFrameXText.renderer.labels.template;
+        // label.truncate = true;
+        // label.maxWidth = 120;
+
+        // casteCategoryAxis.renderer.labels.template.adapter.add(
+        //   "dy",
+        //   (dy, target) => {
+        //     if (target.dataItem && target.dataItem.index && 2 == 2) {
+        //       return dy + 25;
+        //     }
+        //     return dy;
+        //   }
+        // );
+        casteCategoryAxis.title.text = "VISITOR CASTE CATEGORY";
+        let casteValueAxis = this.casteGraph.yAxes.push(
+          new am4charts.ValueAxis()
+        );
+        casteValueAxis.title.text = "NO. OF PEOPLE VISITED";
+        casteValueAxis.tooltip.disabled = true;
+        // Create series
+        let casteSeries = this.casteGraph.series.push(
+          new am4charts.ColumnSeries()
+        );
+        casteSeries.dataFields.valueY = "count";
+        casteSeries.dataFields.categoryX = "_id";
+        casteSeries.name = "count";
+        casteSeries.columns.template.tooltipText =
+          "{categoryX}: [bold]{valueY}[/]";
+        casteSeries.columns.template.fill = color("#5C3DCE");
+
+        casteSeries.columns.template.width = percent(10);
+
+        this.casteGraph.cursor = new am4charts.XYCursor();
+        this.casteGraph.cursor.lineY.disabled = true;
+        this.casteGraph.cursor.lineX.disabled = true;
+
+        let casteColumnTemplate = casteSeries.columns.template;
+        casteColumnTemplate.strokeWidth = 0;
+        casteColumnTemplate.strokeOpacity = 0;
+
+        this.userService.themeValueBehavior.subscribe((value) => {
+          if (value === "dark") {
+            casteCategoryAxis.renderer.labels.template.fill = color(
+              "#fff"
+            );
+            casteValueAxis.renderer.labels.template.fill = color("#fff");
+            casteValueAxis.title.fill = color("#fff");
+            casteCategoryAxis.title.fill = color("#fff");
+          } else {
+            casteCategoryAxis.renderer.labels.template.fill = color(
+              "#2B2C2D"
+            );
+            casteValueAxis.renderer.labels.template.fill = color(
+              "#2B2C2D"
+            );
+            casteValueAxis.title.fill = color("#2B2C2D");
+            casteCategoryAxis.title.fill = color("#2B2C2D");
+          }
+        });
       });
-
-      // Chart for gender
-      this.genderGraph = create("gender", am4charts.PieChart);
-      this.genderGraph.hiddenState.properties.opacity = 0; // this creates initial fade-in
-      this.genderGraph.logo.disabled = true;
-      this.genderGraph.data = [];
-      this.genderGraph.radius = percent(70);
-      this.genderGraph.innerRadius = percent(40);
-      this.genderGraph.startAngle = 180;
-      this.genderGraph.endAngle = 360;
-
-      let genderSeries = this.genderGraph.series.push(
-        new am4charts.PieSeries()
-      );
-
-      genderSeries.dataFields.value = "count";
-      genderSeries.dataFields.category = "_id";
-
-      genderSeries.slices.template.cornerRadius = 10;
-      genderSeries.slices.template.innerCornerRadius = 7;
-      genderSeries.slices.template.draggable = false;
-      genderSeries.slices.template.inert = true;
-      genderSeries.alignLabels = false;
-
-      genderSeries.hiddenState.properties.startAngle = 90;
-      genderSeries.hiddenState.properties.endAngle = 90;
-
-      genderSeries.labels.template.disabled = true;
-
-      genderSeries.colors.list = [
-        color("#1f3ad1"),
-        color("#439757"),
-      ];
-
-      this.genderGraph.legend = new am4charts.Legend();
-
-      this.userService.themeValueBehavior.subscribe((value) => {
-        if (value === "dark") {
-          this.genderGraph.legend.labels.template.fill = color("#fff");
-          this.genderGraph.legend.valueLabels.template.fill = color(
-            "#fff"
-          );
-        } else {
-          this.genderGraph.legend.labels.template.fill = color(
-            "#2B2C2D"
-          );
-          this.genderGraph.legend.valueLabels.template.fill = color(
-            "#2B2C2D"
-          );
-        }
-      });
-
-      // Chart for TIME FRAME
-      this.timeFrameGraphData = create("timeFrame", am4charts.XYChart);
-      this.timeFrameGraphData.logo.disabled = true;
-      // timeFrame.scrollbarX = new Scrollbar();
-
-      // Add data
-      this.timeFrameGraphData.data = [];
-
-       this.timeFrameXText = this.timeFrameGraphData.xAxes.push(
-        new am4charts.CategoryAxis()
-      );
-      this.timeFrameXText.dataFields.category = "_id";
-      this.timeFrameXText.renderer.grid.template.location = 0;
-      this.timeFrameXText.renderer.minGridDistance = 30;
-      this.timeFrameXText.title.text = "NO. OF MONTHS";
-
-      // this.timeFrameXText.renderer.labels.template.events.on("over", function(ev) {
-      //   var point = this.timeFrameXText?.categoryToPoint(ev.target.dataItem.category);
-      //   this.timeFrameGraphData.cursor.triggerMove(point, "soft");
-      // });
-      
-      this.timeFrameXText?.renderer.labels.template.events.on("out", function(ev) {
-        if(this.timeFrameXText){
-          var point = this.timeFrameXText?.categoryToPoint(ev.target.dataItem.category);
-          this.timeFrameGraphData.cursor.triggerMove(point, "none");
-        }
-      });
-     
-
-      let valueAxis = this.timeFrameGraphData.yAxes.push(
-        new am4charts.ValueAxis()
-      );
-      valueAxis.title.text = "NO. OF PEOPLE VISITED";
-      //valueAxis.integersOnly = true;
-      valueAxis.tooltip.disabled = true;
-      // Create series
-      let timeFrameSeries = this.timeFrameGraphData.series.push(
-        new am4charts.ColumnSeries()
-      );
-      timeFrameSeries.dataFields.valueY = "count";
-      timeFrameSeries.dataFields.categoryX = "_id";
-      timeFrameSeries.name = "count";
-   
-      
-      timeFrameSeries.columns.template.tooltipText =
-        "{categoryX}: [bold]{valueY}[/]";
-      this.timeFrameGraphData.cursor = new am4charts.XYCursor();
-      this.timeFrameGraphData.cursor.lineY.disabled = true;
-      this.timeFrameGraphData.cursor.lineX.disabled = true;
-      
-       
-      timeFrameSeries.columns.template.fill = color("#203ad1");
-
-      let columnTemplate = timeFrameSeries.columns.template;
-      columnTemplate.strokeWidth = 0;
-      columnTemplate.strokeOpacity = 0;
-   
-      this.userService.themeValueBehavior.subscribe((value) => {
-        if (value === "dark") {
-          this.timeFrameXText.renderer.labels.template.fill = color("#fff");
-          valueAxis.renderer.labels.template.fill = color("#fff");
-          valueAxis.title.fill = color("#fff");
-          this.timeFrameXText.title.fill = color("#fff");
-        } else {
-          this.timeFrameXText.renderer.labels.template.fill = color("#2B2C2D");
-          valueAxis.renderer.labels.template.fill = color("#2B2C2D");
-          valueAxis.title.fill = color("#2B2C2D");
-          this.timeFrameXText.title.fill = color("#2B2C2D");
-        }
-      });
-      // let label = this.timeFrameXText.renderer.labels.template;
-      // label.truncate = true;
-      // label.maxWidth = 120;
-
-      // Create CAST chart instance
-      this.casteGraph = create("caste", am4charts.XYChart);
-      this.casteGraph.logo.disabled = true;
-      // Add data
-      this.casteGraph.data = [];
-
-      // this.casteGraph.responsive.enabled = true;
-      // Create axes
-
-      let casteCategoryAxis = this.casteGraph.xAxes.push(
-        new am4charts.CategoryAxis()
-      );
-      casteCategoryAxis.dataFields.category = "_id";
-      casteCategoryAxis.renderer.grid.template.location = 0;
-      casteCategoryAxis.renderer.minGridDistance = 30;
-      casteCategoryAxis?.renderer.labels.template.events.on("out", function(ev) {
-        if(casteCategoryAxis){
-          var point = casteCategoryAxis?.categoryToPoint(ev.target.dataItem.category);
-          casteCategoryAxis.cursor.triggerMove(point, "none");
-        }
-      });
-
-      // let label = this.timeFrameXText.renderer.labels.template;
-      // label.truncate = true;
-      // label.maxWidth = 120;
-
-      // casteCategoryAxis.renderer.labels.template.adapter.add(
-      //   "dy",
-      //   (dy, target) => {
-      //     if (target.dataItem && target.dataItem.index && 2 == 2) {
-      //       return dy + 25;
-      //     }
-      //     return dy;
-      //   }
-      // );
-      casteCategoryAxis.title.text = "VISITOR CASTE CATEGORY";
-      let casteValueAxis = this.casteGraph.yAxes.push(
-        new am4charts.ValueAxis()
-      );
-      casteValueAxis.title.text = "NO. OF PEOPLE VISITED";
-      casteValueAxis.tooltip.disabled = true;
-      // Create series
-      let casteSeries = this.casteGraph.series.push(
-        new am4charts.ColumnSeries()
-      );
-      casteSeries.dataFields.valueY = "count";
-      casteSeries.dataFields.categoryX = "_id";
-      casteSeries.name = "count";
-      casteSeries.columns.template.tooltipText =
-        "{categoryX}: [bold]{valueY}[/]";
-      casteSeries.columns.template.fill = color("#5C3DCE");
-
-      casteSeries.columns.template.width = percent(10);
-
-      this.casteGraph.cursor = new am4charts.XYCursor();
-      this.casteGraph.cursor.lineY.disabled = true;
-      this.casteGraph.cursor.lineX.disabled = true;
-
-      let casteColumnTemplate = casteSeries.columns.template;
-      casteColumnTemplate.strokeWidth = 0;
-      casteColumnTemplate.strokeOpacity = 0;
-
-      this.userService.themeValueBehavior.subscribe((value) => {
-        if (value === "dark") {
-          casteCategoryAxis.renderer.labels.template.fill = color(
-            "#fff"
-          );
-          casteValueAxis.renderer.labels.template.fill = color("#fff");
-          casteValueAxis.title.fill = color("#fff");
-          casteCategoryAxis.title.fill = color("#fff");
-        } else {
-          casteCategoryAxis.renderer.labels.template.fill = color(
-            "#2B2C2D"
-          );
-          casteValueAxis.renderer.labels.template.fill = color(
-            "#2B2C2D"
-          );
-          casteValueAxis.title.fill = color("#2B2C2D");
-          casteCategoryAxis.title.fill = color("#2B2C2D");
-        }
-      });
-    });
-  })
+    }, 1000);
   }
 
-  
+
 
   getCasteOptionData() {
     this.userService.getCasteOptionData().subscribe(
@@ -970,7 +2791,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       }
     );
   }
-  getVisitorOccupationData(){
+  getVisitorOccupationData() {
     this.userService.getVisitorOccupation().subscribe(
       (response: any) => {
         if (response.error === false) {
@@ -985,240 +2806,240 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       }
     );
   }
-  geoMapDistrict(){
-    //Graph Geo Map District
-            // Create map instance
-            let chartGeo = create("geoMap1", am4maps.MapChart);
-            chartGeo.logo.disabled = true;
-            chartGeo.maxZoomLevel = 64;
-            // console.log("dfgh")
-            chartGeo.geodata = am4geodata_indiaHigh;
-            // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
-      
-            // Set projection
-            chartGeo.projection = new am4maps.projections.Projection();
-      
-            // Add button
-            let zoomOut1 = chartGeo.tooltipContainer.createChild(ZoomOutButton);
-            zoomOut1.align = "right";
-            zoomOut1.valign = "top";
-            zoomOut1.margin(20, 20, 20, 20);
-            zoomOut1.events.on("hit", function () {
-              if (currentSeries1) {
-                currentSeries1.hide();
-              }
-              chartGeo.goHome();
-              zoomOut1.hide();
-              currentSeries1 = regionalSeries1.IN.series;
-              currentSeries1.show();
-            });
-            zoomOut1.hide();
-      
-            // Create map polygon series
-            let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
-            polygonSeries1.useGeodata = true;
-            polygonSeries1.calculateVisualCenter = true;
-      
-            // Configure series
-            let polygonTemplate1 = polygonSeries1.mapPolygons.template;
-            polygonTemplate1.tooltipText = "{name}";
-            polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-            //shantam 
-            polygonSeries1.include = ["IN-DL"];
-            chartGeo.events.on("ready", loadStores1);
-            //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
-            this.geodata = chartGeo.series.push(new am4maps.MapImageSeries());
-            // let imageSeriesTemplate = imageSeries.mapImages.template;
-            let imageSeriesTemplate1 = this.geodata.mapImages.template;
-            let circle1 = imageSeriesTemplate1.createChild(Circle);
-            circle1.radius = 4;
-            circle1.fill = color("#B27799");
-            circle1.stroke = color("#FFFFFF");
-            circle1.strokeWidth = 2;
-            circle1.nonScaling = true;
-            circle1.tooltipText = "{constituency}";
-            imageSeriesTemplate1.propertyFields.latitude = "latitude";
-            imageSeriesTemplate1.propertyFields.longitude = "longitude";
-      
-            imageSeriesTemplate1.tooltipText = "{constituency}: {count}";
-      
-            function loadStores1() {
-              let loader = new DataSource();
-              loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
-              loader.events.on("parseended", (ev: any) => {
-                setupStores1(ev.target.data);
-              });
-              loader.load();
-            }
-      
-            // Creates a series
-            function createSeries1(heatfield) {
-              let series = chartGeo.series.push(new am4maps.MapImageSeries());
-              series.dataFields.value = heatfield;
-      
-              let template = series.mapImages.template;
-              template.verticalCenter = "middle";
-              template.horizontalCenter = "middle";
-              template.propertyFields.latitude = "lat";
-              template.propertyFields.longitude = "long";
-              template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
-              // template.dataItem
-      
-              let circle = template.createChild(Circle);
-              circle.radius = 10;
-              circle.fillOpacity = 0.7;
-              circle.verticalCenter = "middle";
-              circle.horizontalCenter = "middle";
-              circle.nonScaling = true;
-      
-              let label = template.createChild(Label);
-              label.text = "{stores}";
-              label.fill = color("#fff");
-              label.verticalCenter = "middle";
-              label.horizontalCenter = "middle";
-              label.nonScaling = true;
-      
-              let heat = series.heatRules.push({
-                target: circle,
-                property: "radius",
-                min: 10,
-                max: 30
-              });
-      
-              // Set up drill-down
-              series.mapImages.template.events.on("hit", (ev: any) => {
-      
-                // Determine what we've clicked on
-                let data = ev.target.dataItem.dataContext;
-      
-                // No id? Individual store - nothing to drill down to further
-                if (!data.target) {
-                  return;
-                }
-      
-                // Create actual series if it hasn't been yet created
-                if (!regionalSeries1[data.target].series) {
-                  regionalSeries1[data.target].series = createSeries1("count");
-                  regionalSeries1[data.target].series.data = data.markerData;
-                }
-      
-                // Hide current series
-                if (currentSeries1) {
-                  currentSeries1.hide();
-                }
-      
-                // Control zoom
-                if (data.type == "state") {
-                  let statePolygon = polygonSeries1.getPolygonById("IN-PB");
-                  chartGeo.zoomToMapObject(statePolygon);
-                } else if (data.type == "city") {
-                  chartGeo.zoomToGeoPoint({
-                    latitude: data.lat,
-                    longitude: data.long
-                  }, 64, true);
-                }
-                zoomOut1.show();
-      
-                // Show new targert series
-                currentSeries1 = regionalSeries1[data.target].series;
-                currentSeries1.show();
-              });
-      
-              return series;
-            }
-      
-            let regionalSeries1: any = {};
-            let currentSeries1;
-      
-            function setupStores1(data) {
-      
-              // Init country-level series
-              regionalSeries1.IN = {
-                markerData: [],
-                series: createSeries1("stores")
-              };
-      
-              // Set current series
-              currentSeries1 = regionalSeries1.IN.series;
-      
-              // Process data
-              array.each(data.query_results, (data: any) => {
-      
-      
-                // Get store data
-                let store = {
-                  state: data.MAIL_ST_PROV_C,
-                  long: type.toNumber(data.LNGTD_I),
-                  lat: type.toNumber(data.LATTD_I),
-                  location: data.co_loc_n,
-                  city: data.mail_city_n,
-                  count: type.toNumber(data.count)
-                };
-      
-                // Process state-level data
-                if (regionalSeries1[store.state] == undefined) {
-                  let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
-                  if (statePolygonForGeo) {
-      
-                    // Add state data
-                    regionalSeries1[store.state] = {
-                      target: store.state,
-                      type: "state",
-                      name: statePolygonForGeo.dataItem.dataContext.name,
-                      count: store.count,
-                      stores: 1,
-                      lat: statePolygonForGeo.visualLatitude,
-                      long: statePolygonForGeo.visualLongitude,
-                      state: store.state,
-                      markerData: []
-                    };
-                    regionalSeries1.IN.markerData.push(regionalSeries1[store.state]);
-      
-                  } else {
-                    // State not found
-                    return;
-                  }
-                } else {
-                  regionalSeries1[store.state].stores++;
-                  regionalSeries1[store.state].count += store.count;
-                }
-      
-                // Process city-level data
-                if (regionalSeries1[store.city] == undefined) {
-                  regionalSeries1[store.city] = {
-                    target: store.city,
-                    type: "city",
-                    name: store.city,
-                    count: store.count,
-                    stores: 1,
-                    lat: store.lat,
-                    long: store.long,
-                    state: store.state,
-                    markerData: []
-                  };
-                  regionalSeries1[store.state].markerData.push(regionalSeries1[store.city]);
-                } else {
-                  regionalSeries1[store.city].stores++;
-                  regionalSeries1[store.city].count += store.count;
-                }
-      
-                // Process individual store
-                regionalSeries1[store.city].markerData.push({
-                  name: store.location,
-                  count: store.count,
-                  stores: 1,
-                  lat: store.lat,
-                  long: store.long,
-                  state: store.state
-                });
-      
-              });
-      
-              regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
-            }
-      
+  // geoMapDistrict(){
+  //   //Graph Geo Map District
+  //           // Create map instance
+  //           let chartGeo = create("geoMap1", am4maps.MapChart);
+  //           chartGeo.logo.disabled = true;
+  //           chartGeo.maxZoomLevel = 64;
+  //           // console.log("dfgh")
+  //           chartGeo.geodata = am4geodata_worldLow;
+  //           // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
 
-  }
+  //           // Set projection
+  //           chartGeo.projection = new am4maps.projections.Projection();
+
+  //           // Add button
+  //           let zoomOut1 = chartGeo.tooltipContainer.createChild(ZoomOutButton);
+  //           zoomOut1.align = "right";
+  //           zoomOut1.valign = "top";
+  //           zoomOut1.margin(20, 20, 20, 20);
+  //           zoomOut1.events.on("hit", function () {
+  //             if (currentSeries1) {
+  //               currentSeries1.hide();
+  //             }
+  //             chartGeo.goHome();
+  //             zoomOut1.hide();
+  //             currentSeries1 = regionalSeries1.IN.series;
+  //             currentSeries1.show();
+  //           });
+  //           zoomOut1.hide();
+
+  //           // Create map polygon series
+  //           let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
+  //           polygonSeries1.useGeodata = true;
+  //           polygonSeries1.calculateVisualCenter = true;
+
+  //           // Configure series
+  //           let polygonTemplate1 = polygonSeries1.mapPolygons.template;
+  //           polygonTemplate1.tooltipText = "{name}";
+  //           polygonTemplate1.fill = chartGeo.colors.getIndex(0);
+  //           //shantam 
+  //           polygonSeries1.include = ["IN-DL"];
+  //           chartGeo.events.on("ready", loadStores1);
+  //           //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
+  //           this.geodata = chartGeo.series.push(new am4maps.MapImageSeries());
+  //           // let imageSeriesTemplate = imageSeries.mapImages.template;
+  //           let imageSeriesTemplate1 = this.geodata.mapImages.template;
+  //           let circle1 = imageSeriesTemplate1.createChild(Circle);
+  //           circle1.radius = 4;
+  //           circle1.fill = color("#B27799");
+  //           circle1.stroke = color("#FFFFFF");
+  //           circle1.strokeWidth = 2;
+  //           circle1.nonScaling = true;
+  //           circle1.tooltipText = "{constituency}";
+  //           imageSeriesTemplate1.propertyFields.latitude = "latitude";
+  //           imageSeriesTemplate1.propertyFields.longitude = "longitude";
+
+  //           imageSeriesTemplate1.tooltipText = "{constituency}: {count}";
+
+  //           function loadStores1() {
+  //             let loader = new DataSource();
+  //             loader.url = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/TargetStores.json";
+  //             loader.events.on("parseended", (ev: any) => {
+  //               setupStores1(ev.target.data);
+  //             });
+  //             loader.load();
+  //           }
+
+  //           // Creates a series
+  //           function createSeries1(heatfield) {
+  //             let series = chartGeo.series.push(new am4maps.MapImageSeries());
+  //             series.dataFields.value = heatfield;
+
+  //             let template = series.mapImages.template;
+  //             template.verticalCenter = "middle";
+  //             template.horizontalCenter = "middle";
+  //             template.propertyFields.latitude = "lat";
+  //             template.propertyFields.longitude = "long";
+  //             template.tooltipText = "{name}:\n[bold]{stores} stores[/]";
+  //             // template.dataItem
+
+  //             let circle = template.createChild(Circle);
+  //             circle.radius = 10;
+  //             circle.fillOpacity = 0.7;
+  //             circle.verticalCenter = "middle";
+  //             circle.horizontalCenter = "middle";
+  //             circle.nonScaling = true;
+
+  //             let label = template.createChild(Label);
+  //             label.text = "{stores}";
+  //             label.fill = color("#fff");
+  //             label.verticalCenter = "middle";
+  //             label.horizontalCenter = "middle";
+  //             label.nonScaling = true;
+
+  //             let heat = series.heatRules.push({
+  //               target: circle,
+  //               property: "radius",
+  //               min: 10,
+  //               max: 30
+  //             });
+
+  //             // Set up drill-down
+  //             series.mapImages.template.events.on("hit", (ev: any) => {
+
+  //               // Determine what we've clicked on
+  //               let data = ev.target.dataItem.dataContext;
+
+  //               // No id? Individual store - nothing to drill down to further
+  //               if (!data.target) {
+  //                 return;
+  //               }
+
+  //               // Create actual series if it hasn't been yet created
+  //               if (!regionalSeries1[data.target].series) {
+  //                 regionalSeries1[data.target].series = createSeries1("count");
+  //                 regionalSeries1[data.target].series.data = data.markerData;
+  //               }
+
+  //               // Hide current series
+  //               if (currentSeries1) {
+  //                 currentSeries1.hide();
+  //               }
+
+  //               // Control zoom
+  //               if (data.type == "state") {
+  //                 let statePolygon = polygonSeries1.getPolygonById("IN-PB");
+  //                 chartGeo.zoomToMapObject(statePolygon);
+  //               } else if (data.type == "city") {
+  //                 chartGeo.zoomToGeoPoint({
+  //                   latitude: data.lat,
+  //                   longitude: data.long
+  //                 }, 64, true);
+  //               }
+  //               zoomOut1.show();
+
+  //               // Show new targert series
+  //               currentSeries1 = regionalSeries1[data.target].series;
+  //               currentSeries1.show();
+  //             });
+
+  //             return series;
+  //           }
+
+  //           let regionalSeries1: any = {};
+  //           let currentSeries1;
+
+  //           function setupStores1(data) {
+
+  //             // Init country-level series
+  //             regionalSeries1.IN = {
+  //               markerData: [],
+  //               series: createSeries1("stores")
+  //             };
+
+  //             // Set current series
+  //             currentSeries1 = regionalSeries1.IN.series;
+
+  //             // Process data
+  //             array.each(data.query_results, (data: any) => {
+
+
+  //               // Get store data
+  //               let store = {
+  //                 state: data.MAIL_ST_PROV_C,
+  //                 long: type.toNumber(data.LNGTD_I),
+  //                 lat: type.toNumber(data.LATTD_I),
+  //                 location: data.co_loc_n,
+  //                 city: data.mail_city_n,
+  //                 count: type.toNumber(data.count)
+  //               };
+
+  //               // Process state-level data
+  //               if (regionalSeries1[store.state] == undefined) {
+  //                 let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
+  //                 if (statePolygonForGeo) {
+
+  //                   // Add state data
+  //                   regionalSeries1[store.state] = {
+  //                     target: store.state,
+  //                     type: "state",
+  //                     name: statePolygonForGeo.dataItem.dataContext.name,
+  //                     count: store.count,
+  //                     stores: 1,
+  //                     lat: statePolygonForGeo.visualLatitude,
+  //                     long: statePolygonForGeo.visualLongitude,
+  //                     state: store.state,
+  //                     markerData: []
+  //                   };
+  //                   regionalSeries1.IN.markerData.push(regionalSeries1[store.state]);
+
+  //                 } else {
+  //                   // State not found
+  //                   return;
+  //                 }
+  //               } else {
+  //                 regionalSeries1[store.state].stores++;
+  //                 regionalSeries1[store.state].count += store.count;
+  //               }
+
+  //               // Process city-level data
+  //               if (regionalSeries1[store.city] == undefined) {
+  //                 regionalSeries1[store.city] = {
+  //                   target: store.city,
+  //                   type: "city",
+  //                   name: store.city,
+  //                   count: store.count,
+  //                   stores: 1,
+  //                   lat: store.lat,
+  //                   long: store.long,
+  //                   state: store.state,
+  //                   markerData: []
+  //                 };
+  //                 regionalSeries1[store.state].markerData.push(regionalSeries1[store.city]);
+  //               } else {
+  //                 regionalSeries1[store.city].stores++;
+  //                 regionalSeries1[store.city].count += store.count;
+  //               }
+
+  //               // Process individual store
+  //               regionalSeries1[store.city].markerData.push({
+  //                 name: store.location,
+  //                 count: store.count,
+  //                 stores: 1,
+  //                 lat: store.lat,
+  //                 long: store.long,
+  //                 state: store.state
+  //               });
+
+  //             });
+
+  //             regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
+  //           }
+
+
+  // }
 
   getVisitorPoliticalInclinationOptionData() {
     this.userService.getVisitorPoliticalInclinationOptionData().subscribe(
@@ -1289,69 +3110,69 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.isLoadingResults = true;
     var currentTime = new Date();
     var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
-    const range = {fromDate:fromdate,toDate:currentTime}
+    const range = { fromDate: fromdate, toDate: currentTime }
     this.userService.getVisitorByFilter(
       this.filterKeyword ? this.filterKeyword.search : '',
       this.filterKeyword ? this.filterKeyword.purpose : '',
       this.filterKeyword ? this.filterKeyword.date : '',
       this.pageIndexOfListingTable).subscribe(
-      (response: any) => {
-        if (response.error === false) {
-          this.visitorLists = response.data.response;
-          this.exportList=[];
-          for (var i = 0; i <= this.visitorLists.length - 1; i++) {
-            var d = new Date(this.visitorLists[i].createdAt);
+        (response: any) => {
+          if (response.error === false) {
+            this.visitorLists = response.data.response;
+            this.exportList = [];
+            for (var i = 0; i <= this.visitorLists.length - 1; i++) {
+              var d = new Date(this.visitorLists[i].createdAt);
 
-            var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-            var Ed = new Date(this.visitorLists[i].enrollmentDate);
+              var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+              var Ed = new Date(this.visitorLists[i].enrollmentDate);
 
-            var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-            this.exportList.push({
-              serial: i + 1,
-              uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
-              fullName: this.visitorLists[i].fullName,
-              address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
-              createdAt: day,
-              enrollmentDate: Eday,
-              mobile: this.visitorLists[i].mobile,
-              revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-              revisitStatus: this.visitorLists[i].revisits[0] ?  this.visitorLists[i].revisits[0].status : '',
-              visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
-              totalVisits: this.visitorLists[i].totalVisits,
-              remark: this.visitorLists[i].objectiveInfoRemark,
-              politicalRemark: this.visitorLists[i].politicalInforRemark,
+              var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+              this.exportList.push({
+                serial: i + 1,
+                uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
+                fullName: this.visitorLists[i].fullName,
+                address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+                createdAt: day,
+                enrollmentDate: Eday,
+                mobile: this.visitorLists[i].mobile,
+                revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
+                revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
+                visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
+                totalVisits: this.visitorLists[i].totalVisits,
+                remark: this.visitorLists[i].objectiveInfoRemark,
+                politicalRemark: this.visitorLists[i].politicalInforRemark,
 
-            })
-           
+              })
+
+            }
+            this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+            // this.dataSource.paginator = this.paginator;
+            this.pageLength = this.visitorListsTotalLength;
+            this.isLoadingResults = false;
+
           }
-          this.dataSource = new MatTableDataSource < any > (this.visitorLists);
-          // this.dataSource.paginator = this.paginator;
-          this.pageLength = this.visitorListsTotalLength;
+        },
+        (error) => {
           this.isLoadingResults = false;
-       
+          this._snackBar.open(error.message, "", {
+            duration: 5000,
+          });
         }
-      },
-      (error) => {
-        this.isLoadingResults = false;
-        this._snackBar.open(error.message, "", {
-          duration: 5000,
-        });
-      }
-    );
+      );
   }
 
-  getVisitorList(pageIndexOfListingTable?:any): void {
+  getVisitorList(pageIndexOfListingTable?: any): void {
     // this.isLoadingResults = true;
     var currentTime = new Date();
     var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
-    const range = {fromDate:fromdate,toDate:currentTime}
+    const range = { fromDate: fromdate, toDate: currentTime }
     this.userService.getVisitorList(pageIndexOfListingTable).subscribe(
       (response: any) => {
         if (response.error === false) {
           this.visitorLists = response.data.response;
-         
+
           this.visitorListsTotalLength = response.data.length;
-          this.exportList=[];
+          this.exportList = [];
           for (var i = 0; i <= this.visitorLists.length - 1; i++) {
             var d = new Date(this.visitorLists[i].createdAt);
 
@@ -1368,7 +3189,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
               enrollmentDate: Eday,
               mobile: this.visitorLists[i].mobile,
               revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-              revisitStatus: this.visitorLists[i].revisits[0] ?  this.visitorLists[i].revisits[0].status : '',
+              revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
               visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
               totalVisits: this.visitorLists[i].totalVisits,
               remark: this.visitorLists[i].objectiveInfoRemark,
@@ -1379,12 +3200,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
           // console.log(this.dataSource)
           // console.log(this.visitorLists)
-          this.dataSource = new MatTableDataSource < any > (this.visitorLists);
-          this.pageLength =response.data.length;
+          this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+          this.pageLength = response.data.length;
           // this.dataSource.paginator = this.paginator;
           // this.paginator.pageIndex = 0;
           // this.pageLength = this.visitorListsTotalLength;
-       
+
           this.isLoadingResults = false;
         }
       },
@@ -1397,7 +3218,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     );
   }
 
-  exportTable() { 
+  exportTable() {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.exportList);
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
@@ -1411,26 +3232,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         "Unique Visitor ID": element.uniqueVisitorId,
         "Visitor Name": element.fullName,
         "Address": element.houseNumber + element.line1,
-        "Date": ("0" +  new Date(element.createdAt).getDate()).slice(-2)+ "-" + ("0"+(new Date(element.createdAt).getMonth()+1)).slice(-2) + "-" +
-        new Date(element.createdAt).getFullYear(),
-        "Enrollment Date":("0" +  new Date(element.enrollmentDate).getDate()).slice(-2)+ "-" + ("0"+(new Date(element.enrollmentDate).getMonth()+1)).slice(-2) + "-" +
-        new Date(element.enrollmentDate).getFullYear() ,
+        "Date": ("0" + new Date(element.createdAt).getDate()).slice(-2) + "-" + ("0" + (new Date(element.createdAt).getMonth() + 1)).slice(-2) + "-" +
+          new Date(element.createdAt).getFullYear(),
+        "Enrollment Date": ("0" + new Date(element.enrollmentDate).getDate()).slice(-2) + "-" + ("0" + (new Date(element.enrollmentDate).getMonth() + 1)).slice(-2) + "-" +
+          new Date(element.enrollmentDate).getFullYear(),
         "Mobile": element.mobile,
         "Caste": element.caste,
-        "DOB":  ("0" +  new Date(element.dob).getDate()).slice(-2)+ "-" + ("0"+(new Date(element.dob).getMonth()+1)).slice(-2) + "-" +
-        new Date(element.dob).getFullYear(),
+        "DOB": ("0" + new Date(element.dob).getDate()).slice(-2) + "-" + ("0" + (new Date(element.dob).getMonth() + 1)).slice(-2) + "-" +
+          new Date(element.dob).getFullYear(),
         "Gender": element.gender,
         "Father Name": element.father,
         "Mother Name": element.mother,
         "House Number": element.houseNumber,
-        "Occupation":element.occupation,
+        "Occupation": element.occupation,
         "Tehsil": element.tehsil,
         "District": element.district,
         "Area PIN": element.zipCode,
-       // "Visitor Voter Id Number": element.address.voterId,
-       "Visitor Voter Id Number": element.voterId,
+        // "Visitor Voter Id Number": element.address.voterId,
+        "Visitor Voter Id Number": element.voterId,
         "Constituency": element.constituency,
-        "Area":element.address.area,
+        "Area": element.address.area,
         // "Booth Number": element.boothNumber,
         // "Booth Name": element.boothName,
         // "Booth Area": element.boothArea,
@@ -1447,11 +3268,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //"Booth Coordinator": element.politicalinfo.boothCoordinator,
         "Status": element.revisits[0] ? element.revisits[0].status : '',
         "Visitor Category": element.politicalinfo.visitorCategory,
-        "Is Samajwadi Party Member":element.politicalinfo.isSamajwadiPartyMember,
+        "Is Samajwadi Party Member": element.politicalinfo.isSamajwadiPartyMember,
         "Total no of Visits": element.totalVisits,
         "Remarks": element.objectiveInfoRemark,
         "Remarks (In case if the visitor comes with some reference)": element.politicalInforRemark,
-        "Reference mobile number":element.refrenceMobile,
+        "Reference mobile number": element.refrenceMobile,
         "Capture details of any accomplice with the visitor": element.accomplicedDetails,
         // "Thank You Acknowledgment message sent": element.politicalinfo.isAcknowledgementSent ? 'Yes' : 'No',
         // "Information sent to the booth/Village coordinator of the visitor": element.politicalinfo.isInfoSentToBooth ? 'Yes' : 'No'
@@ -1514,56 +3335,56 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         top: 25,
       },
       body: this.exportList,
-        columnStyles: {
-          0: {cellWidth: 10},
-          1: {cellWidth: 25},
-          5: {cellWidth: 25},
-          10:{cellWidth: 15},
-        },
+      columnStyles: {
+        0: { cellWidth: 10 },
+        1: { cellWidth: 25 },
+        5: { cellWidth: 25 },
+        10: { cellWidth: 15 },
+      },
       columns: [{
-          header: 'S.no',
-          dataKey: 'serial'
-        }, {
-          header: 'Unique  ID',
-          dataKey: 'uniqueVisitorId'
-        }, {
-          header: 'Name',
-          dataKey: 'fullName'
-        }, {
-          header: 'Address',
-          dataKey: 'address'
-        }, {
-          header: 'Date',
-          dataKey: 'createdAt'
-        },
-        {
-          header: 'Enroll.Date',
-          dataKey: 'enrollmentDate'
-        },
-        {
-          header: 'Mobile',
-          dataKey: 'mobile'
-        }, {
-          header: 'Purpose of Visit',
-          dataKey: 'revisit'
-        }, {
-          header: 'Status',
-          dataKey: 'revisitStatus'
-        }, {
-          header: 'Visit Category',
-          dataKey: 'visitCategory'
-        },
+        header: 'S.no',
+        dataKey: 'serial'
+      }, {
+        header: 'Unique  ID',
+        dataKey: 'uniqueVisitorId'
+      }, {
+        header: 'Name',
+        dataKey: 'fullName'
+      }, {
+        header: 'Address',
+        dataKey: 'address'
+      }, {
+        header: 'Date',
+        dataKey: 'createdAt'
+      },
+      {
+        header: 'Enroll.Date',
+        dataKey: 'enrollmentDate'
+      },
+      {
+        header: 'Mobile',
+        dataKey: 'mobile'
+      }, {
+        header: 'Purpose of Visit',
+        dataKey: 'revisit'
+      }, {
+        header: 'Status',
+        dataKey: 'revisitStatus'
+      }, {
+        header: 'Visit Category',
+        dataKey: 'visitCategory'
+      },
 
-        {
-          header: 'Total Visit',
-          dataKey: 'totalVisits'
-        }, {
-          header: 'Remark',
-          dataKey: 'remark'
-        }, {
-          header: 'Political Remarks',
-          dataKey: 'politicalRemark'
-        },
+      {
+        header: 'Total Visit',
+        dataKey: 'totalVisits'
+      }, {
+        header: 'Remark',
+        dataKey: 'remark'
+      }, {
+        header: 'Political Remarks',
+        dataKey: 'politicalRemark'
+      },
         //  {
         //   header: 'Capture Details of accomplice ',
         //   dataKey: 'accomDetail'
@@ -1582,8 +3403,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   getVisitorPurposeOptionData() {
     this.userService.getVisitorPurposeOptionData().subscribe(
       (response: any) => {
-          console.log("response.data",response.data)
-          this.purposes = response.data;
+        console.log("response.data", response.data)
+        this.purposes = response.data;
       },
       (error) => {
         this._snackBar.open(error.message, "", {
@@ -1592,77 +3413,77 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       }
     );
   }
-//   visitorListAllData(){
-// //    this.isLoadingResults = true
+  //   visitorListAllData(){
+  // //    this.isLoadingResults = true
 
-//     this.userService
-//     .getAllVisitorList(
-    
-//     )
-//     .subscribe(
-//       (response: any) => {
-//         if (response.error === false) {
-//           this.exportAllDataVar = response.data.response;
-//          // this.visitorListsTotalLength = response.data.length;
-        
-      
-//          console.log(" this.exportAllDataVar ",response.data.response)
-          
-//         //  this.isLoadingResults = false;
-//         }
-//       },
-//       (error) => {
-//         this.isLoadingResults = false;
-//         console.log("error.message",error)
+  //     this.userService
+  //     .getAllVisitorList(
 
-//         this._snackBar.open(error.message, "", {
-//           duration: 5000,
-//         });
-//       }
-//     );
-//   }
-filterByName(value){
-  this.filterValue=value
-  this.filterInitial=''
-  this.range.reset()
-  this.filterTable()
-}
-filterPurpose(value){
-  this.filterInitial=value
-  this.filterValue=''
-  this.range.reset()
-  this.filterTable()
-}
-filterDate(){
-  this.filterInitial=''
-  this.filterValue=''
-  this.filterTable()
-}
+  //     )
+  //     .subscribe(
+  //       (response: any) => {
+  //         if (response.error === false) {
+  //           this.exportAllDataVar = response.data.response;
+  //          // this.visitorListsTotalLength = response.data.length;
+
+
+  //          console.log(" this.exportAllDataVar ",response.data.response)
+
+  //         //  this.isLoadingResults = false;
+  //         }
+  //       },
+  //       (error) => {
+  //         this.isLoadingResults = false;
+  //         console.log("error.message",error)
+
+  //         this._snackBar.open(error.message, "", {
+  //           duration: 5000,
+  //         });
+  //       }
+  //     );
+  //   }
+  filterByName(value) {
+    this.filterValue = value
+    this.filterInitial = ''
+    this.range.reset()
+    this.filterTable()
+  }
+  filterPurpose(value) {
+    this.filterInitial = value
+    this.filterValue = ''
+    this.range.reset()
+    this.filterTable()
+  }
+  filterDate() {
+    this.filterInitial = ''
+    this.filterValue = ''
+    this.filterTable()
+  }
   filterTable(): void {
     this.isLoadingResults = true;
     this.userService.getVisitorByFilter(
-        this.filterInitial,
-        this.filterValue,
-        this.range.value,
-       1
-      )
+      this.filterInitial,
+      this.filterValue,
+      this.range.value,
+      1
+    )
       .subscribe(
         (response: any) => {
           if (response.error === false) {
             this.filterKeyword = {
-            search: this.filterInitial,
-            purpose: this.filterValue,
-            date: this.range.value,
+              search: this.filterInitial,
+              purpose: this.filterValue,
+              date: this.range.value,
             }
             this.visitorLists = response.data.response;
             this.visitorListsTotalLength = response.data.length;
-            this.exportList=[];
+            this.exportList = [];
             for (var i = 0; i <= this.visitorLists.length - 1; i++) {
               var d = new Date(this.visitorLists[i].createdAt);
-  
+
               var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
               var Ed = new Date(this.visitorLists[i].enrollmentDate);
-  
+
               var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
               this.exportList.push({
                 serial: i + 1,
@@ -1673,16 +3494,16 @@ filterDate(){
                 enrollmentDate: Eday,
                 mobile: this.visitorLists[i].mobile,
                 revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-                revisitStatus: this.visitorLists[i].revisits[0] ?  this.visitorLists[i].revisits[0].status : '',
+                revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
                 visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
                 totalVisits: this.visitorLists[i].totalVisits,
                 remark: this.visitorLists[i].objectiveInfoRemark,
                 politicalRemark: this.visitorLists[i].politicalInforRemark,
-  
+
               })
-  
+
             }
-            this.dataSource = new MatTableDataSource < any > (this.visitorLists);
+            this.dataSource = new MatTableDataSource<any>(this.visitorLists);
             // this.dataSource.paginator = this.paginator;
             this.paginator.pageIndex = 0;
             this.pageLength = this.visitorListsTotalLength;
@@ -1700,22 +3521,22 @@ filterDate(){
 
 
   resetFilter() {
-    this.appliedFilters = {}; 
+    this.appliedFilters = {};
     this.paginator.pageIndex = 0;
     this.visitorListsTotalLength = 1;
     this.filterInitial = "";
     this.filterValue = "";
-    this.pageLength =0;
+    this.pageLength = 0;
     this.range.controls.fromDate.setValue("");
     this.range.controls.toDate.setValue("");
     this.filterKeyword = {
       search: this.filterInitial,
       purpose: this.filterValue,
       date: this.range.value,
-      }
-      this.getFilterMeetStatus()
-      this.filterTable()
-      console.log(this.appliedFilters)
+    }
+    this.getFilterMeetStatus()
+    this.filterTable()
+    console.log(this.appliedFilters)
     //this.getVisitorList(1);
   }
 
@@ -1751,14 +3572,14 @@ filterDate(){
 
   ngOnChanges(): void {
     // this.ngAfterViewInit();
-   
+
   }
-  getVisitAnalyticGraphData(filterValue ? : any) {
+  getVisitAnalyticGraphData(filterValue?: any) {
     if (filterValue) {
       this.viewGraphresetBtn = true;
       this.isLoadingResults = true;
     }
-   
+
     this.userService.graphDataLoader.next(true);
     this.userService.getVisitAnalyticGraphData(filterValue).subscribe(
       (response: any) => {
@@ -1766,11 +3587,11 @@ filterDate(){
 
           this.userService.graphDataLoader.next(false);
           this.purposeGraph.data = response.data.purpose;
-          
-         
+
+
           this.genderGraph.data = response.data.gender;
           this.casteGraph.data = response.data.caste;
-          if(!filterValue){
+          if (!filterValue) {
             this.purposes = response.data.purpose;
           }
 
@@ -1778,15 +3599,14 @@ filterDate(){
             this.casteGraph.scrollbarX = new Scrollbar();
             this.casteGraph.scrollbarX.parent = this.casteGraph.bottomAxesContainer;
           }
-          if(response.data.timeFrame.length > 8)
-          {
+          if (response.data.timeFrame.length > 8) {
             this.timeFrameGraphData.scrollbarX = new Scrollbar();
             this.timeFrameGraphData.scrollbarX.parent = this.timeFrameGraphData.bottomAxesContainer;
           }
-         
+
           if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text= "NO. OF WEEKS"
+            this.timeFrameXText.title.text = "NO. OF WEEKS"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
 
             //   var d = moment(element._id, 'MM-DD-YYYY');
@@ -1797,8 +3617,8 @@ filterDate(){
             //   }
             // })
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
-            var sortedData:any= response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-           
+            var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
             this.timeFrameGraphData.data = sortedData.map((element) => {
 
               var d = moment(element._id, 'MM-DD-YYYY');
@@ -1808,10 +3628,10 @@ filterDate(){
                 'count': element.count
               }
             })
-            this.timeFrameXText.title.text= "NO. OF MONTH"
+            this.timeFrameXText.title.text = "NO. OF MONTH"
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text= "NO. OF YEARS"
+            this.timeFrameXText.title.text = "NO. OF YEARS"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
 
             //   var d = moment(element._id, 'MM-DD-YYYY');
@@ -1821,9 +3641,9 @@ filterDate(){
             //     'count': element.count
             //   }
             // })
-          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date'){
+          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text= "NO. OF DATES"
+            this.timeFrameXText.title.text = "NO. OF DATES"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
             //   var d = moment(element._id, 'MM-DD-YYYY');
             //   d.month(); // 1
@@ -1833,10 +3653,11 @@ filterDate(){
             //   }
             // })
           }
-          else { this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text= "NO. OF MONTHS"
-            var sortedData:any= response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-        
+          else {
+            this.timeFrameGraphData.data = response.data.timeFrame;
+            this.timeFrameXText.title.text = "NO. OF MONTHS"
+            var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
             this.timeFrameGraphData.data = sortedData.map((element) => {
 
               var d = moment(element._id, 'MM-DD-YYYY');
@@ -1852,7 +3673,7 @@ filterDate(){
           // this.geodata1.data = response.data.boothArea;
           this.geodata1.data = response.data.districtArea;
           this.visitorCategoryData = response.data.visitorCategory;
-          this.visitorOccupatioData=response.data.occupation;
+          this.visitorOccupatioData = response.data.occupation;
           this.ageGraphData = response.data.ageGroup;
           this.perceivedPoliticalInclinationData = response.data.ppi
           this.meetingLocationGraphData = response.data.meetingLocation;
@@ -1860,68 +3681,68 @@ filterDate(){
           this.meetingStatusGraphData = response.data.meetingStatus;
           this.filteredVisitorCount = response.data.count;
           this.samajwadiPartyGraphData = response.data.isSamajwadiPartyMember;
-         this.visitorAreaData = response.data.area
+          this.visitorAreaData = response.data.area
         }
 
 
-    if (filterValue) {
-      this.visitorLists = response.data.visitorData;
-      this.exportList=[];
-      for (var i = 0; i <= this.visitorLists.length - 1; i++) {
-        var d = new Date(this.visitorLists[i].createdAt);
+        if (filterValue) {
+          this.visitorLists = response.data.visitorData;
+          this.exportList = [];
+          for (var i = 0; i <= this.visitorLists.length - 1; i++) {
+            var d = new Date(this.visitorLists[i].createdAt);
 
-        var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-        var Ed = new Date(this.visitorLists[i].enrollmentDate);
+            var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            var Ed = new Date(this.visitorLists[i].enrollmentDate);
 
-        var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
 
-        this.exportList.push({
-          serial: i + 1,
-          uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
-          fullName: this.visitorLists[i].fullName,
-          address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
-          createdAt: day,
-          enrollmentDate: Eday,
-          mobile: this.visitorLists[i].mobile,
-          revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-          revisitStatus: this.visitorLists[i].revisits[0] ?  this.visitorLists[i].revisits[0].status : '',
-          visitCategory: this.visitorLists[i].politicalinfo.visitorCategory,
-          totalVisits: this.visitorLists[i].totalVisits,
-          remark: this.visitorLists[i].objectiveinfo.remark,
-          politicalRemark: this.visitorLists[i].politicalinfo.remarks,
+            this.exportList.push({
+              serial: i + 1,
+              uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
+              fullName: this.visitorLists[i].fullName,
+              address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+              createdAt: day,
+              enrollmentDate: Eday,
+              mobile: this.visitorLists[i].mobile,
+              revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
+              revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
+              visitCategory: this.visitorLists[i].politicalinfo.visitorCategory,
+              totalVisits: this.visitorLists[i].totalVisits,
+              remark: this.visitorLists[i].objectiveinfo.remark,
+              politicalRemark: this.visitorLists[i].politicalinfo.remarks,
 
-        })
-        // if (this.visitorLists[i].politicalinfo.isAcknowledgementSent == true) {
+            })
+            // if (this.visitorLists[i].politicalinfo.isAcknowledgementSent == true) {
 
-        //   if (this.visitorLists[i].politicalinfo.isInfoSentToBooth == true) {
-        //     this.exportList[i].acknowledge = 'Yes';
-        //     this.exportList[i].boothCordinate = 'Yes';
-        //   } else {
-        //     this.exportList[i].acknowledge = 'Yes';
-        //     this.exportList[i].boothCordinate = 'No';
-        //   }
-        // } else {
-        //   if (this.visitorLists[i].politicalinfo.isInfoSentToBooth == true) {
-        //     this.exportList[i].acknowledge = 'No';
-        //     this.exportList[i].boothCordinate = 'Yes';
-        //   } else {
-        //     this.exportList[i].acknowledge = 'No';
-        //     this.exportList[i].boothCordinate = 'No';
-        //   }
-        // }
+            //   if (this.visitorLists[i].politicalinfo.isInfoSentToBooth == true) {
+            //     this.exportList[i].acknowledge = 'Yes';
+            //     this.exportList[i].boothCordinate = 'Yes';
+            //   } else {
+            //     this.exportList[i].acknowledge = 'Yes';
+            //     this.exportList[i].boothCordinate = 'No';
+            //   }
+            // } else {
+            //   if (this.visitorLists[i].politicalinfo.isInfoSentToBooth == true) {
+            //     this.exportList[i].acknowledge = 'No';
+            //     this.exportList[i].boothCordinate = 'Yes';
+            //   } else {
+            //     this.exportList[i].acknowledge = 'No';
+            //     this.exportList[i].boothCordinate = 'No';
+            //   }
+            // }
 
-      }
-      this.dataSource = new MatTableDataSource < any > (this.visitorLists);
-      this.dataSource.paginator = this.paginator;
-      this.pageLength =response.data.visitorData.length;
-     
-      this.viewGraphresetBtn = true;
-      this.isLoadingResults = false;
-    } 
-    else {
-      this.getVisitorList(1);
-      this.viewGraphresetBtn = false;
-    } 
+          }
+          this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+          this.dataSource.paginator = this.paginator;
+          this.pageLength = response.data.visitorData.length;
+
+          this.viewGraphresetBtn = true;
+          this.isLoadingResults = false;
+        }
+        else {
+          this.getVisitorList(1);
+          this.viewGraphresetBtn = false;
+        }
       },
       (error) => {
         this.userService.graphDataLoader.next(false);
@@ -1938,13 +3759,18 @@ filterDate(){
       key: "purpose",
       value: value,
     };
+
+    this.appliedFilters['purpose'] = value;
+
     this.getFilterMeetStatus(filterObj)
-   
+
   }
 
   visitorAreaFilter(filterObj): void {
     this.getFilterMeetStatus(filterObj)
- 
+
+    this.appliedFilters['area'] = filterObj;
+
   }
 
   genderFilter(value): void {
@@ -1955,55 +3781,67 @@ filterDate(){
 
     this.appliedFilters['gender'] = value;
 
+    console.log(this.appliedFilters);
     this.getFilterMeetStatus(filterObj)
-    
+
   }
 
   casteFilter(value): void {
-    // const filterObj = {
-    //   key: "caste",
-    //   value: value,
-    // };
-    // this.getFilterMeetStatus(filterObj)
-  
+    const filterObj = {
+      key: "caste",
+      value: value,
+    };
+    this.appliedFilters['caste'] = value;
+    this.getFilterMeetStatus(filterObj)
+
   }
 
   ageFilter(filterObj): void {
     this.getFilterMeetStatus(filterObj)
+    this.appliedFilters['age'] = filterObj;
+    console.log(this.appliedFilters);
 
   }
 
   perceiveFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
-   
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['perceive'] = filterObj;
+
   }
 
   samajwadiPartyFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
-  
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['aapMember'] = filterObj;
+
   }
 
   visitorCategoryFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['category'] = filterObj;
 
   }
 
   visitorOccupationFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['occupation'] = filterObj;
 
   }
   whomVisitorMeetFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
-    
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['whomMeet'] = filterObj;
+
+
   }
 
   meetingStatusGraphFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
-  
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['meetStatus'] = filterObj;
   }
 
   meetingLocationGraphFilter(filterObj): void {
-    this.getFilterMeetStatus(filterObj)
+    this.getFilterMeetStatus(filterObj);
+    this.appliedFilters['meetLocation'] = filterObj;
+
 
   }
 
@@ -2028,389 +3866,389 @@ filterDate(){
     // this.getFilterVisitorMeet(filterObj)
     // this.getVisitorGraphFilter(filterObj);
     // console.log("filterObj",filterObj)
-   // this.getVisitAnalyticGraphData(filterObj);
+    // this.getVisitAnalyticGraphData(filterObj);
   }
 
   //separate api
 
-  getFilterMeetStatus(filterObj?:any): void{
-    
+  getFilterMeetStatus(filterObj?: any): void {
+
     this.isLoadingResults = true;
     if (filterObj) {
       this.viewGraphresetBtn = true;
       this.isLoadingResults = true;
     }
-    else{
+    else {
       this.viewGraphresetBtn = false;
       this.appliedFilters = {};
     }
     //table
-    this. isLoaderHappen = true;
+    this.isLoaderHappen = true;
     //All graph loader
     this.userService.graphDataLoader.next(true);
     this.userService.graphDataLoader5.next(true);
     this.userService.graphDataLoader1.next(true);
     this.userService.graphDataLoader2.next(true);
     this.userService.graphDataLoader4.next(true);
-    this.graphDataLoader1=true;
-    this.graphDataLoader3=true;
+    this.graphDataLoader1 = true;
+    this.graphDataLoader3 = true;
     this.userService.graphDataLoader7.next(true);
     this.userService.graphDataLoader3.next(true);
-    this.graphDataLoader=true;
-    this.graphDataLoader2=true;
+    this.graphDataLoader = true;
+    this.graphDataLoader2 = true;
     this.userService.graphDataLoader6.next(true);
     this.userService.graphDataLoader8.next(true);
 
     this.userService.getFilterMeetStatus(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'meetingStatus'){
-            this.filteredVisitorCount=response.data[0].count;
+          if (filterObj?.key == 'meetingStatus') {
+            this.filteredVisitorCount = response.data[0].count;
           }
-         
+
           this.meetingStatusGraphData = response.data;
           this.userService.graphDataLoader.next(false);
-         this.getFilterArea(filterObj)
+          this.getFilterArea(filterObj)
         }
       },
       (error) => {
-    
+
       }
     );
   }
-  getFilterArea(filterObj?:any): void{
- 
+  getFilterArea(filterObj?: any): void {
+
     this.userService.getFilterArea(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'area'){
-            this.filteredVisitorCount=response.data[0].count;
-           // console.log("area", this.filteredVisitorCount)
+          if (filterObj?.key == 'area') {
+            this.filteredVisitorCount = response.data[0].count;
+            // console.log("area", this.filteredVisitorCount)
           }
-         this.visitorAreaData = response.data;
-        
-         this.getFilterDistrictConstituency(filterObj)
-       
-         this.userService.graphDataLoader5.next(false);
+          this.visitorAreaData = response.data;
+
+          // this.getFilterDistrictConstituency(filterObj)
+
+          this.userService.graphDataLoader5.next(false);
         }
       },
       (error) => {
-       
+
       }
     );
   }
-  getFilterDistrictConstituency(filterObj?:any): void{
-   // this.isLoadingResults = true;
-    this.userService.getFilterDistrictConstituency(filterObj).subscribe(
-      (response: any) => {
-        if (response.error === false) {
-      
-          this.geodata1.data = response.data[0].district;
-          this.geodata.data = response.data[0].constituency;
-          this.getFilterAgeGroup(filterObj)
-         
-         // this.isLoadingResults = false;
-        }
-      },
-      (error) => {
-      
-      }
-    );
-  }
-  getFilterAgeGroup(filterObj?:any): void{
-   
+  // getFilterDistrictConstituency(filterObj?: any): void {
+  //   // this.isLoadingResults = true;
+  //   this.userService.getFilterDistrictConstituency(filterObj).subscribe(
+  //     (response: any) => {
+  //       if (response.error === false) {
+
+  //         this.geodata1.data = response.data[0].district;
+  //         this.geodata.data = response.data[0].constituency;
+  //         this.getFilterAgeGroup(filterObj)
+
+  //         // this.isLoadingResults = false;
+  //       }
+  //     },
+  //     (error) => {
+
+  //     }
+  //   );
+  // }
+  getFilterAgeGroup(filterObj?: any): void {
+
     this.userService.getFilterAgeGroup(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'ageGroup'){
-            this.filteredVisitorCount=response.data[0].count;
+          if (filterObj?.key == 'ageGroup') {
+            this.filteredVisitorCount = response.data[0].count;
             //console.log("ageGroup", this.filteredVisitorCount)
           }
           this.ageGraphData = response.data;
           this.getFilterMeetLocation(filterObj)
-          
+
           this.userService.graphDataLoader1.next(false);
-         
+
         }
       },
       (error) => {
-    
+
       }
     );
   }
-  getFilterMeetLocation(filterObj?:any): void{
-   
+  getFilterMeetLocation(filterObj?: any): void {
+
     this.userService.getFilterMeetLocation(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'meetingLocation'){
-            this.filteredVisitorCount=response.data[0].count;
+          if (filterObj?.key == 'meetingLocation') {
+            this.filteredVisitorCount = response.data[0].count;
             //console.log("meetingLocation", this.filteredVisitorCount)
           }
           this.meetingLocationGraphData = response.data;
           this.getFilterIsSamjawadi(filterObj)
-          
+
           this.userService.graphDataLoader2.next(false);
         }
       },
       (error) => {
-      
+
       }
     );
   }
-  getFilterIsSamjawadi(filterObj?:any): void{
-  
+  getFilterIsSamjawadi(filterObj?: any): void {
+
     this.userService.getFilterIsSamjawadi(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-      
-          if(filterObj?.key == 'isSamajwadiPartyMember'){
-            this.filteredVisitorCount=response.data[0].count;
-          //  console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
+
+          if (filterObj?.key == 'isSamajwadiPartyMember') {
+            this.filteredVisitorCount = response.data[0].count;
+            //  console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
           }
           this.samajwadiPartyGraphData = response.data;
           this.getFilterGender(filterObj)
-         
+
           this.userService.graphDataLoader4.next(false);
         }
       },
       (error) => {
-     
+
       }
     );
   }
-  getFilterGender(filterObj?:any): void{
-    
+  getFilterGender(filterObj?: any): void {
+
     this.userService.getFilterGender(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'gender'){
-            this.filteredVisitorCount=response.data[0].count;
+          if (filterObj?.key == 'gender') {
+            this.filteredVisitorCount = response.data[0].count;
             //console.log("gender", this.filteredVisitorCount)
           }
           this.genderGraph.data = response.data;
           this.getFilterCaste(filterObj)
-        
-          this.graphDataLoader1=false;
+
+          this.graphDataLoader1 = false;
         }
       },
       (error) => {
-     
+
       }
     );
   }
-  getFilterCaste(filterObj?:any): void{
-  
+  getFilterCaste(filterObj?: any): void {
+
     this.userService.getFilterCaste(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'caste'){
-            this.filteredVisitorCount=response.data[0].count;
-           // console.log("caste", this.filteredVisitorCount)
+          if (filterObj?.key == 'caste') {
+            this.filteredVisitorCount = response.data[0].count;
+            // console.log("caste", this.filteredVisitorCount)
           }
           this.casteGraph.data = response.data;
           if (this.casteGraph.data.length > 8) {
             this.casteGraph.scrollbarX = new Scrollbar();
             this.casteGraph.scrollbarX.parent = this.casteGraph.bottomAxesContainer;
           }
-         this.graphDataLoader3= false;
-         this.getFilterOccupation(filterObj)
-      
+          this.graphDataLoader3 = false;
+          this.getFilterOccupation(filterObj)
+
         }
       },
       (error) => {
-      
+
       }
     );
   }
-  getFilterOccupation(filterObj?:any): void{
-  
+  getFilterOccupation(filterObj?: any): void {
+
     this.userService.getFilterOccupation(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'occupation'){
-            this.filteredVisitorCount=response.data[0].count;
+          if (filterObj?.key == 'occupation') {
+            this.filteredVisitorCount = response.data[0].count;
             //console.log("occupation", this.filteredVisitorCount)
           }
-          this.visitorOccupatioData=response.data;
+          this.visitorOccupatioData = response.data;
           this.userService.graphDataLoader7.next(false);
-         this.getFilterPpi(filterObj)
-      
+          this.getFilterPpi(filterObj)
+
         }
       },
       (error) => {
-   
+
       }
     );
   }
-  getFilterPpi(filterObj?:any): void{
-   
+  getFilterPpi(filterObj?: any): void {
+
     this.userService.getFilterPpi(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-         
-          if(filterObj?.key == 'ppi'){
-            this.filteredVisitorCount=response.data[0].count;
+
+          if (filterObj?.key == 'ppi') {
+            this.filteredVisitorCount = response.data[0].count;
             //console.log("ppi", this.filteredVisitorCount)
           }
           this.perceivedPoliticalInclinationData = response.data;
           this.getFilterPurpose(filterObj)
-         
+
           this.userService.graphDataLoader3.next(false);
         }
       },
       (error) => {
-    
+
       }
     );
   }
-  getFilterPurpose(filterObj?:any): void{
+  getFilterPurpose(filterObj?: any): void {
     //this.isLoadingResults = true;
-   
+
     this.userService.getFilterPurpose(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
           this.purposeGraph.data = response.data;
           this.purposes = response.data;
           this.getFilterTimeFrame(filterObj)
-          if(filterObj?.key == 'purpose'){
+          if (filterObj?.key == 'purpose') {
             console.log("purpose", this.filteredVisitorCount)
-            this.filteredVisitorCount=response.data[0].count;
+            this.filteredVisitorCount = response.data[0].count;
           }
-          this.graphDataLoader= false;
+          this.graphDataLoader = false;
         }
       },
       (error) => {
-     
+
       }
     );
   }
-  getFilterTimeFrame(filterValue?:any): void{
-  
+  getFilterTimeFrame(filterValue?: any): void {
+
     this.userService.getFilterTimeFrame(filterValue).subscribe(
       (response: any) => {
         if (response.error === false) {
-      
+
           this.getFilterVisitorCategory(filterValue)
-          if(filterValue?.key == 'timeFrame'){
-            this.filteredVisitorCount=response.data[0].count;
-          //  console.log("timeFrame", this.filteredVisitorCount)
+          if (filterValue?.key == 'timeFrame') {
+            this.filteredVisitorCount = response.data[0].count;
+            //  console.log("timeFrame", this.filteredVisitorCount)
           }
-          this.graphDataLoader2= false;
-          if(response.data.length > 8)
-          {
+          this.graphDataLoader2 = false;
+          if (response.data.length > 8) {
             this.timeFrameGraphData.scrollbarX = new Scrollbar();
             this.timeFrameGraphData.scrollbarX.parent = this.timeFrameGraphData.bottomAxesContainer;
           }
-       
+
           // if(filterValue){
-            if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
-              this.timeFrameGraphData.data = response.data;
-              this.timeFrameXText.title.text= "NO. OF WEEKS"
-            
-            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
-              var sortedData:any= response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-            
-              this.timeFrameGraphData.data = sortedData.map((element) => {
-  
-                var d = moment(element._id, 'MM-DD-YYYY');
-                d.month(); // 1
-                return {
-                  '_id': d.format('MMM'),
-                  'count': element.count
-                }
-              })
-              this.timeFrameXText.title.text= "NO. OF MONTH"
-            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
-              this.timeFrameGraphData.data = response.data;
-              this.timeFrameXText.title.text= "NO. OF YEARS"
-            
-            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date'){
-              this.timeFrameGraphData.data = response.data;
-              this.timeFrameXText.title.text= "NO. OF DATES"
-            
-            }
-            else { this.timeFrameGraphData.data = response.data;
-              this.timeFrameXText.title.text= "NO. OF MONTHS"
-              var sortedData:any= response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-           
-              this.timeFrameGraphData.data = sortedData.map((element) => {
-  
-                var d = moment(element._id, 'MM-DD-YYYY');
-                d.month(); // 1
-                return {
-                  '_id': d.format('MMM'),
-                  'count': element.count
-                }
-              })
-            }
+          if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
+            this.timeFrameGraphData.data = response.data;
+            this.timeFrameXText.title.text = "NO. OF WEEKS"
+
+          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
+            var sortedData: any = response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
+            this.timeFrameGraphData.data = sortedData.map((element) => {
+
+              var d = moment(element._id, 'MM-DD-YYYY');
+              d.month(); // 1
+              return {
+                '_id': d.format('MMM'),
+                'count': element.count
+              }
+            })
+            this.timeFrameXText.title.text = "NO. OF MONTH"
+          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
+            this.timeFrameGraphData.data = response.data;
+            this.timeFrameXText.title.text = "NO. OF YEARS"
+
+          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
+            this.timeFrameGraphData.data = response.data;
+            this.timeFrameXText.title.text = "NO. OF DATES"
+
+          }
+          else {
+            this.timeFrameGraphData.data = response.data;
+            this.timeFrameXText.title.text = "NO. OF MONTHS"
+            var sortedData: any = response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
+            this.timeFrameGraphData.data = sortedData.map((element) => {
+
+              var d = moment(element._id, 'MM-DD-YYYY');
+              d.month(); // 1
+              return {
+                '_id': d.format('MMM'),
+                'count': element.count
+              }
+            })
+          }
           // }
           // else{
           //   this.timeFrameGraphData.data = response.data;
           //   this.timeFrameXText.title.text= "NO. OF MONTHS"
           // }
-        
+
         }
       },
       (error) => {
-    
+
       }
     );
   }
-  getFilterVisitorCategory(filterObj?:any): void{
-   
+  getFilterVisitorCategory(filterObj?: any): void {
+
     this.userService.getFilterVisitorCategory(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'visitorCategory'){
-            this.filteredVisitorCount=response.data[0].count;
-           // console.log("visitorCategory", this.filteredVisitorCount)
+          if (filterObj?.key == 'visitorCategory') {
+            this.filteredVisitorCount = response.data[0].count;
+            // console.log("visitorCategory", this.filteredVisitorCount)
           }
           this.visitorCategoryData = response.data;
           this.userService.graphDataLoader6.next(false);
-         this.getFilterVisitorMeet(filterObj)
-       
+          this.getFilterVisitorMeet(filterObj)
+
         }
       },
       (error) => {
-    
+
       }
     );
   }
-  getFilterVisitorMeet(filterObj?:any): void{
-    
+  getFilterVisitorMeet(filterObj?: any): void {
+
     this.userService.getFilterVisitorMeet(filterObj).subscribe(
       (response: any) => {
         if (response.error === false) {
-          if(filterObj?.key == 'whomVisitorMeet'){
-            this.filteredVisitorCount=response.data[0].count;
-           // console.log("whomVisitorMeet", this.filteredVisitorCount)
+          if (filterObj?.key == 'whomVisitorMeet') {
+            this.filteredVisitorCount = response.data[0].count;
+            // console.log("whomVisitorMeet", this.filteredVisitorCount)
           }
           this.whomVisitorMeetGraphData = response.data;
           this.userService.graphDataLoader8.next(false);
-          if(filterObj){
+          if (filterObj) {
             this.getVisitorGraphFilter(filterObj);
           }
-          else{
+          else {
             this.getVisitorList(1);
           }
-        
+
         }
       },
       (error) => {
-   
+
       }
     );
   }
-  getVisitorGraphFilter(filterObj?:any) {
-   // this.isLoadingResults = true;
-    this.userService.getVisitorGraphFilter(filterObj,'1').subscribe(
+  getVisitorGraphFilter(filterObj?: any) {
+    // this.isLoadingResults = true;
+    this.userService.getVisitorGraphFilter(filterObj, '1').subscribe(
       (response: any) => {
         if (response.error === false) {
-       
+
           this.visitorLists = response.data.response;
           this.visitorListsTotalLength = response.data.length;
-          this.exportList=[];
+          this.exportList = [];
           for (var i = 0; i <= this.visitorLists.length - 1; i++) {
             var d = new Date(this.visitorLists[i].createdAt);
 
@@ -2428,7 +4266,7 @@ filterDate(){
               enrollmentDate: Eday,
               mobile: this.visitorLists[i].mobile,
               revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-              revisitStatus: this.visitorLists[i].revisits[0] ?  this.visitorLists[i].revisits[0].status : '',
+              revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
               visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
               totalVisits: this.visitorLists[i].totalVisits,
               remark: this.visitorLists[i].objectiveInfoRemark,
@@ -2436,15 +4274,15 @@ filterDate(){
 
             })
           }
-          this.dataSource = new MatTableDataSource < any > (this.visitorLists);
+          this.dataSource = new MatTableDataSource<any>(this.visitorLists);
           this.paginator.pageIndex = 0;
           this.pageLength = this.visitorListsTotalLength;
           this.isLoadingResults = false;
-          this. isLoaderHappen = false;
+          this.isLoaderHappen = false;
         }
       },
       (error) => {
-      
+
       }
     );
   }

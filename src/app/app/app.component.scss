@@ -57,6 +57,7 @@ button {
     letter-spacing: 1px;
     margin-bottom: 28px;
     width: calc(100% - 10px);
+    transition: all 0.3s;
   }
 
   .log-position a.active{
@@ -64,6 +65,11 @@ button {
 
   }
 
+  .log-position a:hover{
+
+  background-color: #22283a;
+  transition: all 0.3s;
+  }
   .version_side{
     color: #bebebe;
     letter-spacing: 3px;

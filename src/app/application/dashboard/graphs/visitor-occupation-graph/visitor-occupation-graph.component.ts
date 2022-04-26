@@ -41,6 +41,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
   }
   visitorCategoryGraph: any;
   graphDataLoader: boolean;
+  occupationfilter: any;
   @Output() visitorOccupationFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
@@ -138,6 +139,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
       key: 'occupation',
       value: value
     })
+    this.occupationfilter = value;
   }
 
 }

@@ -7,7 +7,7 @@
             <div class="nav-item dropdown text-right">
                 <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="PPIDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    FILTER
+                    {{ aapfilter ? aapfilter : "FILTER" }}  
                 </a>
                 <div class="dropdown-menu more_filter" aria-labelledby="geo">
                     <!-- <a class="dropdown-item cursor-pointer" (click)="visitorAreaGraphFilter(area?._id)" *ngFor="let area of visitorAreaGraph?.data">{{area?._id}}</a> -->

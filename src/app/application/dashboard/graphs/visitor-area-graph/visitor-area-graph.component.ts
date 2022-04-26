@@ -25,6 +25,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class VisitorAreaGraphComponent implements OnInit {
   visitorAreaGraph: any;
+  areafilter: any;
   @Input() set visitorAreaGraphData(data) {
     if (data) {
       this.visitorAreaGraph.data = data;
@@ -117,6 +118,7 @@ this.user.themeValueBehavior.subscribe((value) => {
         key: 'area',
         value: value
     })
+    this.areafilter = value;
   } 
 
 }
