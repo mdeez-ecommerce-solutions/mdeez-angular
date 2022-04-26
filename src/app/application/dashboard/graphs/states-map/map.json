@@ -1,0 +1,35 @@
+{
+    "type": "Topology",
+    "arcs": [],
+    "objects":{
+    "airports": {
+            "type": "GeometryCollection",
+    "geometries": [
+      {
+          "type": "Point",
+          "city":"rew",
+          "coordinates": [
+            77.20359022396303,
+            28.639537770347477
+          ]
+      },
+      {
+        "type": "Point",
+        "city":"rew2",
+        "coordinates": [
+          77.20553462511779,
+          28.638427127932143
+        ]
+      },
+      {
+        "type": "Point",
+        "city":"rew3",
+        "coordinates": [
+          77.20360565571823,
+          28.636470688600518
+        ]
+      }
+    ]
+}
+}
+  }

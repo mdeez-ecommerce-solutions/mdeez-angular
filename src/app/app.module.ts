@@ -24,14 +24,16 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the
 import { MomentModule } from 'angular2-moment';
 
 import { AuthGuard } from './app.routing.guard';
+import { LoginComponent } from "./application/authentication/login/login.component";
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, TotalVisitListComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, TotalVisitListComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AuthModule,
     SharedModule,
     MatCheckboxModule,
@@ -43,7 +45,9 @@ import { AuthGuard } from './app.routing.guard';
     MatToolbarModule,
     MatSlideToggleModule,
     NgIdleKeepaliveModule.forRoot(),
-    MomentModule
+    MomentModule,
+    AppRoutingModule,
+
   ],
   providers: [
     AuthService,

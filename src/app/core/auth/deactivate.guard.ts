@@ -18,7 +18,7 @@ export class DeactivateGuard implements CanActivate {
       if (this.util.getLocalStorage('SignInUserData')) {
 
         alert("You don't have permission to view this page, Redirecting to Dashboard");
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/analytics']);
         return false;
     } else {
       return true

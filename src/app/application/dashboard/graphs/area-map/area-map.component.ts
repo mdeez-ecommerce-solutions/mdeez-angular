@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 import * as topojson from "topojson";
 import * as $ from "jquery"
 import * as data from "../states-map/Delhi.json"
+import * as arcData1 from "../states-map/map.json"
 
 @Component({
   selector: 'app-area-map',
@@ -14,9 +15,12 @@ export class AreaMapComponent implements OnInit {
  
   public name: string = "d3";
   delhData = data 
+  // delhData = arcData 
+  arcDataCont = arcData1
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     console.log(this.delhData);
+    console.log(this.arcDataCont);
     var result= "Delhi";
     console.log(result);
     var svgContainer = $("#svg");
@@ -37,6 +41,7 @@ export class AreaMapComponent implements OnInit {
       var topology1 = topojson.feature(this.delhData, this.delhData.objects.districts);
       let projection = d3.geoMercator().fitSize([width, height], topology1);
       let path = d3.geoPath().projection(projection);
+      console.log("----topology1-->", topology1);
       console.log("------>", this.delhData);
       console.log(
         ...topojson.feature(this.delhData, this.delhData.objects.districts).features
@@ -58,33 +63,45 @@ export class AreaMapComponent implements OnInit {
             .attr("stroke", "#055a17")
             .attr("stroke-width", 1)
             .style("cursor", "pointer")
-            .on("mouseenter", (d) => {
-              console.log(d);
-              console.log(d.srcElement.id)
-              var id = d.srcElement.id;
-              console.log(id);
-              // d3.select();
-              d3.select("#" + id)
-                .attr("stroke-width", 2)
-                .attr("stroke", "#ffff");
-              console.log("#" + id);
-            })
-            .on("mouseleave", (d) => {
-              console.log(d);
-              var id = d.srcElement.id;
-              d3.select("#" + id)
-                .attr("stroke-width", 0)
-                .attr("stroke", "#fffff");
-              // d3.select("#" + id).attr("fill", "#ee7c7c");
-            })
-            .on("touchstart", (d) => {})
-            .on("click", (d, i) => {
-              console.log(d);
-            });
+            // .on("mouseenter", (d) => {
+            //   console.log(d);
+            //   console.log(d.srcElement.id)
+            //   var id = d.srcElement.id;
+            //   console.log(id);
+            //   // d3.select();
+            //   d3.select("#" + id)
+            //     .attr("stroke-width", 2)
+            //     .attr("stroke", "#ffff");
+            //   console.log("#" + id);
+            // })
+            // .on("mouseleave", (d) => {
+            //   console.log(d);
+            //   var id = d.srcElement.id;
+            //   d3.select("#" + id)
+            //     .attr("stroke-width", 0)
+            //     .attr("stroke", "#fffff");
+            //   // d3.select("#" + id).attr("fill", "#ee7c7c");
+            // })
+            // .on("touchstart", (d) => {})
+            // .on("click", (d, i) => {
+            //   console.log(d);
+            // });
           sel.append("title").text((d:any, i) => {
             return d.properties.district;
           });
         });
+              var topology = topojson.feature(this.arcDataCont, this.arcDataCont.objects.airports);
+              console.log('--- topo--->', topology);
+              g.selectAll('path')
+                .data(topojson.feature(this.arcDataCont,this.arcDataCont.objects.airports).features)
+                //.data(t.feature(topology, topology.objects.countries)
+                //  .geometries)
+                .enter()
+                .append('path')
+                .attr('d', path)
+                .attr('class', 'airport');
+              console.log('ending json calling1');
+            // });
   }
  
 

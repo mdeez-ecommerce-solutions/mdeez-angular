@@ -5,13 +5,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { TotalVisitComponent } from 'src/app/shared/modals/total-visit/total-visit.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormControl } from '@angular/forms';
+import moment from 'moment';
 
 @Component({
   selector: 'app-total-visit-list',
@@ -64,18 +65,58 @@ export class TotalVisitListComponent implements OnInit {
     "captureDetailsOfAnyAccompliceWithTheVisitor",
     "Action",
   ];
+  today = new Date();
+  date = this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate()
+  
   constructor(
     private userService: UserService, private _snackBar: MatSnackBar, private dialog: MatDialog,
-     private route: ActivatedRoute, ) {
+     private route: ActivatedRoute,private router:Router ) {
       this.baseApiUrl = environment.api_base_url +'/visitor/download-csv?limit=100000';
-
+      
      }
+
   ngOnInit(): void {
+
+
     this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
     this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
     this.getVisitorList(1)
   }
 
+  
+  selecteRingSize(value){
+    let dropDownValue = value
+    console.log(this.today)
+    console.log(this.date)
+   let validUpto =new Date(this.date).toISOString()
+   console.log(validUpto)
+   var new_date = moment(validUpto).add(7, 'days');
+
+
+let now = moment()
+let startDay = now.startOf('day').toISOString()
+let endDay = now.endOf('day').toISOString()
+console.log('now ' + now.toISOString())
+console.log('start ' + startDay)
+console.log('end ' + endDay)
+
+    if(dropDownValue==='1Day'){
+      let startDay = now.startOf('day').toISOString()
+      let endDay = now.endOf('day').toISOString()
+      this.range.value.fromDate = startDay
+      this.range.value.toDate = endDay
+      this.filterTable()
+    }else if(dropDownValue==='7Day'){
+      let startDay = now.startOf('day').toISOString()
+      var new_date = moment(validUpto).add(7, 'days');
+    }else{
+   
+
+    }
+}
+  getVisitorDetail(visitorId): void {
+    this.router.navigate(["/add-visitor", visitorId]);
+  }
 
   pinColumn(e){
   

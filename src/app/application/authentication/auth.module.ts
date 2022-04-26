@@ -9,14 +9,16 @@ import { ResetPasswordComponent } from "./reset-password/reset-password.componen
 import { AgmCoreModule } from "@agm/core";
 
 const route: Routes = [
-  {
-    path: "",
-    component: LoginComponent,
-  },
-  {
-    path: "login",
-    component: LoginComponent,
-  },
+  // {
+  //   path: "",
+  //   redirectTo: '/login',
+  //   pathMatch: 'full',
+  //   component: LoginComponent,
+  // },
+  // {
+  //   path: "login",
+  //   component: LoginComponent,
+  // },
   {
     path: "signup",
     component: SignupComponent,
@@ -28,11 +30,15 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, ResetPasswordComponent],
+  declarations: [
+   // LoginComponent, 
+    SignupComponent, 
+    ResetPasswordComponent],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(route),
+    // RouterModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDyjsSgp3HFDUgpGab1V5Jh8TuAI9ZCWLw",
     }),
