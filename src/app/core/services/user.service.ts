@@ -68,7 +68,7 @@ visitorRevisit(userdata): Observable < any > {
   getVisitorList(index?:any): Observable < any > {
     const url = APIConstant.VISITOR_LIST;
     let params = new HttpParams();
-    params = params.append('limit', '20');
+    params = params.append('limit', '8');
     if(index) params = params.append('skip', index);
     return this.apiService.get(url, params);
   }
@@ -86,6 +86,17 @@ visitorRevisit(userdata): Observable < any > {
     return this.apiService.get(APIConstant.GET_USER);
   }
 
+  updateUser(id,data){
+   return this.apiService.put(APIConstant.UPDATE_USER+"?id="+id,data)
+  }
+
+  getUserById(id): Observable < any > {
+    return this.apiService.get(APIConstant.GET_USER_BY_ID+"?id="+id);
+  }
+  
+  deleteUser(id): Observable < any > {
+    return this.apiService.delete(APIConstant.DELETE_USER_ID+"?id="+id);
+  }
   download(url: string): Observable<Blob> {
     return this.http.get(url, {
       responseType: 'blob'

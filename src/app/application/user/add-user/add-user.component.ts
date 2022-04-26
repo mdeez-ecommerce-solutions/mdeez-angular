@@ -34,19 +34,9 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  themeChange(value) {
-    const bg_color = document.getElementsByClassName('bg-color-signUp')[0] as HTMLElement;
-    if (value == 'light') {
-      bg_color.style.background = '#ffffff';
-    } else {
-      bg_color.style.background = 'linear-gradient(to left, #1A1F2E 50%, #363a47 50%)';
-    }
-  }
 
   ngAfterViewInit(): void {
-     this.user.themeValueBehavior.subscribe((value) => {
-        this.themeChange(value);
-      })
+   
     
   }
 
@@ -59,7 +49,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
         this._snackBar.open(response.message, '', {
           duration: 5000,
         });
-        
+        this.router.navigate(['/user/list'])
       } else {
         this.loader = false;
         this._snackBar.open(response.message, '', {

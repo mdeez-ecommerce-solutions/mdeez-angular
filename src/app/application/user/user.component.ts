@@ -53,6 +53,12 @@ export class UserComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     })
   }
+  deleteUser(user){
+   this.userService.deleteUser(user._id).subscribe((res:any)=>{
+     console.log(res)
+     this.getAllUser()
+   })
+  }
   // getAllUser(pageIndexOfListingTable?:any): void {
 
   //   this.userService.getAllUser(pageIndexOfListingTable).subscribe((response: any) => {

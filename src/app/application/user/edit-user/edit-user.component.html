@@ -4,10 +4,10 @@
             <div class="col-md-8 m-auto">
                 <div class="my-5">
                     <div class="mt-6">
-                        <h5 class="card-title text-center">Create New User</h5>
+                        <h5 class="card-title text-center">Update User</h5>
                         <form [formGroup]="signUp" (ngSubmit)="submit()">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
                                         <label for="firstName">Name</label>
                                         <input type="email" formControlName="name" id="name"
@@ -16,7 +16,7 @@
                                 </div>
                                 
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
                                         <label for="emailId">Email </label>
                                         <input type="emailId" formControlName="email" id="emailId" class="form-control"
@@ -26,7 +26,7 @@
                             </div>
                             <div class="row">
                                
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="whome-meet">
                                         <label>Select User Role* </label>
                                     </div>
@@ -38,13 +38,7 @@
                                         [value]="whomVisitorMeet">{{whomVisitorMeet}}</option>
                                       </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <label for="inputPassword">Password</label>
-                                        <input type="password" formControlName="password" id="inputPassword"
-                                            class="form-control" placeholder="Enter Password" required>
-                                    </div>
-                                </div>
+                                
                                
                             </div>
 
@@ -53,7 +47,7 @@
 
                                 <button [disabled]="!signUp .valid"
                                     class="btn btn-lg btn-danger btn-block text-uppercase my-3 w-50" type="submit">
-                                    Submit
+                                    Update
                                     <app-spiner [loader]="loader"></app-spiner>
                                 </button>
                             </div>

@@ -25,6 +25,7 @@ export class TotalVisitListComponent implements OnInit {
   VisitorName: any;
   exportVisitorListFileName = 'visitorVisit.xlsx';
   dataSource: any;
+  visitorDetail
   baseApiUrl
   isLoaderHappen: boolean;
   filterValue: any;
@@ -65,9 +66,17 @@ export class TotalVisitListComponent implements OnInit {
     "captureDetailsOfAnyAccompliceWithTheVisitor",
     "Action",
   ];
+  dateFilterDropdownOption=[
+    {value:"1Day",label:"Today"},
+    {value:"7Day",label:"Last 7 Day"},
+    {value:"14Day",label:"Last 14 Day"},
+    {value:"30Day",label:"Last 30 Day"},
+    {value:"week",label:"This Week"},
+    {value:"month",label:"This Month"},
+  ]
   today = new Date();
   date = this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate()
-  
+  filterInitialDateRange =""
   constructor(
     private userService: UserService, private _snackBar: MatSnackBar, private dialog: MatDialog,
      private route: ActivatedRoute,private router:Router ) {
@@ -81,40 +90,63 @@ export class TotalVisitListComponent implements OnInit {
     this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
     this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
     this.getVisitorList(1)
+    this.getVisitorPurposeOptionData()
   }
 
   
+ addDays(theDate, days) {
+    return new Date(theDate.getTime() + days*24*60*60*1000);
+}
+
+// 
+
   selecteRingSize(value){
     let dropDownValue = value
-    console.log(this.today)
-    console.log(this.date)
-   let validUpto =new Date(this.date).toISOString()
-   console.log(validUpto)
-   var new_date = moment(validUpto).add(7, 'days');
-
-
-let now = moment()
-let startDay = now.startOf('day').toISOString()
-let endDay = now.endOf('day').toISOString()
-console.log('now ' + now.toISOString())
-console.log('start ' + startDay)
-console.log('end ' + endDay)
-
+    console.log(value)
+    let now = new Date()
     if(dropDownValue==='1Day'){
-      let startDay = now.startOf('day').toISOString()
-      let endDay = now.endOf('day').toISOString()
-      this.range.value.fromDate = startDay
-      this.range.value.toDate = endDay
+      var newDatew = this.addDays(new Date(), -1);
+      this.range.value.fromDate = newDatew 
+      this.range.value.toDate = now
       this.filterTable()
     }else if(dropDownValue==='7Day'){
-      let startDay = now.startOf('day').toISOString()
-      var new_date = moment(validUpto).add(7, 'days');
+      var newDatew = this.addDays(new Date(), -7);
+      this.range.value.fromDate = newDatew
+      this.range.value.toDate = now 
+      this.filterTable()
+    }else if(dropDownValue==='14Day'){
+      var newDatew = this.addDays(new Date(), -14);
+      this.range.value.fromDate = newDatew
+      this.range.value.toDate = now
+      this.filterTable()
+    }
+    else if(dropDownValue==='30Day'){
+      var newDatew = this.addDays(new Date(), -30);
+      this.range.value.fromDate = newDatew
+      this.range.value.toDate = now
+      this.filterTable()
+    } else if(dropDownValue==='week'){
+      var newDatew = this.addDays(new Date(), -8);
+      this.range.value.fromDate = newDatew
+      this.range.value.toDate = now
+      this.filterTable()
+    } else if(dropDownValue==='month'){
+      var newDatew = this.addDays(new Date(), -30);
+      this.range.value.fromDate = newDatew
+      this.range.value.toDate = now
+      this.filterTable()
     }else{
-   
-
+      this.range.reset()
+      this.filterTable() 
     }
 }
-  getVisitorDetail(visitorId): void {
+modelChanged(newObj){
+console.log(newObj)
+if(newObj){
+  this.filterTable()
+}
+}
+  addVisitorDetail(visitorId): void {
     this.router.navigate(["/add-visitor", visitorId]);
   }
 
@@ -199,6 +231,7 @@ console.log('end ' + endDay)
     }
     filterTable(): void {
       this.isLoadingResults = true;
+      console.log(this.range.value)
       this.userService
         .getVisitorByFilter(
           this.filterInitial,
@@ -297,6 +330,7 @@ console.log('end ' + endDay)
             }
             this.dataSource = new MatTableDataSource < any > (this.visitorLists);
             this.pageLength =response.data.length;
+            console.log(this.visitorLists)
             // this.dataSource.paginator = this.paginator;
             this.paginator.pageIndex = 0;
             // this.pageLength = this.visitorListsTotalLength;
@@ -339,6 +373,7 @@ console.log('end ' + endDay)
         purpose: this.filterValue,
         date: this.range.value,
         }
+        this.getVisitorList(1)
     }
     yourPageChangeLogic(event){
 
@@ -360,4 +395,52 @@ console.log('end ' + endDay)
       this.filterValue=''
       this.filterTable()
     }
+
+    getVisitorDetail(id): void {
+      this.userService.getVisitorDetail(id).subscribe((response: any) => {
+        if (response.error === false) {
+            this.visitorDetail = response.data;
+            this.openAction(this.visitorDetail)
+        }
+      },(error) => {
+          this.router.navigate(['']);
+          this._snackBar.open(error.message, '', {
+            duration: 5000,
+          });
+      });
+    }
+
+    openAction(item) {
+      console.log(item)
+       const dialogRef = this.dialog.open(TotalVisitComponent, {
+         width: "700px",
+       //  height: '700px',
+        data: item.visitor,
+       });
+   
+       dialogRef.afterClosed().subscribe(() => {
+         this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
+         this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
+         console.log(this.visitorId)
+   
+        // this.getTotalVisitList(this.visitorId);
+   
+       });
+     }
+   
+    //  getTotalVisitList(visitorId): void {
+   
+    //    this.userService.getTotalVisitorList(visitorId).subscribe((response: any) => {
+    //      if (response.error === false) {
+    //          this.visitorLists = response.data;
+    //          this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+            
+    //          this.dataSource.paginator = this.paginator;
+    //      }
+    //    }, (error) => {
+    //      this._snackBar.open(error.message, '', {
+    //        duration: 5000,
+    //      });
+    //    });
+    //  }
   }
