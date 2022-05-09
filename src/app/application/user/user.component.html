@@ -106,11 +106,11 @@
                                     <ng-container matColumnDef="Action">
                                         <th mat-header-cell *matHeaderCellDef> Action </th>
                                         <td mat-cell *matCellDef="let element">
-                                            <a (click)="openAction(element)"
+                                            <a  [disabled]="element.role==='SUPER_ADMIN'" (click)="openAction(element)"
                                             [routerLink]="['/user/edit',element?._id]" href="javascript:void(0)" href="javascript:void(0)">
                                             <img  width="20" src="../../../assets/images/edit.svg" alt="edit" /></a>
                                              &nbsp;
-                                            <a (click)="deleteUser(element)"  href="javascript:void(0)" href="javascript:void(0)">
+                                            <a [disabled]="element.role==='SUPER_ADMIN'" (click)="deleteUser(element)"  href="javascript:void(0)" href="javascript:void(0)">
                                             <img  width="20" src="../../../assets/images/delete.svg" alt="Delete" />
                                           </a>
                                         <td>
