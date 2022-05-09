@@ -120,7 +120,7 @@ label {
   font-size: 14px;
 }
 
-.filter-tag{
+.filter-tag {
   display: inline-block;
   background: #414654;
   padding: 2px 11px;
@@ -206,12 +206,12 @@ label {
   // box-shadow: 0px 3px 6px #00000029;
 
   // background-color: #1a1f2e !important;
- background: radial-gradient(#1e2437,#1a1f2e) !important;
+  background: radial-gradient(#1e2437, #1a1f2e) !important;
   height: 100%;
 
 }
 
-.myheading{
+.myheading {
   font-size: 25px !important;
   letter-spacing: 2px;
   color: #b2b7c5;
@@ -651,6 +651,50 @@ tr.mat-header-row {
   color: #db353a !important;
 }
 
+.flex-vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h5 {
+  letter-spacing: 1px;
+}
+
+.card-hig {
+  padding: 5px 0px;
+  padding-top: 15px;
+}
+
+.trend-kpi {
+  position: absolute;
+  right: 0;
+  font-size: 13px;
+  text-align: right;
+  top: 0;
+  color: #e1e1e1;
+  padding: 8px 15px;
+}
+
+.percent-kpi {
+  letter-spacing: 1px;
+}
+
+.text-kpi {
+  font-size: 9px;
+  display: block;
+  color: #c1c1c1;
+  letter-spacing: 0.5px;
+}
+
+.flex-horizontal-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .custom-map-control-button {
   appearance: button;
   background-color: #fff;
@@ -678,7 +722,9 @@ a:not([href]):not([class]) {
 }
 
 .breadcrumb-item.dashboard {
-  margin: 0 auto;
+  // margin: 0 auto;
+  // margin-top: -83px;
+  margin-top: -78px;
 }
 
 .breadcrumb-item.dashboard a {
@@ -1244,7 +1290,8 @@ label.star {
   box-shadow: -3px 2px 6px #00000029;
 }
 
-.filters-applied:hover,.resetGraph:hover .filters-applied {
+.filters-applied:hover,
+.resetGraph:hover .filters-applied {
   transition: all 0.5s;
 }
 

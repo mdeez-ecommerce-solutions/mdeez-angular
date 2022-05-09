@@ -15,7 +15,7 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, options, create, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
+import { useTheme, options, create, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
 // import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -59,10 +59,10 @@ import * as data from "./graphs/states-map/geojson.json";
 /* Chart code */
 // Themes begin
 useTheme(am4themes_animated);
-// options.queue = false;
+options.queue = false;
 // // options.animationsEnabled = true;
-// // options.deferredDelay = 0;
-// options.onlyShowOnViewport = true;
+// options.deferredDelay = 0;
+options.onlyShowOnViewport = true;
 
 
 declare var require: any
@@ -1439,6 +1439,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // this.casteGraph = [];
     // this.paginator = null;
 
+    this.purposeGraph = [];
     this.getFilterMeetStatus()
     // this.getFilterArea()
     // this.getFilterDistrictConstituency()
@@ -2091,6 +2092,262 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
         //   regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
         // }
+        let data1 = [{
+          "year": "1989",
+          "value": 0.140
+        }, {
+          "year": "1990",
+          "value": 0.200
+        }, {
+          "year": "1991",
+          "value": 0.220
+        }, {
+          "year": "1992",
+          "value": 0.150
+        }, {
+          "year": "1993",
+          "value": 0.145
+        }, {
+          "year": "1994",
+          "value": 0.172
+        }, {
+          "year": "1995",
+          "value": 0.239
+        }, {
+          "year": "1996",
+          "value": 0.230
+        }, {
+          "year": "1997",
+          "value": 0.253
+        }, {
+          "year": "1998",
+          "value": 0.348,
+          "disabled": false
+        }];
+
+
+        let data2 = [{
+          "year": "1989",
+          "value": 0.030
+        }, {
+          "year": "1990",
+          "value": 0.255
+        }, {
+          "year": "1991",
+          "value": 0.21
+        }, {
+          "year": "1992",
+          "value": 0.065
+        }, {
+          "year": "1993",
+          "value": 0.11
+        }, {
+          "year": "1994",
+          "value": 0.172
+        }, {
+          "year": "1995",
+          "value": 0.269
+        }, {
+          "year": "1996",
+          "value": 0.141
+        }, {
+          "year": "1997",
+          "value": 0.353
+        }, {
+          "year": "1998",
+          "value": 0.548,
+          "disabled": false
+        }];
+
+
+        let data3 = [{
+          "year": "1989",
+          "value": 0.530
+        }, {
+          "year": "1990",
+          "value": 0.455
+        }, {
+          "year": "1991",
+          "value": 0.21
+        }, {
+          "year": "1992",
+          "value": 0.065
+        }, {
+          "year": "1993",
+          "value": 0.11
+        }, {
+          "year": "1994",
+          "value": 0.172
+        }, {
+          "year": "1995",
+          "value": 0.200
+        }, {
+          "year": "1996",
+          "value": 0.141
+        }, {
+          "year": "1997",
+          "value": 0.153
+        }, {
+          "year": "1998",
+          "value": 0.008,
+          "disabled": false
+        }];
+
+
+        let data4 = [{
+          "year": "1989",
+          "value": 0.030
+        }, {
+          "year": "1990",
+          "value": 0.255
+        }, {
+          "year": "1991",
+          "value": 0.21
+        }, {
+          "year": "1992",
+          "value": 0.205
+        }, {
+          "year": "1993",
+          "value": 0.11
+        }, {
+          "year": "1994",
+          "value": 0.270
+        }, {
+          "year": "1995",
+          "value": 0.169
+        }, {
+          "year": "1996",
+          "value": 0.300
+        }, {
+          "year": "1997",
+          "value": 0.353
+        }, {
+          "year": "1998",
+          "value": 0.548,
+          "disabled": false
+        }];
+
+
+        let createGradient = (color) => {
+
+          let gradient = new LinearGradient();
+          gradient.addColor(color, 0.6);
+          gradient.addColor(color, 0.3);
+          gradient.addColor(color, 0.1);
+          gradient.addColor(color, 0);
+          gradient.rotation = 90;
+
+          return gradient;
+
+        }
+
+
+        var themes = [
+          {
+            linecolor: color("#1f39d1"),
+            dotcolor: color("#2d4bfc"),
+            gradient: createGradient(color('#192eac'))
+          },
+          {
+            linecolor: color("#6ac2ea"),
+            dotcolor: color("#9ce0ff"),
+            gradient: createGradient(color('#67b7dc'))
+          },
+          {
+            linecolor: color("#8c72ef"),
+            dotcolor: color("#a992ff"),
+            gradient: createGradient(color('#8067dc'))
+          },
+          {
+            linecolor: color("#f16ee2"),
+            dotcolor: color("#ff85f1"),
+            gradient: createGradient(color('#dc67ce'))
+          }
+        ];
+
+
+
+
+        function createKPI(div, kpiData, theme) {
+
+          // Create chart instance
+          var kpichart1 = create(div, am4charts.XYChart);
+
+          kpichart1.logo.disabled = true;
+
+
+          // Add data
+          kpichart1.data = kpiData;
+          // Create axes
+          let dateAxis1 = kpichart1.xAxes.push(new am4charts.DateAxis());
+          dateAxis1.renderer.minGridDistance = 50;
+          dateAxis1.renderer.grid.template.location = 0.5;
+          dateAxis1.baseInterval = {
+            count: 1,
+            timeUnit: "year"
+          }
+
+          dateAxis1.renderer.grid.template.strokeWidth = 0;
+
+          let kpivalueAxis = kpichart1.yAxes.push(new am4charts.ValueAxis());
+
+          kpivalueAxis.renderer.grid.template.strokeWidth = 0;
+
+          kpivalueAxis.logarithmic = true;
+
+          dateAxis1.renderer.labels.template.disabled = true;
+          kpivalueAxis.renderer.labels.template.disabled = true;
+
+          // Create series
+          let kpiseries = kpichart1.series.push(new am4charts.LineSeries());
+          kpiseries.dataFields.valueY = "value";
+          kpiseries.dataFields.dateX = "year";
+          kpiseries.strokeWidth = 2;
+          kpiseries.connect = true;
+          kpiseries.tensionX = 0.8;
+          kpiseries.fillOpacity = 1;
+
+
+          kpiseries.fill = theme.gradient;
+
+
+          let bullet = kpiseries.bullets.push(new am4charts.CircleBullet());
+          // bullet.stroke =  InterfaceColorSet().getFor("background");
+          bullet.disabled = true;
+          bullet.propertyFields.disabled = "disabled";
+
+          bullet.strokeWidth = 4;
+          bullet.tooltipText = "{valueY}";
+          bullet.circle.radius = 2;
+          bullet.circle.stroke = theme.dotcolor;
+
+          bullet.adapter.add("fill", function (fill, target) {
+
+            return fill;
+          })
+
+          let range = kpivalueAxis.createSeriesRange(kpiseries);
+          range.value = 0;
+          range.endValue = 100;
+          range.contents.stroke = theme.linecolor;
+          range.contents.fill = theme.gradient;
+          range.contents.fillOpacity = 1;
+
+
+
+        }
+
+
+
+        createKPI("kpi-total", data1, themes[0]);
+        createKPI("kpi-today", data2, themes[1]);
+        createKPI("kpi-week", data3, themes[2]);
+        createKPI("kpi-month", data4, themes[3]);
+
+
+
+
+
 
 
         // Chart for PURPOSE
