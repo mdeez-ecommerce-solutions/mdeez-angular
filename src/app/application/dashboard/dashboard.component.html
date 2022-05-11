@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="this.authData.role===adminRole">
+<div class="container-fluid" *ngIf="authenticated">
   <div class="row" style="height: 0;">
     <div class="col-md-12 text-center" *ngIf="loader">
       <app-spiner [loader]="loader"></app-spiner>

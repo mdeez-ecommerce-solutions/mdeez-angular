@@ -1412,8 +1412,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   appliedFilters = {}
   authData
   adminRole = environment.ADMIN_ROLE
+  superAdminRole = environment.SUPER_ADMIN_ROLE
   editorRole = environment.EDITOR_ROLE
   loader = false;
+  authenticated=false
 
   constructor(
     @Inject(PLATFORM_ID) private platformId,
@@ -1424,9 +1426,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   ) {
     this.authData = JSON.parse(localStorage.getItem("SignInUserData"));
 
-    // this.userService.graphDataLoader.subscribe(
-    //   (res) => (this.graphDataLoader = res)
-    // );
+    switch (this.authData.role) {
+      case 'SUPER_ADMIN': {
+       this.authenticated = true
+        break;
+      }
+      case 'ADMIN': {
+        this.authenticated = true
+        break;
+      }  
+    }
     this.userService.isLoadingVisitorList.subscribe((res) => this.isLoaderHappen = res);
     this.baseApiUrl = environment.api_base_url + '/visitor/download-csv?limit=100000';
 
@@ -1440,6 +1449,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // this.paginator = null;
 
     this.purposeGraph = [];
+    this.timeFrameGraphData =[]
+    this.timeFrameXText=[]
     this.getFilterMeetStatus()
     // this.getFilterArea()
     // this.getFilterDistrictConstituency()

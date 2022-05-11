@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   idleState = 'Not started.';
   authData
   adminRole=environment.ADMIN_ROLE
+  superAdminRole=environment.SUPER_ADMIN_ROLE
   editorRole=environment.EDITOR_ROLE
+  authenticated=false
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private idle: Idle,
@@ -29,7 +31,18 @@ export class AppComponent implements OnInit {
     private util: UtilService) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.authData = JSON.parse(localStorage.getItem("SignInUserData"));
-     console.log(this.authData)
+
+     
+      switch (this.authData.role) {
+        case 'SUPER_ADMIN': {
+         this.authenticated = true
+          break;
+        }
+        case 'ADMIN': {
+          this.authenticated = true
+          break;
+        }  
+      }
       if (params) {
         this.routerParams = params.token;
         

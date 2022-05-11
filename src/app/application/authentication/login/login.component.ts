@@ -118,7 +118,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
               this.router.navigateByUrl('/add-visitor').then(() => {
                 window.location.reload();  
             })
-          }
+            
+          }else if(response.data.role === environment.SUPER_ADMIN_ROLE){
+            this.router.navigateByUrl('/add-visitor').then(() => {
+              window.location.reload();  
+          })
+          
+        }
           if (this.rememberMe === true) {
             const cred = {
               username: this.login.controls.email.value,

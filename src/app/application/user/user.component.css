@@ -15,7 +15,14 @@
   border-radius: 3px;
   color: inherit;
 }
-
+.ds-btn{
+    margin: 0em;
+    padding: 0;
+    border-width: 0;
+    border-style: outset;
+    border-color: none;
+    background: transparent;
+}
 .search-query:focus+button {
   z-index: 3;
 }

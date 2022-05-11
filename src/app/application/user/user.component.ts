@@ -32,10 +32,23 @@ export class UserComponent implements OnInit {
   dataSource: any;
   authData
   adminRole=environment.ADMIN_ROLE
-  editorRole=environment.EDITOR_ROLE
+  superAdminRole = environment.SUPER_ADMIN_ROLE
+  editorRole = environment.EDITOR_ROLE
+  authenticated=false
+
   constructor(private userService: UserService, private _snackBar: MatSnackBar, private dialog: MatDialog, 
     private route: ActivatedRoute, ) {
       this.authData = JSON.parse(localStorage.getItem("SignInUserData"));
+      switch (this.authData.role) {
+        case 'SUPER_ADMIN': {
+         this.authenticated = true
+          break;
+        }
+        case 'ADMIN': {
+          this.authenticated = true
+          break;
+        }  
+      }
     }
   ngOnInit(): void {
     

@@ -39,7 +39,6 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
-
   {
     path: "visitor-list",
     loadChildren: () =>

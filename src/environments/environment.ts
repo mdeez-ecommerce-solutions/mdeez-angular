@@ -8,6 +8,7 @@ export const environment = {
  // api_base_url: 'https://www.projectyz.thensight.in/api/v1',
   api_base_url: 'http://localhost:9000/api/v1',
   ADMIN_ROLE:"ADMIN",
+  SUPER_ADMIN_ROLE:"SUPER_ADMIN",
   EDITOR_ROLE:"EDITORS"
 };
 

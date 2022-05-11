@@ -5,7 +5,7 @@
 
             <div class="log-icon"><img src="../../../../assets/images/login/rednsignt.png" width="100%"></div>
 
-            <ng-container *ngIf="this.authData.role===adminRole">
+            <ng-container *ngIf="authenticated">
                 <a class="" href="Javascript:void(0)" routerLink="add-visitor" [routerLinkActive]="['active']">
                     <img src="../../assets/images/side-nav/entry.png" class="image-size">
                     <div class="pb-45">Add-Visitor</div>
@@ -34,9 +34,9 @@
                 </div>
 
             </ng-container>
+          
 
-
-            <ng-container *ngIf="this.authData.role===(editorRole)">
+            <ng-container *ngIf="this.authData.role==(editorRole)">
 
                 <a href="Javascript:void(0)" routerLink="add-visitor" [routerLinkActive]="['active']">
                     <img src="../../assets/images/side-nav/entry.png" class="image-size">
@@ -74,8 +74,8 @@
         </app-header>
         <div class="conatiner-fluid" *ngIf="this.authData?.token">
             <div class="col-md-12">
-                <div class="card">
-                    <div _ngcontent-tab-c170="" _ngcontent-wty-c170="" class="text-right p-2" style="/* display: flex;">
+                <!-- <div class="card">
+                    <div _ngcontent-tab-c170="" _ngcontent-wty-c170="" class="text-right p-2" style="display: flex;">
                         <span _ngcontent-tab-c170="" _ngcontent-wty-c170=""
                             style="/* display: flex; *//* align-items: center; *//* justify-content: flex-end;"><span
                                 _ngcontent-tab-c170="" _ngcontent-wty-c170=""
@@ -84,7 +84,7 @@
                                     _ngcontent-tab-c170=""><span _ngcontent-tab-c170="" _ngcontent-wty-c170=""><b
                                         _ngcontent-tab-c170="" _ngcontent-wty-c170="">NCT OF DELHI </b>New Delhi
                                     <b>40</b></span></span></span></div>
-                </div>
+                </div> -->
             </div>
         </div>
         <router-outlet (activate)="onActivate($event)"></router-outlet>
