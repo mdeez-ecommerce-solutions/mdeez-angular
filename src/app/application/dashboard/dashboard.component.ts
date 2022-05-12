@@ -15,7 +15,7 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, options, create, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
+import { useTheme, options, create,DropShadowFilter, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
 // import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -1782,24 +1782,35 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let polygonSeries1 = chartGeo.series.push(new am4maps.MapPolygonSeries());
         polygonSeries1.useGeodata = true;
 
+        let mapgradient = new RadialGradient();
+        mapgradient.addColor(color('#00346e'), 1);
+        mapgradient.addColor(color("#001d3a"), 1);
+
         // Configure series
         var polygonTemplate1 = polygonSeries1.mapPolygons.template;
         polygonTemplate1.tooltipText = "{geocoding.name}";
-        polygonTemplate1.fill = color("#a367dc");
+        polygonTemplate1.strokeWidth = 0;
+        polygonTemplate1.fill = mapgradient;
+        
+        let shadow = polygonTemplate1.background.filters.push(new DropShadowFilter());
+        shadow.dx = 10;
+        shadow.dy = 10;
+        shadow.blur = 5;
+        shadow.color = color("#fff");
 
         // Create hover state and set alternative fill color
-        var hs = polygonTemplate1.states.create("hover");
-        hs.properties.fill = color("#8067dc");
+        // var hs = polygonTemplate1.states.create("hover");
+        // hs.properties.fill = color("#8067dc");
 
         //polling station points
         let psPoints = chartGeo.series.push(new am4maps.MapImageSeries());
         let imageSeriesTemplate1 = psPoints.mapImages.template;
         let circle1 = imageSeriesTemplate1.createChild(Circle);
-        circle1.radius = 5;
+        circle1.radius = 4;
         // circle1.fill = color("#B27799");
-        circle1.fill = color("#1f3ad1");
-        circle1.stroke = color("#FFFFFF");
-        circle1.strokeWidth = 1;
+        circle1.fill = color("#38edff");
+        circle1.stroke = color("#000");
+        circle1.strokeWidth = 0.5;
         circle1.nonScaling = true;
         circle1.tooltipText = "{properties.locality} : {properties.psno}";
         circle1.cursorOverStyle = MouseCursorStyle.pointer;
