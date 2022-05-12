@@ -1417,6 +1417,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   loader = false;
   authenticated=false
 
+  
   constructor(
     @Inject(PLATFORM_ID) private platformId,
     private zone: NgZone,
