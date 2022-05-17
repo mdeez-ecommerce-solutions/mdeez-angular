@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="min-height: 100%;margin: 0;">
     <div class="col-md-1" *ngIf="this.authData?.token"
         style="border-right: 1px solid var(--cardBorder); background-color: inherit; box-shadow: 0px 3px 6px #00000029;/* position: fixed; *//* height: 100%; */padding: 0;position: relative;top: 0;display: flex;/* align-items: center; */justify-content: center; margin:0; z-index: 1111;background: #1a1f2e;">
         <div class="log-position">
@@ -34,7 +34,7 @@
                 </div>
 
             </ng-container>
-          
+
 
             <ng-container *ngIf="this.authData.role==(editorRole)">
 
@@ -67,24 +67,29 @@
 
 
     </div>
-    <div [ngClass]="this.authData?.token ? 'col-md-11' : 'col-md-11'" style="margin: 0;
-    margin-bottom: 4rem;">
+    <div [ngClass]="this.authData?.token ? 'col-md-11' : 'col-md-12'" style="margin: 0; padding: 0 !important;">
 
         <app-header *ngIf="this.authData?.token" [showDashboardMenu]="showDashboardMenu" [fixHeader]="fixHeader">
         </app-header>
         <div class="conatiner-fluid" *ngIf="this.authData?.token">
-            <div class="col-md-12">
-                <!-- <div class="card">
-                    <div _ngcontent-tab-c170="" _ngcontent-wty-c170="" class="text-right p-2" style="display: flex;">
-                        <span _ngcontent-tab-c170="" _ngcontent-wty-c170=""
-                            style="/* display: flex; *//* align-items: center; *//* justify-content: flex-end;"><span
-                                _ngcontent-tab-c170="" _ngcontent-wty-c170=""
-                                style="font-size: 10px;color: #626a85;"><span _ngcontent-tab-c170=""
-                                    _ngcontent-wty-c170="">CONSTITUENCY INTELLIGENCE SYSTEM </span><br
-                                    _ngcontent-tab-c170=""><span _ngcontent-tab-c170="" _ngcontent-wty-c170=""><b
-                                        _ngcontent-tab-c170="" _ngcontent-wty-c170="">NCT OF DELHI </b>New Delhi
-                                    <b>40</b></span></span></span></div>
-                </div> -->
+            <div class="col-md-12" style="margin-top:0 ;">
+                <div class="card">
+                    <div class="right"
+                        style="height: 75px; position: relative; margin-top: -2px; padding: 11px; border: 1px solid var(--cardBorder); box-shadow: 0px 2px 6px #00000029; border-radius: 0 0 6px 6px;">
+                        <div style="height: 100%;position: absolute;
+                        right: 45%;
+                        height: 100%;top: 0;padding: 10px;">
+                            <img src="../../assets/images/login/cislogo.png" height="100%"
+                                style="/* margin-left: 72%; *//* position: absolute; *//* right:;/* height: 100%; */ ">
+
+                        </div>
+                        <div
+                            style="height: 100%; display: flex;position: absolute; right: 0; height: 100%; font-size: 12px;top: 0; padding: 0 11px;align-items: center;justify-content: center;flex-direction: column;">
+                            <b> NCT OF DELHI </b><span><b>40</b> | New Delhi</span> 
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
         <router-outlet (activate)="onActivate($event)"></router-outlet>

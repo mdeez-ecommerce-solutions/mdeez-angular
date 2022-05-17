@@ -54,15 +54,15 @@ ul li {
 }
 
 .loginform-group .form-icon {
-  height: 35px;
-  width: 38px;
+  height: 40px;
+  width: 43px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #141720;
+  background: #0d141b;
   font-size: 15px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -71,20 +71,21 @@ ul li {
 }
 
 .loginform-group input {
-  background: #191f2d;
+  background: #111c25;
   border-radius: 0;
   border: none;
-  height: 35px;
+  height: 40px;
+  padding-left: 6px;
   font-size: 13px;
 }
 
 .mybutton {
-  height: 32px;
+  height: 40px;
   line-height: 16px;
   border-radius: 3px;
   letter-spacing: 2px;
   font-size: 15px;
-  background: #8d3232;
+  background: #861616;
 }
 
 .myform {
@@ -211,7 +212,6 @@ body {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: #fff;
 }
 
 .header {

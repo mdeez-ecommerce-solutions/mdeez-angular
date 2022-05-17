@@ -15,7 +15,7 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, options, create,DropShadowFilter, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
+import {  useTheme, options, create,Tooltip,Button, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
 // import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -1783,21 +1783,25 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         polygonSeries1.useGeodata = true;
 
         let mapgradient = new RadialGradient();
-        mapgradient.addColor(color('#00346e'), 1);
-        mapgradient.addColor(color("#001d3a"), 1);
+        mapgradient.addColor(color("#192eac"), 0.05);
+        mapgradient.addColor(color("#192eac"), 0.1);
+        mapgradient.addColor(color("#192eac"), 0.2);
+        mapgradient.addColor(color("#192eac"), 0.3);
+        mapgradient.addColor(color('#192eac'), 0.5);
+
+
+
+        // linecolor: color("#1f39d1"),
+        // dotcolor: color("#2d4bfc"),
+        // gradient: createGradient(color('#192eac'))
 
         // Configure series
         var polygonTemplate1 = polygonSeries1.mapPolygons.template;
         polygonTemplate1.tooltipText = "{geocoding.name}";
-        polygonTemplate1.strokeWidth = 0;
+        polygonTemplate1.strokeWidth = 0.6;
+        polygonTemplate1.stroke = color("#1f39d1");
         polygonTemplate1.fill = mapgradient;
         
-        let shadow = polygonTemplate1.background.filters.push(new DropShadowFilter());
-        shadow.dx = 10;
-        shadow.dy = 10;
-        shadow.blur = 5;
-        shadow.color = color("#fff");
-
         // Create hover state and set alternative fill color
         // var hs = polygonTemplate1.states.create("hover");
         // hs.properties.fill = color("#8067dc");
@@ -1807,12 +1811,22 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let imageSeriesTemplate1 = psPoints.mapImages.template;
         let circle1 = imageSeriesTemplate1.createChild(Circle);
         circle1.radius = 4;
-        // circle1.fill = color("#B27799");
-        circle1.fill = color("#38edff");
+        circle1.fill = color("#2d4bfc");
+        // circle1.fill = color("#ff0000");  
+
+       
         circle1.stroke = color("#000");
         circle1.strokeWidth = 0.5;
         circle1.nonScaling = true;
+        circle1.tooltip = new Tooltip();
         circle1.tooltipText = "{properties.locality} : {properties.psno}";
+        circle1.tooltip.label.background.fill = color("#181d2a");
+        circle1.tooltip.label.fontSize = 12;       
+        circle1.tooltip.label.fontWeight = "lighter";        
+        circle1.tooltip.background.strokeWidth = 0;
+        circle1.tooltip.strokeWidth = 0;
+
+
         circle1.cursorOverStyle = MouseCursorStyle.pointer;
 
         imageSeriesTemplate1.events.on("hit", (ev) => {
@@ -1821,7 +1835,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
           if (this.psData) {
 
-            let pshtml = '<div class="psno">' + this.psData['psno'] + '</div>'
+            let pshtml = '<div class="psno">PS No. <b>' + this.psData['psno'] + '</b></div>'
               + '<div class="psloc">' + this.psData['locality'] + '</div>'
               + '<div class="psaddr">' + this.psData['address'] + '</div>';
 
@@ -1856,9 +1870,40 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
         // Add zoom control
-        chartGeo.zoomControl = new am4maps.ZoomControl();
+        // chartGeo.zoomControl = new am4maps.ZoomControl();
+        // chartGeo.zoomControl.height = 100;
 
+        var home = chartGeo.chartContainer.createChild(Button);
+        home.label.text = "RESET";
+        home.valign = "bottom";
+        home.align = "right";
+        //  home.height =  25;
+        //  home.width = 200;
+        home.background.fill = color("#3c3f4a");
+        home.background.strokeWidth = 0;
+        home.strokeWidth = 0.5;
+        home.padding(5,6,5,6);
+        home.fontSize = 11;
+        home.label.stroke = color("#fff");
+        home.label.fontWeight = "lighter";
+        home.events.on("hit", function(ev) {
+          chartGeo.goHome();
+        });
 
+        chartGeo.events.on("zoomlevelchanged", resetbutton);
+
+        function resetbutton(){
+
+          if(chartGeo.zoomLevel > 1.3)
+          { 
+            home.show();
+          }else {
+            home.hide();
+          }
+
+        }
+
+      
         // chartGeo.geodataSource.url = "./graphs/states-map/geojson.json";
         // chartGeo.geodata = am4geodata_worldLow;
 
@@ -2114,6 +2159,75 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
         //   regionalSeries1.IN.series.data = regionalSeries1.IN.markerData;
         // }
+
+
+// // Create chart instance
+// let chartanoth = create("anoth", am4charts.RadarChart);
+// chartanoth.scrollbarX = new Scrollbar();
+
+// let data = [];
+
+// for(var i = 0; i < 20; i++){
+//   data.push({category: i, value:Math.round(Math.random() * 100)});
+// }
+
+// chartanoth.data = data;
+// chartanoth.radius = percent(100);
+// chartanoth.innerRadius = percent(50);
+
+// // Create axes
+// let categoryAxis0 = chartanoth.xAxes.push(new am4charts.CategoryAxis());
+// categoryAxis0.dataFields.category = "category";
+// categoryAxis0.renderer.grid.template.location = 0;
+// categoryAxis0.renderer.minGridDistance = 30;
+// categoryAxis0.tooltip.disabled = true;
+// categoryAxis0.renderer.minHeight = 110;
+// categoryAxis0.renderer.grid.template.disabled = true;
+// //categoryAxis.renderer.labels.template.disabled = true;
+// let labelTemplate = categoryAxis0.renderer.labels.template;
+// labelTemplate.radius = percent(-60);
+// labelTemplate.location = 0.5;
+// labelTemplate.relativeRotation = 90;
+
+// let valueAxis0 = chartanoth.yAxes.push(new am4charts.ValueAxis());
+// valueAxis0.renderer.grid.template.disabled = true;
+// valueAxis0.renderer.labels.template.disabled = true;
+// valueAxis0.tooltip.disabled = true;
+
+// // Create series
+// let series0 = chart.series.push(new am4charts.RadarColumnSeries());
+// series0.sequencedInterpolation = true;
+// series0.dataFields.valueY = "value";
+// series0.dataFields.categoryX = "category";
+// series0.columns.template.strokeWidth = 0;
+// series0.tooltipText = "{valueY}";
+// series0.columns.template.radarColumn.cornerRadius = 10;
+// series0.columns.template.radarColumn.innerCornerRadius = 0;
+
+// series0.tooltip.pointerOrientation = "vertical";
+
+// // on hover, make corner radiuses bigger
+// let hoverState = series0.columns.template.radarColumn.states.create("hover");
+// hoverState.properties.cornerRadius = 0;
+// hoverState.properties.fillOpacity = 1;
+
+
+// series0.columns.template.adapter.add("fill", function(fill, target) {
+//   return chart.colors.getIndex(target.dataItem.index);
+// })
+
+// // Cursor
+// chartanoth.cursor = new am4charts.RadarCursor();
+// chartanoth.cursor.innerRadius = percent(50);
+// chartanoth.cursor.lineY.disabled = true;
+
+
+
+
+
+
+
+
         let data1 = [{
           "year": "1989",
           "value": 0.140
@@ -2762,65 +2876,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
               name: 'Malt', value: 1
             }]
           }]
-        }, {
-          name: 'Spices',
-          children: [{
-            name: 'Pungent', value: 1
-          }, {
-            name: 'Pepper', value: 1
-          }, {
-            name: 'Brown Spice',
-            children: [{
-              name: 'Anise', value: 1
-            }, {
-              name: 'Nutmeg', value: 1
-            }, {
-              name: 'Cinnamon', value: 1
-            }, {
-              name: 'Clove', value: 1
-            }]
-          }]
-        }, {
-          name: 'Nutty/Cocoa',
-          children: [{
-            name: 'Nutty',
-            children: [{
-              name: 'Peanuts', value: 1
-            }, {
-              name: 'Hazelnut', value: 1
-            }, {
-              name: 'Almond', value: 1
-            }]
-          }, {
-            name: 'Cocoa',
-            children: [{
-              name: 'Chocolate', value: 1
-            }, {
-              name: 'Dark Chocolate', value: 1
-            }]
-          }]
-        }, {
-          name: 'Sweet',
-          children: [{
-            name: 'Brown Sugar',
-            children: [{
-              name: 'Molasses', value: 1
-            }, {
-              name: 'Maple Syrup', value: 1
-            }, {
-              name: 'Caramelized', value: 1
-            }, {
-              name: 'Honey', value: 1
-            }]
-          }, {
-            name: 'Vanilla', value: 1
-          }, {
-            name: 'Vanillin', value: 1
-          }, {
-            name: 'Overall Sweet', value: 1
-          }, {
-            name: 'Sweet Aromatics', value: 1
-          }]
         }];
 
         networkSeries.dataFields.linkWith = "linkWith";
@@ -2832,6 +2887,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         networkSeries.nodes.template.tooltipText = "{name} {children.length}";
         networkSeries.nodes.template.fillOpacity = 1;
         networkSeries.nodes.template.outerCircle.scale = 1;
+        networkSeries.strokeWidth = 0;
+        networkSeries.nodes.template.strokeWidth = 0;
+
 
         networkSeries.nodes.template.label.text = "{name}"
         networkSeries.fontSize = 8;

@@ -75,7 +75,7 @@
                                             [routerLink]="['/user/edit',element?._id]" >
                                             <img  width="20" src="../../../assets/images/edit.svg" alt="edit" /></button>
                                              &nbsp;
-                                            <button  class="ds-btn"  [disabled]="element.role==='SUPER_ADMIN'" (click)="deleteUser(element)">
+                                            <button  class="ds-btn"   (click)="deleteUser(element)">
                                             <img  width="20" src="../../../assets/images/delete.svg" alt="Delete" />
                                           </button>
                                         <td>
