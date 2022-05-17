@@ -2,20 +2,19 @@
 
   <div style="height: calc(100% - 82px);">
     <div
-      style="display: flex; align-items: center; height: 70px; background: #0d151c; justify-content: space-between;position: relative;z-index: 10;">
-      
-      <div style=" padding: 10px; height: 100%; text-align: center;font-size: 20px;font-weight: 900;letter-spacing: 2px;">
-        <img src="../../assets/images/login/cislogo.png" height="100%">
-      </div>
-      <div style="padding: 12px; height: 100%;">
-        <img src="../../../../assets/images/login/rednsignt.png" height="100%"
-          style="display: block;margin-left: -17px;">
+      style="display: flex; align-items: center; height: 70px; background: #0f1820; justify-content: space-between;position: relative;z-index: 10;">
 
+      <div
+      style="padding: 7px; height: 167%; text-align: center; top:10px; position: absolute;font-size: 20px; text-align: center;font-weight: 900; position: absolute;width: 100%;letter-spacing: 2px;">
+        <img src="../../assets/images/login/cislogo.png" height="70px">
       </div>
 
     </div>
-    <div class="row" style="height: calc(100% - 18px);">
-      <div class="col-12 col-md-7" style="height: 100%; background: url(indiagate.png);
+    <div style="height: calc(100%);
+    padding: 47px 202px;
+    background: #0f1820;position: relative;">
+      <div class="row" style="height: calc(100% - 70px);background: #0f1820;border-radius: 17px;overflow: hidden;box-shadow: -2px 5px 54px 10px #0b1117;">
+        <div class="col-12 col-md-7" style="height: 100%; background: url(indiagate.png);
       background-size: contain;
       min-height: 350px;
       background-position: center;
@@ -23,61 +22,66 @@
       background-blend-mode: multiply;
     background-color: #ab4a4a;
   ">
-        <div
-          style="font-size: 43px; color: #ffffff; text-transform: uppercase; padding: 12px;width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;flex-direction: column;/* background: #a500009e;  filter: drop-shadow(2px 4px 6px black);*/ /* background: radial-gradient(transparent,#12192775 ); */">
-          NCT OF DELHI <span style="margin-top: -4px; display: block; font-size: 24px;">40 | NEW DELHI </span></div>
-      </div>
-      <div class="col-12 col-md-5" style="background: #0f1820; height: 100%;display: flex; align-items: center; justify-content: center;">
-        <div style="width: 100%;">
-          <div class="my-5 login_med">
-            <div>
-              <!-- <h5 class="card-title text-center">Welcome</h5> -->
-              <form [formGroup]="login" (ngSubmit)="submit()" class="login-half-width myform">
-                <div class="form-label-group loginform-group">
-                  <div class="form-icon">
-                    <i class="fa fa-user"></i>
-                  </div>
-                  <input type="email" formControlName="email" id="inputEmail" class="form-control"
-                    placeholder="Enter your email" required autofocus />
-                  <!-- <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
+          <div
+            style="font-size: 43px; color: #ffffff; text-transform: uppercase; padding: 12px;width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;flex-direction: column;/* background: #a500009e; */ filter: drop-shadow(2px 4px 6px black); /* background: radial-gradient(transparent,#12192775 ); */">
+            NCT OF DELHI <span style="margin-top: -4px; display: block; font-size: 24px;">40 | NEW DELHI </span></div>
+        </div>
+        <div class="col-12 col-md-5"
+          style="background: #0f1820; height: 100%;display: flex; align-items: center; justify-content: center;">
+          <div style="width: 100%;">
+            <div class="my-5 login_med">
+              <div>
+                <!-- <h5 class="card-title text-center">Welcome</h5> -->
+                <form [formGroup]="login" (ngSubmit)="submit()" class="login-half-width myform">
+                  <div class="form-label-group loginform-group">
+                    <div class="form-icon">
+                      <i class="fa fa-user"></i>
+                    </div>
+                    <input type="email" formControlName="email" id="inputEmail" class="form-control"
+                      placeholder="Enter your email" required autofocus />
+                    <!-- <div *ngIf="f.username.touched && f.username.invalid" class="alert alert-danger">
                                       <div *ngIf="f.username.errors.required">username is required.</div>
                                       <div *ngIf="f.username.errors.username">Please, enter valid email address.</div>
                                   </div> -->
-                </div>
-
-                <div class="form-label-group loginform-group">
-                  <div class="form-icon">
-                    <i class="fa fa-lock"></i>
                   </div>
-                  <!-- <label for="inputPassword">Password</label> -->
-                  <input type="password" formControlName="password" id="inputPassword" class="form-control"
-                    placeholder="Enter your password" required />
-                </div>
 
-                <div class="custom-control custom-checkbox mb-4 mt-4" style="display: flex;align-items: center;justify-content: space-between;">
-                  <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe" type="checkbox"
-                    class="custom-control-input" id="customCheck1" />
-                  <label style="margin-left: 25px;" class="custom-control-label" for="customCheck1">Remember me</label>
+                  <div class="form-label-group loginform-group">
+                    <div class="form-icon">
+                      <i class="fa fa-lock"></i>
+                    </div>
+                    <!-- <label for="inputPassword">Password</label> -->
+                    <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                      placeholder="Enter your password" required />
+                  </div>
 
-                  <span class="float-right" style="margin-top: -3px;">
-                    <a href="javascript:void(0)" (click)="forgetPassword()" class="font-14 text-danger">Forgot your
-                      password?</a>
-                  </span>
-                </div>
+                  <div class="custom-control custom-checkbox mb-4 mt-4"
+                    style="display: flex;align-items: center;justify-content: space-between;">
+                    <input [ngModelOptions]="{standalone: true}" [(ngModel)]="rememberMe" type="checkbox"
+                      class="custom-control-input" id="customCheck1" />
+                    <label style="margin-left: 25px;" class="custom-control-label" for="customCheck1">Remember
+                      me</label>
 
-                <button [disabled]="!login.valid" class="btn btn-lg btn-danger btn-block mybutton text-uppercase"
-                  type="submit">
-                  LOGIN
-                  <app-spiner [loader]="loader"></app-spiner>
-                </button>
-              </form>
+                    <span class="float-right" style="margin-top: -3px;">
+                      <a href="javascript:void(0)" (click)="forgetPassword()" class="font-14 text-danger">Forgot your
+                        password?</a>
+                    </span>
+                  </div>
 
+                  <button [disabled]="!login.valid" class="btn btn-lg btn-danger btn-block mybutton text-uppercase"
+                    type="submit">
+                    LOGIN
+                    <app-spiner [loader]="loader"></app-spiner>
+                  </button>
+                </form>
+
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
+
   </div>
 
   <div class="spinner-container" *ngIf="loading == true">

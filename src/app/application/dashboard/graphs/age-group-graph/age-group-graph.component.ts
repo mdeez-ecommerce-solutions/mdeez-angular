@@ -86,7 +86,7 @@ export class AgeGroupGraphComponent implements OnInit {
       
       // Axes Title
       let valueAxis = this.ageGraph.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.title.text = "NO. OF PEOPLE VISITED";
+      valueAxis.title.text = "PEOPLE VISITED";
       
       
       let series = this.ageGraph.series.push(new am4charts.CurvedColumnSeries());

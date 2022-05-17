@@ -13,7 +13,7 @@ import {
   isPlatformBrowser
 } from '@angular/common';
 // amCharts imports
-import { useTheme, create, Scrollbar,color } from '@amcharts/amcharts4/core';
+import { useTheme,percent, create, Scrollbar,color } from '@amcharts/amcharts4/core';
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import {
@@ -31,10 +31,11 @@ export class VisitorOccupationGraphComponent implements OnInit {
   @Input() set visitorOccupationData(data) {
     if (data) {
       this.visitorCategoryGraph.data = data;
+      console.log(data);
      if(this.visitorCategoryGraph.data.length > 5 ){
 
      // this.visitorCategoryGraph.scrollbarY = new am4charts.XYChartScrollbar();
-      this.visitorCategoryGraph.scrollbarY = new Scrollbar();
+      // this.visitorCategoryGraph.scrollbarY = new Scrollbar();
     }
     
     }
@@ -68,15 +69,17 @@ export class VisitorOccupationGraphComponent implements OnInit {
 
 
       this.visitorCategoryGraph = create("visitorOccupationChart", am4charts.XYChart);
-  
-      this.visitorCategoryGraph.padding(40, 40, 40, 40);
+
       this.visitorCategoryGraph.logo.disabled = true;
       let categoryAxis = this.visitorCategoryGraph.yAxes.push(new am4charts.CategoryAxis());
       categoryAxis.renderer.grid.template.location = 0;
       categoryAxis.dataFields.category = "_id";
-      categoryAxis.renderer.minGridDistance = 1;
+      categoryAxis.renderer.minGridDistance = 0;
       categoryAxis.renderer.inversed = true;
       categoryAxis.renderer.grid.template.disabled = true;
+      categoryAxis.renderer.labels.template.fontSize = 12;
+
+
      
      // this.visitorCategoryGraph.scrollbarY.series.push(categoryAxis);
       //this.visitorCategoryGraph.scrollbarY.width= 5;
@@ -86,24 +89,28 @@ export class VisitorOccupationGraphComponent implements OnInit {
      
       let valueAxis = this.visitorCategoryGraph.xAxes.push(new am4charts.ValueAxis());
       valueAxis.min = 0;
-      valueAxis.title.text= "NO. OF PEOPLE VISITED";
+      // valueAxis.renderer.minGridDistance = 50;
+
+      valueAxis.title.text= "PEOPLE VISITED";
       let series = this.visitorCategoryGraph.series.push(new am4charts.ColumnSeries());
       series.dataFields.categoryY = "_id";
       series.dataFields.valueX = "count";
-      series.tooltipText = "{valueX.value}"
+      series.tooltipText = "{valueX.workingValue}";
+      series.columns.template.height = 5;
       series.columns.template.strokeOpacity = 0;
       series.columns.template.column.cornerRadiusBottomRight = 5;
       series.columns.template.column.cornerRadiusTopRight = 5;
+      console.log(valueAxis);
 
       //  this.visitorCategoryGraph.scrollbarX = new am4charts.XYChartScrollbar();
       //  this.visitorCategoryGraph.scrollbarX.series.push(series);
 
-      let labelBullet = series.bullets.push(new am4charts.LabelBullet())
-      labelBullet.label.horizontalCenter = "left";
-      labelBullet.label.dx = 10;
-     // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
-     labelBullet.label.text = "{values.valueX.workingValue}";
-      labelBullet.locationX = 1;
+    //   let labelBullet = series.bullets.push(new am4charts.LabelBullet())
+    //   labelBullet.label.horizontalCenter = "left";
+    //   labelBullet.label.dx = 10;
+    //  // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+    // //  labelBullet.label.text = "{values.valueX.workingValue}";
+    //   labelBullet.locationX = 1;
 
 
       // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set

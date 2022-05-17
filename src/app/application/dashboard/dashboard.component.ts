@@ -15,7 +15,7 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import {  useTheme, options, create,Tooltip,Button, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
+import { useTheme, options, create, math, ResponsiveBreakpoints, DropShadowFilter, Tooltip, Button, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
 // import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -62,7 +62,7 @@ useTheme(am4themes_animated);
 options.queue = false;
 // // options.animationsEnabled = true;
 // options.deferredDelay = 0;
-options.onlyShowOnViewport = true;
+options.onlyShowOnViewport = false;
 
 
 declare var require: any
@@ -1414,7 +1414,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   superAdminRole = environment.SUPER_ADMIN_ROLE
   editorRole = environment.EDITOR_ROLE
   loader = false;
-  authenticated=false
+  authenticated = false
 
 
   constructor(
@@ -1428,13 +1428,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
     switch (this.authData.role) {
       case 'SUPER_ADMIN': {
-       this.authenticated = true
+        this.authenticated = true
         break;
       }
       case 'ADMIN': {
         this.authenticated = true
         break;
-      }  
+      }
     }
     this.userService.isLoadingVisitorList.subscribe((res) => this.isLoaderHappen = res);
     this.baseApiUrl = environment.api_base_url + '/visitor/download-csv?limit=100000';
@@ -1449,12 +1449,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // this.paginator = null;
 
     this.purposeGraph = [];
-    this.timeFrameGraphData =[]
-    this.timeFrameXText=[]
+    this.timeFrameGraphData = []
+    this.timeFrameXText = []
     this.getFilterMeetStatus()
     // this.getFilterArea()
     // this.getFilterDistrictConstituency()
-    // this.getFilterAgeGroup()
+    this.getFilterAgeGroup()
     // this.getFilterMeetLocation()
     // this.getFilterIsSamjawadi()
     // this.getFilterGender()
@@ -1477,7 +1477,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.getVisitorOccupationData();
 
     // Graph Data Calling
-    // this.getVisitAnalyticGraphData();
+    this.getVisitAnalyticGraphData();
 
   }
   openInNewTab() {
@@ -1552,7 +1552,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let polygonTemplate = polygonSeries.mapPolygons.template;
         polygonTemplate.tooltipText = "{name}";
         polygonTemplate.fill = chart.colors.getIndex(9);
-        //shantam 
+        //shantam
         polygonSeries.include = ["IN-DL"];
         chart.events.on("ready", loadStores);
         //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
@@ -1801,7 +1801,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         polygonTemplate1.strokeWidth = 0.6;
         polygonTemplate1.stroke = color("#1f39d1");
         polygonTemplate1.fill = mapgradient;
-        
+
+        let shadow = polygonTemplate1.background.filters.push(new DropShadowFilter());
+        shadow.dx = 10;
+        shadow.dy = 10;
+        shadow.blur = 5;
+        shadow.color = color("#fff");
+
         // Create hover state and set alternative fill color
         // var hs = polygonTemplate1.states.create("hover");
         // hs.properties.fill = color("#8067dc");
@@ -1814,15 +1820,15 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         circle1.fill = color("#2d4bfc");
         // circle1.fill = color("#ff0000");  
 
-       
+
         circle1.stroke = color("#000");
         circle1.strokeWidth = 0.5;
         circle1.nonScaling = true;
         circle1.tooltip = new Tooltip();
         circle1.tooltipText = "{properties.locality} : {properties.psno}";
         circle1.tooltip.label.background.fill = color("#181d2a");
-        circle1.tooltip.label.fontSize = 12;       
-        circle1.tooltip.label.fontWeight = "lighter";        
+        circle1.tooltip.label.fontSize = 12;
+        circle1.tooltip.label.fontWeight = "lighter";
         circle1.tooltip.background.strokeWidth = 0;
         circle1.tooltip.strokeWidth = 0;
 
@@ -1882,28 +1888,27 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         home.background.fill = color("#3c3f4a");
         home.background.strokeWidth = 0;
         home.strokeWidth = 0.5;
-        home.padding(5,6,5,6);
+        home.padding(5, 6, 5, 6);
         home.fontSize = 11;
         home.label.stroke = color("#fff");
         home.label.fontWeight = "lighter";
-        home.events.on("hit", function(ev) {
+        home.events.on("hit", function (ev) {
           chartGeo.goHome();
         });
 
         chartGeo.events.on("zoomlevelchanged", resetbutton);
 
-        function resetbutton(){
+        function resetbutton() {
 
-          if(chartGeo.zoomLevel > 1.3)
-          { 
+          if (chartGeo.zoomLevel > 1.3) {
             home.show();
-          }else {
+          } else {
             home.hide();
           }
 
         }
 
-      
+
         // chartGeo.geodataSource.url = "./graphs/states-map/geojson.json";
         // chartGeo.geodata = am4geodata_worldLow;
 
@@ -1937,9 +1942,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //   let polygonTemplate1 = polygonSeries1.mapPolygons.template;
         //   polygonTemplate1.tooltipText = "{district}";
         //   polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-        //   //shantam 
+        //   //shantam
 
-        // let dd =  this.geodatajson;           
+        // let dd =  this.geodatajson;
 
         // for(var i = 0; i < dd.features.length; i++) {
         //   var feature = dd.features[i];
@@ -2063,7 +2068,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //     zoomOut1.show();
 
         //     // Show new targert series
-        //     currentSeries1 = regionalSeries1[data.target].series; 
+        //     currentSeries1 = regionalSeries1[data.target].series;
         //     currentSeries1.show();
         //   });
 
@@ -2161,65 +2166,65 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         // }
 
 
-// // Create chart instance
-// let chartanoth = create("anoth", am4charts.RadarChart);
-// chartanoth.scrollbarX = new Scrollbar();
+        // // Create chart instance
+        // let chartanoth = create("anoth", am4charts.RadarChart);
+        // chartanoth.scrollbarX = new Scrollbar();
 
-// let data = [];
+        // let data = [];
 
-// for(var i = 0; i < 20; i++){
-//   data.push({category: i, value:Math.round(Math.random() * 100)});
-// }
+        // for(var i = 0; i < 20; i++){
+        //   data.push({category: i, value:Math.round(Math.random() * 100)});
+        // }
 
-// chartanoth.data = data;
-// chartanoth.radius = percent(100);
-// chartanoth.innerRadius = percent(50);
+        // chartanoth.data = data;
+        // chartanoth.radius = percent(100);
+        // chartanoth.innerRadius = percent(50);
 
-// // Create axes
-// let categoryAxis0 = chartanoth.xAxes.push(new am4charts.CategoryAxis());
-// categoryAxis0.dataFields.category = "category";
-// categoryAxis0.renderer.grid.template.location = 0;
-// categoryAxis0.renderer.minGridDistance = 30;
-// categoryAxis0.tooltip.disabled = true;
-// categoryAxis0.renderer.minHeight = 110;
-// categoryAxis0.renderer.grid.template.disabled = true;
-// //categoryAxis.renderer.labels.template.disabled = true;
-// let labelTemplate = categoryAxis0.renderer.labels.template;
-// labelTemplate.radius = percent(-60);
-// labelTemplate.location = 0.5;
-// labelTemplate.relativeRotation = 90;
+        // // Create axes
+        // let categoryAxis0 = chartanoth.xAxes.push(new am4charts.CategoryAxis());
+        // categoryAxis0.dataFields.category = "category";
+        // categoryAxis0.renderer.grid.template.location = 0;
+        // categoryAxis0.renderer.minGridDistance = 30;
+        // categoryAxis0.tooltip.disabled = true;
+        // categoryAxis0.renderer.minHeight = 110;
+        // categoryAxis0.renderer.grid.template.disabled = true;
+        // //categoryAxis.renderer.labels.template.disabled = true;
+        // let labelTemplate = categoryAxis0.renderer.labels.template;
+        // labelTemplate.radius = percent(-60);
+        // labelTemplate.location = 0.5;
+        // labelTemplate.relativeRotation = 90;
 
-// let valueAxis0 = chartanoth.yAxes.push(new am4charts.ValueAxis());
-// valueAxis0.renderer.grid.template.disabled = true;
-// valueAxis0.renderer.labels.template.disabled = true;
-// valueAxis0.tooltip.disabled = true;
+        // let valueAxis0 = chartanoth.yAxes.push(new am4charts.ValueAxis());
+        // valueAxis0.renderer.grid.template.disabled = true;
+        // valueAxis0.renderer.labels.template.disabled = true;
+        // valueAxis0.tooltip.disabled = true;
 
-// // Create series
-// let series0 = chart.series.push(new am4charts.RadarColumnSeries());
-// series0.sequencedInterpolation = true;
-// series0.dataFields.valueY = "value";
-// series0.dataFields.categoryX = "category";
-// series0.columns.template.strokeWidth = 0;
-// series0.tooltipText = "{valueY}";
-// series0.columns.template.radarColumn.cornerRadius = 10;
-// series0.columns.template.radarColumn.innerCornerRadius = 0;
+        // // Create series
+        // let series0 = chart.series.push(new am4charts.RadarColumnSeries());
+        // series0.sequencedInterpolation = true;
+        // series0.dataFields.valueY = "value";
+        // series0.dataFields.categoryX = "category";
+        // series0.columns.template.strokeWidth = 0;
+        // series0.tooltipText = "{valueY}";
+        // series0.columns.template.radarColumn.cornerRadius = 10;
+        // series0.columns.template.radarColumn.innerCornerRadius = 0;
 
-// series0.tooltip.pointerOrientation = "vertical";
+        // series0.tooltip.pointerOrientation = "vertical";
 
-// // on hover, make corner radiuses bigger
-// let hoverState = series0.columns.template.radarColumn.states.create("hover");
-// hoverState.properties.cornerRadius = 0;
-// hoverState.properties.fillOpacity = 1;
+        // // on hover, make corner radiuses bigger
+        // let hoverState = series0.columns.template.radarColumn.states.create("hover");
+        // hoverState.properties.cornerRadius = 0;
+        // hoverState.properties.fillOpacity = 1;
 
 
-// series0.columns.template.adapter.add("fill", function(fill, target) {
-//   return chart.colors.getIndex(target.dataItem.index);
-// })
+        // series0.columns.template.adapter.add("fill", function(fill, target) {
+        //   return chart.colors.getIndex(target.dataItem.index);
+        // })
 
-// // Cursor
-// chartanoth.cursor = new am4charts.RadarCursor();
-// chartanoth.cursor.innerRadius = percent(50);
-// chartanoth.cursor.lineY.disabled = true;
+        // // Cursor
+        // chartanoth.cursor = new am4charts.RadarCursor();
+        // chartanoth.cursor.innerRadius = percent(50);
+        // chartanoth.cursor.lineY.disabled = true;
 
 
 
@@ -2480,6 +2485,1337 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         createKPI("kpi-week", data3, themes[2]);
         createKPI("kpi-month", data4, themes[3]);
 
+
+
+
+
+
+        // let chartRH = create("anoth", am4charts.RadarChart);
+        // // chartRH.scrollbarX = new Scrollbar();
+
+        // let data = [];
+
+        // for (var i = 0; i < 15; i++) {
+        //   data.push({ category: i, value: Math.round(Math.random() * 100) });
+        // }
+
+        // chartRH.data = data;
+        // chartRH.radius = percent(100);
+        // chartRH.innerRadius = percent(25);
+
+        // let categoryAxisH = chartRH.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+        // categoryAxisH.dataFields.category = "category";
+        // categoryAxisH.renderer.grid.template.location = 0;
+
+        // categoryAxisH.tooltip.disabled = true;
+        // // categoryAxisH.renderer.minHeight = 110;
+        // categoryAxisH.renderer.grid.template.disabled = true;
+
+
+
+        // categoryAxisH.renderer.minGridDistance = 60;
+        // categoryAxisH.renderer.inversed = true;
+        // categoryAxisH.renderer.labels.template.location = 40;
+        // categoryAxisH.renderer.grid.template.strokeOpacity = 0.08;
+
+
+        // //categoryAxis.renderer.labels.template.disabled = true;
+        // let labelTemplate = categoryAxisH.renderer.labels.template;
+        // labelTemplate.radius = percent(-25);
+        // labelTemplate.location = 0.5;
+        // // labelTemplate.relativeRotation = 90;
+        // labelTemplate.stroke = color("#fff");
+
+        // let valueAxisH = chartRH.yAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererRadial>());
+        // valueAxisH.renderer.grid.template.disabled = true;
+        // valueAxisH.renderer.labels.template.disabled = true;
+        // valueAxisH.tooltip.disabled = true;
+
+
+        // valueAxisH.min = 0;
+        // valueAxisH.extraMax = 0.1;
+        // valueAxisH.renderer.grid.template.strokeOpacity = 0.08;
+
+        // chartRH.seriesContainer.zIndex = -10;
+
+
+        // // Create series
+        // let seriesH = chartRH.series.push(new am4charts.RadarColumnSeries());
+        // // seriesH.sequencedInterpolation = true;
+        // seriesH.dataFields.valueY = "value";
+        // seriesH.dataFields.categoryX = "category";
+        // seriesH.columns.template.strokeWidth = 0;
+        // seriesH.columns.template.stroke = color("#fff");
+        // seriesH.tooltipText = "{valueY}";
+        // seriesH.columns.template.radarColumn.cornerRadius = 10;
+        // seriesH.columns.template.radarColumn.innerCornerRadius = 0;
+
+        // seriesH.tooltip.pointerOrientation = "vertical";
+        // seriesH.columns.template.strokeOpacity = 0;
+
+
+
+
+
+        // // on hover, make corner radiuses bigger
+        // let hoverState = seriesH.columns.template.radarColumn.states.create("hover");
+        // hoverState.properties.cornerRadius = 0;
+        // hoverState.properties.fillOpacity = 1;
+
+
+        // seriesH.columns.template.adapter.add("fill", function (fill, target) {
+        //   return chart.colors.getIndex(target.dataItem.index);
+        // })
+
+        // // Cursor
+        // chartRH.cursor = new am4charts.RadarCursor();
+        // chartRH.cursor.innerRadius = percent(50);
+        // chartRH.cursor.lineY.disabled = true;
+
+
+
+
+
+
+
+        let chartRH = create("anoth", am4charts.RadarChart);
+
+        chartRH.data = [{
+          "country": "USA",
+          "visits": 2025
+        }, {
+          "country": "China",
+          "visits": 1882
+        }, {
+          "country": "Japan",
+          "visits": 1809
+        }, {
+          "country": "Germany",
+          "visits": 1322
+        }, {
+          "country": "UK",
+          "visits": 1122
+        }, {
+          "country": "France",
+          "visits": 1114
+        }, {
+          "country": "India",
+          "visits": 984
+        }, {
+          "country": "Spain",
+          "visits": 711
+        }, {
+          "country": "Netherlands",
+          "visits": 665
+        }, {
+          "country": "Russia",
+          "visits": 580
+        }, {
+          "country": "South Korea",
+          "visits": 443
+        }, {
+          "country": "Canada",
+          "visits": 441
+        }];
+
+        chartRH.innerRadius = percent(40)
+
+        let categoryAxisH = chartRH.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+        categoryAxisH.renderer.grid.template.location = 0;
+        categoryAxisH.dataFields.category = "country";
+        categoryAxisH.renderer.minGridDistance = 60;
+        categoryAxisH.renderer.inversed = true;
+        categoryAxisH.renderer.labels.template.location = 0.5;
+        categoryAxisH.renderer.grid.template.strokeOpacity = 0.08;
+        categoryAxisH.renderer.grid.template.stroke = color("#fff");
+        categoryAxisH.renderer.tooltip.disabled = true;
+
+
+        let valueAxisH = chartRH.yAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererRadial>());
+        valueAxisH.min = 0;
+        valueAxisH.extraMax = 0.1;
+        valueAxisH.renderer.grid.template.strokeOpacity = 0.08;
+        valueAxisH.renderer.grid.template.stroke = color("#fff");
+        valueAxisH.renderer.labels.template.disabled = true;
+
+
+        chartRH.seriesContainer.zIndex = -10;
+
+        let labelTemplate = categoryAxisH.renderer.labels.template;
+
+        labelTemplate.fill = color("#fff");
+        labelTemplate.fontSize = 12;
+
+        let seriesH = chartRH.series.push(new am4charts.RadarColumnSeries());
+        seriesH.dataFields.categoryX = "country";
+        seriesH.dataFields.valueY = "visits";
+        seriesH.tooltipText = "{valueY.value}"
+        seriesH.columns.template.strokeOpacity = 0;
+        seriesH.columns.template.radarColumn.cornerRadius = 5;
+        seriesH.columns.template.radarColumn.innerCornerRadius = 0;
+        seriesH.columns.template.stroke = color("#fff");
+
+        // chartRH.zoomOutButton.disabled = true;
+
+        // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        seriesH.columns.template.adapter.add("fill", (fill, target) => {
+          return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        categoryAxisH.sortBySeries = seriesH;
+
+        chartRH.cursor = new am4charts.RadarCursor();
+        // chartRH.cursor.behavior = "none";
+        // chartRH.cursor.lineX.disabled = true;
+        // chartRH.cursor.lineY.disabled = true;
+
+
+
+
+        let heatchart = create("heatmap", am4charts.RadarChart);
+        heatchart.innerRadius = percent(30);
+        heatchart.fontSize = 11;
+
+        let xAxis = heatchart.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+        let yAxis = heatchart.yAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererRadial>());
+        yAxis.renderer.minGridDistance = 5;
+
+        xAxis.renderer.labels.template.location = 0.5;
+        xAxis.renderer.labels.template.bent = true;
+        xAxis.renderer.labels.template.radius = 5;
+        xAxis.renderer.labels.template.fill = color("#fff");
+
+
+        xAxis.dataFields.category = "hour";
+        yAxis.dataFields.category = "weekday";
+
+        xAxis.renderer.grid.template.disabled = true;
+        xAxis.renderer.minGridDistance = 10;
+
+        yAxis.renderer.grid.template.disabled = true;
+        yAxis.renderer.inversed = true;
+
+        // this makes the y axis labels to be bent. By default y Axis labels are regular AxisLabels, so we replace them with AxisLabelCircular
+        // and call fixPosition for them to be bent
+        let yAxisLabel = new am4charts.AxisLabelCircular();
+        yAxisLabel.bent = true;
+        yAxisLabel.events.on("validated", function (event) {
+          event.target.fixPosition(-90, math.getDistance({ x: event.target.pixelX, y: event.target.pixelY }) - 5);
+          event.target.dx = -event.target.pixelX;
+          event.target.dy = -event.target.pixelY;
+        })
+        yAxis.renderer.labels.template = yAxisLabel;
+        yAxis.renderer.labels.template.fill = color("#fff");
+
+        let heatseries = heatchart.series.push(new am4charts.RadarColumnSeries());
+        heatseries.dataFields.categoryX = "hour";
+        heatseries.dataFields.categoryY = "weekday";
+        heatseries.dataFields.value = "value";
+        heatseries.sequencedInterpolation = true;
+
+        let heatcolumnTemplate = heatseries.columns.template;
+        heatcolumnTemplate.strokeWidth = 2;
+        heatcolumnTemplate.strokeOpacity = 1;
+        heatcolumnTemplate.stroke = color("#1c2233");
+        heatcolumnTemplate.tooltipText = "{weekday}, {hour}: {value.workingValue.formatNumber('#.')}";
+        heatcolumnTemplate.width = percent(100);
+        heatcolumnTemplate.height = percent(100);
+
+        heatchart.seriesContainer.zIndex = -5;
+
+        heatcolumnTemplate.hiddenState.properties.opacity = 0;
+
+        // heat rule, this makes columns to change color depending on value
+        // color: #011f5e;
+        // color: #7fabff;
+        heatseries.heatRules.push({ target: heatcolumnTemplate, property: "fill", min: color("#7fabff"), max: color("#011f5e") });
+
+        // heat legend
+
+        let heatLegend = heatchart.bottomAxesContainer.createChild(am4charts.HeatLegend);
+        heatLegend.width = percent(100);
+        heatLegend.series = heatseries;
+        heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
+        heatLegend.valueAxis.renderer.labels.template.fill = color("#fff");
+
+        heatLegend.valueAxis.renderer.minGridDistance = 30;
+
+        // heat legend behavior
+        heatseries.columns.template.events.on("over", function (event) {
+          handleHover(event.target);
+        })
+
+        heatseries.columns.template.events.on("hit", function (event) {
+          handleHover(event.target);
+        })
+
+        function handleHover(column) {
+          if (!isNaN(column.dataItem.value)) {
+            heatLegend.valueAxis.showTooltipAt(column.dataItem.value)
+          }
+          else {
+            heatLegend.valueAxis.hideTooltip();
+          }
+        }
+
+        heatseries.columns.template.events.on("out", function (event) {
+          heatLegend.valueAxis.hideTooltip();
+        })
+
+        heatchart.data = [
+          {
+            "hour": "12pm",
+            "weekday": "Sunday",
+            "value": 2990
+          },
+          {
+            "hour": "1am",
+            "weekday": "Sunday",
+            "value": 2520
+          },
+          {
+            "hour": "2am",
+            "weekday": "Sunday",
+            "value": 2334
+          },
+          {
+            "hour": "3am",
+            "weekday": "Sunday",
+            "value": 2230
+          },
+          {
+            "hour": "4am",
+            "weekday": "Sunday",
+            "value": 2325
+          },
+          {
+            "hour": "5am",
+            "weekday": "Sunday",
+            "value": 2019
+          },
+          {
+            "hour": "6am",
+            "weekday": "Sunday",
+            "value": 2128
+          },
+          {
+            "hour": "7am",
+            "weekday": "Sunday",
+            "value": 2246
+          },
+          {
+            "hour": "8am",
+            "weekday": "Sunday",
+            "value": 2421
+          },
+          {
+            "hour": "9am",
+            "weekday": "Sunday",
+            "value": 2788
+          },
+          {
+            "hour": "10am",
+            "weekday": "Sunday",
+            "value": 2959
+          },
+          {
+            "hour": "11am",
+            "weekday": "Sunday",
+            "value": 3018
+          },
+          {
+            "hour": "12am",
+            "weekday": "Sunday",
+            "value": 3154
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Sunday",
+            "value": 3172
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Sunday",
+            "value": 3368
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Sunday",
+            "value": 3464
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Sunday",
+            "value": 3746
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Sunday",
+            "value": 3656
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Sunday",
+            "value": 3336
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Sunday",
+            "value": 3292
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Sunday",
+            "value": 3269
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Sunday",
+            "value": 3300
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Sunday",
+            "value": 3403
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Sunday",
+            "value": 3323
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Monday",
+            "value": 3346
+          },
+          {
+            "hour": "1am",
+            "weekday": "Monday",
+            "value": 2725
+          },
+          {
+            "hour": "2am",
+            "weekday": "Monday",
+            "value": 3052
+          },
+          {
+            "hour": "3am",
+            "weekday": "Monday",
+            "value": 3876
+          },
+          {
+            "hour": "4am",
+            "weekday": "Monday",
+            "value": 4453
+          },
+          {
+            "hour": "5am",
+            "weekday": "Monday",
+            "value": 3972
+          },
+          {
+            "hour": "6am",
+            "weekday": "Monday",
+            "value": 4644
+          },
+          {
+            "hour": "7am",
+            "weekday": "Monday",
+            "value": 5715
+          },
+          {
+            "hour": "8am",
+            "weekday": "Monday",
+            "value": 7080
+          },
+          {
+            "hour": "9am",
+            "weekday": "Monday",
+            "value": 8022
+          },
+          {
+            "hour": "10am",
+            "weekday": "Monday",
+            "value": 8446
+          },
+          {
+            "hour": "11am",
+            "weekday": "Monday",
+            "value": 9313
+          },
+          {
+            "hour": "12am",
+            "weekday": "Monday",
+            "value": 9011
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Monday",
+            "value": 8508
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Monday",
+            "value": 8515
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Monday",
+            "value": 8399
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Monday",
+            "value": 8649
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Monday",
+            "value": 7869
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Monday",
+            "value": 6933
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Monday",
+            "value": 5969
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Monday",
+            "value": 5552
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Monday",
+            "value": 5434
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Monday",
+            "value": 5070
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Monday",
+            "value": 4851
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Tuesday",
+            "value": 4468
+          },
+          {
+            "hour": "1am",
+            "weekday": "Tuesday",
+            "value": 3306
+          },
+          {
+            "hour": "2am",
+            "weekday": "Tuesday",
+            "value": 3906
+          },
+          {
+            "hour": "3am",
+            "weekday": "Tuesday",
+            "value": 4413
+          },
+          {
+            "hour": "4am",
+            "weekday": "Tuesday",
+            "value": 4726
+          },
+          {
+            "hour": "5am",
+            "weekday": "Tuesday",
+            "value": 4584
+          },
+          {
+            "hour": "6am",
+            "weekday": "Tuesday",
+            "value": 5717
+          },
+          {
+            "hour": "7am",
+            "weekday": "Tuesday",
+            "value": 6504
+          },
+          {
+            "hour": "8am",
+            "weekday": "Tuesday",
+            "value": 8104
+          },
+          {
+            "hour": "9am",
+            "weekday": "Tuesday",
+            "value": 8813
+          },
+          {
+            "hour": "10am",
+            "weekday": "Tuesday",
+            "value": 9278
+          },
+          {
+            "hour": "11am",
+            "weekday": "Tuesday",
+            "value": 10425
+          },
+          {
+            "hour": "12am",
+            "weekday": "Tuesday",
+            "value": 10137
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Tuesday",
+            "value": 9290
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Tuesday",
+            "value": 9255
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Tuesday",
+            "value": 9614
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Tuesday",
+            "value": 9713
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Tuesday",
+            "value": 9667
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Tuesday",
+            "value": 8774
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Tuesday",
+            "value": 8649
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Tuesday",
+            "value": 9937
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Tuesday",
+            "value": 10286
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Tuesday",
+            "value": 9175
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Tuesday",
+            "value": 8581
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Wednesday",
+            "value": 8145
+          },
+          {
+            "hour": "1am",
+            "weekday": "Wednesday",
+            "value": 7177
+          },
+          {
+            "hour": "2am",
+            "weekday": "Wednesday",
+            "value": 5657
+          },
+          {
+            "hour": "3am",
+            "weekday": "Wednesday",
+            "value": 6802
+          },
+          {
+            "hour": "4am",
+            "weekday": "Wednesday",
+            "value": 8159
+          },
+          {
+            "hour": "5am",
+            "weekday": "Wednesday",
+            "value": 8449
+          },
+          {
+            "hour": "6am",
+            "weekday": "Wednesday",
+            "value": 9453
+          },
+          {
+            "hour": "7am",
+            "weekday": "Wednesday",
+            "value": 9947
+          },
+          {
+            "hour": "8am",
+            "weekday": "Wednesday",
+            "value": 11471
+          },
+          {
+            "hour": "9am",
+            "weekday": "Wednesday",
+            "value": 12492
+          },
+          {
+            "hour": "10am",
+            "weekday": "Wednesday",
+            "value": 9388
+          },
+          {
+            "hour": "11am",
+            "weekday": "Wednesday",
+            "value": 9928
+          },
+          {
+            "hour": "12am",
+            "weekday": "Wednesday",
+            "value": 9644
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Wednesday",
+            "value": 9034
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Wednesday",
+            "value": 8964
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Wednesday",
+            "value": 9069
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Wednesday",
+            "value": 8898
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Wednesday",
+            "value": 8322
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Wednesday",
+            "value": 6909
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Wednesday",
+            "value": 5810
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Wednesday",
+            "value": 5151
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Wednesday",
+            "value": 4911
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Wednesday",
+            "value": 4487
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Wednesday",
+            "value": 4118
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Thursday",
+            "value": 3689
+          },
+          {
+            "hour": "1am",
+            "weekday": "Thursday",
+            "value": 3081
+          },
+          {
+            "hour": "2am",
+            "weekday": "Thursday",
+            "value": 6525
+          },
+          {
+            "hour": "3am",
+            "weekday": "Thursday",
+            "value": 6228
+          },
+          {
+            "hour": "4am",
+            "weekday": "Thursday",
+            "value": 6917
+          },
+          {
+            "hour": "5am",
+            "weekday": "Thursday",
+            "value": 6568
+          },
+          {
+            "hour": "6am",
+            "weekday": "Thursday",
+            "value": 6405
+          },
+          {
+            "hour": "7am",
+            "weekday": "Thursday",
+            "value": 8106
+          },
+          {
+            "hour": "8am",
+            "weekday": "Thursday",
+            "value": 8542
+          },
+          {
+            "hour": "9am",
+            "weekday": "Thursday",
+            "value": 8501
+          },
+          {
+            "hour": "10am",
+            "weekday": "Thursday",
+            "value": 8802
+          },
+          {
+            "hour": "11am",
+            "weekday": "Thursday",
+            "value": 9420
+          },
+          {
+            "hour": "12am",
+            "weekday": "Thursday",
+            "value": 8966
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Thursday",
+            "value": 8135
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Thursday",
+            "value": 8224
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Thursday",
+            "value": 8387
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Thursday",
+            "value": 8218
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Thursday",
+            "value": 7641
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Thursday",
+            "value": 6469
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Thursday",
+            "value": 5441
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Thursday",
+            "value": 4952
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Thursday",
+            "value": 4643
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Thursday",
+            "value": 4393
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Thursday",
+            "value": 4017
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Friday",
+            "value": 4022
+          },
+          {
+            "hour": "1am",
+            "weekday": "Friday",
+            "value": 3063
+          },
+          {
+            "hour": "2am",
+            "weekday": "Friday",
+            "value": 3638
+          },
+          {
+            "hour": "3am",
+            "weekday": "Friday",
+            "value": 3968
+          },
+          {
+            "hour": "4am",
+            "weekday": "Friday",
+            "value": 4070
+          },
+          {
+            "hour": "5am",
+            "weekday": "Friday",
+            "value": 4019
+          },
+          {
+            "hour": "6am",
+            "weekday": "Friday",
+            "value": 4548
+          },
+          {
+            "hour": "7am",
+            "weekday": "Friday",
+            "value": 5465
+          },
+          {
+            "hour": "8am",
+            "weekday": "Friday",
+            "value": 6909
+          },
+          {
+            "hour": "9am",
+            "weekday": "Friday",
+            "value": 7706
+          },
+          {
+            "hour": "10am",
+            "weekday": "Friday",
+            "value": 7867
+          },
+          {
+            "hour": "11am",
+            "weekday": "Friday",
+            "value": 8615
+          },
+          {
+            "hour": "12am",
+            "weekday": "Friday",
+            "value": 8218
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Friday",
+            "value": 7604
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Friday",
+            "value": 7429
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Friday",
+            "value": 7488
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Friday",
+            "value": 7493
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Friday",
+            "value": 6998
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Friday",
+            "value": 5941
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Friday",
+            "value": 5068
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Friday",
+            "value": 4636
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Friday",
+            "value": 4241
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Friday",
+            "value": 3858
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Friday",
+            "value": 3833
+          },
+          {
+            "hour": "12pm",
+            "weekday": "Saturday",
+            "value": 3503
+          },
+          {
+            "hour": "1am",
+            "weekday": "Saturday",
+            "value": 2842
+          },
+          {
+            "hour": "2am",
+            "weekday": "Saturday",
+            "value": 2808
+          },
+          {
+            "hour": "3am",
+            "weekday": "Saturday",
+            "value": 2399
+          },
+          {
+            "hour": "4am",
+            "weekday": "Saturday",
+            "value": 2280
+          },
+          {
+            "hour": "5am",
+            "weekday": "Saturday",
+            "value": 2139
+          },
+          {
+            "hour": "6am",
+            "weekday": "Saturday",
+            "value": 2527
+          },
+          {
+            "hour": "7am",
+            "weekday": "Saturday",
+            "value": 2940
+          },
+          {
+            "hour": "8am",
+            "weekday": "Saturday",
+            "value": 3066
+          },
+          {
+            "hour": "9am",
+            "weekday": "Saturday",
+            "value": 3494
+          },
+          {
+            "hour": "10am",
+            "weekday": "Saturday",
+            "value": 3287
+          },
+          {
+            "hour": "11am",
+            "weekday": "Saturday",
+            "value": 3416
+          },
+          {
+            "hour": "12am",
+            "weekday": "Saturday",
+            "value": 3432
+          },
+          {
+            "hour": "1pm",
+            "weekday": "Saturday",
+            "value": 3523
+          },
+          {
+            "hour": "2pm",
+            "weekday": "Saturday",
+            "value": 3542
+          },
+          {
+            "hour": "3pm",
+            "weekday": "Saturday",
+            "value": 3347
+          },
+          {
+            "hour": "4pm",
+            "weekday": "Saturday",
+            "value": 3292
+          },
+          {
+            "hour": "5pm",
+            "weekday": "Saturday",
+            "value": 3416
+          },
+          {
+            "hour": "6pm",
+            "weekday": "Saturday",
+            "value": 3131
+          },
+          {
+            "hour": "7pm",
+            "weekday": "Saturday",
+            "value": 3057
+          },
+          {
+            "hour": "8pm",
+            "weekday": "Saturday",
+            "value": 3227
+          },
+          {
+            "hour": "9pm",
+            "weekday": "Saturday",
+            "value": 3060
+          },
+          {
+            "hour": "10pm",
+            "weekday": "Saturday",
+            "value": 2855
+          },
+          {
+            "hour": "11pm",
+            "weekday": "Saturday",
+            "value": 2625
+          }
+
+        ];
+
+
+
+
+
+
+
+        // Create chart instance
+        let streamchart = create("streamchart", am4charts.XYChart);
+
+        // Add data
+        streamchart.data = [
+          { year: "1896", uk: 7, ussr: 0, russia: 0, usa: 20, china: 0 },
+          { year: "1900", uk: 78, ussr: 0, russia: 0, usa: 55, china: 0 },
+          { year: "1904", uk: 2, ussr: 0, russia: 0, usa: 394, china: 0 },
+          { year: "1908", uk: 347, ussr: 0, russia: 0, usa: 63, china: 0 },
+          { year: "1912", uk: 160, ussr: 0, russia: 0, usa: 101, china: 0 },
+          { year: "1916", uk: 0, ussr: 0, russia: 0, usa: 0, china: 0 },
+          { year: "1920", uk: 107, ussr: 0, russia: 0, usa: 193, china: 0 },
+          { year: "1924", uk: 66, ussr: 0, russia: 0, usa: 198, china: 0 },
+          { year: "1928", uk: 55, ussr: 0, russia: 0, usa: 84, china: 0 },
+          { year: "1932", uk: 34, ussr: 0, russia: 0, usa: 181, china: 0 },
+          { year: "1936", uk: 36, ussr: 0, russia: 0, usa: 92, china: 0 },
+          { year: "1940", uk: 0, ussr: 0, russia: 0, usa: 0, china: 0 },
+          { year: "1944", uk: 0, ussr: 0, russia: 0, usa: 0, china: 0 },
+          { year: "1948", uk: 56, ussr: 0, russia: 0, usa: 148, china: 0 },
+          { year: "1952", uk: 31, ussr: 117, russia: 0, usa: 130, china: 0 },
+          { year: "1956", uk: 45, ussr: 169, russia: 0, usa: 118, china: 0 },
+          { year: "1960", uk: 28, ussr: 169, russia: 0, usa: 112, china: 0 },
+          { year: "1964", uk: 28, ussr: 174, russia: 0, usa: 150, china: 0 },
+          { year: "1968", uk: 18, ussr: 188, russia: 0, usa: 149, china: 0 },
+          { year: "1972", uk: 29, ussr: 211, russia: 0, usa: 155, china: 0 },
+          { year: "1976", uk: 32, ussr: 285, russia: 0, usa: 155, china: 0 },
+          { year: "1980", uk: 45, ussr: 442, russia: 0, usa: 0, china: 0 },
+          { year: "1984", uk: 72, ussr: 0, russia: 0, usa: 333, china: 76 },
+          { year: "1988", uk: 53, ussr: 294, russia: 0, usa: 193, china: 53 },
+          { year: "1992", uk: 50, ussr: 0, russia: 0, usa: 224, china: 83 },
+          { year: "1996", uk: 26, ussr: 0, russia: 115, usa: 260, china: 110 },
+          { year: "2000", uk: 55, ussr: 0, russia: 188, usa: 248, china: 79 },
+          { year: "2004", uk: 57, ussr: 0, russia: 192, usa: 264, china: 94 },
+          { year: "2008", uk: 77, ussr: 0, russia: 143, usa: 315, china: 184 }
+        ];
+
+        // Create axes
+        let categoryAxisStream = streamchart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxisStream.dataFields.category = "year";
+        categoryAxisStream.renderer.grid.template.location = 0;
+        categoryAxisStream.renderer.minGridDistance = 50;
+        categoryAxisStream.renderer.labels.template.fill = color("#fff");
+        categoryAxisStream.renderer.grid.template.stroke = color("#fff");
+        categoryAxisStream.startLocation = 0.5;
+        categoryAxisStream.endLocation = 0.5;
+
+        let valueAxisstream = streamchart.yAxes.push(new am4charts.ValueAxis());
+
+        valueAxisstream.renderer.labels.template.fill = color("#fff");
+        valueAxisstream.renderer.grid.template.stroke = color("#fff");
+
+        // Create series
+        function createSeriesStream(field, name) {
+          let series = streamchart.series.push(new am4charts.LineSeries());
+          series.dummyData = {
+            field: field
+          }
+          series.dataFields.valueY = field + "_hi";
+          series.dataFields.openValueY = field + "_low";
+          series.dataFields.categoryX = "year";
+          series.name = name;
+          series.tooltipText = "[font-size: 18]{name}[/]\n{categoryX}: [bold]{" + field + "}[/]";
+          series.strokeWidth = 1;
+          series.fillOpacity = 1;
+          series.tensionX = 0.8;
+
+          return series;
+        }
+
+        createSeriesStream("uk", "United Kingdom");
+        createSeriesStream("ussr", "Soviet Union");
+        createSeriesStream("russia", "Russia");
+        createSeriesStream("usa", "United States");
+        createSeriesStream("china", "China");
+
+        // Legend
+        streamchart.legend = new am4charts.Legend();
+        streamchart.legend.itemContainers.template.togglable = false;
+        streamchart.legend.itemContainers.template.cursorOverStyle = MouseCursorStyle.default;
+        streamchart.legend.position = "right"
+        streamchart.legend.reverseOrder = true;
+        streamchart.legend.labels.template.fill = color("#fff");
+
+
+
+        // Cursor
+        streamchart.cursor = new am4charts.XYCursor();
+        streamchart.cursor.maxTooltipDistance = 0;
+
+        // Responsive
+        streamchart.responsive.enabled = true;
+        streamchart.responsive.useDefault = false;
+        streamchart.responsive.rules.push({
+          relevant: ResponsiveBreakpoints.widthL,
+          state: function (target, stateId) {
+            if (target instanceof am4charts.Legend) {
+              let state = target.states.create(stateId);
+              state.properties.position = "bottom";
+              return state;
+            }
+            return null;
+          }
+        });
+
+        // Prepare data for the river-stacked series
+        streamchart.events.on("beforedatavalidated", updateData);
+        function updateData() {
+
+          let data = streamchart.data;
+          if (data.length == 0) {
+            return;
+          }
+
+          for (var i = 0; i < data.length; i++) {
+            let row = data[i];
+            let sum = 0;
+
+            // Calculate open and close values
+            streamchart.series.each(function (series) {
+              let field = series.dummyData.field;
+              let val = Number(row[field]);
+              row[field + "_low"] = sum;
+              row[field + "_hi"] = sum + val;
+              sum += val;
+            });
+
+            // Adjust values so they are centered
+            let offset = sum / 2;
+            streamchart.series.each(function (series) {
+              let field = series.dummyData.field;
+              row[field + "_low"] -= offset;
+              row[field + "_hi"] -= offset;
+            });
+
+          }
+
+        }
+
+
+
+
+
+        /* Create chart instance */
+        let spiderchart = create("spiderchart", am4charts.RadarChart);
+
+        let data = [];
+        let value1 = 500;
+        let value2 = 600;
+
+        for (var i = 0; i < 12; i++) {
+          let date = new Date();
+          date.setMonth(i, 1);
+          value1 -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 50);
+          value2 -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 50);
+          data.push({ date: date, value1: value1, value2: value2 })
+        }
+
+        spiderchart.data = data;
+
+        /* Create axes */
+        let categoryAxisSpider = spiderchart.xAxes.push(new am4charts.DateAxis<any>());
+
+        categoryAxisSpider.renderer.labels.template.fill = color("#fff");
+        categoryAxisSpider.renderer.grid.template.stroke = color("#fff");
+
+        let valueAxisSpider = spiderchart.yAxes.push(new am4charts.ValueAxis<any>());
+        valueAxisSpider.extraMin = 0.2;
+        valueAxisSpider.extraMax = 0.2;
+        valueAxisSpider.tooltip.disabled = true;
+        
+        valueAxisSpider.renderer.labels.template.fill = color("#fff");
+        valueAxisSpider.renderer.grid.template.stroke = color("#fff");
+
+        /* Create and configure series */
+        let series1 = spiderchart.series.push(new am4charts.RadarSeries());
+        series1.dataFields.valueY = "value1";
+        series1.dataFields.dateX = "date";
+        // series1.yAxis = valueAxisSpider;
+        // series.xAxis = categoryAxisSpider;
+        series1.strokeWidth = 3;
+        series1.tooltipText = "{valueY}";
+        series1.name = "Series 1";
+        series1.bullets.create(am4charts.CircleBullet);
+        series1.dataItems.template.locations.dateX = 0.5;
+
+        let series2 = spiderchart.series.push(new am4charts.RadarSeries());
+        series2.dataFields.valueY = "value2";
+        series2.dataFields.dateX = "date";
+        // series2.yAxis = valueAxisSpider;
+        // series2.xAxis = categoryAxisSpider;
+        series2.strokeWidth = 3;
+        series2.tooltipText = "{valueY}";
+        series2.name = "Series 3";
+        series2.bullets.create(am4charts.CircleBullet);
+        series2.dataItems.template.locations.dateX = 0.5;
+
+        // spiderchart.scrollbarX = new Scrollbar();
+        // spiderchart.scrollbarY = new Scrollbar();
+
+        spiderchart.cursor = new am4charts.RadarCursor();
+
+        spiderchart.legend = new am4charts.Legend();
+
+        spiderchart.legend.labels.template.fill = color("#fff");
 
 
 
@@ -2890,9 +4226,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         networkSeries.strokeWidth = 0;
         networkSeries.nodes.template.strokeWidth = 0;
 
+        networkSeries.nodes.template.outerCircle.disabled = true;
+
+        networkSeries.nodes.template.outerCircle.strokeDasharray = "0";
+
 
         networkSeries.nodes.template.label.text = "{name}"
-        networkSeries.fontSize = 8;
+        networkSeries.fontSize = 12;
         networkSeries.nodes.template.label.hideOversized = true;
         networkSeries.nodes.template.label.truncate = true;
         networkSeries.minRadius = percent(2);
@@ -2967,7 +4307,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         this.timeFrameXText.dataFields.category = "_id";
         this.timeFrameXText.renderer.grid.template.location = 0;
         this.timeFrameXText.renderer.minGridDistance = 30;
-        this.timeFrameXText.title.text = "NO. OF MONTHS";
+        this.timeFrameXText.title.text = "MONTHS";
 
         // this.timeFrameXText.renderer.labels.template.events.on("over", function(ev) {
         //   var point = this.timeFrameXText?.categoryToPoint(ev.target.dataItem.category);
@@ -2985,7 +4325,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let valueAxis = this.timeFrameGraphData.yAxes.push(
           new am4charts.ValueAxis()
         );
-        valueAxis.title.text = "NO. OF PEOPLE VISITED";
+        valueAxis.title.text = "PEOPLE VISITED";
         //valueAxis.integersOnly = true;
         valueAxis.tooltip.disabled = true;
         // Create series
@@ -3062,11 +4402,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //     return dy;
         //   }
         // );
-        casteCategoryAxis.title.text = "VISITOR CASTE CATEGORY";
+        casteCategoryAxis.title.text = "CASTE CATEGORY";
         let casteValueAxis = this.casteGraph.yAxes.push(
           new am4charts.ValueAxis()
         );
-        casteValueAxis.title.text = "NO. OF PEOPLE VISITED";
+        casteValueAxis.title.text = "PEOPLE VISITED";
         casteValueAxis.tooltip.disabled = true;
         // Create series
         let casteSeries = this.casteGraph.series.push(
@@ -3181,7 +4521,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //           let polygonTemplate1 = polygonSeries1.mapPolygons.template;
   //           polygonTemplate1.tooltipText = "{name}";
   //           polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-  //           //shantam 
+  //           //shantam
   //           polygonSeries1.include = ["IN-DL"];
   //           chartGeo.events.on("ready", loadStores1);
   //           //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
@@ -3943,7 +5283,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
           if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "NO. OF WEEKS"
+            this.timeFrameXText.title.text = "WEEKS"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
 
             //   var d = moment(element._id, 'MM-DD-YYYY');
@@ -3965,10 +5305,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
                 'count': element.count
               }
             })
-            this.timeFrameXText.title.text = "NO. OF MONTH"
+            this.timeFrameXText.title.text = "MONTH"
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "NO. OF YEARS"
+            this.timeFrameXText.title.text = "YEARS"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
 
             //   var d = moment(element._id, 'MM-DD-YYYY');
@@ -3980,7 +5320,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             // })
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "NO. OF DATES"
+            this.timeFrameXText.title.text = "DATES"
             // this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
             //   var d = moment(element._id, 'MM-DD-YYYY');
             //   d.month(); // 1
@@ -3992,7 +5332,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           }
           else {
             this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "NO. OF MONTHS"
+            this.timeFrameXText.title.text = "MONTHS"
             var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
 
             this.timeFrameGraphData.data = sortedData.map((element) => {
@@ -4344,7 +5684,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             //  console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
           }
           this.samajwadiPartyGraphData = response.data;
-          this.getFilterGender(filterObj)
+          setTimeout(() => {
+            this.getFilterGender(filterObj)
+          }, 500);
 
           this.userService.graphDataLoader4.next(false);
         }
@@ -4364,7 +5706,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             //console.log("gender", this.filteredVisitorCount)
           }
           this.genderGraph.data = response.data;
-          this.getFilterCaste(filterObj)
+          setTimeout(() => {
+            this.getFilterCaste(filterObj)
+          }, 500);
 
           this.graphDataLoader1 = false;
         }
@@ -4480,7 +5824,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // if(filterValue){
           if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
             this.timeFrameGraphData.data = response.data;
-            this.timeFrameXText.title.text = "NO. OF WEEKS"
+            this.timeFrameXText.title.text = "WEEKS"
 
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
             var sortedData: any = response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
@@ -4494,19 +5838,19 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
                 'count': element.count
               }
             })
-            this.timeFrameXText.title.text = "NO. OF MONTH"
+            this.timeFrameXText.title.text = "MONTH"
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
             this.timeFrameGraphData.data = response.data;
-            this.timeFrameXText.title.text = "NO. OF YEARS"
+            this.timeFrameXText.title.text = "YEARS"
 
           } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
             this.timeFrameGraphData.data = response.data;
-            this.timeFrameXText.title.text = "NO. OF DATES"
+            this.timeFrameXText.title.text = "DATES"
 
           }
           else {
             this.timeFrameGraphData.data = response.data;
-            this.timeFrameXText.title.text = "NO. OF MONTHS"
+            this.timeFrameXText.title.text = "MONTHS"
             var sortedData: any = response.data.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
 
             this.timeFrameGraphData.data = sortedData.map((element) => {
@@ -4522,7 +5866,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // }
           // else{
           //   this.timeFrameGraphData.data = response.data;
-          //   this.timeFrameXText.title.text= "NO. OF MONTHS"
+          //   this.timeFrameXText.title.text= "MONTHS"
           // }
 
         }

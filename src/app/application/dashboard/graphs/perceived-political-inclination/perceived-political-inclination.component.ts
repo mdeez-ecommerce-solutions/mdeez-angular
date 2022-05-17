@@ -86,7 +86,7 @@ valueAxis.min = 0;
 valueAxis.cursorTooltipEnabled = false;
 valueAxis.renderer.baseGrid.strokeOpacity = 0;
 valueAxis.renderer.labels.template.dy = 20;
-valueAxis.title.text= "NO. OF PEOPLE VISITED";
+valueAxis.title.text= "PEOPLE VISITED";
 valueAxis.title.dy=15;
 
 let series = this.perceivedPoliticalInclination.series.push(new am4charts.ColumnSeries());

@@ -74,7 +74,7 @@ export class VisitorCategoryGraphComponent implements OnInit {
      
       let valueAxis = this.visitorCategoryGraph.xAxes.push(new am4charts.ValueAxis());
       valueAxis.min = 0;
-      valueAxis.title.text= "NO. OF PEOPLE VISITED";
+      valueAxis.title.text= "PEOPLE VISITED";
       let series = this.visitorCategoryGraph.series.push(new am4charts.ColumnSeries());
       series.dataFields.categoryY = "_id";
       series.dataFields.valueX = "count";

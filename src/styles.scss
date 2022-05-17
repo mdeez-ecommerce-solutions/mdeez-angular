@@ -112,7 +112,7 @@ body {
 }
 
 .login-half-width {
-  width: 60%;
+  width: 80%;
   margin: 30px auto 0;
 }
 
@@ -212,7 +212,7 @@ label {
 }
 
 .myheading {
-  font-size: 25px !important;
+  font-size: 22px !important;
   letter-spacing: 2px;
   color: #b2b7c5;
   font-weight: 900;
@@ -1316,7 +1316,8 @@ app-footer .footer-dashboard {
 
 
 app-footer .footer-login {
-  background: #121620;
+  background: #0f1820;
+  // justify-content: space-evenly !important;
 }
 
 

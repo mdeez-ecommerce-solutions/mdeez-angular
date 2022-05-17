@@ -1,12 +1,28 @@
-<div [ngClass]="showDashboardMenu ? 'footer-dashboard' : 'footer-login'"  _ngcontent-kub-c165=""
-    style="position: absolute; bottom: 0; display: flex; align-items: center; width: 100%; justify-content: space-between; color: #c4c4c4; height: 30px; font-size: 60px; /* padding: 0 10px;">
-    <div _ngcontent-kub-c165="" class="foot-ver" style="font-size: 13px; padding: 0 21px;"> Version 1.2.3 </div>
-    <div _ngcontent-kub-c165="" style="position: absolute;width: 100%;text-align: center; font-size: 13px; padding: 0 21px; /* margin-left: 394px; */">Powered By 
-       <a href="https://thensight.com/"> <b
-            _ngcontent-kub-c165="" style="color: #c40000;font-size: 16px;">NSIGHT</b>
+<div [ngClass]="showDashboardMenu == true ? 'footer-login' : 'footer-dashboard'"
+    style="position: absolute; bottom: 0; display: flex; align-items: center; width: 100%; padding:40px 150px; justify-content: space-between; color: #c4c4c4; height: 30px; font-size: 60px; /* padding: 0 10px;">
+    <div class="foot-ver" style="font-size: 13px; padding: 0 21px;"> Version 1.2.3 </div>
+
+    <div
+        style="position: absolute;left:0;display:flex; align-items: center; justify-content: center; width: 100%;text-align: center; font-size: 13px; padding: 0 21px; /* margin-left: 394px; */">
+       
+        <span *ngIf="!showDashboardMenu; else nlogo">
+        Powered By
+        <a href="https://thensight.com/"> <b style="color: #c40000;font-size: 16px;">NSIGHT</b>
         </a>
-        </div>
-    <div _ngcontent-kub-c165="" style="font-size: 11px; padding: 0 21px;">©️ NSIGHT 2022. All rights reserved.</div>
+        </span>
+
+        <ng-template #nlogo>
+            <a href="https://thensight.com/">
+            <img src="../../../../assets/images/login/rednsignt.png" height="45px"
+            style="display: block; margin-top: -20px;" />
+            </a>
+        </ng-template>
+        
+       
+
+
+    </div>
+    <div style="font-size: 11px; padding: 0 21px;">©️ NSIGHT 2022. All rights reserved.</div>
 </div>
 <!-- <mat-toolbar class="bg-transparent footer-position" *ngIf="!showDashboardMenu">
     <span> <img src="../../../../assets/images/nsight-logo.svg" class="img-fluid" alt="nsight" /> <span
