@@ -1434,7 +1434,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       case 'ADMIN': {
         this.authenticated = true
         break;
-      }  
+      }
     }
     this.userService.isLoadingVisitorList.subscribe((res) => this.isLoaderHappen = res);
     this.baseApiUrl = environment.api_base_url + '/visitor/download-csv?limit=100000';
@@ -1454,7 +1454,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.getFilterMeetStatus()
     // this.getFilterArea()
     // this.getFilterDistrictConstituency()
-    // this.getFilterAgeGroup()
+    this.getFilterAgeGroup()
     // this.getFilterMeetLocation()
     // this.getFilterIsSamjawadi()
     // this.getFilterGender()
@@ -1477,7 +1477,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.getVisitorOccupationData();
 
     // Graph Data Calling
-    // this.getVisitAnalyticGraphData();
+    this.getVisitAnalyticGraphData();
 
   }
   openInNewTab() {
@@ -1552,7 +1552,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let polygonTemplate = polygonSeries.mapPolygons.template;
         polygonTemplate.tooltipText = "{name}";
         polygonTemplate.fill = chart.colors.getIndex(9);
-        //shantam 
+        //shantam
         polygonSeries.include = ["IN-DL"];
         chart.events.on("ready", loadStores);
         //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
@@ -1791,7 +1791,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         polygonTemplate1.tooltipText = "{geocoding.name}";
         polygonTemplate1.strokeWidth = 0;
         polygonTemplate1.fill = mapgradient;
-        
+
         let shadow = polygonTemplate1.background.filters.push(new DropShadowFilter());
         shadow.dx = 10;
         shadow.dy = 10;
@@ -1892,9 +1892,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //   let polygonTemplate1 = polygonSeries1.mapPolygons.template;
         //   polygonTemplate1.tooltipText = "{district}";
         //   polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-        //   //shantam 
+        //   //shantam
 
-        // let dd =  this.geodatajson;           
+        // let dd =  this.geodatajson;
 
         // for(var i = 0; i < dd.features.length; i++) {
         //   var feature = dd.features[i];
@@ -2018,7 +2018,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //     zoomOut1.show();
 
         //     // Show new targert series
-        //     currentSeries1 = regionalSeries1[data.target].series; 
+        //     currentSeries1 = regionalSeries1[data.target].series;
         //     currentSeries1.show();
         //   });
 
@@ -3123,7 +3123,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //           let polygonTemplate1 = polygonSeries1.mapPolygons.template;
   //           polygonTemplate1.tooltipText = "{name}";
   //           polygonTemplate1.fill = chartGeo.colors.getIndex(0);
-  //           //shantam 
+  //           //shantam
   //           polygonSeries1.include = ["IN-DL"];
   //           chartGeo.events.on("ready", loadStores1);
   //           //let imageSeries = chart.series.push(new am4maps.MapImageSeries());
@@ -4286,7 +4286,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             //  console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
           }
           this.samajwadiPartyGraphData = response.data;
-          this.getFilterGender(filterObj)
+          setTimeout(() => {
+            this.getFilterGender(filterObj)
+          }, 500);
 
           this.userService.graphDataLoader4.next(false);
         }
@@ -4306,7 +4308,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             //console.log("gender", this.filteredVisitorCount)
           }
           this.genderGraph.data = response.data;
-          this.getFilterCaste(filterObj)
+          setTimeout(() => {
+            this.getFilterCaste(filterObj)
+          }, 500);
 
           this.graphDataLoader1 = false;
         }
