@@ -1818,7 +1818,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         let circle1 = imageSeriesTemplate1.createChild(Circle);
         circle1.radius = 4;
         circle1.fill = color("#2d4bfc");
-        // circle1.fill = color("#ff0000");  
+        // circle1.fill = color("#ff0000");
 
 
         circle1.stroke = color("#000");
@@ -3781,7 +3781,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         valueAxisSpider.extraMin = 0.2;
         valueAxisSpider.extraMax = 0.2;
         valueAxisSpider.tooltip.disabled = true;
-        
+
         valueAxisSpider.renderer.labels.template.fill = color("#fff");
         valueAxisSpider.renderer.grid.template.stroke = color("#fff");
 
@@ -5604,7 +5604,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           }
           this.visitorAreaData = response.data;
 
-          // this.getFilterDistrictConstituency(filterObj)
+          this.getFilterDistrictConstituency(filterObj)
 
           this.userService.graphDataLoader5.next(false);
         }
@@ -5614,24 +5614,24 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       }
     );
   }
-  // getFilterDistrictConstituency(filterObj?: any): void {
-  //   // this.isLoadingResults = true;
-  //   this.userService.getFilterDistrictConstituency(filterObj).subscribe(
-  //     (response: any) => {
-  //       if (response.error === false) {
+  getFilterDistrictConstituency(filterObj?: any): void {
+    // this.isLoadingResults = true;
+    this.userService.getFilterDistrictConstituency(filterObj).subscribe(
+      (response: any) => {
+        if (response.error === false) {
 
-  //         this.geodata1.data = response.data[0].district;
-  //         this.geodata.data = response.data[0].constituency;
-  //         this.getFilterAgeGroup(filterObj)
+          this.geodata1 = response.data[0].district;
+          this.geodata.data = response.data[0].constituency;
+          this.getFilterAgeGroup(filterObj)
 
-  //         // this.isLoadingResults = false;
-  //       }
-  //     },
-  //     (error) => {
+          // this.isLoadingResults = false;
+        }
+      },
+      (error) => {
 
-  //     }
-  //   );
-  // }
+      }
+    );
+  }
   getFilterAgeGroup(filterObj?: any): void {
 
     this.userService.getFilterAgeGroup(filterObj).subscribe(
