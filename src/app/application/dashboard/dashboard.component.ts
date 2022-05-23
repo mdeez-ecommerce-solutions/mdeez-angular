@@ -1415,6 +1415,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   editorRole = environment.EDITOR_ROLE
   loader = false;
   authenticated = false
+  networkSeries: any;
 
 
   constructor(
@@ -4023,221 +4024,223 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
         let bubblechart = create("bubblechart", am4plugins_forceDirected.ForceDirectedTree);
 
-        let networkSeries = bubblechart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
+        this.networkSeries = bubblechart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
 
 
-        networkSeries.data = [{
-          name: 'Singh',
-          children: [{
-            name: 'Black Tea', value: 1
-          }, {
-            name: 'Floral',
-            children: [{
-              name: 'Chamomile', value: 1
-            }, {
-              name: 'Rose', value: 1
-            }, {
-              name: 'Jasmine', value: 1
-            }]
-          }]
-        }, {
-          name: 'Khan',
-          children: [{
-            name: 'Berry',
-            children: [{
-              name: 'Blackberry', value: 1
-            }, {
-              name: 'Raspberry', value: 1
-            }, {
-              name: 'Blueberry', value: 1
-            }, {
-              name: 'Strawberry', value: 1
-            }]
-          }, {
-            name: 'Dried Fruit',
-            children: [{
-              name: 'Raisin', value: 1
-            }, {
-              name: 'Prune', value: 1
-            }]
-          }, {
-            name: 'Other Fruit',
-            children: [{
-              name: 'Coconut', value: 1
-            }, {
-              name: 'Cherry', value: 1
-            }, {
-              name: 'Pomegranate', value: 1
-            }, {
-              name: 'Pineapple', value: 1
-            }, {
-              name: 'Grape', value: 1
-            }, {
-              name: 'Apple', value: 1
-            }, {
-              name: 'Peach', value: 1
-            }, {
-              name: 'Pear', value: 1
-            }]
-          }, {
-            name: 'Citrus Fruit',
-            children: [{
-              name: 'Grapefruit', value: 1
-            }, {
-              name: 'Orange', value: 1
-            }, {
-              name: 'Lemon', value: 1
-            }, {
-              name: 'Lime', value: 1
-            }]
-          }]
-        }, {
-          name: 'Sour/Fermented',
-          children: [{
-            name: 'Sour',
-            children: [{
-              name: 'Sour Aromatics', value: 1
-            }, {
-              name: 'Acetic Acid', value: 1
-            }, {
-              name: 'Butyric Acid', value: 1
-            }, {
-              name: 'Isovaleric Acid', value: 1
-            }, {
-              name: 'Citric Acid', value: 1
-            }, {
-              name: 'Malic Acid', value: 1
-            }]
-          }, {
-            name: 'Alcohol/Fremented',
-            children: [{
-              name: 'Winey', value: 1
-            }, {
-              name: 'Whiskey', value: 1
-            }, {
-              name: 'Fremented', value: 1
-            }, {
-              name: 'Overripe', value: 1
-            }]
-          }]
-        }, {
-          name: 'Green/Vegetative',
-          children: [{
-            name: 'Olive Oil', value: 1
-          }, {
-            name: 'Raw', value: 1
-          }, {
-            name: 'Green/Vegetative',
-            children: [{
-              name: 'Under-ripe', value: 1
-            }, {
-              name: 'Peapod', value: 1
-            }, {
-              name: 'Fresh', value: 1
-            }, {
-              name: 'Dark Green', value: 1
-            }, {
-              name: 'Vegetative', value: 1
-            }, {
-              name: 'Hay-like', value: 1
-            }, {
-              name: 'Herb-like', value: 1
-            }]
-          }, {
-            name: 'Beany', value: 1
-          }]
-        }, {
-          name: 'Other',
-          children: [{
-            name: 'Papery/Musty',
-            children: [{
-              name: 'Stale', value: 1
-            }, {
-              name: 'Cardboard', value: 1
-            }, {
-              name: 'Papery', value: 1
-            }, {
-              name: 'Woody', value: 1
-            }, {
-              name: 'Moldy/Damp', value: 1
-            }, {
-              name: 'Musty/Dusty', value: 1
-            }, {
-              name: 'Musty/Earthy', value: 1
-            }, {
-              name: 'Animalic', value: 1
-            }, {
-              name: 'Meaty Brothy', value: 1
-            }, {
-              name: 'Phenolic', value: 1
-            }]
-          }, {
-            name: 'Chemical',
-            children: [{
-              name: 'Bitter', value: 1
-            }, {
-              name: 'Salty', value: 1
-            }, {
-              name: 'Medicinal', value: 1
-            }, {
-              name: 'Petroleum', value: 1
-            }, {
-              name: 'Skunky', value: 1
-            }, {
-              name: 'Rubber', value: 1
-            }]
-          }]
-        }, {
-          name: 'Roasted',
-          children: [{
-            name: 'Pipe Tobacco', value: 1
-          }, {
-            name: 'Tobacco', value: 1
-          }, {
-            name: 'Burnt',
-            children: [{
-              name: 'Acrid', value: 1
-            }, {
-              name: 'Ashy', value: 1
-            }, {
-              name: 'Smoky', value: 1
-            }, {
-              name: 'Brown, Roast', value: 1
-            }]
-          }, {
-            name: 'Cereal',
-            children: [{
-              name: 'Grain', value: 1
-            }, {
-              name: 'Malt', value: 1
-            }]
-          }]
-        }];
+      //   this.networkSeries.data = [{
+      //     name: 'Singh',
+      //     children: [{
+      //       name: 'Black Tea', value: 1
+      //     }, {
+      //       name: 'Floral',
+      //       children: [{
+      //         name: 'Chamomile', value: 1
+      //       }, {
+      //         name: 'Rose', value: 1
+      //       }, {
+      //         name: 'Jasmine', value: 1
+      //       }]
+      //     }]
+      //   },
+      //   {
+      //     name: 'Khan',
+      //     children: [{
+      //       name: 'Berry',
+      //       children: [{
+      //         name: 'Blackberry', value: 1
+      //       }, {
+      //         name: 'Raspberry', value: 1
+      //       }, {
+      //         name: 'Blueberry', value: 1
+      //       }, {
+      //         name: 'Strawberry', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Dried Fruit',
+      //       children: [{
+      //         name: 'Raisin', value: 1
+      //       }, {
+      //         name: 'Prune', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Other Fruit',
+      //       children: [{
+      //         name: 'Coconut', value: 1
+      //       }, {
+      //         name: 'Cherry', value: 1
+      //       }, {
+      //         name: 'Pomegranate', value: 1
+      //       }, {
+      //         name: 'Pineapple', value: 1
+      //       }, {
+      //         name: 'Grape', value: 1
+      //       }, {
+      //         name: 'Apple', value: 1
+      //       }, {
+      //         name: 'Peach', value: 1
+      //       }, {
+      //         name: 'Pear', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Citrus Fruit',
+      //       children: [{
+      //         name: 'Grapefruit', value: 1
+      //       }, {
+      //         name: 'Orange', value: 1
+      //       }, {
+      //         name: 'Lemon', value: 1
+      //       }, {
+      //         name: 'Lime', value: 1
+      //       }]
+      //     }]
+      //   }, {
+      //     name: 'Sour/Fermented',
+      //     children: [{
+      //       name: 'Sour',
+      //       children: [{
+      //         name: 'Sour Aromatics', value: 1
+      //       }, {
+      //         name: 'Acetic Acid', value: 1
+      //       }, {
+      //         name: 'Butyric Acid', value: 1
+      //       }, {
+      //         name: 'Isovaleric Acid', value: 1
+      //       }, {
+      //         name: 'Citric Acid', value: 1
+      //       }, {
+      //         name: 'Malic Acid', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Alcohol/Fremented',
+      //       children: [{
+      //         name: 'Winey', value: 1
+      //       }, {
+      //         name: 'Whiskey', value: 1
+      //       }, {
+      //         name: 'Fremented', value: 1
+      //       }, {
+      //         name: 'Overripe', value: 1
+      //       }]
+      //     }]
+      //   }, {
+      //     name: 'Green/Vegetative',
+      //     children: [{
+      //       name: 'Olive Oil', value: 1
+      //     }, {
+      //       name: 'Raw', value: 1
+      //     }, {
+      //       name: 'Green/Vegetative',
+      //       children: [{
+      //         name: 'Under-ripe', value: 1
+      //       }, {
+      //         name: 'Peapod', value: 1
+      //       }, {
+      //         name: 'Fresh', value: 1
+      //       }, {
+      //         name: 'Dark Green', value: 1
+      //       }, {
+      //         name: 'Vegetative', value: 1
+      //       }, {
+      //         name: 'Hay-like', value: 1
+      //       }, {
+      //         name: 'Herb-like', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Beany', value: 1
+      //     }]
+      //   }, {
+      //     name: 'Other',
+      //     children: [{
+      //       name: 'Papery/Musty',
+      //       children: [{
+      //         name: 'Stale', value: 1
+      //       }, {
+      //         name: 'Cardboard', value: 1
+      //       }, {
+      //         name: 'Papery', value: 1
+      //       }, {
+      //         name: 'Woody', value: 1
+      //       }, {
+      //         name: 'Moldy/Damp', value: 1
+      //       }, {
+      //         name: 'Musty/Dusty', value: 1
+      //       }, {
+      //         name: 'Musty/Earthy', value: 1
+      //       }, {
+      //         name: 'Animalic', value: 1
+      //       }, {
+      //         name: 'Meaty Brothy', value: 1
+      //       }, {
+      //         name: 'Phenolic', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Chemical',
+      //       children: [{
+      //         name: 'Bitter', value: 1
+      //       }, {
+      //         name: 'Salty', value: 1
+      //       }, {
+      //         name: 'Medicinal', value: 1
+      //       }, {
+      //         name: 'Petroleum', value: 1
+      //       }, {
+      //         name: 'Skunky', value: 1
+      //       }, {
+      //         name: 'Rubber', value: 1
+      //       }]
+      //     }]
+      //   }, {
+      //     name: 'Roasted',
+      //     children: [{
+      //       name: 'Pipe Tobacco', value: 1
+      //     }, {
+      //       name: 'Tobacco', value: 1
+      //     }, {
+      //       name: 'Burnt',
+      //       children: [{
+      //         name: 'Acrid', value: 1
+      //       }, {
+      //         name: 'Ashy', value: 1
+      //       }, {
+      //         name: 'Smoky', value: 1
+      //       }, {
+      //         name: 'Brown, Roast', value: 1
+      //       }]
+      //     }, {
+      //       name: 'Cereal',
+      //       children: [{
+      //         name: 'Grain', value: 1
+      //       }, {
+      //         name: 'Malt', value: 1
+      //       }]
+      //     }]
+      //   }
+      // ];
 
-        networkSeries.dataFields.linkWith = "linkWith";
-        networkSeries.dataFields.name = "name";
-        networkSeries.dataFields.id = "name";
-        networkSeries.dataFields.value = "value";
-        networkSeries.dataFields.children = "children";
-        networkSeries.links.template.distance = 1;
-        networkSeries.nodes.template.tooltipText = "{name} {children.length}";
-        networkSeries.nodes.template.fillOpacity = 1;
-        networkSeries.nodes.template.outerCircle.scale = 1;
-        networkSeries.strokeWidth = 0;
-        networkSeries.nodes.template.strokeWidth = 0;
+        this.networkSeries.dataFields.linkWith = "linkWith";
+        this.networkSeries.dataFields.name = "name";
+        this.networkSeries.dataFields.id = "name";
+        this.networkSeries.dataFields.value = "value";
+        this.networkSeries.dataFields.children = "children";
+        this.networkSeries.links.template.distance = 1;
+        this.networkSeries.nodes.template.tooltipText = "{name} {children.length}";
+        this.networkSeries.nodes.template.fillOpacity = 1;
+        this.networkSeries.nodes.template.outerCircle.scale = 1;
+        this.networkSeries.strokeWidth = 0;
+        this.networkSeries.nodes.template.strokeWidth = 0;
 
-        networkSeries.nodes.template.outerCircle.disabled = true;
+        this.networkSeries.nodes.template.outerCircle.disabled = true;
 
-        networkSeries.nodes.template.outerCircle.strokeDasharray = "0";
+        this.networkSeries.nodes.template.outerCircle.strokeDasharray = "0";
 
 
-        networkSeries.nodes.template.label.text = "{name}"
-        networkSeries.fontSize = 12;
-        networkSeries.nodes.template.label.hideOversized = true;
-        networkSeries.nodes.template.label.truncate = true;
-        networkSeries.minRadius = percent(2);
-        networkSeries.manyBodyStrength = -5;
-        networkSeries.links.template.strokeOpacity = 0;
+        this.networkSeries.nodes.template.label.text = "{name}"
+        this.networkSeries.fontSize = 12;
+        this.networkSeries.nodes.template.label.hideOversized = true;
+        this.networkSeries.nodes.template.label.truncate = true;
+        this.networkSeries.minRadius = percent(2);
+        this.networkSeries.manyBodyStrength = -5;
+        this.networkSeries.links.template.strokeOpacity = 0;
 
         //endbubblechart
 
@@ -5348,7 +5351,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
           this.geodata.data = response.data.boothArea;
           // this.geodata1.data = response.data.boothArea;
-          this.geodata1.data = response.data.districtArea;
+          // this.geodata1.data = response.data.districtArea;
           this.visitorCategoryData = response.data.visitorCategory;
           this.visitorOccupatioData = response.data.occupation;
           this.ageGraphData = response.data.ageGroup;
@@ -5728,6 +5731,30 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             // console.log("caste", this.filteredVisitorCount)
           }
           this.casteGraph.data = response.data;
+          let castGrf = [];
+          for (let i = 0; i < this.casteGraph.data.length; i++) {
+            let tt = {name: this.casteGraph.data[i]._id, value: 1,}
+            castGrf.push(tt)
+          }
+          this.networkSeries.data = castGrf;
+          // this.networkSeries.data = [
+          //   {name: this.casteGraph.data[0]._id, value: 1,},
+          //   // {name: this.casteGraph.data[1]._id, value: 1,},
+          //   // name: 'Singh', value: 1,
+          //   // name: 'Singh', value: 1,
+          //   // children: [{
+          //   //   name: 'Black Tea', value: 1
+          //   // }, {
+          //   //   name: 'Floral',
+          //   //   children: [{
+          //   //     name: 'Chamomile', value: 1
+          //   //   }, {
+          //   //     name: 'Rose', value: 1
+          //   //   }, {
+          //   //     name: 'Jasmine', value: 1
+          //   //   }]
+          //   // }]
+          // ]
           if (this.casteGraph.data.length > 8) {
             this.casteGraph.scrollbarX = new Scrollbar();
             this.casteGraph.scrollbarX.parent = this.casteGraph.bottomAxesContainer;
