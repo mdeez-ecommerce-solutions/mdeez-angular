@@ -13,7 +13,7 @@ import {
   isPlatformBrowser
 } from '@angular/common';
 // amCharts imports
-import { useTheme, create, Scrollbar,color } from '@amcharts/amcharts4/core';
+import { useTheme, create,percent, Scrollbar,color } from '@amcharts/amcharts4/core';
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import {
@@ -61,58 +61,132 @@ export class VisitorCategoryGraphComponent implements OnInit {
       useTheme(am4themes_animated);
 
 
-      this.visitorCategoryGraph = create("visitorCategoryChart", am4charts.XYChart);
-      this.visitorCategoryGraph.padding(40, 40, 40, 40);
-      this.visitorCategoryGraph.logo.disabled = true;
-      let categoryAxis = this.visitorCategoryGraph.yAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.renderer.grid.template.location = 0;
-      categoryAxis.dataFields.category = "_id";
-      categoryAxis.renderer.minGridDistance = 1;
-      categoryAxis.renderer.inversed = true;
-      categoryAxis.renderer.grid.template.disabled = true;
-    
-     
-      let valueAxis = this.visitorCategoryGraph.xAxes.push(new am4charts.ValueAxis());
-      valueAxis.min = 0;
-      valueAxis.title.text= "PEOPLE VISITED";
-      let series = this.visitorCategoryGraph.series.push(new am4charts.ColumnSeries());
-      series.dataFields.categoryY = "_id";
-      series.dataFields.valueX = "count";
-    //  series.tooltipText = "{valueX.value}"
-      series.columns.template.strokeOpacity = 0;
-      series.columns.template.column.cornerRadiusBottomRight = 5;
-      series.columns.template.column.cornerRadiusTopRight = 5;
-       series.columns.template.tooltipText = "{_id}: [bold]{count}[/]";
+      this.visitorCategoryGraph = create("visitorCategoryChart",  am4charts.RadarChart);
 
-      let labelBullet = series.bullets.push(new am4charts.LabelBullet())
-      labelBullet.label.horizontalCenter = "left";
-      labelBullet.label.dx = 10;
-     // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
-     labelBullet.label.text = "{values.valueX.workingValue}";
-      labelBullet.locationX = 1;
-     
+      this.visitorCategoryGraph.logo.disabled = true;
+
+      // this.visitorCategoryGraph.data = [{
+      //   "country": "USA",
+      //   "visits": 2025
+      // }, {
+      //   "country": "China",
+      //   "visits": 1882
+      // }, {
+      //   "country": "Japan",
+      //   "visits": 1809
+      // }, {
+      //   "country": "Germany",
+      //   "visits": 1322
+      // }, {
+      //   "country": "UK",
+      //   "visits": 1122
+      // }, {
+      //   "country": "France",
+      //   "visits": 1114
+      // }, {
+      //   "country": "India",
+      //   "visits": 984
+      // }, {
+      //   "country": "Spain",
+      //   "visits": 711
+      // }, {
+      //   "country": "Netherlands",
+      //   "visits": 665
+      // }, {
+      //   "country": "Russia",
+      //   "visits": 580
+      // }, {
+      //   "country": "South Korea",
+      //   "visits": 443
+      // }, {
+      //   "country": "Canada",
+      //   "visits": 441
+      // }];
+
+      this.visitorCategoryGraph.innerRadius = percent(40)
+
+      let categoryAxisH = this.visitorCategoryGraph.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+      categoryAxisH.renderer.grid.template.location = 0;
+      categoryAxisH.dataFields.category = "_id";
+      categoryAxisH.renderer.minGridDistance = 60;
+      categoryAxisH.renderer.inversed = true;
+      categoryAxisH.renderer.labels.template.location = 0.5;
+      categoryAxisH.renderer.grid.template.strokeOpacity = 0.08;
+      categoryAxisH.renderer.grid.template.stroke = color("#fff");
+      categoryAxisH.renderer.tooltip.disabled = true;
+
+
+      let valueAxisH = this.visitorCategoryGraph.yAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererRadial>());
+      valueAxisH.min = 0;
+      valueAxisH.extraMax = 0.1;
+      valueAxisH.renderer.grid.template.strokeOpacity = 0.08;
+      valueAxisH.renderer.grid.template.stroke = color("#fff");
+      valueAxisH.renderer.labels.template.disabled = true;
+      valueAxisH.title.text= "PEOPLE VISITED";
+
+
+      this.visitorCategoryGraph.seriesContainer.zIndex = -10;
+
+      let labelTemplate = categoryAxisH.renderer.labels.template;
+
+      labelTemplate.fill = color("#fff");
+      labelTemplate.fontSize = 12;
+
+      let seriesH = this.visitorCategoryGraph.series.push(new am4charts.RadarColumnSeries());
+   
+      seriesH.dataFields.categoryX = "_id";
+      seriesH.dataFields.valueY = "count";
+      seriesH.tooltipText = "{_id}: [bold]{count}[/]"
+      seriesH.columns.template.strokeOpacity = 0;
+      seriesH.columns.template.radarColumn.cornerRadius = 5;
+      seriesH.columns.template.radarColumn.innerCornerRadius = 0;
+      seriesH.columns.template.stroke = color("#fff");
+
+      // this.visitorCategoryGraph.zoomOutButton.disabled = true;
+
       // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-      series.columns.template.adapter.add("fill", (fill, target) => {
+      seriesH.columns.template.adapter.add("fill", (fill, target) => {
         return this.visitorCategoryGraph.colors.getIndex(target.dataItem.index);
       });
-      series.columns.template.tooltipText = "{_id}: [bold]{count}[/]";
+
+      categoryAxisH.sortBySeries = seriesH;
+
+      this.visitorCategoryGraph.cursor = new am4charts.RadarCursor();
+      // this.visitorCategoryGraph.cursor.behavior = "none";
+      // this.visitorCategoryGraph.cursor.lineX.disabled = true;
+      // this.visitorCategoryGraph.cursor.lineY.disabled = true;
 
       this.user.themeValueBehavior.subscribe((value) => {
         if (value === "dark") {
-          valueAxis.renderer.labels.template.fill = color("#fff");
-          categoryAxis.renderer.labels.template.fill = color("#fff");
-          valueAxis.title.fill = color("#fff");
-    categoryAxis.title.fill= color("#fff");
+          valueAxisH.renderer.labels.template.fill = color("#fff");
+          categoryAxisH.renderer.labels.template.fill = color("#fff");
+          valueAxisH.title.fill = color("#fff");
+    categoryAxisH.title.fill= color("#fff");
         } else {
-          valueAxis.renderer.labels.template.fill = color("#2B2C2D");
-          categoryAxis.renderer.labels.template.fill = color("#2B2C2D");
-          valueAxis.title.fill = color("#2B2C2D");
-    categoryAxis.title.fill=  color("#2B2C2D");
+          valueAxisH.renderer.labels.template.fill = color("#2B2C2D");
+          categoryAxisH.renderer.labels.template.fill = color("#2B2C2D");
+          valueAxisH.title.fill = color("#2B2C2D");
+    categoryAxisH.title.fill=  color("#2B2C2D");
         }
       });
 
 
-      categoryAxis.sortBySeries = series;
+
+
+    //   let labelBullet = series.bullets.push(new am4charts.LabelBullet())
+    //   labelBullet.label.horizontalCenter = "left";
+    //   labelBullet.label.dx = 10;
+    //  // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+    //  labelBullet.label.text = "{values.valueX.workingValue}";
+    //   labelBullet.locationX = 1;
+     
+      // // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+      // series.columns.template.adapter.add("fill", (fill, target) => {
+      //   return this.visitorCategoryGraph.colors.getIndex(target.dataItem.index);
+      // });
+      // series.columns.template.tooltipText = "{_id}: [bold]{count}[/]";
+
+  
       this.visitorCategoryGraph.data = [];
     });
   })
