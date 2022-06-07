@@ -536,6 +536,8 @@ this.visitorAddress.patchValue({
           occupation:res.visitor.occupation
       });
 
+      console.log('res::',res);
+
       if (res.addressInfo.boothNumber) {
         this.boothAddressByNumber(res.addressInfo.boothNumber)
       }

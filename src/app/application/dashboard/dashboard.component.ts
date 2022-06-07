@@ -64,7 +64,7 @@ useTheme(am4themes_animated);
 options.queue = false;
 // // options.animationsEnabled = true;
 // options.deferredDelay = 0;
-options.onlyShowOnViewport = false;
+options.onlyShowOnViewport = true;
 
 
 declare var require: any
@@ -1418,6 +1418,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   loader = false;
   authenticated = false
   networkSeries: any;
+  pbPoints:any;
 
 
   constructor(
@@ -1782,7 +1783,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       // Chart for geo district
       //Graph Geo Map District
       // Create map instance
-      let chartGeo = create("geoMap1", am4maps.MapChart);
+     let chartGeo = create("geoMap1", am4maps.MapChart);
       chartGeo.logo.disabled = true;
       chartGeo.maxZoomLevel = 64;
 
@@ -1835,8 +1836,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       // hs.properties.fill = color("#8067dc");
 
       //polling station points
-      let psPoints = chartGeo.series.push(new am4maps.MapImageSeries());
-      let imageSeriesTemplate1 = psPoints.mapImages.template;
+      this.pbPoints = chartGeo.series.push(new am4maps.MapImageSeries());
+      let imageSeriesTemplate1 = this.pbPoints.mapImages.template;
       let circle1 = imageSeriesTemplate1.createChild(Circle);
       circle1.radius = 4;
       circle1.fill = color("#2d4bfc");
@@ -1847,7 +1848,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       circle1.strokeWidth = 0.5;
       circle1.nonScaling = true;
       circle1.tooltip = new Tooltip();
-      circle1.tooltipText = "{properties.locality} : {properties.psno}";
+      circle1.tooltipText = "{boothName} : {boothNumber} : {count}";
       circle1.tooltip.label.background.fill = color("#181d2a");
       circle1.tooltip.label.fontSize = 12;
       circle1.tooltip.label.fontWeight = "lighter";
@@ -1859,13 +1860,15 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       imageSeriesTemplate1.events.on("hit", (ev) => {
 
-        this.psData = ev.target.dataItem.dataContext['properties'];
+        this.psData = ev.target.dataItem.dataContext;
+
+        console.log("psdata",this.psData);
 
         if (this.psData) {
 
-          let pshtml = '<div class="psno">PS No. <b>' + this.psData['psno'] + '</b></div>'
-            + '<div class="psloc">' + this.psData['locality'] + '</div>'
-            + '<div class="psaddr">' + this.psData['address'] + '</div>';
+          let pshtml = '<div class="psno">PB No. <b>' + this.psData['boothNumber'] + '</b></div>'
+            + '<div class="psloc">' + this.psData['boothName'] + '</div>'
+            + '<div class="psaddr">' + this.psData['count'] + ' Visitor(s)</div>';
 
           $("#psData").html(pshtml);
 
@@ -1873,16 +1876,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       });
 
-
-
-
-      psPoints.data = this.geodatajson.features.filter(data => {
-        return data.geometry.type == "Point";
-      }).map(points => {
-        return { ...points, "latitude": points.geometry.coordinates[1], "longitude": points.geometry.coordinates[0] }
-      });
-
-      // console.log("charditi",psPoints.data);
+      // console.log("charditi",this.pbPoints.data);
 
       // imageSeriesTemplate1.propertyFields.latitude = "Latitude";
       // imageSeriesTemplate1.propertyFields.longitude = "Longitude";
@@ -5550,6 +5544,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // this.geodata.data = response.data.boothArea;
           // this.geodata1.data = response.data.boothArea;
           // this.geodata1.data = response.data.districtArea;
+         
+          //map ka data in this function below
+
+          let pbnos = response.data.boothArea;
+
+          // this.pbPoints.data = this.geodatajson.features.filter(data => {
+          //   return (data.geometry.type == "Point");
+          // }).map(points => {
+          //   return { ...points, "latitude": points.geometry.coordinates[1], "longitude": points.geometry.coordinates[0]}
+          // });
+
+          // pbnos.map()
+
+          this.pbPoints.data = pbnos;
+    
+
+          console.log("chgeo:",this.pbPoints);
+
+          console.log('geodata:',response.data.boothArea);
+
           this.visitorCategoryData = response.data.visitorCategory;
           this.visitorOccupatioData = response.data.occupation;
           this.ageGraphData = response.data.ageGroup;
