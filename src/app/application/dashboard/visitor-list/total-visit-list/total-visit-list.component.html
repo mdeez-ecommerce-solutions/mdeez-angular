@@ -32,17 +32,17 @@
           <!-- <a href="https://www.projectyz.thensight.in/api/v1/visitor/download-csv?limit=6000" target="_self">  <button class="mr-2 margin-bot" mat-flat-button color="accent"> -->
           <!-- <a (click)="openInNewTab()" href="{{ this.baseApiUrl}}" target="_self">   -->
 
-          <a (click)="openInNewTab()">
+          <!-- <a (click)="openInNewTab()">
 
             <button class="mr-2 margin-bot" mat-flat-button color="accent">
 
               EXPORT ALL DATA
-            </button></a>
+            </button></a> -->
 
-          <!-- <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
-              EXPORT EXCEL
+           <button (click)="exportTable()" class="mr-2 margin-bot" mat-flat-button color="accent">
+              EXPORT
             </button>
-            <button (click)="exportTableInPDF()" class="mr-2 margin-bot" mat-flat-button color="primary">
+          <!--  <button (click)="exportTableInPDF()" class="mr-2 margin-bot" mat-flat-button color="primary">
               EXPORT PDF
             </button> -->
           <button class="mr-2" mat-flat-button color="warn" [routerLink]="['/add-visitor']"
@@ -112,7 +112,7 @@
                           range.controls.fromDate.hasError('matStartDateInvalid')
                         ">Invalid start date</mat-error>
                       <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
-                      </mat-error>
+                    </mat-error>
                     </mat-form-field>
                   </div>
                 </div>
@@ -443,6 +443,7 @@
             </div>
             <mat-paginator [length]="pageLength" [pageSizeOptions]="[20]" (page)="yourPageChangeLogic($event)">
               showFirstLastButtons></mat-paginator>
+              <br/><br/>
           </div>
         </div>
       </div>

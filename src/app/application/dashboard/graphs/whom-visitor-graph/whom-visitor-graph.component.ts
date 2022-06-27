@@ -34,11 +34,11 @@ export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
       this.whomVisitorMeetGraph.data = data;
     }
   }
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   @Output() whomVisitorMeetFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader8.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
 
   ngOnInit(): void {}
@@ -131,7 +131,7 @@ export class WhomVisitorGraphComponent implements OnInit, AfterViewInit {
 
   whomVisitorMeetFilter(value): void {
     this.whomVisitorMeetFilterObj.emit({
-        key: 'whomVsistorMeet',
+        key: 'whomVisitorMeet',
         value: value
     })
     this.whommeetfilter = value;

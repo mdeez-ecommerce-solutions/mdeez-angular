@@ -31,11 +31,11 @@ export class VisitorAreaGraphComponent implements OnInit {
       this.visitorAreaGraph.data = data;
     }
   }
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   @Output() visitorAreaFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader5.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
 
   ngOnInit(): void {}
@@ -88,10 +88,12 @@ series.colors.list = [
   // color("#3FA8E1"),
   // color("#D69600"),
   // color("#D35249"),
-  color("#d35249"),
   color("#3fa8e1"),
+  color("#e56d8f"),
   
 ];
+
+
 
 //#d35249 Urban
 //#3fa8e1 Rural

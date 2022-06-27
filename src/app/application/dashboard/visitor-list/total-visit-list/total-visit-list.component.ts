@@ -276,7 +276,7 @@ if(newObj){
     
               }
               this.dataSource = new MatTableDataSource < any > (this.visitorLists);
-              // this.dataSource.paginator = this.paginator;
+              this.dataSource.paginator = this.paginator;
               this.paginator.pageIndex = 0;
               this.pageLength = this.visitorListsTotalLength;
               this.isLoadingResults = false;
@@ -376,9 +376,65 @@ if(newObj){
         }
         this.getVisitorList(1)
     }
-    yourPageChangeLogic(event){
-
+    yourPageChangeLogic(ev) {
+      this.pageIndexOfListingTable = ev.pageIndex + 1
+      // this.getVisitorList(this.pageIndexOfListingTable)
+  
+  
+      this.isLoadingResults = true;
+      var currentTime = new Date();
+      var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
+      const range = { fromDate: fromdate, toDate: currentTime }
+      this.userService.getVisitorByFilter(
+        this.filterKeyword ? this.filterKeyword.search : '',
+        this.filterKeyword ? this.filterKeyword.purpose : '',
+        this.filterKeyword ? this.filterKeyword.date : '',
+        this.pageIndexOfListingTable).subscribe(
+          (response: any) => {
+            if (response.error === false) {
+              this.visitorLists = response.data.response;
+              this.exportList = [];
+              for (var i = 0; i <= this.visitorLists.length - 1; i++) {
+                var d = new Date(this.visitorLists[i].createdAt);
+  
+                var day = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+                var Ed = new Date(this.visitorLists[i].enrollmentDate);
+  
+                var Eday = Ed.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+                this.exportList.push({
+                  serial: i + 1,
+                  uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
+                  fullName: this.visitorLists[i].fullName,
+                  address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+                  createdAt: day,
+                  enrollmentDate: Eday,
+                  mobile: this.visitorLists[i].mobile,
+                  revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
+                  revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
+                  visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
+                  totalVisits: this.visitorLists[i].totalVisits,
+                  remark: this.visitorLists[i].objectiveInfoRemark,
+                  politicalRemark: this.visitorLists[i].politicalInforRemark,
+  
+                })
+  
+              }
+              this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+              // this.dataSource.paginator = this.paginator;
+              this.pageLength = this.visitorListsTotalLength;
+              this.isLoadingResults = false;
+  
+            }
+          },
+          (error) => {
+            this.isLoadingResults = false;
+            this._snackBar.open(error.message, "", {
+              duration: 5000,
+            });
+          }
+        );
     }
+  
     filterByName(value){
       this.filterValue=value
       this.filterInitial=''

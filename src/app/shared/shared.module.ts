@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -15,8 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar'
 import { sharedModals } from './modals';
 import { SpinerComponent } from './spiner/spiner.component';
+import { LoaderComponent } from './loader/loader.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { sharedDirectives } from './directives';
@@ -37,6 +41,7 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
     MatSelectModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    NgxDaterangepickerMd.forRoot(),
     MatNativeDateModule,
     MatTooltipModule,
     MatStepperModule,
@@ -47,6 +52,7 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatTableModule,
     MatPaginatorModule,
     MatAutocompleteModule,
@@ -54,6 +60,8 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
   ],
   declarations: [
     SpinerComponent,
+    LoaderComponent,
+    DatepickerComponent,
     ...sharedModals,
     ...sharedDirectives,
     TotalVisitComponent,
@@ -72,6 +80,7 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
     MatSelectModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    NgxDaterangepickerMd,
     MatTooltipModule,
     MatStepperModule,
     MatInputModule,
@@ -80,7 +89,10 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     SpinerComponent,
+    LoaderComponent,
+    DatepickerComponent,
     MatTableModule,
     MatPaginatorModule,
     MatAutocompleteModule,
@@ -89,6 +101,6 @@ import { CustomdatePipe } from './pipe/customdate.pipe';
     ...sharedModals,
     ...sharedDirectives
   ],
-  providers: [ MatDatepickerModule, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}]
+  providers: [ MatDatepickerModule, NgxDaterangepickerMd, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}]
 })
 export class SharedModule {}

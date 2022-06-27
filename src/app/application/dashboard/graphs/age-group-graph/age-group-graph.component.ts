@@ -37,12 +37,12 @@ export class AgeGroupGraphComponent implements OnInit {
     "By Month",
     "By Year"
   ]
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   @Output() ageFilterObj: EventEmitter<any> = new EventEmitter();
   
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader1.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
   
   ageGraph: any;
@@ -86,7 +86,7 @@ export class AgeGroupGraphComponent implements OnInit {
       
       // Axes Title
       let valueAxis = this.ageGraph.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.title.text = "PEOPLE VISITED";
+      valueAxis.title.text = "VISITORS";
       
       
       let series = this.ageGraph.series.push(new am4charts.CurvedColumnSeries());

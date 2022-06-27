@@ -203,7 +203,9 @@ getIndex(index): void {
     // mother: res.visitor.mother,
     dob: new Date(selectedVisitorData.dob),
     gender: selectedVisitorData.gender == 'M' ? 'Male' : 'Female',
-    isNewVisitor: true
+    isNewVisitor: true,
+    voterId: selectedVisitorData.voterId ? selectedVisitorData.voterId : "",
+
 });
 
 if (selectedVisitorData.boothNumber) {
@@ -214,8 +216,8 @@ this.visitorAddress.patchValue({
   houseNumber: selectedVisitorData.houseNumber,
   line1: selectedVisitorData.villageName,
   tehsil: selectedVisitorData.tehsil,
-  district: selectedVisitorData.district,
-  // voterId: selectedVisitorData.voterId,
+  district: selectedVisitorData.district.toLowerCase(),
+  // voterId: selectedVisitorData.voterId ? selectedVisitorData.voterId : "",
   constituency: selectedVisitorData.acName,
   boothNumber: selectedVisitorData.boothNumber,
   boothName: selectedVisitorData.boothName,

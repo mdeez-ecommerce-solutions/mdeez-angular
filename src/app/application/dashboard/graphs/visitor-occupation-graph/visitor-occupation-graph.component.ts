@@ -41,13 +41,13 @@ export class VisitorOccupationGraphComponent implements OnInit {
     }
   }
   visitorCategoryGraph: any;
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   occupationfilter: any;
   @Output() visitorOccupationFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
     private user: UserService) {
-    this.user.graphDataLoader7.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
   ngOnInit(): void {}
 
@@ -91,7 +91,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
       valueAxis.min = 0;
       // valueAxis.renderer.minGridDistance = 50;
 
-      valueAxis.title.text= "PEOPLE VISITED";
+      valueAxis.title.text= "VISITORS";
       let series = this.visitorCategoryGraph.series.push(new am4charts.ColumnSeries());
       series.dataFields.categoryY = "_id";
       series.dataFields.valueX = "count";
@@ -111,6 +111,16 @@ export class VisitorOccupationGraphComponent implements OnInit {
     //  // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
     // //  labelBullet.label.text = "{values.valueX.workingValue}";
     //   labelBullet.locationX = 1;
+
+    let labelBullet = series.bullets.push(new am4charts.LabelBullet())
+    labelBullet.label.horizontalCenter = "right";
+    labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.as')}";
+    labelBullet.label.textAlign = "end";
+    labelBullet.label.fill = color("#fff");
+    labelBullet.label.fontSize = 11;
+    labelBullet.label.dx = 14;
+    labelBullet.label.dy = 1;
+
 
 
       // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set

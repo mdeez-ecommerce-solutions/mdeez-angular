@@ -29,11 +29,11 @@ export class PerceivedPoliticalInclinationComponent implements OnInit, AfterView
   dataItem: any;
   ppifilter: any;
   @Input() perceivedPoliticalInclinationsVar: any;
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   @Output() perceivedFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader3.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
    
   }
 
@@ -86,10 +86,12 @@ valueAxis.min = 0;
 valueAxis.cursorTooltipEnabled = false;
 valueAxis.renderer.baseGrid.strokeOpacity = 0;
 valueAxis.renderer.labels.template.dy = 20;
-valueAxis.title.text= "PEOPLE VISITED";
+valueAxis.title.text= "VISITORS";
 valueAxis.title.dy=15;
 
 let series = this.perceivedPoliticalInclination.series.push(new am4charts.ColumnSeries());
+
+
 series.dataFields.valueX = "count";
 
 series.dataFields.categoryY = "_id";
@@ -105,7 +107,7 @@ columnTemplate.maxHeight = 50;
 columnTemplate.column.cornerRadius(60, 10, 60, 10);
 columnTemplate.strokeOpacity = 0;
 
-series.heatRules.push({ target: columnTemplate, property: "fill", dataField: "valueX", min: color("#e5dc36"), max: color("#5faa46") });
+series.heatRules.push({ target: columnTemplate, property: "fill", dataField: "valueX", min: color("#207cd1"), max: color("#2039d1") });
 series.mainContainer.mask = undefined;
 
 let cursor = new am4charts.XYCursor();

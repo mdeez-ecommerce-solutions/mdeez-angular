@@ -409,12 +409,18 @@
                                     <label> District* </label>
                                 </div>
                                 <mat-form-field appearance="fill" class="select-bg" required>
-                                    <mat-select formControlName="district">
+                                    <!-- <mat-select formControlName="district">
                                         <mat-option value="" selected disabled>Select District</mat-option>
                                         <mat-option *ngFor="let item of visitorDistrict" [value]="item">
                                             {{item}}
                                         </mat-option>
-                                    </mat-select>
+                                    </mat-select> -->
+
+                                         <!-- we need to uncomment this and change const data -->
+
+                                         <input matInput required formControlName="district" placeholder="Enter District">
+                                  
+
                                 </mat-form-field>
                                 <!-- <mat-form-field floatLabel="never">
                                     <input matInput formControlName="district" placeholder="Enter district name"
@@ -439,12 +445,16 @@
                                     <label> Constituency* </label>
                                 </div>
                                 <mat-form-field appearance="fill" class="select-bg" required>
-                                    <mat-select formControlName="constituency">
+                                    <!-- <mat-select formControlName="constituency">
                                         <mat-option value="" selected disabled>Select Constituency</mat-option>
                                         <mat-option *ngFor="let item of visitorConstituency" [value]="item">
                                             {{item}}
                                         </mat-option>
-                                    </mat-select>
+                                    </mat-select> -->
+                                    <!-- we need to uncomment this and change const data -->
+
+                                    <input required matInput formControlName="constituency" placeholder="Enter Constituency">
+
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">

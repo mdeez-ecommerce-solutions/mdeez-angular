@@ -34,12 +34,12 @@ export class MeetingLocationGraphComponent implements OnInit {
     }
   }
 
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   locationfilter:any;
   @Output() meetingLocationGraphFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader2.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
 
   ngOnInit(): void {}

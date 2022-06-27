@@ -32,7 +32,7 @@ export class MeetingStatusGraphComponent implements OnInit, AfterViewInit {
       this.meetingStatusGraph.data = data;
     }
   }
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   statusfilter:any;
   @Output() meetingStatusGraphFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
@@ -92,7 +92,7 @@ series.labels.template.disabled = true;
 
 series.colors.list = [
 
-  color("#D35249"),
+  color("#dd6789"),
   color("#3FA8E1"),
   color("#D69600"),
 ];

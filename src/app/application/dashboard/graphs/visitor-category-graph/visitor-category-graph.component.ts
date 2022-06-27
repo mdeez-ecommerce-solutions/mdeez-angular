@@ -34,13 +34,13 @@ export class VisitorCategoryGraphComponent implements OnInit {
     }
   }
   visitorCategoryGraph: any;
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   categoryfilter: any;
   @Output() visitorCategoryFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
     private user: UserService) {
-    this.user.graphDataLoader6.subscribe((res) => this.graphDataLoader = res)
+      this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
   ngOnInit(): void {}
 
@@ -122,7 +122,7 @@ export class VisitorCategoryGraphComponent implements OnInit {
       valueAxisH.renderer.grid.template.strokeOpacity = 0.08;
       valueAxisH.renderer.grid.template.stroke = color("#fff");
       valueAxisH.renderer.labels.template.disabled = true;
-      valueAxisH.title.text= "PEOPLE VISITED";
+      // valueAxisH.title.text= "VISITORS";
 
 
       this.visitorCategoryGraph.seriesContainer.zIndex = -10;
@@ -173,12 +173,12 @@ export class VisitorCategoryGraphComponent implements OnInit {
 
 
 
-    //   let labelBullet = series.bullets.push(new am4charts.LabelBullet())
-    //   labelBullet.label.horizontalCenter = "left";
-    //   labelBullet.label.dx = 10;
-    //  // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
-    //  labelBullet.label.text = "{values.valueX.workingValue}";
-    //   labelBullet.locationX = 1;
+      let labelBullet = seriesH.bullets.push(new am4charts.LabelBullet())
+      labelBullet.label.horizontalCenter = "left";
+      labelBullet.label.dx = 10;
+     // labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+     labelBullet.label.text = "{values.valueX.workingValue}";
+      labelBullet.locationX = 1;
      
       // // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
       // series.columns.template.adapter.add("fill", (fill, target) => {

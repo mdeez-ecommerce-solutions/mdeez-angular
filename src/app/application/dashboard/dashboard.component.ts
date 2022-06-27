@@ -8,6 +8,7 @@ import {
   ViewChild,
   OnChanges,
   HostListener,
+  ElementRef,
 } from "@angular/core";
 import {
   isPlatformBrowser
@@ -15,7 +16,7 @@ import {
 import moment from 'moment';
 // amCharts imports
 
-import { useTheme, options, create, math, ResponsiveBreakpoints, DropShadowFilter, Tooltip, Button, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
+import { useTheme, options, create, math, ease, ResponsiveBreakpoints, DropShadowFilter, Tooltip, Button, RadialGradient, LinearGradient, Scrollbar, color, percent, type, array, PlayButton, Label, Circle, ZoomOutButton, DataSource, MouseCursorStyle } from '@amcharts/amcharts4/core';
 import * as am4maps from "@amcharts/amcharts4/maps";
 // import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -25,6 +26,11 @@ import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDire
 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { environment } from '../../../environments/environment';
+
+import _ from "lodash";
+
+import screenfull from 'screenfull';
+
 import {
   FormGroup,
   FormControl
@@ -64,7 +70,7 @@ useTheme(am4themes_animated);
 options.queue = false;
 // // options.animationsEnabled = true;
 // options.deferredDelay = 0;
-options.onlyShowOnViewport = true;
+options.onlyShowOnViewport = false;
 
 
 declare var require: any
@@ -91,1257 +97,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   visitorLists: any;
   exportList: any = [];
   psData = {};
-  allData = {
-    "2003": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-
-      {
-        "network": "Water Problem",
-        "MAU": 4470000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 0
-      }
-    ],
-    "2004": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 3675135
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 5970054
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 980036
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 4900180
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 0
-      }
-    ],
-    "2005": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 7399354
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 7459742
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 9731610
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 19490059
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 9865805
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 1946322
-      }
-    ],
-    "2006": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 14949270
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 8989854
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 19932360
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 54763260
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 14966180
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 248309
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 19878248
-      }
-    ],
-    "2007": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 29299875
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 24253200
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 29533250
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 69299875
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 26916562
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 488331
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 143932250
-      }
-    ],
-    "2008": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 100000000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 30000000
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 51008911
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 55045618
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 72408233
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 44357628
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 1944940
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 294493950
-      }
-    ],
-    "2009": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 276000000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 41834525
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 28804331
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 57893524
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 70133095
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 47366905
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 3893524
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 0
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 0
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 413611440
-      }
-    ],
-    "2010": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 517750000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 54708063
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 166029650
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 59953290
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 68046710
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 49941613
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 43250000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 19532900
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 480551990
-      }
-    ],
-    "2011": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 766000000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 66954600
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 170000000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 46610848
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 46003536
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 47609080
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 0
-      },
-      {
-        "network": "Hiring",
-        "MAU": 92750000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 47818400
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 48691040
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 642669824
-      }
-    ],
-    "2012": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 979750000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 79664888
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 170000000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 107319100
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 45067022
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 146890156
-      },
-      {
-        "network": "Hiring",
-        "MAU": 160250000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 118123370
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 79195730
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Education",
-        "MAU": 844638200
-      }
-    ],
-    "2013": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 1170500000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 80000000
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 170000000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 205654700
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 117500000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 0
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 293482050
-      },
-      {
-        "network": "Hiring",
-        "MAU": 223675000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 196523760
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 118261880
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 300000000
-      },
-      {
-        "network": "Education",
-        "MAU": 1065223075
-      }
-    ],
-    "2014": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 1334000000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 170000000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 254859015
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 250000000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 135786956
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 388721163
-      },
-      {
-        "network": "Hiring",
-        "MAU": 223675000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 444232415
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 154890345
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 498750000
-      },
-      {
-        "network": "Education",
-        "MAU": 1249451725
-      }
-    ],
-    "2015": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 1516750000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 170000000
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 298950015
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 400000000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 0
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 163346676
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 475923363
-      },
-      {
-        "network": "Hiring",
-        "MAU": 304500000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 660843407
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 208716685
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 800000000
-      },
-      {
-        "network": "Education",
-        "MAU": 1328133360
-      }
-    ],
-    "2016": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 1753500000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 398648000
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 550000000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 143250000
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 238972480
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 238648000
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 0
-      },
-      {
-        "network": "Business",
-        "MAU": 565796720
-      },
-      {
-        "network": "Hiring",
-        "MAU": 314500000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 847512320
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 281026560
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 1000000000
-      },
-      {
-        "network": "Education",
-        "MAU": 1399053600
-      }
-    ],
-    "2017": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 2035750000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 495657000
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 750000000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 195000000
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 297394200
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 239142500
-      },
-      {
-        "network": "Business",
-        "MAU": 593783960
-      },
-      {
-        "network": "Hiring",
-        "MAU": 328250000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 921742750
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 357569030
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 1333333333
-      },
-      {
-        "network": "Education",
-        "MAU": 1495657000
-      }
-    ],
-    "2018": [
-      {
-        "network": "Electricity Problem",
-        "MAU": 2255250000
-      },
-      {
-        "network": "Regarding Job",
-        "MAU": 0
-      },
-      {
-        "network": "Water Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Invitation",
-        "MAU": 0
-      },
-      {
-        "network": "Sewer Problem",
-        "MAU": 430000000
-      },
-      {
-        "network": "Political Purpose",
-        "MAU": 0
-      },
-      {
-        "network": "Road Problem",
-        "MAU": 1000000000
-      },
-      {
-        "network": "Service Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Unknown Problem",
-        "MAU": 0
-      },
-      {
-        "network": "Healthcare",
-        "MAU": 246500000
-      },
-      {
-        "network": "Human Welfare",
-        "MAU": 355000000
-      },
-      {
-        "network": "Society Issues",
-        "MAU": 0
-      },
-      {
-        "network": "Advertisement",
-        "MAU": 500000000
-      },
-      {
-        "network": "Business",
-        "MAU": 624000000
-      },
-      {
-        "network": "Hiring",
-        "MAU": 329500000
-      },
-      {
-        "network": "Foreign Issues",
-        "MAU": 1000000000
-      },
-      {
-        "network": "Help Seeking",
-        "MAU": 431000000
-      },
-      {
-        "network": "Marital Issues",
-        "MAU": 1433333333
-      },
-      {
-        "network": "Education",
-        "MAU": 1900000000
-      }
-    ]
-  }
   displayedColumns: string[] = [
     "S.No.",
     "Unique Visitor ID",
@@ -1367,7 +122,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // "Information_sent_to_the_booth_village_coordinator_of_the_visitor",
     "Action",
   ];
-  liveyear = 2003;
   dataSource: any;
   rangeDate: any;
   filterInitial = "";
@@ -1382,7 +136,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   statePolygonForGeo: any;
   visitorAreaData: any;
   purposeGraph: any;
+  liveyear: any;
   livepurposeGraph?: any;
+  livepurposeGraphData?: any;
+  firstlivekey: any;
+  lastlivekey: any;
+  heatmapGraph?: any;
+  streamGraph?: any;
   genderGraph: any;
   casteGraph: any;
   visitorCategoryData: any;
@@ -1391,6 +151,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   perceivedPoliticalInclinationData: any;
   meetingLocationGraphData: any;
   timeFrameGraphData: any;
+  proximityGraph: any;
   timeFrameXText?: any;
   whomVisitorMeetGraphData: any;
   meetingStatusGraphData: any;
@@ -1418,7 +179,18 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   loader = false;
   authenticated = false
   networkSeries: any;
-  pbPoints:any;
+  pbPoints: any;
+  kpi_total: any;
+  kpi_today: any;
+  kpi_week: any;
+  kpi_month: any;
+  kpi_total_percent: any;
+  kpi_today_percent: any;
+  kpi_week_percent: any;
+  kpi_month_percent: any;
+  districts: any;
+
+
 
 
   constructor(
@@ -1426,7 +198,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     private zone: NgZone,
     private userService: UserService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef
   ) {
     this.authData = JSON.parse(localStorage.getItem("SignInUserData"));
 
@@ -1489,6 +262,17 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.getVisitAnalyticGraphData();
 
 
+    //HELPER FUNCTION TO REVERSE MAP GEOJSON
+    // this.geodatajson.features.map(el => {
+    //   if (el.geometry.type == "Polygon") {
+    //     return el.geometry.coordinates.forEach(d => {
+    //       d.reverse();
+    //     });
+    //   }
+    // });
+
+    //  console.log(this.geodatajson.features);
+
 
     //  // this.rangeSelection();
     //  this.getVisitorPurposeOptionData();
@@ -1510,7 +294,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this._snackBar.open("Please wait while we are downloading your data..", "", {
       duration: 5000,
     });
-    // console.log("this.isLoaderHappen", this.isLoaderHappen);
+    // //console.log("this.isLoaderHappen", this.isLoaderHappen);
     // this.userService.download(this.baseApiUrl)
     //   .subscribe(blob => {saveAs(blob, 'VisitorList')
     //   this._snackBar.dismiss();});
@@ -1565,6 +349,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         currentSeries.show();
       });
       zoomOut.hide();
+
 
       // Create map polygon series
       let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
@@ -1676,7 +461,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           currentSeries = regionalSeries[data.target].series;
           currentSeries.show();
         });
-        // console.log("series",series)
+        // //console.log("series",series)
         return series;
       }
 
@@ -1684,8 +469,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let currentSeries;
 
       function setupStores(data) {
-        // console.log("data 1 ",data)
-        // console.log("regionalSeries ",regionalSeries)
+        // //console.log("data 1 ",data)
+        // //console.log("regionalSeries ",regionalSeries)
 
         // Init country-level series
         regionalSeries.IN = {
@@ -1695,12 +480,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
         // Set current series
         currentSeries = regionalSeries.IN.series;
-        // console.log("currentSeries ",currentSeries)
+        // //console.log("currentSeries ",currentSeries)
 
         // Process data
         array.each(data.query_results, (data: any) => {
 
-          //  console.log("data 2 ",data)
+          //  //console.log("data 2 ",data)
           // Get store data
           let store = {
             state: data.MAIL_ST_PROV_C,
@@ -1715,7 +500,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           if (regionalSeries[store.state] == undefined) {
             let statePolygonForGeo: any = polygonSeries.getPolygonById("IN-" + store.state);
             if (statePolygonForGeo) {
-              // console.log("statePolygonForGeo", statePolygonForGeo)
+              // //console.log("statePolygonForGeo", statePolygonForGeo)
               // Add state data
               regionalSeries[store.state] = {
                 target: store.state,
@@ -1738,7 +523,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
             regionalSeries[store.state].stores++;
             regionalSeries[store.state].count += store.count;
-            // console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
+            // //console.log("regionalSeries[store.state].stores ",regionalSeries[store.state].stores)
 
           }
 
@@ -1759,7 +544,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           } else {
             regionalSeries[store.city].stores++;
             regionalSeries[store.city].count += store.count;
-            // console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
+            // //console.log("regionalSeries[store.city].stores ",regionalSeries[store.city].stores)
 
           }
 
@@ -1776,27 +561,22 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         });
 
         regionalSeries.IN.series.data = regionalSeries.IN.markerData;
-        // console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
+        // //console.log("regionalSeries.IN.series.data",regionalSeries.IN.series.data)
 
       }
 
       // Chart for geo district
       //Graph Geo Map District
       // Create map instance
-     let chartGeo = create("geoMap1", am4maps.MapChart);
+
+
+      let chartGeo = create("geoMap1", am4maps.MapChart);
       chartGeo.logo.disabled = true;
       chartGeo.maxZoomLevel = 64;
 
       chartGeo.geodata = this.geodatajson;
 
-
-      this.geodatajson.features.map(el => {
-        if (el.geometry.type == "Polygon") {
-          return el.geometry.coordinates.forEach(d => {
-            d.reverse();
-          });
-        }
-      });
+      //reversed the geodatajson in ngoninit
 
       // Set projection
       chartGeo.projection = new am4maps.projections.Miller();
@@ -1811,7 +591,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       mapgradient.addColor(color("#192eac"), 0.2);
       mapgradient.addColor(color("#192eac"), 0.3);
       mapgradient.addColor(color('#192eac'), 0.5);
-
 
 
       // linecolor: color("#1f39d1"),
@@ -1837,9 +616,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       //polling station points
       this.pbPoints = chartGeo.series.push(new am4maps.MapImageSeries());
+      this.pbPoints.dataFields.value = "count";
+      // this.pbPoints.;
       let imageSeriesTemplate1 = this.pbPoints.mapImages.template;
       let circle1 = imageSeriesTemplate1.createChild(Circle);
-      circle1.radius = 4;
+      circle1.radius = 3;
       circle1.fill = color("#2d4bfc");
       // circle1.fill = color("#ff0000");
 
@@ -1847,6 +628,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       circle1.stroke = color("#000");
       circle1.strokeWidth = 0.5;
       circle1.nonScaling = true;
+      circle1.fillOpacity = 0.8;
+
       circle1.tooltip = new Tooltip();
       circle1.tooltipText = "{boothName} : {boothNumber} : {count}";
       circle1.tooltip.label.background.fill = color("#181d2a");
@@ -1854,21 +637,30 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       circle1.tooltip.label.fontWeight = "lighter";
       circle1.tooltip.background.strokeWidth = 0;
       circle1.tooltip.strokeWidth = 0;
-
-
       circle1.cursorOverStyle = MouseCursorStyle.pointer;
+
+
+      // Creating a "heat rule" to modify "radius" of the bullet based
+      // on value in data
+      this.pbPoints.heatRules.push({
+        "target": circle1,
+        "property": "radius",
+        "min": 3,
+        "max": 20,
+      });
+
 
       imageSeriesTemplate1.events.on("hit", (ev) => {
 
         this.psData = ev.target.dataItem.dataContext;
 
-        console.log("psdata",this.psData);
+        //console.log("psdata", this.psData);
 
         if (this.psData) {
 
           let pshtml = '<div class="psno">PB No. <b>' + this.psData['boothNumber'] + '</b></div>'
             + '<div class="psloc">' + this.psData['boothName'] + '</div>'
-            + '<div class="psaddr">' + this.psData['count'] + ' Visitor(s)</div>';
+            + '<div class="psaddr">' + this.psData['count'] + ' Visitor' + (this.psData['count'] > 1 ? "s" : "") + '</div>';
 
           $("#psData").html(pshtml);
 
@@ -1876,7 +668,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       });
 
-      // console.log("charditi",this.pbPoints.data);
+      // //console.log("charditi",this.pbPoints.data);
 
       // imageSeriesTemplate1.propertyFields.latitude = "Latitude";
       // imageSeriesTemplate1.propertyFields.longitude = "Longitude";
@@ -2123,7 +915,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       //     if (regionalSeries1[store.state] == undefined) {
       //       let statePolygonForGeo: any = polygonSeries1.getPolygonById("IN-" + store.state);
       //       if (statePolygonForGeo) {
-      //         // console.log("statePolygonForGeo",statePolygonForGeo)
+      //         // //console.log("statePolygonForGeo",statePolygonForGeo)
       //         // Add state data
       //         regionalSeries1[store.state] = {
       //           target: store.state,
@@ -2385,121 +1177,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       }];
 
 
-      let createGradient = (color) => {
-
-        let gradient = new LinearGradient();
-        gradient.addColor(color, 0.6);
-        gradient.addColor(color, 0.3);
-        gradient.addColor(color, 0.1);
-        gradient.addColor(color, 0);
-        gradient.rotation = 90;
-
-        return gradient;
-
-      }
 
 
-      var themes = [
-        {
-          linecolor: color("#1f39d1"),
-          dotcolor: color("#2d4bfc"),
-          gradient: createGradient(color('#192eac'))
-        },
-        {
-          linecolor: color("#6ac2ea"),
-          dotcolor: color("#9ce0ff"),
-          gradient: createGradient(color('#67b7dc'))
-        },
-        {
-          linecolor: color("#8c72ef"),
-          dotcolor: color("#a992ff"),
-          gradient: createGradient(color('#8067dc'))
-        },
-        {
-          linecolor: color("#f16ee2"),
-          dotcolor: color("#ff85f1"),
-          gradient: createGradient(color('#dc67ce'))
-        }
-      ];
-
-
-
-
-      function createKPI(div, kpiData, theme) {
-
-        // Create chart instance
-        var kpichart1 = create(div, am4charts.XYChart);
-
-        kpichart1.logo.disabled = true;
-
-
-        // Add data
-        kpichart1.data = kpiData;
-        // Create axes
-        let dateAxis1 = kpichart1.xAxes.push(new am4charts.DateAxis());
-        dateAxis1.renderer.minGridDistance = 50;
-        dateAxis1.renderer.grid.template.location = 0.5;
-        dateAxis1.baseInterval = {
-          count: 1,
-          timeUnit: "year"
-        }
-
-        dateAxis1.renderer.grid.template.strokeWidth = 0;
-
-        let kpivalueAxis = kpichart1.yAxes.push(new am4charts.ValueAxis());
-
-        kpivalueAxis.renderer.grid.template.strokeWidth = 0;
-
-        kpivalueAxis.logarithmic = true;
-
-        dateAxis1.renderer.labels.template.disabled = true;
-        kpivalueAxis.renderer.labels.template.disabled = true;
-
-        // Create series
-        let kpiseries = kpichart1.series.push(new am4charts.LineSeries());
-        kpiseries.dataFields.valueY = "value";
-        kpiseries.dataFields.dateX = "year";
-        kpiseries.strokeWidth = 2;
-        kpiseries.connect = true;
-        kpiseries.tensionX = 0.8;
-        kpiseries.fillOpacity = 1;
-
-
-        kpiseries.fill = theme.gradient;
-
-
-        let bullet = kpiseries.bullets.push(new am4charts.CircleBullet());
-        // bullet.stroke =  InterfaceColorSet().getFor("background");
-        bullet.disabled = true;
-        bullet.propertyFields.disabled = "disabled";
-
-        bullet.strokeWidth = 4;
-        bullet.tooltipText = "{valueY}";
-        bullet.circle.radius = 2;
-        bullet.circle.stroke = theme.dotcolor;
-
-        bullet.adapter.add("fill", function (fill, target) {
-
-          return fill;
-        })
-
-        let range = kpivalueAxis.createSeriesRange(kpiseries);
-        range.value = 0;
-        range.endValue = 100;
-        range.contents.stroke = theme.linecolor;
-        range.contents.fill = theme.gradient;
-        range.contents.fillOpacity = 1;
-
-
-
-      }
-
-
-
-      createKPI("kpi-total", data1, themes[0]);
-      createKPI("kpi-today", data2, themes[1]);
-      createKPI("kpi-week", data3, themes[2]);
-      createKPI("kpi-month", data4, themes[3]);
+      this.createKPI("kpi-today", data2, 1);
+      this.createKPI("kpi-week", data3, 2);
+      this.createKPI("kpi-month", data4, 3);
 
 
 
@@ -2688,12 +1370,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
 
-      let heatchart = create("heatmap", am4charts.RadarChart);
-      heatchart.innerRadius = percent(30);
-      heatchart.fontSize = 11;
+      this.heatmapGraph = create("heatmap", am4charts.RadarChart);
+      this.heatmapGraph.innerRadius = percent(30);
+      this.heatmapGraph.fontSize = 11;
 
-      let xAxis = heatchart.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
-      let yAxis = heatchart.yAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererRadial>());
+      this.heatmapGraph.logo.disabled = true;
+
+      let xAxis = this.heatmapGraph.xAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererCircular>());
+      let yAxis = this.heatmapGraph.yAxes.push(new am4charts.CategoryAxis<am4charts.AxisRendererRadial>());
       yAxis.renderer.minGridDistance = 5;
 
       xAxis.renderer.labels.template.location = 0.5;
@@ -2702,8 +1386,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       xAxis.renderer.labels.template.fill = color("#fff");
 
 
-      xAxis.dataFields.category = "hour";
-      yAxis.dataFields.category = "weekday";
+      xAxis.dataFields.category = "day";
+      yAxis.dataFields.category = "month";
 
       xAxis.renderer.grid.template.disabled = true;
       xAxis.renderer.minGridDistance = 10;
@@ -2723,21 +1407,21 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       yAxis.renderer.labels.template = yAxisLabel;
       yAxis.renderer.labels.template.fill = color("#fff");
 
-      let heatseries = heatchart.series.push(new am4charts.RadarColumnSeries());
-      heatseries.dataFields.categoryX = "hour";
-      heatseries.dataFields.categoryY = "weekday";
-      heatseries.dataFields.value = "value";
+      let heatseries = this.heatmapGraph.series.push(new am4charts.RadarColumnSeries());
+      heatseries.dataFields.categoryX = "day";
+      heatseries.dataFields.categoryY = "month";
+      heatseries.dataFields.value = "count";
       heatseries.sequencedInterpolation = true;
 
       let heatcolumnTemplate = heatseries.columns.template;
       heatcolumnTemplate.strokeWidth = 2;
       heatcolumnTemplate.strokeOpacity = 1;
       heatcolumnTemplate.stroke = color("#1c2233");
-      heatcolumnTemplate.tooltipText = "{weekday}, {hour}: {value.workingValue.formatNumber('#.')}";
+      heatcolumnTemplate.tooltipText = "{_id} : [bold]{value.workingValue.formatNumber('#.')}[/]";
       heatcolumnTemplate.width = percent(100);
       heatcolumnTemplate.height = percent(100);
 
-      heatchart.seriesContainer.zIndex = -5;
+      this.heatmapGraph.seriesContainer.zIndex = -5;
 
       heatcolumnTemplate.hiddenState.properties.opacity = 0;
 
@@ -2748,7 +1432,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       // heat legend
 
-      let heatLegend = heatchart.bottomAxesContainer.createChild(am4charts.HeatLegend);
+      let heatLegend = this.heatmapGraph.bottomAxesContainer.createChild(am4charts.HeatLegend);
       heatLegend.width = percent(100);
       heatLegend.series = heatseries;
       heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
@@ -2778,1189 +1462,395 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         heatLegend.valueAxis.hideTooltip();
       })
 
-      heatchart.data = [
-        {
-          "hour": "12pm",
-          "weekday": "March",
-          "value": 0
-        },
-        {
-          "hour": "1am",
-          "weekday": "March",
-          "value": 2520
-        },
-        {
-          "hour": "2am",
-          "weekday": "March",
-          "value": 2334
-        },
-        {
-          "hour": "3am",
-          "weekday": "March",
-          "value": 2230
-        },
-        {
-          "hour": "4am",
-          "weekday": "March",
-          "value": 2325
-        },
-        {
-          "hour": "5am",
-          "weekday": "March",
-          "value": 2019
-        },
-        {
-          "hour": "6am",
-          "weekday": "March",
-          "value": 2128
-        },
-        {
-          "hour": "7am",
-          "weekday": "March",
-          "value": 2246
-        },
-        {
-          "hour": "8am",
-          "weekday": "March",
-          "value": 2421
-        },
-        {
-          "hour": "9am",
-          "weekday": "March",
-          "value": 2788
-        },
-        {
-          "hour": "10am",
-          "weekday": "March",
-          "value": 2959
-        },
-        {
-          "hour": "11am",
-          "weekday": "March",
-          "value": 3018
-        },
-        {
-          "hour": "12am",
-          "weekday": "March",
-          "value": 3154
-        },
-        {
-          "hour": "1pm",
-          "weekday": "March",
-          "value": 3172
-        },
-        {
-          "hour": "2pm",
-          "weekday": "March",
-          "value": 3368
-        },
-        {
-          "hour": "3pm",
-          "weekday": "March",
-          "value": 3464
-        },
-        {
-          "hour": "4pm",
-          "weekday": "March",
-          "value": 3746
-        },
-        {
-          "hour": "5pm",
-          "weekday": "March",
-          "value": 3656
-        },
-        {
-          "hour": "6pm",
-          "weekday": "March",
-          "value": 3336
-        },
-        {
-          "hour": "7pm",
-          "weekday": "March",
-          "value": 3292
-        },
-        {
-          "hour": "8pm",
-          "weekday": "March",
-          "value": 3269
-        },
-        {
-          "hour": "9pm",
-          "weekday": "March",
-          "value": 3300
-        },
-        {
-          "hour": "10pm",
-          "weekday": "March",
-          "value": 3403
-        },
-        {
-          "hour": "11pm",
-          "weekday": "March",
-          "value": 3323
-        },
-        {
-          "hour": "12pm",
-          "weekday": "April",
-          "value": 3346
-        },
-        {
-          "hour": "1am",
-          "weekday": "April",
-          "value": 2725
-        },
-        {
-          "hour": "2am",
-          "weekday": "April",
-          "value": 3052
-        },
-        {
-          "hour": "3am",
-          "weekday": "April",
-          "value": 3876
-        },
-        {
-          "hour": "4am",
-          "weekday": "April",
-          "value": 4453
-        },
-        {
-          "hour": "5am",
-          "weekday": "April",
-          "value": 3972
-        },
-        {
-          "hour": "6am",
-          "weekday": "April",
-          "value": 4644
-        },
-        {
-          "hour": "7am",
-          "weekday": "April",
-          "value": 5715
-        },
-        {
-          "hour": "8am",
-          "weekday": "April",
-          "value": 7080
-        },
-        {
-          "hour": "9am",
-          "weekday": "April",
-          "value": 8022
-        },
-        {
-          "hour": "10am",
-          "weekday": "April",
-          "value": 8446
-        },
-        {
-          "hour": "11am",
-          "weekday": "April",
-          "value": 9313
-        },
-        {
-          "hour": "12am",
-          "weekday": "April",
-          "value": 9011
-        },
-        {
-          "hour": "1pm",
-          "weekday": "April",
-          "value": 8508
-        },
-        {
-          "hour": "2pm",
-          "weekday": "April",
-          "value": 8515
-        },
-        {
-          "hour": "3pm",
-          "weekday": "April",
-          "value": 8399
-        },
-        {
-          "hour": "4pm",
-          "weekday": "April",
-          "value": 8649
-        },
-        {
-          "hour": "5pm",
-          "weekday": "April",
-          "value": 7869
-        },
-        {
-          "hour": "6pm",
-          "weekday": "April",
-          "value": 6933
-        },
-        {
-          "hour": "7pm",
-          "weekday": "April",
-          "value": 5969
-        },
-        {
-          "hour": "8pm",
-          "weekday": "April",
-          "value": 5552
-        },
-        {
-          "hour": "9pm",
-          "weekday": "April",
-          "value": 5434
-        },
-        {
-          "hour": "10pm",
-          "weekday": "April",
-          "value": 5070
-        },
-        {
-          "hour": "11pm",
-          "weekday": "April",
-          "value": 4851
-        },
-        {
-          "hour": "12pm",
-          "weekday": "May",
-          "value": 4468
-        },
-        {
-          "hour": "1am",
-          "weekday": "May",
-          "value": 3306
-        },
-        {
-          "hour": "2am",
-          "weekday": "May",
-          "value": 3906
-        },
-        {
-          "hour": "3am",
-          "weekday": "May",
-          "value": 4413
-        },
-        {
-          "hour": "4am",
-          "weekday": "May",
-          "value": 4726
-        },
-        {
-          "hour": "5am",
-          "weekday": "May",
-          "value": 4584
-        },
-        {
-          "hour": "6am",
-          "weekday": "May",
-          "value": 5717
-        },
-        {
-          "hour": "7am",
-          "weekday": "May",
-          "value": 6504
-        },
-        {
-          "hour": "8am",
-          "weekday": "May",
-          "value": 8104
-        },
-        {
-          "hour": "9am",
-          "weekday": "May",
-          "value": 8813
-        },
-        {
-          "hour": "10am",
-          "weekday": "May",
-          "value": 9278
-        },
-        {
-          "hour": "11am",
-          "weekday": "May",
-          "value": 10425
-        },
-        {
-          "hour": "12am",
-          "weekday": "May",
-          "value": 10137
-        },
-        {
-          "hour": "1pm",
-          "weekday": "May",
-          "value": 9290
-        },
-        {
-          "hour": "2pm",
-          "weekday": "May",
-          "value": 9255
-        },
-        {
-          "hour": "3pm",
-          "weekday": "May",
-          "value": 9614
-        },
-        {
-          "hour": "4pm",
-          "weekday": "May",
-          "value": 9713
-        },
-        {
-          "hour": "5pm",
-          "weekday": "May",
-          "value": 9667
-        },
-        {
-          "hour": "6pm",
-          "weekday": "May",
-          "value": 8774
-        },
-        {
-          "hour": "7pm",
-          "weekday": "May",
-          "value": 8649
-        },
-        {
-          "hour": "8pm",
-          "weekday": "May",
-          "value": 9937
-        },
-        {
-          "hour": "9pm",
-          "weekday": "May",
-          "value": 10286
-        },
-        {
-          "hour": "10pm",
-          "weekday": "May",
-          "value": 9175
-        },
-        {
-          "hour": "11pm",
-          "weekday": "May",
-          "value": 8581
-        },
-        {
-          "hour": "12pm",
-          "weekday": "June",
-          "value": 8145
-        },
-        {
-          "hour": "1am",
-          "weekday": "June",
-          "value": 7177
-        },
-        {
-          "hour": "2am",
-          "weekday": "June",
-          "value": 5657
-        },
-        {
-          "hour": "3am",
-          "weekday": "June",
-          "value": 6802
-        },
-        {
-          "hour": "4am",
-          "weekday": "June",
-          "value": 8159
-        },
-        {
-          "hour": "5am",
-          "weekday": "June",
-          "value": 8449
-        },
-        {
-          "hour": "6am",
-          "weekday": "June",
-          "value": 9453
-        },
-        {
-          "hour": "7am",
-          "weekday": "June",
-          "value": 9947
-        },
-        {
-          "hour": "8am",
-          "weekday": "June",
-          "value": 11471
-        },
-        {
-          "hour": "9am",
-          "weekday": "June",
-          "value": 12492
-        },
-        {
-          "hour": "10am",
-          "weekday": "June",
-          "value": 9388
-        },
-        {
-          "hour": "11am",
-          "weekday": "June",
-          "value": 9928
-        },
-        {
-          "hour": "12am",
-          "weekday": "June",
-          "value": 9644
-        },
-        {
-          "hour": "1pm",
-          "weekday": "June",
-          "value": 9034
-        },
-        {
-          "hour": "2pm",
-          "weekday": "June",
-          "value": 8964
-        },
-        {
-          "hour": "3pm",
-          "weekday": "June",
-          "value": 9069
-        },
-        {
-          "hour": "4pm",
-          "weekday": "June",
-          "value": 8898
-        },
-        {
-          "hour": "5pm",
-          "weekday": "June",
-          "value": 8322
-        },
-        {
-          "hour": "6pm",
-          "weekday": "June",
-          "value": 6909
-        },
-        {
-          "hour": "7pm",
-          "weekday": "June",
-          "value": 5810
-        },
-        {
-          "hour": "8pm",
-          "weekday": "June",
-          "value": 5151
-        },
-        {
-          "hour": "9pm",
-          "weekday": "June",
-          "value": 4911
-        },
-        {
-          "hour": "10pm",
-          "weekday": "June",
-          "value": 4487
-        },
-        {
-          "hour": "11pm",
-          "weekday": "June",
-          "value": 4118
-        },
-        {
-          "hour": "12pm",
-          "weekday": "July",
-          "value": 3689
-        },
-        {
-          "hour": "1am",
-          "weekday": "July",
-          "value": 3081
-        },
-        {
-          "hour": "2am",
-          "weekday": "July",
-          "value": 6525
-        },
-        {
-          "hour": "3am",
-          "weekday": "July",
-          "value": 6228
-        },
-        {
-          "hour": "4am",
-          "weekday": "July",
-          "value": 6917
-        },
-        {
-          "hour": "5am",
-          "weekday": "July",
-          "value": 6568
-        },
-        {
-          "hour": "6am",
-          "weekday": "July",
-          "value": 6405
-        },
-        {
-          "hour": "7am",
-          "weekday": "July",
-          "value": 8106
-        },
-        {
-          "hour": "8am",
-          "weekday": "July",
-          "value": 8542
-        },
-        {
-          "hour": "9am",
-          "weekday": "July",
-          "value": 8501
-        },
-        {
-          "hour": "10am",
-          "weekday": "July",
-          "value": 8802
-        },
-        {
-          "hour": "11am",
-          "weekday": "July",
-          "value": 9420
-        },
-        {
-          "hour": "12am",
-          "weekday": "July",
-          "value": 8966
-        },
-        {
-          "hour": "1pm",
-          "weekday": "July",
-          "value": 8135
-        },
-        {
-          "hour": "2pm",
-          "weekday": "July",
-          "value": 8224
-        },
-        {
-          "hour": "3pm",
-          "weekday": "July",
-          "value": 8387
-        },
-        {
-          "hour": "4pm",
-          "weekday": "July",
-          "value": 8218
-        },
-        {
-          "hour": "5pm",
-          "weekday": "July",
-          "value": 7641
-        },
-        {
-          "hour": "6pm",
-          "weekday": "July",
-          "value": 6469
-        },
-        {
-          "hour": "7pm",
-          "weekday": "July",
-          "value": 5441
-        },
-        {
-          "hour": "8pm",
-          "weekday": "July",
-          "value": 4952
-        },
-        {
-          "hour": "9pm",
-          "weekday": "July",
-          "value": 4643
-        },
-        {
-          "hour": "10pm",
-          "weekday": "July",
-          "value": 4393
-        },
-        {
-          "hour": "11pm",
-          "weekday": "July",
-          "value": 4017
-        },
-        {
-          "hour": "12pm",
-          "weekday": "August",
-          "value": 4022
-        },
-        {
-          "hour": "1am",
-          "weekday": "August",
-          "value": 3063
-        },
-        {
-          "hour": "2am",
-          "weekday": "August",
-          "value": 3638
-        },
-        {
-          "hour": "3am",
-          "weekday": "August",
-          "value": 3968
-        },
-        {
-          "hour": "4am",
-          "weekday": "August",
-          "value": 4070
-        },
-        {
-          "hour": "5am",
-          "weekday": "August",
-          "value": 4019
-        },
-        {
-          "hour": "6am",
-          "weekday": "August",
-          "value": 4548
-        },
-        {
-          "hour": "7am",
-          "weekday": "August",
-          "value": 5465
-        },
-        {
-          "hour": "8am",
-          "weekday": "August",
-          "value": 6909
-        },
-        {
-          "hour": "9am",
-          "weekday": "August",
-          "value": 7706
-        },
-        {
-          "hour": "10am",
-          "weekday": "August",
-          "value": 7867
-        },
-        {
-          "hour": "11am",
-          "weekday": "August",
-          "value": 8615
-        },
-        {
-          "hour": "12am",
-          "weekday": "August",
-          "value": 8218
-        },
-        {
-          "hour": "1pm",
-          "weekday": "August",
-          "value": 7604
-        },
-        {
-          "hour": "2pm",
-          "weekday": "August",
-          "value": 7429
-        },
-        {
-          "hour": "3pm",
-          "weekday": "August",
-          "value": 7488
-        },
-        {
-          "hour": "4pm",
-          "weekday": "August",
-          "value": 7493
-        },
-        {
-          "hour": "5pm",
-          "weekday": "August",
-          "value": 6998
-        },
-        {
-          "hour": "6pm",
-          "weekday": "August",
-          "value": 5941
-        },
-        {
-          "hour": "7pm",
-          "weekday": "August",
-          "value": 5068
-        },
-        {
-          "hour": "8pm",
-          "weekday": "August",
-          "value": 4636
-        },
-        {
-          "hour": "9pm",
-          "weekday": "August",
-          "value": 4241
-        },
-        {
-          "hour": "10pm",
-          "weekday": "August",
-          "value": 3858
-        },
-        {
-          "hour": "11pm",
-          "weekday": "August",
-          "value": 3833
-        },
-        {
-          "hour": "12pm",
-          "weekday": "September",
-          "value": 3503
-        },
-        {
-          "hour": "1am",
-          "weekday": "September",
-          "value": 2842
-        },
-        {
-          "hour": "2am",
-          "weekday": "September",
-          "value": 2808
-        },
-        {
-          "hour": "3am",
-          "weekday": "September",
-          "value": 2399
-        },
-        {
-          "hour": "4am",
-          "weekday": "September",
-          "value": 2280
-        },
-        {
-          "hour": "5am",
-          "weekday": "September",
-          "value": 2139
-        },
-        {
-          "hour": "6am",
-          "weekday": "September",
-          "value": 2527
-        },
-        {
-          "hour": "7am",
-          "weekday": "September",
-          "value": 2940
-        },
-        {
-          "hour": "8am",
-          "weekday": "September",
-          "value": 3066
-        },
-        {
-          "hour": "9am",
-          "weekday": "September",
-          "value": 3494
-        },
-        {
-          "hour": "10am",
-          "weekday": "September",
-          "value": 3287
-        },
-        {
-          "hour": "11am",
-          "weekday": "September",
-          "value": 3416
-        },
-        {
-          "hour": "12am",
-          "weekday": "September",
-          "value": 3432
-        },
-        {
-          "hour": "1pm",
-          "weekday": "September",
-          "value": 3523
-        },
-        {
-          "hour": "2pm",
-          "weekday": "September",
-          "value": 3542
-        },
-        {
-          "hour": "3pm",
-          "weekday": "September",
-          "value": 3347
-        },
-        {
-          "hour": "4pm",
-          "weekday": "September",
-          "value": 3292
-        },
-        {
-          "hour": "5pm",
-          "weekday": "September",
-          "value": 3416
-        },
-        {
-          "hour": "6pm",
-          "weekday": "September",
-          "value": 3131
-        },
-        {
-          "hour": "7pm",
-          "weekday": "September",
-          "value": 3057
-        },
-        {
-          "hour": "8pm",
-          "weekday": "September",
-          "value": 3227
-        },
-        {
-          "hour": "9pm",
-          "weekday": "September",
-          "value": 3060
-        },
-        {
-          "hour": "10pm",
-          "weekday": "September",
-          "value": 2855
-        },
-        {
-          "hour": "11pm",
-          "weekday": "September",
-          "value": 2625
-        },
-        {
-          "hour": "12pm",
-          "weekday": "October",
-          "value": 3503
-        },
-        {
-          "hour": "1am",
-          "weekday": "October",
-          "value": 2842
-        },
-        {
-          "hour": "2am",
-          "weekday": "October",
-          "value": 2808
-        },
-        {
-          "hour": "3am",
-          "weekday": "October",
-          "value": 2399
-        },
-        {
-          "hour": "4am",
-          "weekday": "October",
-          "value": 2280
-        },
-        {
-          "hour": "5am",
-          "weekday": "October",
-          "value": 2139
-        },
-        {
-          "hour": "6am",
-          "weekday": "October",
-          "value": 2527
-        },
-        {
-          "hour": "7am",
-          "weekday": "October",
-          "value": 2940
-        },
-        {
-          "hour": "8am",
-          "weekday": "October",
-          "value": 3066
-        },
-        {
-          "hour": "9am",
-          "weekday": "October",
-          "value": 3494
-        },
-        {
-          "hour": "10am",
-          "weekday": "October",
-          "value": 3287
-        },
-        {
-          "hour": "11am",
-          "weekday": "October",
-          "value": 3416
-        },
-        {
-          "hour": "12am",
-          "weekday": "October",
-          "value": 3432
-        },
-        {
-          "hour": "1pm",
-          "weekday": "October",
-          "value": 3523
-        },
-        {
-          "hour": "2pm",
-          "weekday": "October",
-          "value": 3542
-        },
-        {
-          "hour": "3pm",
-          "weekday": "October",
-          "value": 3347
-        },
-        {
-          "hour": "4pm",
-          "weekday": "October",
-          "value": 3292
-        },
-        {
-          "hour": "5pm",
-          "weekday": "October",
-          "value": 3416
-        },
-        {
-          "hour": "6pm",
-          "weekday": "October",
-          "value": 3131
-        },
-        {
-          "hour": "7pm",
-          "weekday": "October",
-          "value": 3057
-        },
-        {
-          "hour": "8pm",
-          "weekday": "October",
-          "value": 3227
-        },
-        {
-          "hour": "9pm",
-          "weekday": "October",
-          "value": 3060
-        },
-        {
-          "hour": "10pm",
-          "weekday": "October",
-          "value": 2855
-        },
-        {
-          "hour": "11pm",
-          "weekday": "October",
-          "value": 2625
-        },
-        {
-          "hour": "12pm",
-          "weekday": "November",
-          "value": 3503
-        },
-        {
-          "hour": "1am",
-          "weekday": "November",
-          "value": 2842
-        },
-        {
-          "hour": "2am",
-          "weekday": "November",
-          "value": 2808
-        },
-        {
-          "hour": "3am",
-          "weekday": "November",
-          "value": 2399
-        },
-        {
-          "hour": "4am",
-          "weekday": "November",
-          "value": 2280
-        },
-        {
-          "hour": "5am",
-          "weekday": "November",
-          "value": 2139
-        },
-        {
-          "hour": "6am",
-          "weekday": "November",
-          "value": 2527
-        },
-        {
-          "hour": "7am",
-          "weekday": "November",
-          "value": 2940
-        },
-        {
-          "hour": "8am",
-          "weekday": "November",
-          "value": 3066
-        },
-        {
-          "hour": "9am",
-          "weekday": "November",
-          "value": 3494
-        },
-        {
-          "hour": "10am",
-          "weekday": "November",
-          "value": 3287
-        },
-        {
-          "hour": "11am",
-          "weekday": "November",
-          "value": 3416
-        },
-        {
-          "hour": "12am",
-          "weekday": "November",
-          "value": 3432
-        },
-        {
-          "hour": "1pm",
-          "weekday": "November",
-          "value": 3523
-        },
-        {
-          "hour": "2pm",
-          "weekday": "November",
-          "value": 3542
-        },
-        {
-          "hour": "3pm",
-          "weekday": "November",
-          "value": 3347
-        },
-        {
-          "hour": "4pm",
-          "weekday": "November",
-          "value": 3292
-        },
-        {
-          "hour": "5pm",
-          "weekday": "November",
-          "value": 3416
-        },
-        {
-          "hour": "6pm",
-          "weekday": "November",
-          "value": 3131
-        },
-        {
-          "hour": "7pm",
-          "weekday": "November",
-          "value": 3057
-        },
-        {
-          "hour": "8pm",
-          "weekday": "November",
-          "value": 3227
-        },
-        {
-          "hour": "9pm",
-          "weekday": "November",
-          "value": 3060
-        },
-        {
-          "hour": "10pm",
-          "weekday": "November",
-          "value": 2855
-        },
-        {
-          "hour": "11pm",
-          "weekday": "November",
-          "value": 2625
-        }
-
-      ];
-
-
+      // this.heatmapGraph.data = [
+      //   {
+      //     "_id": "2-28",
+      //     "month": 2,
+      //     "day": 28,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "3-17",
+      //     "month": 3,
+      //     "day": 17,
+      //     "count": 4
+      //   },
+      //   {
+      //     "_id": "3-18",
+      //     "month": 3,
+      //     "day": 18,
+      //     "count": 4
+      //   },
+      //   {
+      //     "_id": "3-23",
+      //     "month": 3,
+      //     "day": 23,
+      //     "count": 32
+      //   },
+      //   {
+      //     "_id": "3-24",
+      //     "month": 3,
+      //     "day": 24,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "3-25",
+      //     "month": 3,
+      //     "day": 25,
+      //     "count": 14
+      //   },
+      //   {
+      //     "_id": "3-26",
+      //     "month": 3,
+      //     "day": 26,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "3-27",
+      //     "month": 3,
+      //     "day": 27,
+      //     "count": 39
+      //   },
+      //   {
+      //     "_id": "3-29",
+      //     "month": 3,
+      //     "day": 29,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "3-30",
+      //     "month": 3,
+      //     "day": 30,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "3-31",
+      //     "month": 3,
+      //     "day": 31,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "4-1",
+      //     "month": 4,
+      //     "day": 1,
+      //     "count": 31
+      //   },
+      //   {
+      //     "_id": "4-2",
+      //     "month": 4,
+      //     "day": 2,
+      //     "count": 9
+      //   },
+      //   {
+      //     "_id": "4-3",
+      //     "month": 4,
+      //     "day": 3,
+      //     "count": 11
+      //   },
+      //   {
+      //     "_id": "4-4",
+      //     "month": 4,
+      //     "day": 4,
+      //     "count": 3
+      //   },
+      //   {
+      //     "_id": "4-6",
+      //     "month": 4,
+      //     "day": 6,
+      //     "count": 30
+      //   },
+      //   {
+      //     "_id": "4-7",
+      //     "month": 4,
+      //     "day": 7,
+      //     "count": 24
+      //   },
+      //   {
+      //     "_id": "4-9",
+      //     "month": 4,
+      //     "day": 9,
+      //     "count": 15
+      //   },
+      //   {
+      //     "_id": "4-12",
+      //     "month": 4,
+      //     "day": 12,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "4-13",
+      //     "month": 4,
+      //     "day": 13,
+      //     "count": 5
+      //   },
+      //   {
+      //     "_id": "4-14",
+      //     "month": 4,
+      //     "day": 14,
+      //     "count": 3
+      //   },
+      //   {
+      //     "_id": "4-16",
+      //     "month": 4,
+      //     "day": 16,
+      //     "count": 9
+      //   },
+      //   {
+      //     "_id": "4-19",
+      //     "month": 4,
+      //     "day": 19,
+      //     "count": 6
+      //   },
+      //   {
+      //     "_id": "4-20",
+      //     "month": 4,
+      //     "day": 20,
+      //     "count": 3
+      //   },
+      //   {
+      //     "_id": "4-22",
+      //     "month": 4,
+      //     "day": 22,
+      //     "count": 6
+      //   },
+      //   {
+      //     "_id": "4-23",
+      //     "month": 4,
+      //     "day": 23,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "4-26",
+      //     "month": 4,
+      //     "day": 26,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "4-30",
+      //     "month": 4,
+      //     "day": 30,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-2",
+      //     "month": 5,
+      //     "day": 2,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "5-4",
+      //     "month": 5,
+      //     "day": 4,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-7",
+      //     "month": 5,
+      //     "day": 7,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-20",
+      //     "month": 5,
+      //     "day": 20,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-21",
+      //     "month": 5,
+      //     "day": 21,
+      //     "count": 3
+      //   },
+      //   {
+      //     "_id": "5-25",
+      //     "month": 5,
+      //     "day": 25,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-26",
+      //     "month": 5,
+      //     "day": 26,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "5-27",
+      //     "month": 5,
+      //     "day": 27,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "5-28",
+      //     "month": 5,
+      //     "day": 28,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "6-2",
+      //     "month": 6,
+      //     "day": 2,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "6-4",
+      //     "month": 6,
+      //     "day": 4,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "6-7",
+      //     "month": 6,
+      //     "day": 7,
+      //     "count": 4
+      //   },
+      //   {
+      //     "_id": "6-11",
+      //     "month": 6,
+      //     "day": 11,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "6-17",
+      //     "month": 6,
+      //     "day": 17,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "6-18",
+      //     "month": 6,
+      //     "day": 18,
+      //     "count": 3
+      //   },
+      //   {
+      //     "_id": "7-2",
+      //     "month": 7,
+      //     "day": 2,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "7-22",
+      //     "month": 7,
+      //     "day": 22,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "7-23",
+      //     "month": 7,
+      //     "day": 23,
+      //     "count": 2
+      //   },
+      //   {
+      //     "_id": "7-24",
+      //     "month": 7,
+      //     "day": 24,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "7-29",
+      //     "month": 7,
+      //     "day": 29,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "8-2",
+      //     "month": 8,
+      //     "day": 2,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "8-4",
+      //     "month": 8,
+      //     "day": 4,
+      //     "count": 1
+      //   },
+      //   {
+      //     "_id": "8-5",
+      //     "month": 8,
+      //     "day": 5,
+      //     "count": 31
+      //   },
+      //   {
+      //     "_id": "8-6",
+      //     "month": 8,
+      //     "day": 6,
+      //     "count": 7
+      //   }
+      // ];
 
 
 
 
 
       // Create chart instance
-      let streamchart = create("streamchart", am4charts.XYChart);
+      this.streamGraph = create("streamchart", am4charts.XYChart);
 
-      // Add data
-      streamchart.data = [
-        { year: "1896", uk: 7, Connaught_Place: 0, okhla: 0, Nehru_Place: 20, New_Friends_Colony: 0 },
-        { year: "1900", uk: 78, Connaught_Place: 0, okhla: 0, Nehru_Place: 55, New_Friends_Colony: 0 },
-        { year: "1904", uk: 2, Connaught_Place: 0, okhla: 0, Nehru_Place: 394, New_Friends_Colony: 0 },
-        { year: "1908", uk: 347, Connaught_Place: 0, okhla: 0, Nehru_Place: 63, New_Friends_Colony: 0 },
-        { year: "1912", uk: 160, Connaught_Place: 0, okhla: 0, Nehru_Place: 101, New_Friends_Colony: 0 },
-        { year: "1916", uk: 0, Connaught_Place: 0, okhla: 0, Nehru_Place: 0, New_Friends_Colony: 0 },
-        { year: "1920", uk: 107, Connaught_Place: 0, okhla: 0, Nehru_Place: 193, New_Friends_Colony: 0 },
-        { year: "1924", uk: 66, Connaught_Place: 0, okhla: 0, Nehru_Place: 198, New_Friends_Colony: 0 },
-        { year: "1928", uk: 55, Connaught_Place: 0, okhla: 0, Nehru_Place: 84, New_Friends_Colony: 0 },
-        { year: "1932", uk: 34, Connaught_Place: 0, okhla: 0, Nehru_Place: 181, New_Friends_Colony: 0 },
-        { year: "1936", uk: 36, Connaught_Place: 0, okhla: 0, Nehru_Place: 92, New_Friends_Colony: 0 },
-        { year: "1940", uk: 0, Connaught_Place: 0, okhla: 0, Nehru_Place: 0, New_Friends_Colony: 0 },
-        { year: "1944", uk: 0, Connaught_Place: 0, okhla: 0, Nehru_Place: 0, New_Friends_Colony: 0 },
-        { year: "1948", uk: 56, Connaught_Place: 0, okhla: 0, Nehru_Place: 148, New_Friends_Colony: 0 },
-        { year: "1952", uk: 31, Connaught_Place: 117, okhla: 0, Nehru_Place: 130, New_Friends_Colony: 0 },
-        { year: "1956", uk: 45, Connaught_Place: 169, okhla: 0, Nehru_Place: 118, New_Friends_Colony: 0 },
-        { year: "1960", uk: 28, Connaught_Place: 169, okhla: 0, Nehru_Place: 112, New_Friends_Colony: 0 },
-        { year: "1964", uk: 28, Connaught_Place: 174, okhla: 0, Nehru_Place: 150, New_Friends_Colony: 0 },
-        { year: "1968", uk: 18, Connaught_Place: 188, okhla: 0, Nehru_Place: 149, New_Friends_Colony: 0 },
-        { year: "1972", uk: 29, Connaught_Place: 211, okhla: 0, Nehru_Place: 155, New_Friends_Colony: 0 },
-        { year: "1976", uk: 32, Connaught_Place: 285, okhla: 0, Nehru_Place: 155, New_Friends_Colony: 0 },
-        { year: "1980", uk: 45, Connaught_Place: 442, okhla: 0, Nehru_Place: 0, New_Friends_Colony: 0 },
-        { year: "1984", uk: 72, Connaught_Place: 0, okhla: 0, Nehru_Place: 333, New_Friends_Colony: 76 },
-        { year: "1988", uk: 53, Connaught_Place: 294, okhla: 0, Nehru_Place: 193, New_Friends_Colony: 53 },
-        { year: "1992", uk: 50, Connaught_Place: 0, okhla: 0, Nehru_Place: 224, New_Friends_Colony: 83 },
-        { year: "1996", uk: 26, Connaught_Place: 0, okhla: 115, Nehru_Place: 260, New_Friends_Colony: 110 },
-        { year: "2000", uk: 55, Connaught_Place: 0, okhla: 188, Nehru_Place: 248, New_Friends_Colony: 79 },
-        { year: "2004", uk: 57, Connaught_Place: 0, okhla: 192, Nehru_Place: 264, New_Friends_Colony: 94 },
-        { year: "2008", uk: 77, Connaught_Place: 0, okhla: 143, Nehru_Place: 315, New_Friends_Colony: 184 }
-      ];
+      this.streamGraph.logo.disabled = true;
 
       // Create axes
-      let categoryAxisStream = streamchart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxisStream.dataFields.category = "year";
+      let categoryAxisStream = this.streamGraph.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxisStream.dataFields.category = "_id";
       categoryAxisStream.renderer.grid.template.location = 0;
-      categoryAxisStream.renderer.minGridDistance = 50;
+      categoryAxisStream.renderer.minGridDistance = 0;
       categoryAxisStream.renderer.labels.template.fill = color("#fff");
       categoryAxisStream.renderer.grid.template.stroke = color("#fff");
       categoryAxisStream.startLocation = 0.5;
       categoryAxisStream.endLocation = 0.5;
 
-      let valueAxisstream = streamchart.yAxes.push(new am4charts.ValueAxis());
+      let valueAxisstream = this.streamGraph.yAxes.push(new am4charts.ValueAxis());
 
-      valueAxisstream.renderer.labels.template.fill = color("#fff");
-      valueAxisstream.renderer.grid.template.stroke = color("#fff");
+      // valueAxisstream.renderer.labels.template.fill = color("#fff");
+      // valueAxisstream.renderer.grid.template.stroke = color("#fff");
+      valueAxisstream.renderer.grid.template.disabled = true;
+      valueAxisstream.renderer.labels.template.disabled = true;
+      valueAxisstream.cursorTooltipEnabled = false;
 
-      // Create series
-      function createSeriesStream(field, name) {
-        let series = streamchart.series.push(new am4charts.LineSeries());
-        series.dummyData = {
-          field: field
-        }
-        series.dataFields.valueY = field + "_hi";
-        series.dataFields.openValueY = field + "_low";
-        series.dataFields.categoryX = "year";
-        series.name = name;
-        series.tooltipText = "[font-size: 18]{name}[/]\n{categoryX}: [bold]{" + field + "}[/]";
-        series.strokeWidth = 1;
-        series.fillOpacity = 1;
-        series.tensionX = 0.8;
 
-        return series;
-      }
 
-      createSeriesStream("uk", "Kalindi Kunj");
-      createSeriesStream("Connaught_Place", "Connaught Place");
-      createSeriesStream("okhla", "Okhla");
-      createSeriesStream("Nehru_Place", "Nehru Place");
-      createSeriesStream("New_Friends_Colony", "New Friends Colony");
+
+      var _this = this;
+
 
       // Legend
-      streamchart.legend = new am4charts.Legend();
-      streamchart.legend.itemContainers.template.togglable = false;
-      streamchart.legend.itemContainers.template.cursorOverStyle = MouseCursorStyle.default;
-      streamchart.legend.position = "right"
-      streamchart.legend.reverseOrder = true;
-      streamchart.legend.labels.template.fill = color("#fff");
+      this.streamGraph.legend = new am4charts.Legend();
+      this.streamGraph.legend.itemContainers.template.togglable = true;
+      this.streamGraph.legend.position = "right"
+      this.streamGraph.legend.valign = "top";
+      this.streamGraph.legend.reverseOrder = true;
+      this.streamGraph.legend.labels.template.fill = color("#fff");
+      this.streamGraph.legend.labels.template.fontSize = 13;
+
+      let markerTemplate = this.streamGraph.legend.markers.template;
+      markerTemplate.width = 16;
+      markerTemplate.height = 16;
 
 
 
       // Cursor
-      streamchart.cursor = new am4charts.XYCursor();
-      streamchart.cursor.maxTooltipDistance = 0;
+      this.streamGraph.cursor = new am4charts.XYCursor();
+      this.streamGraph.cursor.maxTooltipDistance = 0;
+
+
+      this.streamGraph.legend.itemContainers.template.events.on("over", function (ev) {
+        console.log("DDODN");
+        // var point = categoryAxisStream.categoryToPoint(ev.target.dataItem.category);
+        // _this.streamGraph.cursor.triggerMove(point, "soft");
+        var series = ev.target.dataItem.dataContext;
+        series.tooltip.show();
+      });
+
+      this.streamGraph.legend.itemContainers.template.events.on("out", function (ev) {
+        // var point = categoryAxisStream.categoryToPoint(ev.target.dataItem.category);
+        // _this.streamGraph.cursor.triggerMove(point, "none");
+        var series = ev.target.dataItem.dataContext;
+        series.tooltip.hide();
+      });
+
+
 
       // Responsive
-      streamchart.responsive.enabled = true;
-      streamchart.responsive.useDefault = false;
-      streamchart.responsive.rules.push({
+      this.streamGraph.responsive.enabled = true;
+      this.streamGraph.responsive.useDefault = false;
+      this.streamGraph.responsive.rules.push({
         relevant: ResponsiveBreakpoints.widthL,
         state: function (target, stateId) {
           if (target instanceof am4charts.Legend) {
@@ -3973,10 +1863,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       });
 
       // Prepare data for the river-stacked series
-      streamchart.events.on("beforedatavalidated", updateData);
+      this.streamGraph.events.on("beforedatavalidated", updateData);
+
       function updateData() {
 
-        let data = streamchart.data;
+        let data = _this.streamGraph.data;
         if (data.length == 0) {
           return;
         }
@@ -3986,7 +1877,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           let sum = 0;
 
           // Calculate open and close values
-          streamchart.series.each(function (series) {
+          _this.streamGraph.series.each(function (series) {
             let field = series.dummyData.field;
             let val = Number(row[field]);
             row[field + "_low"] = sum;
@@ -3996,7 +1887,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
           // Adjust values so they are centered
           let offset = sum / 2;
-          streamchart.series.each(function (series) {
+          _this.streamGraph.series.each(function (series) {
             let field = series.dummyData.field;
             row[field + "_low"] -= offset;
             row[field + "_hi"] -= offset;
@@ -4010,68 +1901,67 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
 
+
+
+
       /* Create chart instance */
-      let spiderchart = create("spiderchart", am4charts.RadarChart);
+      this.proximityGraph = create("spiderchart", am4charts.RadarChart);
 
-      let data = [];
-      let value1 = 500;
-      let value2 = 600;
-
-      for (var i = 0; i < 12; i++) {
-        let date = new Date();
-        date.setMonth(i, 1);
-        value1 -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 50);
-        value2 -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 50);
-        data.push({ date: date, value1: value1, value2: value2 })
-      }
-
-      spiderchart.data = data;
+      this.proximityGraph.logo.disabled = true;
 
       /* Create axes */
-      let categoryAxisSpider = spiderchart.xAxes.push(new am4charts.DateAxis<any>());
+      let categoryAxisSpider = this.proximityGraph.xAxes.push(new am4charts.CategoryAxis<any>());
 
+      categoryAxisSpider.dataFields.category = "_id";
       categoryAxisSpider.renderer.labels.template.fill = color("#fff");
+      categoryAxisSpider.renderer.labels.template.fontSize = 12;
       categoryAxisSpider.renderer.grid.template.stroke = color("#fff");
 
-      let valueAxisSpider = spiderchart.yAxes.push(new am4charts.ValueAxis<any>());
-      valueAxisSpider.extraMin = 0.2;
-      valueAxisSpider.extraMax = 0.2;
+      let valueAxisSpider = this.proximityGraph.yAxes.push(new am4charts.ValueAxis<any>());
+      // valueAxisSpider.extraMin = 0.2;
+      // valueAxisSpider.extraMax = 0.2;
       valueAxisSpider.tooltip.disabled = true;
 
       valueAxisSpider.renderer.labels.template.fill = color("#fff");
       valueAxisSpider.renderer.grid.template.stroke = color("#fff");
 
       /* Create and configure series */
-      let series1 = spiderchart.series.push(new am4charts.RadarSeries());
-      series1.dataFields.valueY = "value1";
-      series1.dataFields.dateX = "date";
+      let series1 = this.proximityGraph.series.push(new am4charts.RadarSeries());
+      this.proximityGraph.colors.list = [
+        color("#a367dc"),
+        color("#6794dc"),
+      ];
+      series1.dataFields.valueY = "Male";
+      series1.dataFields.categoryX = "_id";
       // series1.yAxis = valueAxisSpider;
       // series.xAxis = categoryAxisSpider;
-      series1.strokeWidth = 3;
+      series1.strokeWidth = 2;
       series1.tooltipText = "{valueY}";
-      series1.name = "Series 1";
+      series1.name = "Male";
       series1.bullets.create(am4charts.CircleBullet);
-      series1.dataItems.template.locations.dateX = 0.5;
+      series1.dataItems.template.locations.valueX = 0.5;
 
-      let series2 = spiderchart.series.push(new am4charts.RadarSeries());
-      series2.dataFields.valueY = "value2";
-      series2.dataFields.dateX = "date";
+      let series2 = this.proximityGraph.series.push(new am4charts.RadarSeries());
+      // series2.colors.list = [
+      //   // color("#a367dc"),
+      //   color("#6794dc"),
+      // ];
+      series2.dataFields.valueY = "Female";
+      series2.dataFields.categoryX = "_id";
       // series2.yAxis = valueAxisSpider;
       // series2.xAxis = categoryAxisSpider;
-      series2.strokeWidth = 3;
+      series2.strokeWidth = 2;
       series2.tooltipText = "{valueY}";
-      series2.name = "Series 3";
+      series2.name = "Female";
       series2.bullets.create(am4charts.CircleBullet);
-      series2.dataItems.template.locations.dateX = 0.5;
+      series2.dataItems.template.locations.valueX = 2;
 
-      // spiderchart.scrollbarX = new Scrollbar();
-      // spiderchart.scrollbarY = new Scrollbar();
 
-      spiderchart.cursor = new am4charts.RadarCursor();
+      this.proximityGraph.cursor = new am4charts.RadarCursor();
 
-      spiderchart.legend = new am4charts.Legend();
+      this.proximityGraph.legend = new am4charts.Legend();
 
-      spiderchart.legend.labels.template.fill = color("#fff");
+      this.proximityGraph.legend.labels.template.fill = color("#fff");
 
 
 
@@ -4084,7 +1974,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       // Add data
       // this.purposeGraph.data = [];
       // Add and configure Series
-      console.log("PGDATA_", this.purposeGraph.data);
+      //console.log("PGDATA_", this.purposeGraph.data);
       let pieSeries = this.purposeGraph.series.push(new am4charts.PieSeries());
       pieSeries.dataFields.value = "count";
       pieSeries.dataFields.category = "_id";
@@ -4092,45 +1982,237 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       pieSeries.ticks.template.disabled = true;
       pieSeries.labels.template.disabled = true;
 
+      pieSeries.colors.list = [
+        color("#2039d1"),
+        color("#207cd1"),
+        color("#67b7dc"),
+        color("#6894dd"),
+        color("#8067dc"),
+        color("#a267db"),
+        color("#c667db"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#dc8c67")
+      ].reverse();
 
-      this.purposeGraph.legend = new am4charts.Legend();
-      this.purposeGraph.legend.position = "right";
 
-      this.userService.themeValueBehavior.subscribe((value) => {
-        if (value === "dark") {
-          this.purposeGraph.legend.labels.template.fill = color("#fff");
-          this.purposeGraph.legend.valueLabels.template.fill = color(
-            "#fff"
-          );
-        } else {
-          this.purposeGraph.legend.labels.template.fill = color(
-            "#2B2C2D"
-          );
-          this.purposeGraph.legend.valueLabels.template.fill = color(
-            "#2B2C2D"
-          );
-        }
-      });
+
+
+      // this.purposeGraph.legend = new am4charts.Legend();
+      // this.purposeGraph.legend.position = "right";
+
+      // this.userService.themeValueBehavior.subscribe((value) => {
+      //   if (value === "dark") {
+      //     // this.purposeGraph.legend.labels.template.fill = color("#fff");
+      //     this.purposeGraph.legend.valueLabels.template.fill = color(
+      //       "#fff"
+      //     );
+      //   } else {
+      //     this.purposeGraph.legend.labels.template.fill = color(
+      //       "#2B2C2D"
+      //     );
+      //     this.purposeGraph.legend.valueLabels.template.fill = color(
+      //       "#2B2C2D"
+      //     );
+      //   }
+      // });
+
+
+
+
+
 
 
       //live purpose chart
 
+
+      // let livedata = [
+      //   {
+      //     "2": [
+      //       {
+      //         "purpose": "Other",
+      //         "count": 1
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "3": [
+      //       {
+      //         "purpose": "Road Problem",
+      //         "count": 3
+      //       },
+      //       {
+      //         "purpose": "Invitation",
+      //         "count": 3
+      //       },
+      //       {
+      //         "purpose": "Electricity Problem",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Regarding Job",
+      //         "count": 6
+      //       },
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 38
+      //       },
+      //       {
+      //         "purpose": "Sewer Problem",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Other",
+      //         "count": 47
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "4": [
+      //       {
+      //         "purpose": "Road Problem",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Other",
+      //         "count": 18
+      //       },
+      //       {
+      //         "purpose": "Electricity Problem",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Water Problem",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Regarding Job",
+      //         "count": 9
+      //       },
+      //       {
+      //         "purpose": "Invitation",
+      //         "count": 11
+      //       },
+      //       {
+      //         "purpose": "Political Purpose",
+      //         "count": 4
+      //       },
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 116
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "5": [
+      //       {
+      //         "purpose": "Other",
+      //         "count": 5
+      //       },
+      //       {
+      //         "purpose": "Road Problem",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Electricity Problem",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Regarding Job",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Water Problem",
+      //         "count": 1
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "6": [
+      //       {
+      //         "purpose": "Regarding Job",
+      //         "count": 4
+      //       },
+      //       {
+      //         "purpose": "Invitation",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Other",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Political Purpose",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 2
+      //       },
+      //       {
+      //         "purpose": "Political Function",
+      //         "count": 1
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "7": [
+      //       {
+      //         "purpose": "Regarding Job",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 3
+      //       },
+      //       {
+      //         "purpose": "Other",
+      //         "count": 1
+      //       },
+      //       {
+      //         "purpose": "Road Problem",
+      //         "count": 2
+      //       }
+      //     ]
+      //   },
+      //   {
+      //     "8": [
+      //       {
+      //         "purpose": "Meeting",
+      //         "count": 7
+      //       },
+      //       {
+      //         "purpose": "Other",
+      //         "count": 33
+      //       }
+      //     ]
+      //   }
+      // ]
+      // let allPurposes = ["Regarding Job", "Invitation", "Meeting", "Electricity Problem", "Water Problem", "Road Problem", "Sewer Problem", "Political Purpose", "Political Function", "Meeting Leadership", "Other"];
+
+
       this.livepurposeGraph = create("livepurpose", am4charts.XYChart);
       this.livepurposeGraph.padding(40, 40, 40, 40);
+      this.livepurposeGraph.logo.disabled = true;
 
-      this.livepurposeGraph.numberFormatter.bigNumberPrefixes = [
-        { "number": 1e+3, "suffix": "K" },
-        { "number": 1e+6, "suffix": "M" },
-        { "number": 1e+9, "suffix": "B" }
-      ];
+      // this.livepurposeGraph.numberFormatter.bigNumberPrefixes = [
+      //   { "number": 1e+3, "suffix": "K" },
+      //   { "number": 1e+6, "suffix": "M" },
+      //   { "number": 1e+9, "suffix": "B" }
+      // ];
 
-      let label = this.livepurposeGraph.plotContainer.createChild(Label);
-      label.x = percent(97);
-      label.y = percent(95);
-      label.horizontalCenter = "right";
-      label.verticalCenter = "middle";
-      label.dx = -15;
-      label.fontSize = 50;
+      this.livepurposeGraph.label = this.livepurposeGraph.plotContainer.createChild(Label);
+      this.livepurposeGraph.label.x = percent(97);
+      this.livepurposeGraph.label.y = percent(95);
+      this.livepurposeGraph.label.horizontalCenter = "right";
+      this.livepurposeGraph.label.verticalCenter = "middle";
+      this.livepurposeGraph.label.dx = -15;
+      this.livepurposeGraph.label.fontSize = 50;
 
       let playButton = this.livepurposeGraph.plotContainer.createChild(PlayButton);
       playButton.x = percent(97);
@@ -4151,31 +2233,38 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       let categoryAxis = this.livepurposeGraph.yAxes.push(new am4charts.CategoryAxis());
       categoryAxis.renderer.grid.template.location = 0;
-      categoryAxis.dataFields.category = "network";
+      categoryAxis.dataFields.category = "purpose";
       categoryAxis.renderer.minGridDistance = 1;
       categoryAxis.renderer.inversed = true;
       categoryAxis.renderer.grid.template.disabled = true;
 
       var valuex = this.livepurposeGraph.xAxes.push(new am4charts.ValueAxis());
-      valuex.min = 0;
-      // valuex.rangeChangeEasing = ease.linear;
-      // valuex.rangeChangeDuration = stepDuration;
-      valuex.extraMax = 0.1;
+      // valuex.min = 1;
+      valuex.rangeChangeEasing = ease.linear;
+      valuex.rangeChangeDuration = stepDuration;
+      // valuex.renderer.minGridDistance = 100;
+      valuex.renderer.grid.template.disabled = true;
+      valuex.renderer.labels.template.disabled = true;
+
+
+      valuex.extraMax = 0.2;
 
       let series = this.livepurposeGraph.series.push(new am4charts.ColumnSeries());
-      series.dataFields.categoryY = "network";
-      series.dataFields.valueX = "MAU";
+      series.dataFields.categoryY = "purpose";
+      series.dataFields.valueX = "count";
       series.tooltipText = "{valueX.value}"
       series.columns.template.strokeOpacity = 0;
       series.columns.template.column.cornerRadiusBottomRight = 5;
       series.columns.template.column.cornerRadiusTopRight = 5;
       series.interpolationDuration = stepDuration;
-      // series.interpolationEasing = ease.linear;
+      series.interpolationEasing = ease.linear;
 
       let labelBullet = series.bullets.push(new am4charts.LabelBullet())
       labelBullet.label.horizontalCenter = "right";
-      labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.0as')}";
+      labelBullet.label.text = "{values.valueX.workingValue.formatNumber('#.as')}";
       labelBullet.label.textAlign = "end";
+      labelBullet.label.fill = color("#fff");
+      labelBullet.label.fontSize = 13;
       labelBullet.label.dx = -10;
 
       this.livepurposeGraph.zoomOutButton.disabled = true;
@@ -4186,13 +2275,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           valuex.renderer.labels.template.fill = color("#fff");
           categoryAxis.renderer.labels.template.fill = color("#fff");
           valuex.title.fill = color("#fff");
-          label.fill = color("#fff");
+          this.livepurposeGraph.label.fill = color("#fff");
           categoryAxis.title.fill = color("#fff");
         } else {
           valuex.renderer.labels.template.fill = color("#2B2C2D");
           categoryAxis.renderer.labels.template.fill = color("#2B2C2D");
           valuex.title.fill = color("#2B2C2D");
-          label.fill = color("#2B2C2D");
+          this.livepurposeGraph.label.fill = color("#2B2C2D");
           categoryAxis.title.fill = color("#2B2C2D");
         }
       });
@@ -4203,8 +2292,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         return this.livepurposeGraph.colors.getIndex(target.dataItem.index);
       });
 
-      this.liveyear = 2003;
-      label.text = this.liveyear.toString();
+      // this.liveyear = 2;
+      // label.text = this.liveyear.toString();
+      this.livepurposeGraph.label.text = "";
+
 
       let interval;
 
@@ -4223,51 +2314,76 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
       let nextYear = () => {
+
         this.liveyear++;
 
-        if (this.liveyear > 2018) {
-          this.liveyear = 2003;
-        }
+        //console.log('FIRDTLAT:', this.firstlivekey, this.lastlivekey);
 
-        let newData = this.allData[this.liveyear];
+        if (this.liveyear > this.lastlivekey) {
+          this.liveyear = this.firstlivekey;
+        }
+        let newData;
+        if (this.livepurposeGraphData[this.liveyear])
+          newData = this.livepurposeGraphData[this.liveyear];
+
+
+        //console.log(newData);
+
         let itemsWithNonZero = 0;
+
+        // //console.log("mainlive:", newData);
+
+        // this.livepurposeGraph.data = newData;
+
         for (var i = 0; i < this.livepurposeGraph.data.length; i++) {
-          this.livepurposeGraph.data[i].MAU = newData[i].MAU;
-          if (this.livepurposeGraph.data[i].MAU > 0) {
+          // //console.log("newDATAi:", i, newData[i]);
+          // if(newData[i].count){
+          this.livepurposeGraph.data[i].count = newData[i].count;
+
+          if (this.livepurposeGraph.data[i].count > 0) {
             itemsWithNonZero++;
           }
+          // }
         }
 
-        if (this.liveyear == 2003) {
-          series.interpolationDuration = stepDuration / 4;
-          valueAxis.rangeChangeDuration = stepDuration / 4;
-        }
-        else {
-          series.interpolationDuration = stepDuration;
-          valueAxis.rangeChangeDuration = stepDuration;
-        }
+        // if (this.liveyear == this.livepurposeGraphData) {
+        //   series.interpolationDuration = stepDuration / 4;
+        //   valueAxis.rangeChangeDuration = stepDuration / 4;
+        // }
+        // else {
+        //   series.interpolationDuration = stepDuration;
+        //   valueAxis.rangeChangeDuration = stepDuration;
+        // }
 
         this.livepurposeGraph.invalidateRawData();
-        label.text = this.liveyear.toString();
+
+        var livemonth = moment(this.liveyear, 'MM-DD-YYYY');
+
+        this.livepurposeGraph.label.text = livemonth.isValid() ? livemonth.format('MMM') : this.liveyear.toString();
 
         categoryAxis.zoom({ start: 0, end: itemsWithNonZero / categoryAxis.dataItems.length });
+
+
       }
+
+      // this.livepurposeGraph.label.text = this.firstlivekey;
 
 
       categoryAxis.sortBySeries = series;
 
+      // //console.log("LIVEDATA::", this.livepurposeGraph.data);
+      this.livepurposeGraph.categoryAxis = categoryAxis;
+      this.livepurposeGraph.sortseries = series;
 
 
-      this.livepurposeGraph.data = JSON.parse(JSON.stringify(this.allData[this.liveyear]));
-      console.log("LIVEDATA::", this.livepurposeGraph);
+      // this.livepurposeGraph.data = this.livepurposeGraphData[this.liveyear];
 
 
-      categoryAxis.zoom({ start: 0, end: 1 / this.livepurposeGraph.data.length });
-
-      series.events.on("inited", function () {
-        setTimeout(function () {
-          // playButton.isActive = true; // this starts interval
-          console.log("new");
+      series.events.on("inited", () => {
+        // categoryAxis.zoom({ start: 0, end: 1 / this.livepurposeGraph.data.length });
+        setTimeout(() => {
+          playButton.isActive = true; // this starts interval
+          //console.log("new");
         }, 2000)
       })
 
@@ -4280,114 +2396,456 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       let bubblechart = create("bubblechart", am4plugins_forceDirected.ForceDirectedTree);
 
-
+      bubblechart.logo.disabled = true;
 
       this.networkSeries = bubblechart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
 
-    
-    
-      
+
+
+
       this.networkSeries.colors.list = [
+        color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"),
+        color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
         color("#67b7dc"),
-        color("#6794dc"),
-        color("#6771dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
         color("#8067dc"),
-        color("#a367dc"),
-        color("#c767dc"),
-        color("#dc67ce"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
         color("#dc67ab"),
-        color("#4c3348"),
-        // color("#c767dc"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"), color("#2039d1"),
+        color("#305ae3"),
+        color("#207cd1"),
+        color("#409bdb"),
+        color("#43a8d6"),
+        color("#55add5"),
+        color("#67b7dc"),
+        color("#598adb"),
+        color("#6894dd"),
+        color("#6767dc"),
+        color("#8067dc"),
+        color("#935bd9"),
+        color("#a267db"),
+        color("#af5dd1"),
+        color("#c667db"),
+        color("#d95ad5"),
+        color("#dc67cf"),
+        color("#dc67ab"),
+        color("#dd6789"),
+        color("#e56d8f"),
+        color("#dc67ab"),
+        color("#ef707c"),
+        color("#dc8c67"),
 
       ];
 
@@ -4434,6 +2892,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         new am4charts.PieSeries()
       );
 
+
+      genderSeries.dataFields.value = 0;
+      genderSeries.dataFields.category = "Female";
+
       genderSeries.dataFields.value = "count";
       genderSeries.dataFields.category = "_id";
 
@@ -4450,7 +2912,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       genderSeries.colors.list = [
         color("#1f3ad1"),
-        color("#439757"),
+        color("#67b7dc"),
       ];
 
       this.genderGraph.legend = new am4charts.Legend();
@@ -4503,7 +2965,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let valueAxis = this.timeFrameGraphData.yAxes.push(
         new am4charts.ValueAxis()
       );
-      valueAxis.title.text = "PEOPLE VISITED";
+      valueAxis.title.text = "VISITORS";
       //valueAxis.integersOnly = true;
       valueAxis.tooltip.disabled = true;
       // Create series
@@ -4584,7 +3046,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let casteValueAxis = this.casteGraph.yAxes.push(
         new am4charts.ValueAxis()
       );
-      casteValueAxis.title.text = "PEOPLE VISITED";
+      casteValueAxis.title.text = "VISITORS";
       casteValueAxis.tooltip.disabled = true;
       // Create series
       let casteSeries = this.casteGraph.series.push(
@@ -4630,6 +3092,230 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
+  setLivepurposeGraph = (livedata: any[], allPurposes) => {
+    // utility function to sum to object values (without the id)
+    const sumItem = ({ purpose, ...a }, b) => ({
+      purpose,
+      ...Object.keys(a)
+        .reduce((r, k) => ({ ...r, [k]: a[k] + b[k] }), {})
+    });
+
+    const sumObjectsByKey = (...arrs) => [...
+      [].concat(...arrs) // combine the arrays
+        .reduce((m, o) => // retuce the combined arrays to a Map
+          m.set(o.purpose, // if add the item to the Map
+            m.has(o.purpose) ? sumItem(m.get(o.purpose), o) : { ...o } // if the item exists in Map, sum the current item with the one in the Map. If not, add a clone of the current item to the Map
+          )
+          , new Map).values()];
+
+    var sum = [];
+    // //console.log("livedata",livedata);
+    let finallivedata = livedata.reduce((obj, d) => {
+      const key = Object.keys(d)[0];
+      let ary: Array<any> = d[key];
+      // //console.log("star", d, key);
+      allPurposes.forEach(purpose => {
+        // if purpose not in ary then push and count
+        const found = ary.some(el => el.purpose === purpose);
+        if (!found) ary.push({ "purpose": purpose, count: 0 });
+      });
+      ary.sort((a, b) => a.purpose.localeCompare(b.purpose));
+      // //console.log("ary:", ary);
+      // //console.log("SUM", sum);
+      sum = sumObjectsByKey(sum, ary);
+      obj[key] = sum;
+      // //console.log("obj:", obj);
+      return obj;
+    }, sum);
+
+    // //console.log(finallivedata);
+
+    return finallivedata;
+
+  }
+
+  setDistrictStreamGraph = () => {
+    // Create series
+    if (this.streamGraph.data) {
+      //   while(this.streamGraph.series.length) {
+      //     this.streamGraph.series.removeIndex(0).dispose();
+      //     this.streamGraph.series.dummyData = nyll
+      // }
+
+      this.streamGraph.invalidateData();
+      // this.streamGraph.series.dispose();
+      var keys = Object.keys(this.streamGraph.data[0]);
+      //splice _id which is 0 index
+      keys.splice(0, 1);
+      keys.forEach(el => {
+        this.createSeriesStream(el, el.toUpperCase());
+      });
+    }
+
+  }
+
+  createSeriesStream(field, name) {
+    let series = this.streamGraph.series.push(new am4charts.LineSeries());
+    series.dummyData = {
+      field: field
+    }
+    series.dataFields.valueY = field + "_hi";
+    series.dataFields.openValueY = field + "_low";
+    series.dataFields.categoryX = "_id";
+    series.name = name;
+    series.tooltipText = "[font-size: 18]{name}[/]\n{categoryX}: [bold]{" + field + "}[/]";
+    series.strokeWidth = 1;
+    series.fillOpacity = 1;
+    series.tensionX = 0.8;
+
+    return series;
+  }
+
+  prepend(value, array) {
+    var newArray = array.slice();
+    newArray.unshift(value);
+    return newArray;
+  }
+
+  createKPI(div, kpiData: any[], theme) {
+
+
+    var themes = [
+      {
+        linecolor: color("#1f39d1"),
+        dotcolor: color("#2d4bfc"),
+        gradient: this.createGradient(color('#192eac'))
+      },
+      {
+        linecolor: color("#6ac2ea"),
+        dotcolor: color("#9ce0ff"),
+        gradient: this.createGradient(color('#67b7dc'))
+      },
+      {
+        linecolor: color("#8c72ef"),
+        dotcolor: color("#a992ff"),
+        gradient: this.createGradient(color('#8067dc'))
+      },
+      {
+        linecolor: color("#f16ee2"),
+        dotcolor: color("#ff85f1"),
+        gradient: this.createGradient(color('#dc67ce'))
+      }
+    ];
+
+    // Create chart instance
+    var kpichart1 = create(div, am4charts.XYChart);
+
+    kpichart1.logo.disabled = true;
+    kpichart1.padding(5, 20, 15, 0);
+
+    if (kpiData.length) {
+      let last = kpiData[kpiData.length - 1];
+      if (kpiData.length < 2)
+        kpiData = this.prepend({ _id: "0", count: (0.3 * last.count) }, kpiData);
+      last.disabled = false;
+
+    }
+    // Add data
+    kpichart1.data = kpiData;
+    // Create axes
+    let dateAxis1 = kpichart1.xAxes.push(new am4charts.CategoryAxis());
+    dateAxis1.dataFields.category = "_id";
+    dateAxis1.renderer.minGridDistance = 100;
+    dateAxis1.renderer.grid.template.location = 1;
+    // dateAxis1.baseInterval = {
+    //   count: 1,
+    //   timeUnit: "year"
+    // }
+
+    dateAxis1.renderer.grid.template.strokeWidth = 0;
+
+    let kpivalueAxis = kpichart1.yAxes.push(new am4charts.ValueAxis());
+
+    kpivalueAxis.renderer.grid.template.strokeWidth = 0;
+    // kpivalueAxis.min = 0;
+    kpivalueAxis.extraMax = 0.3;
+
+    kpivalueAxis.logarithmic = true;
+
+    dateAxis1.renderer.labels.template.disabled = true;
+    kpivalueAxis.renderer.labels.template.disabled = true;
+
+    // Create series
+    let kpiseries = kpichart1.series.push(new am4charts.LineSeries());
+    kpiseries.dataFields.valueY = "count";
+    kpiseries.dataFields.categoryX = "_id";
+    kpiseries.strokeWidth = 2;
+    kpiseries.connect = true;
+    kpiseries.tensionX = 0.8;
+    kpiseries.fillOpacity = 1;
+
+
+    kpiseries.fill = themes[theme].gradient;
+
+
+    let bullet = kpiseries.bullets.push(new am4charts.CircleBullet());
+    // bullet.stroke =  InterfaceColorSet().getFor("background");
+    bullet.disabled = true;
+    bullet.propertyFields.disabled = "disabled";
+
+    bullet.strokeWidth = 4;
+    bullet.tooltipText = "{valueY}";
+    bullet.circle.radius = 2;
+    bullet.circle.stroke = themes[theme].dotcolor;
+
+    bullet.adapter.add("fill", function (fill, target) {
+
+      return fill;
+    })
+
+    let range = kpivalueAxis.createSeriesRange(kpiseries);
+    range.value = 0;
+    range.endValue = 200;
+    range.contents.stroke = themes[theme].linecolor;
+    range.contents.fill = themes[theme].gradient;
+    range.contents.fillOpacity = 1;
+
+
+
+  }
+
+  createGradient = (color) => {
+
+    let gradient = new LinearGradient();
+    gradient.addColor(color, 0.6);
+    gradient.addColor(color, 0.3);
+    gradient.addColor(color, 0.1);
+    gradient.addColor(color, 0);
+    gradient.rotation = 90;
+
+    return gradient;
+
+  }
+
+
+  removeFilter(filter) {
+    if (this.appliedFilters.hasOwnProperty(filter)) {
+      const filterObj = {
+        key: filter,
+        value: "remove",
+      };
+
+
+      delete this.appliedFilters[filter];
+
+      // //console.log(this.appliedFilters);
+      if (Object.keys(this.appliedFilters).length === 0)
+        this.resetFilter();
+      else
+        this.getVisitAnalyticGraphData(filterObj);
+
+    }
+
+
+
+  }
+
 
   getCasteOptionData() {
     this.userService.getCasteOptionData().subscribe(
@@ -4649,7 +3335,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     this.userService.getVisitorOccupation().subscribe(
       (response: any) => {
         if (response.error === false) {
-          console.log(response.data)
+          //console.log(response.data)
           this.visitorOccupationOption = response.data;
         }
       },
@@ -4666,7 +3352,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //           let chartGeo = create("geoMap1", am4maps.MapChart);
   //           chartGeo.logo.disabled = true;
   //           chartGeo.maxZoomLevel = 64;
-  //           // console.log("dfgh")
+  //           // //console.log("dfgh")
   //           chartGeo.geodata = am4geodata_worldLow;
   //           // chart.geodata =[{type: "FeatureCollection",features:[{geometry:{coordinates:[-134.6803, 58.1617]}}]}]
 
@@ -5053,8 +3739,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             })
           }
 
-          // console.log(this.dataSource)
-          // console.log(this.visitorLists)
+          // //console.log(this.dataSource)
+          // //console.log(this.visitorLists)
           this.dataSource = new MatTableDataSource<any>(this.visitorLists);
           this.pageLength = response.data.length;
           // this.dataSource.paginator = this.paginator;
@@ -5258,7 +3944,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   // getVisitorPurposeOptionData() {
   //   this.userService.getVisitorPurposeOptionData().subscribe(
   //     (response: any) => {
-  //       console.log("response.data", response.data)
+  //       //console.log("response.data", response.data)
   //       this.purposes = response.data;
   //     },
   //     (error) => {
@@ -5282,14 +3968,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //          // this.visitorListsTotalLength = response.data.length;
 
 
-  //          console.log(" this.exportAllDataVar ",response.data.response)
+  //          //console.log(" this.exportAllDataVar ",response.data.response)
 
   //         //  this.isLoadingResults = false;
   //         }
   //       },
   //       (error) => {
   //         this.isLoadingResults = false;
-  //         console.log("error.message",error)
+  //         //console.log("error.message",error)
 
   //         this._snackBar.open(error.message, "", {
   //           duration: 5000,
@@ -5377,21 +4063,27 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   resetFilter() {
     this.appliedFilters = {};
-    this.paginator.pageIndex = 0;
-    this.visitorListsTotalLength = 1;
-    this.filterInitial = "";
-    this.filterValue = "";
-    this.pageLength = 0;
-    this.range.controls.fromDate.setValue("");
-    this.range.controls.toDate.setValue("");
-    this.filterKeyword = {
-      search: this.filterInitial,
-      purpose: this.filterValue,
-      date: this.range.value,
-    }
-    // this.getFilterMeetStatus()
-    this.filterTable()
-    console.log(this.appliedFilters)
+    // this.paginator.pageIndex = 0;
+    // this.visitorListsTotalLength = 1;
+    // this.filterInitial = "";
+    // this.filterValue = "";
+
+    this.filteredVisitorCount = "";
+    this.getVisitAnalyticGraphData();
+    this.viewGraphresetBtn = false;
+
+    this.range.reset();
+    // this.pageLength = 0;
+    // this.range.controls.fromDate.setValue("");
+    // this.range.controls.toDate.setValue("");
+    // this.filterKeyword = {
+    //   search: this.filterInitial,
+    //   purpose: this.filterValue,
+    //   date: this.range.value,
+    // }
+    // // this.getFilterMeetStatus()
+    // this.filterTable()
+    // //console.log(this.appliedFilters)
     //this.getVisitorList(1);
   }
 
@@ -5407,6 +4099,40 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         if (response.error === false) {
           this.loader = false;
           this.anlyticData = response.data;
+          this.kpi_total = response.data.kpi_total;
+          this.kpi_today = response.data.kpi_today;
+          this.kpi_week = response.data.kpi_week;
+          this.kpi_month = response.data.kpi_month;
+
+
+          var starting = moment(this.kpi_total[0]._id, 'MM-DD-YYYY');
+
+          this.kpi_total_percent = starting.isValid() ? starting.format('MMMM YYYY') : "";
+          this.kpi_today_percent = this.percentage(response.data.lastWeekVisits, this.anlyticData.thisWeekVisits);
+          this.kpi_week_percent = this.percentage(response.data.lastMonthVisits, this.anlyticData.thisMonthVisits);
+          this.kpi_month_percent = this.percentage(response.data.lastYearVisits, response.data.thisYearVisits);
+
+
+
+
+          this.createKPI("kpi-total", this.kpi_total, 0);
+          this.createKPI("kpi-today", this.kpi_today, 1);
+          this.createKPI("kpi-week", this.kpi_week, 2);
+          this.createKPI("kpi-month", this.kpi_month, 3);
+
+          console.log("kpi_lastweek:", response.data.lastWeekVisits);
+          console.log("kpi_lastMONTH:", response.data.lastMonthVisits);
+
+          console.log("percentage:", this.percentage(1, 3));
+
+
+
+
+          console.log("KPITOT:", response.data.kpi_total);
+          console.log("KPITODAY:", response.data.kpi_today);
+          console.log("KPIWEEK:", response.data.kpi_week);
+          console.log("KPIMONTH:", response.data.kpi_month);
+
         }
       },
       (error) => {
@@ -5418,11 +4144,24 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     );
   }
 
+  percentage(old, curr) {
+    if (old < 1 && curr < 1)
+      return 0;
+    if (old < 1 && curr > 0)
+      return 100;
+
+    return Math.round(((curr - old) / old) * 100);
+  }
+
   setToPollingTableView(): void {
     const ele = document.getElementById("exportVisitorListTable");
     ele.scrollIntoView({
       behavior: "smooth",
     });
+  }
+
+  absolute(num) {
+    return Math.abs(num);
   }
 
   ngOnChanges(): void {
@@ -5431,123 +4170,273 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
   getVisitAnalyticGraphData(filterValue?: any) {
 
-    console.log('filterdedd', filterValue);
+    //getanaly
+
+    //console.log('filterdedd', filterValue);
 
     if (filterValue) {
       this.viewGraphresetBtn = true;
       this.isLoadingResults = true;
     }
 
+    this.graphDataLoader = true;
+
     this.userService.graphDataLoader.next(true);
+
+
+
     this.userService.getVisitAnalyticGraphData(filterValue).subscribe(
       (response: any) => {
         if (response.error === false) {
 
-
-          console.log("SUCCESSFULL ARRIVED");
+          //console.log("SUCCESSFULL ARRIVED");
           this.userService.graphDataLoader.next(false);
-
-
-          console.log('Purpose:', this.purposeGraph.data);
-          this.purposeGraph.data = response.data.purpose;
-
-          this.genderGraph.data = response.data.gender;
-          this.casteGraph.data = response.data.caste;
           if (!filterValue) {
             this.purposes = response.data.purpose;
-            console.log("purposes", this.purposes);
+            //console.log("purposes", this.purposes);
           }
 
-          console.log("castedat:", this.casteGraph.data);
+          // //console.log('Purpose:', this.purposeGraph.data);
+          // //console.log("castedat:", this.casteGraph.data);
+          // //console.log("timeframe:", response.data.timeFrame);
 
+
+
+          if (response.data.purpose)
+            this.purposeGraph.data = response.data.purpose;
+          if (response.data.gender) {
+            this.genderGraph.data = response.data.gender;
+            if (this.genderGraph.data.length < 2)
+              this.genderGraph.data = _.unionBy(this.genderGraph.data, [{ _id: "Male", count: 0 }, { _id: "Female", count: 0 }], "_id");
+          }
+          if (response.data.caste)
+            this.casteGraph.data = response.data.caste;
+          if (this.casteGraph.data)
+            this.networkSeries.data = this.casteGraph.data;
+          if (response.data.proximity)
+            this.proximityGraph.data = response.data.proximity;
+
+
+          //  this.genderGraph.data = [...new Set([..., ...])];
+
+
+
+
+
+          //console.log("PROEXIM", this.proximityGraph.data);
           // let castGrf = [];
           // for (let i = 0; i < this.casteGraph.data.length; i++) {
           //   let tt = {name: this.casteGraph.data[i]._id, value: 1,}
           //   castGrf.push(tt)
           // }
-          this.networkSeries.data = this.casteGraph.data;
+
+          let livepurpose = response.data.livePurposes;
+
+          if (livepurpose && livepurpose.livedata && livepurpose.livedata.length > 0) {
+            // //console.log("liveD:",livepurpose);
+            this.livepurposeGraphData = this.setLivepurposeGraph(livepurpose.livedata, livepurpose.allpurposes);
+            let livekeys = Object.keys(this.livepurposeGraphData)
+            // //console.log("KEYS",Object.keys(this.livepurposeGraphData));
+            this.firstlivekey = livekeys[0];
+            this.lastlivekey = livekeys[livekeys.length - 1];
+            this.liveyear = parseInt(this.firstlivekey);
+            this.livepurposeGraph.data = this.livepurposeGraphData[this.liveyear];
+
+            var livemonth = moment(this.firstlivekey, 'MM-DD-YYYY');
+
+
+            this.livepurposeGraph.label.text = livemonth.isValid() ? livemonth.format('MMM') : this.liveyear;
+
+
+            this.livepurposeGraph.categoryAxis.sortBySeries = this.livepurposeGraph.sortseries;
+
+            console.log("LIVEPIRP", response.data.livePurposes);
+            // //console.log("LIVEP,",livepurpose.livedata[0]);
+            // this.livepurposeGraph.categoryAxis.zoom({ start: 0, end: 1 / livepurpose.livedata[0].length });;
+            // //console.log("zpp,",this.livepurposeGraph.data.length);
+            // this.livepurposeGraph.zoom.zoom({ start: 0, end: 1 / this.livepurposeGraph.data.length })
+            // //console.log("LIVESETDONE:", this.livepurposeGraph.data);
+          }
+
+
+          //console.log("districtStream:", response.data.districtStream);
+
+          if (response.data.heatMap) {
+            this.heatmapGraph.data = response.data.heatMap;
+
+            //console.log("this.heatmapGraph.data:", this.heatmapGraph.data);
+
+            let uniqueDays = [...new Set(this.heatmapGraph.data.map(item => item.day))].sort((a, b) => a > b && 1 || -1);
+
+            //console.log("uniqdays", uniqueDays);
+
+            this.heatmapGraph.data.forEach((e, i) => {
+
+              let current = e.month;
+
+              uniqueDays.map((day, i) => {
+
+                let thing = this.heatmapGraph.data.find(element => element.day === day && element.month === current);
+                if (!thing) {
+                  this.heatmapGraph.data.push({ _id: (current + "-" + day), month: current, day: day, count: 0 });
+                }
+
+              });
+
+
+              return e;
+            })
+
+            //console.log("this.2222a:", this.heatmapGraph.data.sort((a, b) => a.month - b.month || a.day - b.day));
+
+
+            this.heatmapGraph.data = this.heatmapGraph.data.map((element: any) => {
+
+              var d = moment(element._id, 'MM-DD-YYYY');
+              var m = moment(element.month, 'MM-DD-YYYY');
+              // d.month(); // 1
+              if (d.isValid()) {
+                return {
+                  '_id': d.format('MMMM Do'),
+                  'month': d.format('MMMM'),
+                  'day': element.day,
+                  'count': element.count
+                }
+              } else {
+                return {
+                  '_id': "NA",
+                  'month': m.format('MMMM'),
+                  'day': element.day,
+                  'count': element.count
+                }
+
+              }
+
+            })
+
+          }
+          if (response.data.districtStream) {
+            if (this.streamGraph.data.length > 0) {
+              this.streamGraph.data = response.data.districtStream;
+              //console.log("yes");
+            }
+            else {
+              this.districts = response.data.all_districts;
+              this.streamGraph.data = response.data.districtStream;
+              this.setDistrictStreamGraph();
+              //console.log("no,", this.districts);
+
+            }
+
+
+            this.streamGraph.data = this.streamGraph.data.map((element: any) => {
+              var d = moment(element._id, 'MM-DD-YYYY');
+              if (d.isValid()) {
+                return {
+                  ...element,
+                  '_id': d.format('MMM'),
+                }
+              }
+            });
+
+          }
+          //console.log("heatmap:", response.data.heatMap);
+
+          // //console.log("proximity:", response.data.proximity);
+
+
+          // //console.log(response.data.heatMap.reduce((a,b)=> a+=b.count ,0));
 
           // if (this.casteGraph.data.length > 8) {
           //   this.casteGraph.scrollbarX = new Scrollbar();
           //   this.casteGraph.scrollbarX.parent = this.casteGraph.bottomAxesContainer;
           // }
-          if (response.data.timeFrame.length > 8) {
-            this.timeFrameGraphData.scrollbarX = new Scrollbar();
-            this.timeFrameGraphData.scrollbarX.parent = this.timeFrameGraphData.bottomAxesContainer;
+
+          if (response.data.timeFrame) {
+            if (response.data.timeFrame.length > 8) {
+              this.timeFrameGraphData.scrollbarX = new Scrollbar();
+              this.timeFrameGraphData.scrollbarX.parent = this.timeFrameGraphData.bottomAxesContainer;
+            }
+
+            if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
+              this.timeFrameGraphData.data = response.data.timeFrame;
+              this.timeFrameXText.title.text = "WEEKS"
+              this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
+
+                var d = moment(element._id, 'MM-DD-YYYY');
+                d.month(); // 1
+                return {
+                  '_id': d.format('ddd'),
+                  'count': element.count
+                }
+              })
+            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
+              var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
+              this.timeFrameGraphData.data = sortedData.map((element) => {
+
+
+
+                var d = moment(element._id, 'MM-DD-YYYY');
+                d.month(); // 1
+                return {
+                  '_id': d.format('MMM'),
+                  'count': element.count
+                }
+              })
+              this.timeFrameXText.title.text = "MONTH"
+            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
+              this.timeFrameGraphData.data = response.data.timeFrame;
+              this.timeFrameXText.title.text = "YEARS"
+              this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
+
+                var d = moment(element._id, 'MM-DD-YYYY');
+                d.month(); // 1
+                return {
+                  '_id': d.format('YYYY'),
+                  'count': element.count
+                }
+              })
+            } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
+              this.timeFrameGraphData.data = response.data.timeFrame;
+              this.timeFrameXText.title.text = "DATES"
+              this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
+                var d = moment(element._id, 'MM-DD-YYYY');
+                d.month(); // 1
+                return {
+                  '_id': d.format('MMM'),
+                  'count': element.count
+                }
+              })
+            }
+            else {
+              this.timeFrameGraphData.data = response.data.timeFrame;
+              this.timeFrameXText.title.text = "MONTHS"
+              var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
+
+              this.timeFrameGraphData.data = sortedData.map((element) => {
+
+                //console.log("elem", element);
+
+                var d = moment(element._id, 'MM-DD-YYYY');
+                d.month(); // 1
+                return {
+                  '_id': d.format('MMM'),
+                  'count': element.count
+                }
+              })
+            }
+
           }
 
-          if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Week') {
-            this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "WEEKS"
-            this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
-
-              var d = moment(element._id, 'MM-DD-YYYY');
-              d.month(); // 1
-              return {
-                '_id': d.format('ddd'),
-                'count': element.count
-              }
-            })
-          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Month') {
-            var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-
-            this.timeFrameGraphData.data = sortedData.map((element) => {
-
-              var d = moment(element._id, 'MM-DD-YYYY');
-              d.month(); // 1
-              return {
-                '_id': d.format('MMM'),
-                'count': element.count
-              }
-            })
-            this.timeFrameXText.title.text = "MONTH"
-          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Year') {
-            this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "YEARS"
-            this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
-
-              var d = moment(element._id, 'MM-DD-YYYY');
-              d.month(); // 1
-              return {
-                '_id': d.format('YYYY'),
-                'count': element.count
-              }
-            })
-          } else if (filterValue && filterValue.key === "timeFrame" && filterValue.value === 'By Date') {
-            this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "DATES"
-            this.timeFrameGraphData.data = response.data.timeFrame.map((element) => {
-              var d = moment(element._id, 'MM-DD-YYYY');
-              d.month(); // 1
-              return {
-                '_id': d.format('MMM'),
-                'count': element.count
-              }
-            })
-          }
-          else {
-            this.timeFrameGraphData.data = response.data.timeFrame;
-            this.timeFrameXText.title.text = "MONTHS"
-            var sortedData: any = response.data.timeFrame.sort((a, b) => a._id > b._id && 1 || -1);//response.data.timeFrame.sort();
-
-            this.timeFrameGraphData.data = sortedData.map((element) => {
-
-              var d = moment(element._id, 'MM-DD-YYYY');
-              d.month(); // 1
-              return {
-                '_id': d.format('MMM'),
-                'count': element.count
-              }
-            })
-          }
-
+          // //console.log("timeframeMAPED:", this.timeFrameGraphData.data);
           // this.geodata.data = response.data.boothArea;
           // this.geodata1.data = response.data.boothArea;
           // this.geodata1.data = response.data.districtArea;
-         
-          //map ka data in this function below
 
-          let pbnos = response.data.boothArea;
+          //map ka data in this function below
+          if (response.data.boothArea)
+            this.pbPoints.data = response.data.boothArea;
 
           // this.pbPoints.data = this.geodatajson.features.filter(data => {
           //   return (data.geometry.type == "Point");
@@ -5556,28 +4445,46 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // });
 
           // pbnos.map()
+          if (response.data.visitorCategory)
+            this.visitorCategoryData = response.data.visitorCategory;
+          if (response.data.occupation)
+            this.visitorOccupatioData = response.data.occupation;
+          if (response.data.ageGroup)
+            this.ageGraphData = response.data.ageGroup;
+          if (response.data.ppi)
+            this.perceivedPoliticalInclinationData = response.data.ppi
+          if (response.data.meetingLocation)
+            this.meetingLocationGraphData = response.data.meetingLocation;
+          if (response.data.whomVisitorMeet)
+            this.whomVisitorMeetGraphData = response.data.whomVisitorMeet;
+          if (response.data.meetingStatus)
+            this.meetingStatusGraphData = response.data.meetingStatus;
+          if (response.data.count)
+            this.filteredVisitorCount = response.data.count;
+          if (response.data.isSamajwadiPartyMember){
+            this.samajwadiPartyGraphData = response.data.isSamajwadiPartyMember;
+            if (this.samajwadiPartyGraphData.length < 2)
+            this.samajwadiPartyGraphData = _.unionBy(this.samajwadiPartyGraphData, [{ _id: "Yes", count: 0 }, { _id: "No", count: 0 }], "_id");
+          }
+          if (response.data.area){
+            this.visitorAreaData = response.data.area;
+            if (this.visitorAreaData.length < 2)
+            this.visitorAreaData = _.unionBy(this.visitorAreaData, [{ _id: "Urban", count: 0 }, { _id: "Rural", count: 0 }], "_id");
+          }
 
-          this.pbPoints.data = pbnos;
-    
-
-          console.log("chgeo:",this.pbPoints);
-
-          console.log('geodata:',response.data.boothArea);
-
-          this.visitorCategoryData = response.data.visitorCategory;
-          this.visitorOccupatioData = response.data.occupation;
-          this.ageGraphData = response.data.ageGroup;
-          this.perceivedPoliticalInclinationData = response.data.ppi
-          this.meetingLocationGraphData = response.data.meetingLocation;
-          this.whomVisitorMeetGraphData = response.data.whomVisitorMeet;
-          this.meetingStatusGraphData = response.data.meetingStatus;
-          this.filteredVisitorCount = response.data.count;
-          this.samajwadiPartyGraphData = response.data.isSamajwadiPartyMember;
-          this.visitorAreaData = response.data.area
+          this.graphDataLoader = false;
         }
 
+        console.log("response.data.ageGroup", this.ageGraphData);
 
-        if (filterValue) {
+
+        let sortingArr = ["Under 18","18 - 25","26 - 40","41 - 60","Over 60"];
+        
+
+        this.ageGraphData.sort((a, b) => sortingArr.indexOf(a.age) - sortingArr.indexOf(b.age));
+
+
+        if (filterValue && response.data.visitorData) {
           this.visitorLists = response.data.visitorData;
           this.exportList = [];
           for (var i = 0; i <= this.visitorLists.length - 1; i++) {
@@ -5633,7 +4540,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         }
         else {
           this.getVisitorList(1);
-          this.viewGraphresetBtn = false;
+          // this.viewGraphresetBtn = false;
         }
       },
       (error) => {
@@ -5643,6 +4550,82 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         });
       }
     );
+
+  }
+
+
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
+  }
+
+
+  rangeFilter(newObj) {
+
+    if (newObj) {
+      let FilterByDate = this.range.value;
+
+      if ((FilterByDate.fromDate) && (FilterByDate.toDate)) {
+        console.log(FilterByDate)
+        const formatDate = {
+          fromDate: new Date(FilterByDate.fromDate.getTime() - FilterByDate.fromDate.getTimezoneOffset() * 60000),
+          toDate: new Date(FilterByDate.toDate.getTime() - FilterByDate.toDate.getTimezoneOffset() * 60000),
+        }
+
+        const filterObj = {
+          key: "range",
+          value: formatDate.fromDate.toISOString() + "=" + formatDate.toDate.toISOString(),
+        };
+
+        let range = this.appliedFilters['range'];
+        if(range.key && range.key != "By Week" && range.key != "By Month" && range.key != "By Year"){
+          this.appliedFilters['range'] = {key:"By Date"};
+        }
+
+        this.appliedFilters['range'].value = moment(formatDate.fromDate).format('D MMM YY') + " to " + moment(formatDate.toDate).format('D MMM YY');
+
+        this.getVisitAnalyticGraphData(filterObj);
+
+      }
+
+    }
+  }
+
+  timeFrameFilter(value): void {
+    // const filterObj = {
+    //   key: "timeFrame",
+    //   value: value,
+    // };
+
+    var now = moment().startOf('day').toDate();
+
+    this.appliedFilters['range'] = {};
+
+    switch (value) {
+      case "By Week":
+          this.appliedFilters['range'].key = "By Week";
+          this.range.patchValue({fromDate:moment(now).subtract(1, 'week').toDate(),toDate:moment(now).toDate()}); 
+
+        break;
+      case "By Month":
+        this.appliedFilters['range'].key = "By Month";
+        this.range.patchValue({fromDate:moment(now).subtract(1, 'month').toDate(),toDate:moment(now).toDate()}); 
+
+        break;
+      case "By Year":
+        this.appliedFilters['range'].key = "By Year";
+        this.range.patchValue({fromDate:moment(now).subtract(1, 'year').toDate(),toDate:moment(now).toDate()}); 
+
+        break;
+      default:
+        this.appliedFilters['range'].key = "By Date";
+        break;
+    }
+
+    // this.getFilterMeetStatus(filterObj)
+
+    // this.getVisitAnalyticGraphData(filterObj);
 
   }
 
@@ -5658,6 +4641,31 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     // this.getFilterMeetStatus(filterObj)
 
   }
+
+  proximityFilter(value): void {
+    const filterObj = {
+      key: "proximity",
+      value: value,
+    };
+
+    this.appliedFilters['proximity'] = value;
+
+    this.getVisitAnalyticGraphData(filterObj);
+
+  }
+
+  districtFilter(value): void {
+    const filterObj = {
+      key: "district",
+      value: value,
+    };
+
+    this.appliedFilters['district'] = value;
+
+    this.getVisitAnalyticGraphData(filterObj);
+
+  }
+
 
   visitorAreaFilter(filterObj): void {
 
@@ -5677,7 +4685,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.appliedFilters['gender'] = value;
 
-    console.log(this.appliedFilters);
+    //console.log(this.appliedFilters);
     // this.getFilterMeetStatus(filterObj)
     this.getVisitAnalyticGraphData(filterObj);
     // this.getFilterGender(filterObj);
@@ -5698,15 +4706,15 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   ageFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj)
-    this.appliedFilters['age'] = filterObj;
-    console.log(this.appliedFilters);
+    this.appliedFilters['ageGroup'] = filterObj;
+    //console.log(this.appliedFilters);
     this.getVisitAnalyticGraphData(filterObj);
 
   }
 
   perceiveFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['perceive'] = filterObj;
+    this.appliedFilters['ppi'] = filterObj;
 
     this.getVisitAnalyticGraphData(filterObj);
 
@@ -5714,13 +4722,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   samajwadiPartyFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['aapMember'] = filterObj;
+    this.appliedFilters['isSamajwadiPartyMember'] = filterObj;
     this.getVisitAnalyticGraphData(filterObj);
   }
 
   visitorCategoryFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['category'] = filterObj;
+    this.appliedFilters['visitorCategory'] = filterObj;
 
     this.getVisitAnalyticGraphData(filterObj);
 
@@ -5735,7 +4743,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
   whomVisitorMeetFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['whomMeet'] = filterObj;
+    this.appliedFilters['whomVisitorMeet'] = filterObj;
 
     this.getVisitAnalyticGraphData(filterObj);
 
@@ -5744,44 +4752,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   meetingStatusGraphFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['meetStatus'] = filterObj;
+    this.appliedFilters['meetingStatus'] = filterObj;
 
     this.getVisitAnalyticGraphData(filterObj);
   }
 
   meetingLocationGraphFilter(filterObj): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['meetLocation'] = filterObj;
+    this.appliedFilters['meetingLocation'] = filterObj;
 
     this.getVisitAnalyticGraphData(filterObj);
 
   }
 
-  timeFrameFilter(value): void {
-    const filterObj = {
-      key: "timeFrame",
-      value: value,
-    };
-    // this.getFilterMeetStatus(filterObj)
 
-    this.getVisitAnalyticGraphData(filterObj);
-    // this.getFilterArea(filterObj)
-    // this.getFilterDistrictConstituency(filterObj)
-    // this.getFilterAgeGroup(filterObj)
-    // this.getFilterMeetLocation(filterObj)
-    // this.getFilterIsSamjawadi(filterObj)
-    // this.getFilterGender(filterObj)
-    // this.getFilterCaste(filterObj)
-    // this.getFilterOccupation(filterObj)
-    // this.getFilterPpi(filterObj)
-    // this.getFilterPurpose(filterObj)
-    // this.getFilterTimeFrame(filterObj)
-    // this.getFilterVisitorCategory(filterObj)
-    // this.getFilterVisitorMeet(filterObj)
-    // this.getVisitorGraphFilter(filterObj);
-    // console.log("filterObj",filterObj)
-    // this.getVisitAnalyticGraphData(filterObj);
-  }
 
   //separate api
 
@@ -5837,7 +4821,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'area') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           // console.log("area", this.filteredVisitorCount)
+  //           // //console.log("area", this.filteredVisitorCount)
   //         }
   //         this.visitorAreaData = response.data;
 
@@ -5876,7 +4860,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'ageGroup') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //console.log("ageGroup", this.filteredVisitorCount)
+  //           ////console.log("ageGroup", this.filteredVisitorCount)
   //         }
   //         this.ageGraphData = response.data;
   //         this.getFilterMeetLocation(filterObj)
@@ -5897,7 +4881,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'meetingLocation') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //console.log("meetingLocation", this.filteredVisitorCount)
+  //           ////console.log("meetingLocation", this.filteredVisitorCount)
   //         }
   //         this.meetingLocationGraphData = response.data;
   //         this.getFilterIsSamjawadi(filterObj)
@@ -5918,7 +4902,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   //         if (filterObj?.key == 'isSamajwadiPartyMember') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //  console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
+  //           //  //console.log("isSamajwadiPartyMember", this.filteredVisitorCount)
   //         }
   //         this.samajwadiPartyGraphData = response.data;
   //         setTimeout(() => {
@@ -5940,7 +4924,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'gender') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //console.log("gender", this.filteredVisitorCount)
+  //           ////console.log("gender", this.filteredVisitorCount)
   //         }
   //         this.genderGraph.data = response.data;
   //         setTimeout(() => {
@@ -5962,7 +4946,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'caste') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           // console.log("caste", this.filteredVisitorCount)
+  //           // //console.log("caste", this.filteredVisitorCount)
   //         }
   //         this.casteGraph.data = response.data;
   //         let castGrf = [];
@@ -6010,7 +4994,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'occupation') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //console.log("occupation", this.filteredVisitorCount)
+  //           ////console.log("occupation", this.filteredVisitorCount)
   //         }
   //         this.visitorOccupatioData = response.data;
   //         this.userService.graphDataLoader7.next(false);
@@ -6031,7 +5015,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   //         if (filterObj?.key == 'ppi') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //console.log("ppi", this.filteredVisitorCount)
+  //           ////console.log("ppi", this.filteredVisitorCount)
   //         }
   //         this.perceivedPoliticalInclinationData = response.data;
   //         // this.getFilterPurpose(filterObj)
@@ -6073,11 +5057,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //         // this.purposeGraph.data = data;
   //         // this.purposes = data;
 
-  //         console.log("purposePG", response.data);
+  //         //console.log("purposePG", response.data);
 
   //         this.getFilterTimeFrame(filterObj)
   //         if (filterObj?.key == 'purpose') {
-  //           console.log("purpose", this.filteredVisitorCount)
+  //           //console.log("purpose", this.filteredVisitorCount)
   //           this.filteredVisitorCount = response.data[0].count;
   //         }
   //         this.graphDataLoader = false;
@@ -6097,7 +5081,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //         this.getFilterVisitorCategory(filterValue)
   //         if (filterValue?.key == 'timeFrame') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           //  console.log("timeFrame", this.filteredVisitorCount)
+  //           //  //console.log("timeFrame", this.filteredVisitorCount)
   //         }
   //         this.graphDataLoader2 = false;
   //         if (response.data.length > 8) {
@@ -6167,7 +5151,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'visitorCategory') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           // console.log("visitorCategory", this.filteredVisitorCount)
+  //           // //console.log("visitorCategory", this.filteredVisitorCount)
   //         }
   //         this.visitorCategoryData = response.data;
   //         this.userService.graphDataLoader6.next(false);
@@ -6187,7 +5171,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   //       if (response.error === false) {
   //         if (filterObj?.key == 'whomVisitorMeet') {
   //           this.filteredVisitorCount = response.data[0].count;
-  //           // console.log("whomVisitorMeet", this.filteredVisitorCount)
+  //           // //console.log("whomVisitorMeet", this.filteredVisitorCount)
   //         }
   //         this.whomVisitorMeetGraphData = response.data;
   //         this.userService.graphDataLoader8.next(false);

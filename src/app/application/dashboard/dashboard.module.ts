@@ -14,6 +14,8 @@ import { VisitorOccupationGraphComponent } from './graphs/visitor-occupation-gra
 import { VisitorAreaGraphComponent } from './graphs/visitor-area-graph/visitor-area-graph.component';
 import { SamajwadiPartyGraphComponent } from './graphs/samajwadi-party-graph/samajwadi-party-graph.component';
 import { AreaMapComponent } from './graphs/area-map/area-map.component';
+
+
 const route: Routes = [
   {
     path: '',

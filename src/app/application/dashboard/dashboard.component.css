@@ -1,5 +1,3 @@
-
-
 #custom-search-input button {
     border: 0;
     background: none;
@@ -14,6 +12,19 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: inherit;
+}
+
+.loader {
+
+    background-image: url("./../../../assets/images/login/loaderSVG.svg");
+    width: 100%;
+    height: 300px;
+    top: calc(50% - 150px);
+    position: absolute;
+    background-size: 300px;
+    background-position: center;
+    opacity: 0.4;
+    background-repeat: no-repeat;
 }
 
 .search-query:focus+button {
@@ -39,12 +50,14 @@ td:last-child {
     font-size: 14px;
 }
 
-th:last-child{
+th:last-child {
     background-color: #585C67 !important;
 }
+
 .mat-stroked-button:not(.mat-button-disabled) {
     border-color: inherit;
 }
+
 .mat-datepicker-toggle,
 .mat-datepicker-content .mat-calendar-next-button,
 .mat-datepicker-content .mat-calendar-previous-button {
@@ -53,95 +66,142 @@ th:last-child{
     top: 5px;
 }
 
-  /* Style the form - display items horizontally */
-  label {
+/* Style the form - display items horizontally */
+label {
     /* Other styling... */
     text-align: right;
     clear: both;
-    float:left;
-    margin-right:15px;
+    float: left;
+    margin-right: 15px;
 }
+
 /* Structure */
 .example-container {
     position: relative;
     min-height: 200px;
-  }
-  
-  .example-table-container {
+}
+
+.example-table-container {
     position: relative;
     height: 400px;
     overflow: auto;
-  }
-  
-  table {
+}
+
+table {
     width: 100%;
-  }
-  
-  .example-rate-limit-reached {
+}
+
+.example-rate-limit-reached {
     color: #980000;
     max-width: 360px;
     text-align: center;
-  }
-  
-  /* Column Widths */
-  .mat-column-number,
-  .mat-column-state {
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
     max-width: 64px;
-  }
-  
-  .mat-column-created {
+}
+
+.mat-column-created {
     max-width: 124px;
-  }
-.margin-bot{
+}
+
+.margin-bot {
     margin-bottom: 5px;
 }
+
 /* for left side dropdown */
 
-.dropdown-menu.more_filter .dropdown-item, .dropdown-menu.more_filter .dropdown-item:hover{
+.filter-remove {
+    line-height: 23px;
+    right: 0;
+    width: 18px;
+    top: 0;
+    font-size: 13px;
+    height: 100%;
+    position: absolute;
+    background: #414654;
+    cursor: pointer;
+    display: none;
+}
+
+.filter-tag {
+    display: inline-block;
+    position: relative;
+    background: #414654;
+    padding: 2px 10px;
+    margin-right: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.filter-tag:hover .filter-remove{
+display: inline-block;
+}
+
+.filter-remove:hover{
+    color: red;
+}
+
+
+
+.dropdown-menu.more_filter .dropdown-item,
+.dropdown-menu.more_filter .dropdown-item:hover {
     color: #FFFFFF;
     font-size: 14px;
     padding: 10px;
-    
+
 }
-.dropdown-menu.more_filter .dropdown-item:hover, .dropdown-menu.more_filter .dropdown-item:focus{
-   background-color: #282b35;
+
+.dropdown-menu.more_filter .dropdown-item:hover,
+.dropdown-menu.more_filter .dropdown-item:focus {
+    background-color: #282b35;
 }
 
 /* for right side dropdown */
-.dropdown-menu.more_filter_right{
-    left: auto!important;
+.dropdown-menu.more_filter_right {
+    left: auto !important;
     right: 0px;
     background: #282F41;
 }
-.dropdown-menu.more_filter_right .dropdown-item, .dropdown-menu.more_filter_right .dropdown-item:hover{
+
+.dropdown-menu.more_filter_right .dropdown-item,
+.dropdown-menu.more_filter_right .dropdown-item:hover {
     color: #FFFFFF;
     font-size: 14px;
     padding: 10px;
-    
-}
-.dropdown-menu.more_filter_right .dropdown-item:hover, .dropdown-menu.more_filter_right .dropdown-item:focus{
-   background-color: #282b35;
+
 }
 
- /* Media query for tablate */
- @media (min-width: 1024px) and (max-width: 1366px) {
-  
-   
-  }
-  @media (min-width: 1024px) and (max-width: 1112px) {
-  
+.dropdown-menu.more_filter_right .dropdown-item:hover,
+.dropdown-menu.more_filter_right .dropdown-item:focus {
+    background-color: #282b35;
+}
+
+/* Media query for tablate */
+@media (min-width: 1024px) and (max-width: 1366px) {}
+
+@media (min-width: 1024px) and (max-width: 1112px) {
+
     .for_pro {
-       max-width: 50%;
-       flex: 50%;
+        max-width: 50%;
+        flex: 50%;
     }
+
     .for_pro2 {
-       max-width: 100%;
-       flex: 50%;
+        max-width: 100%;
+        flex: 50%;
     }
-    .pro-heg .card-padding{
+
+    .pro-heg .card-padding {
         max-height: 500px;
         height: 455px;
     }
+
     .footer {
         padding: 20px 0;
         margin-top: 60px !important;
@@ -149,19 +209,21 @@ th:last-child{
         width: 100%;
         bottom: 0;
     }
-    .ipro_ip{
+
+    .ipro_ip {
         flex: 100%;
-    max-width: 100%;
+        max-width: 100%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  
-  .margin-bot {
-       margin-bottom: 10px;
-}
-.card-hig{
-    max-height: 200px;
-    height: 150px;
-}
+
+    .margin-bot {
+        margin-bottom: 10px;
+    }
+
+    .card-hig {
+        max-height: 200px;
+        height: 150px;
+    }
 }

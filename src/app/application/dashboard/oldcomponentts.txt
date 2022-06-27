@@ -772,7 +772,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let valueAxis = this.timeFrameGraphData.yAxes.push(
         new am4charts.ValueAxis()
       );
-      valueAxis.title.text = "NO. OF PEOPLE VISITED";
+      valueAxis.title.text = "NO. OF VISITORS";
       //valueAxis.integersOnly = true;
       valueAxis.tooltip.disabled = true;
       // Create series
@@ -847,7 +847,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       let casteValueAxis = this.casteGraph.yAxes.push(
         new am4charts.ValueAxis()
       );
-      casteValueAxis.title.text = "NO. OF PEOPLE VISITED";
+      casteValueAxis.title.text = "NO. OF VISITORS";
       // Create series
       let casteSeries = this.casteGraph.series.push(
         new am4charts.ColumnSeries()

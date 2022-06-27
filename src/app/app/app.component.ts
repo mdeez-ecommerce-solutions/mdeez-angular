@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   isShow: boolean;
   topPosToStartShowing = 150;
   idleState = 'Not started.';
+  isVis = false;
   authData
   adminRole=environment.ADMIN_ROLE
   superAdminRole=environment.SUPER_ADMIN_ROLE

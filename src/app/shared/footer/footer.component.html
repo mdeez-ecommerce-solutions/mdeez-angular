@@ -1,4 +1,5 @@
-<div [ngClass]="showDashboardMenu == true ? 'footer-login' : 'footer-dashboard'"
+<!-- [ngClass]="showDashboardMenu == true ? 'footer-login' : 'footer-dashboard'" -->
+<div *ngIf="!showDashboardMenu;"
     style="position: absolute; bottom: 0; display: flex; align-items: center; width: 100%; padding:40px 150px; justify-content: space-between; color: #c4c4c4; height: 30px; font-size: 60px; /* padding: 0 10px;">
     <div class="foot-ver" style="font-size: 13px; padding: 0 21px;"> Version 1.2.3 </div>
 

@@ -120,6 +120,24 @@ label {
   font-size: 12px;
 }
 
+.mat-progress-bar {
+  margin-top: 130px !important;
+  width: 135px !important;
+}
+
+.mat-progress-bar-fill::after {
+
+  background-color: #2c334a;
+  //  #575c6a; 
+
+}
+
+.mat-progress-bar-buffer {
+  background-color: #181d2d;
+  // #383c4c;
+
+}
+
 .filter-tag {
   display: inline-block;
   background: #414654;
@@ -677,11 +695,11 @@ h5 {
   padding: 8px 15px;
 }
 
-#psData{
+#psData {
   font-size: 11px;
-    font-style: italic;
-    color: #b2b2b2;
-    margin-top: 15px;
+  font-style: italic;
+  color: #b2b2b2;
+  margin-top: 15px;
 }
 
 .percent-kpi {
@@ -963,6 +981,30 @@ svg.mat-paginator-icon {
   background-color: var(--colorBackground);
   color: var(--colorLight);
   border-color: rgba(232, 232, 232, 0.3);
+}
+
+//mat datepicker dark theme mdeez customized
+
+.mat-datepicker-content {
+  background-color: #1a1f2e !important;
+  color: rgb(255 255 255 / 87%) !important;
+}
+
+.mat-calendar-table-header,
+.mat-calendar-body-label {
+  color: rgb(255 255 255 / 54%) !important;
+}
+
+.mat-calendar-body-cell-content {
+  color: white !important;
+}
+
+.mat-calendar-arrow {
+  fill: rgb(255 255 255 / 54%) !important;
+}
+
+.cdk-global-scrollblock {
+  overflow-y: unset !important;
 }
 
 .e-schedule .e-schedule-toolbar {
@@ -1302,15 +1344,16 @@ label.star {
   transition: all 0.5s;
 }
 
-.custom-control-label::after,.custom-control-label::before {
-top: 0 !important;
+.custom-control-label::after,
+.custom-control-label::before {
+  top: 0 !important;
 }
 
 app-footer .footer-dashboard {
   // background: #161b29;
-  background:  #0d141b;
+  background: #0d141b;
 
- 
+
 }
 
 

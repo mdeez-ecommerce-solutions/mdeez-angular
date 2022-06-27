@@ -31,11 +31,11 @@ export class SamajwadiPartyGraphComponent implements OnInit {
       this.visitorAreaGraph.data = data;
     }
   }
-  graphDataLoader: boolean;
+  graphDataLoader: boolean = true;
   @Output() samajwadiPartyFilterObj: EventEmitter<any> = new EventEmitter();
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
-    this.user.graphDataLoader4.subscribe((res) => this.graphDataLoader = res)
+    this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
 
   ngOnInit(): void {}
@@ -88,10 +88,19 @@ series.colors.list = [
   // color("#3FA8E1"),
   // color("#D69600"),
   // color("#D35249"),
-  color("#d69728"),
-  color("#fd7e14"),
- 
+  color("#305ae3"),
+  color("#d95ad5"),
+
+
 ];
+
+
+// this.networkSeries.colors.list = [
+//   color("#2039d1"),
+//   color("#305ae3"),
+//   color("#207cd1"),
+//   color("#409bdb"),
+//   color("#43a8d6"),
 //#fd7e14 No
 //#d69728 yes
 
