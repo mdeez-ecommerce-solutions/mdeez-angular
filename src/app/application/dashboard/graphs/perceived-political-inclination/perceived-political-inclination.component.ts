@@ -117,7 +117,7 @@ cursor.lineY.disabled = true;
 cursor.behavior = "none";
 
 let bullet = columnTemplate.createChild(am4charts.CircleBullet);
-bullet.circle.radius = 12;
+bullet.circle.radius = 15;
 bullet.valign = "middle";
 bullet.align = "left";
 bullet.isMeasured = true;
@@ -133,8 +133,8 @@ outlineCircle.adapter.add("radius", (radius, target: any) => {
 })
 
 let image = bullet.createChild(Image);
-image.width = 50;
-image.height = 60;
+image.width = 30;
+image.height = 30;
 image.horizontalCenter = "middle";
 image.verticalCenter = "middle";
 image.propertyFields.href = "url";

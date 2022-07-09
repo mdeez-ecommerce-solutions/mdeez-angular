@@ -157,6 +157,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
       value: value
     })
     this.occupationfilter = value;
+    console.log("OCCU",value);
   }
 
 }

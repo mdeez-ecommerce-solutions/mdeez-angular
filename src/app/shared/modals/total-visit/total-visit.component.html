@@ -1,6 +1,6 @@
 <div>
    <h6 class="heading">
-      Visit Title
+      Visitor Revisits
       <!-- <img src="../../../assets/images/pen.svg" alt="view"
             style="    margin-right: 1em;margin-left: 28em;">
              <img src="../../../assets/images/delete.svg" alt="view"
@@ -15,7 +15,7 @@
       <div class="row" style="    margin-top: 1em;margin-left: -2em;">
          <div class="col-md-12">
             <div class="form-inline">
-               <div class="col-md-6 vist_btm">
+               <div class="col-md-4 vist_btm">
                   <div style="float: left;">
                      <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
                            src="../../../assets/images/Unique ID.svg" alt="view" style="    margin-right: 7px;
@@ -24,7 +24,7 @@
                         ">{{data.uniqueVisitorId}}</label>
                   </div>
                </div>
-               <div class="col-md-6 vist_btm">
+               <div class="col-md-4 vist_btm">
                   <div style="float: left;">
                      <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
                            src="../../../assets/images/calendar.svg" alt="view" style="    margin-right: 7px;
@@ -33,80 +33,104 @@
                         ">{{data.createdAt | date: 'dd/MM/yyyy'}}</label>
                   </div>
                </div>
+               <div class="col-md-4 vist_btm">
+                  <div style="float: left;">
+                     <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
+                           src="../../../assets/images/calendar.svg" alt="view" style="    margin-right: 7px;
+                        ">Total Visits:</label>
+                     <label style="color: #949494; display: block;    margin-left: 1.8em;
+                        ">{{data?.revisits.length}}</label>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
-      <div class="row" style="    margin-top: 1em;margin-left: -2em;">
-         <div class="col-md-12">
-            <div class="form-inline">
-               <div class="col-md-6 vist_btm">
-                  <div style="float: left;">
-                     <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
-                           src="../../../assets/images/Meeting.svg" alt="view" style="    margin-right: 7px;
+
+      <div *ngFor="let data of data?.revisits; let i = index">
+         <div class="row" style=" border-top: 1px solid rgb(66, 66, 66);   margin-top: 1em;margin-left: -2em;">
+            <h1 style="
+            padding: 29px 25px;
+            padding-bottom: 0;
+            margin: 0;
+        ">Visit {{i + 1}}</h1>
+            <div class="col-md-12">
+               <div class="form-inline">
+                  <div class="col-md-6 vist_btm">
+                     <div style="float: left;">
+                        <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
+                              src="../../../assets/images/Meeting.svg" alt="view" style="    margin-right: 7px;
                         ">Meeting with:</label>
-                     <label style="color: #949494;   display: block;     margin-left: 1.8em;
-                        ">{{data.whomToMeet}}</label>
+
+                        <label style="color: #949494;   display: block;     margin-left: 1.8em;
+                        ">{{data?.whomToMeet}}</label>
+                     </div>
                   </div>
-               </div>
-               <div class="col-md-6 vist_btm">
-                  <div style="float: left;   ">
-                     <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
-                           src="../../../assets/images/pin.svg" alt="view" style="    margin-right: 7px;
+                  <div class="col-md-6 vist_btm">
+                     <div style="float: left;   ">
+                        <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
+                              src="../../../assets/images/pin.svg" alt="view" style="    margin-right: 7px;
                         ">Meeting Location:</label>
-                     <label style="color: #949494;  display: block;     margin-left: 1.8em;
-                        ">{{data.meetingLocation}}</label>
+                        <label style="color: #949494;  display: block;     margin-left: 1.8em;
+                        ">{{data?.meetingLocation}}</label>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-      <div class="row" style="    margin-top: 1em;margin-left: -2em;">
-         <div class="col-md-12">
-            <div class="form-inline">
-               <div class="col-md-12 vist_btm">
-                  <div style="float: left;">
-                     <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
-                           src="../../../assets/images/purpose of visit.svg" alt="view" style="    margin-right: 7px;
+         <div class="row" style="    margin-top: 1em;margin-left: -2em;">
+            <div class="col-md-12">
+               <div class="form-inline">
+                  <div class="col-md-12 vist_btm">
+                     <div style="float: left;">
+                        <label style="font-weight: 700;display: block;" class="moster-font visit-modal"><img
+                              src="../../../assets/images/purpose of visit.svg" alt="view" style="    margin-right: 7px;
                         ">Purpose of Visit</label>
-                     <label style="color: #949494;   display: block;     margin-left: 1.8em;
-                        ">{{data.visitPurposeCategory}}</label>
+                        <label style="color: #949494;   display: block;     margin-left: 1.8em;
+                        ">{{data?.visitPurposeCategory}}</label>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-      <div style="    margin-top: 1em;">
-         <label style="font-weight: 700;"><img src="../../../assets/images/query.svg" alt="view" style="    margin-right: 4px;
+         <div style="    margin-top: 1em;">
+            <label style="font-weight: 700;"><img src="../../../assets/images/query.svg" alt="view" style="    margin-right: 4px;
             ">Query status*</label>
-         <mat-form-field appearance="fill" style="width: 95%;
+            <mat-form-field appearance="fill" style="width: 95%;
             margin-left: 1em;">
-            <mat-select [(ngModel)]="status">
-               <mat-option value="Select query status" selected disabled>Select query status
-               </mat-option>
-               <mat-option value="Resolved">
-                  Resolved
-               </mat-option>
-               <mat-option value="Unresolved">
-                  Unresolved
-               </mat-option>
-               <mat-option value="In Progress">
-                  In Progress
-               </mat-option>
-            </mat-select>
-         </mat-form-field>
-      </div>
-      <div style="    margin-top: 1em;">
-         <label style="font-weight: 700;" class="moster-font visit-modal"><img src="../../../assets/images/writing.svg"
-               alt="view" style="    margin-right: 7px;
+               <mat-select [(ngModel)]="status[i]">
+                  <mat-option value="Select query status" selected disabled>Select query status
+                  </mat-option>
+                  <mat-option value="Resolved">
+                     Resolved
+                  </mat-option>
+                  <mat-option value="Unresolved">
+                     Unresolved
+                  </mat-option>
+                  <mat-option value="In Progress">
+                     In Progress
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+         <div style="    margin-top: 1em;">
+            <label style="font-weight: 700;" class="moster-font visit-modal"><img
+                  src="../../../assets/images/writing.svg" alt="view" style="    margin-right: 7px;
             ">Meeting Remarks*</label><br>
-         <mat-form-field style="width: 95%;
+            <mat-form-field style="width: 95%;
             margin-left: 0.9em;    height: 7em;" floatLabel="never">
-            <textarea matInput placeholder="Enter any Remarks for Meeting" [(ngModel)]="remark"></textarea>
-         </mat-form-field>
-      </div>
-      <div mat-dialog-actions style="float: right;">
-         <button mat-raised-button color="warn" (click)="confirm()" [disabled]="!remark || !status">
-            Confirm
-         </button>
+               <textarea matInput placeholder="Enter any Remarks for Meeting" [(ngModel)]="remark[i]"></textarea>
+            </mat-form-field>
+         </div>
+
       </div>
    </div>
+</div>
+
+<div class="footer" style="padding:0;">
+   <div mat-dialog-actions style="float: right;">
+      <button mat-raised-button color="warn" (click)="confirm()"
+         [disabled]="remark.length != data.revisits.length  || status.length != data.revisits.length ">
+         Save
+      </button>
+   </div>
+</div>

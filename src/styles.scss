@@ -749,7 +749,7 @@ a:not([href]):not([class]) {
 .breadcrumb-item.dashboard {
   // margin: 0 auto;
   // margin-top: -83px;
-  margin-top: -78px;
+  margin-top: -68px;
 }
 
 .breadcrumb-item.dashboard a {
@@ -1313,6 +1313,15 @@ label.star {
   transform: none !important;
   position: absolute !important;
   top: 28px !important;
+  text-transform:uppercase !important;
+}
+
+tspan{
+  text-transform:uppercase !important;  
+}
+
+.mat-option-text {
+  text-transform: uppercase;
 }
 
 .card h6,

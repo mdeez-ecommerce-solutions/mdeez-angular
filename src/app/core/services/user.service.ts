@@ -150,12 +150,12 @@ visitorRevisit(userdata): Observable < any > {
       params = params.append('toDate', formatDate.toDate.toISOString());
     }
     if (pageIndex) params = params.append('skip', pageIndex);
-    params = params.append('limit', '20');
+    params = params.append('limit', '8');
     return this.apiService.get(url, params);
   }
   getAllVisitorList(): Observable < any > {
  
-    return this.apiService.get('/visitor/download-csv?limit=6000');
+    return this.apiService.get('/visitor/download-csv?limit=6000&purpose=Engineer');
   }
 
 

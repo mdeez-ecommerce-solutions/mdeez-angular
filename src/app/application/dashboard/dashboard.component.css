@@ -167,7 +167,9 @@ display: inline-block;
     left: auto !important;
     right: 0px;
     background: #282F41;
+    text-transform:uppercase;
 }
+
 
 .dropdown-menu.more_filter_right .dropdown-item,
 .dropdown-menu.more_filter_right .dropdown-item:hover {

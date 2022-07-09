@@ -10,8 +10,8 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./total-visit.component.css']
 })
 export class TotalVisitComponent implements OnInit {
-status:any;
-remark:any;
+status = [];
+remark = [];
 loading:boolean=false;
   constructor(private userService: UserService,public dialogRef: MatDialogRef<TotalVisitComponent>, @Inject(MAT_DIALOG_DATA) public data: any,  private _snackBar: MatSnackBar) {
 
@@ -19,29 +19,34 @@ loading:boolean=false;
 
   ngOnInit(): void {
     console.log(this.data)
-    this.status = this.data.status;
-    this.remark = this.data.meetingRemark;
+
+    this.data.revisits.forEach(v => {
+      this.status.push((v.status ?? ""));
+      this.remark.push((v.meetingRemark ?? ""));
+    });
   }
   onNoClick(): void {
    
     this.dialogRef.close();
   }
-  confirm(){
+ async confirm(){
     console.log(this.data)
 
-    if(this.remark &&this.status){
+    this.data.revisits.forEach(async (value, i) => {
+
+       if(this.status[i] && this.remark[i]){
       var userdata={
-        "visitId": this.data._id,
+        "visitId": value._id,
         "uniqueVisitorId": this.data.uniqueVisitorId,
         "date": this.data.createdAt,
-        "visitPurposeCategory": this.data.visitPurposeCategory,
-        "meetingLocation": this.data.meetingLocation,
-        "meetingRemark": this.remark,
-        "whomToMeet": this.data.whomToMeet,
-        "query": this.status,
+        "visitPurposeCategory": value.visitPurposeCategory,
+        "meetingLocation": value.meetingLocation,
+        "meetingRemark": this.remark[i],
+        "whomToMeet": value.whomToMeet,
+        "query": this.status[i],
       };
     
-      this.userService.visitorRevisit(userdata).subscribe(
+  this.userService.visitorRevisit(userdata).subscribe(
         (response: any) => {
           if (response.error === false) {
             this.loading = false;
@@ -59,9 +64,13 @@ loading:boolean=false;
      
         }
       );
+
        
  
     }
+      
+    });
+   
   
   }
 }

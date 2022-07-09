@@ -94,7 +94,8 @@ series.colors.list = [
 
   color("#dd6789"),
   color("#3FA8E1"),
-  color("#D69600"),
+  color("#713e8d"),
+
 ];
 
 

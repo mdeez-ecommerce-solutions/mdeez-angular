@@ -1376,7 +1376,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         //"Booth Coordinator": element.politicalinfo.boothCoordinator,
         "Status": element.revisits[0] ? element.revisits[0].status : '',
         "Visitor Category": element.visitorCategory,
-        "Is Samajwadi Party Member":element.politicalinfo.isSamajwadiPartyMember,
+        "Is Party Member":element.politicalinfo.isSamajwadiPartyMember,
         "Total no of Visits": element.totalVisits,
         "Remarks": element.objectiveInfoRemark,
         "Remarks (In case if the visitor comes with some reference)": element.politicalInforRemark,

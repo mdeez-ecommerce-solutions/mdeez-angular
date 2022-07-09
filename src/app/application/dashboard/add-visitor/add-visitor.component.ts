@@ -819,7 +819,7 @@ politicalInformationFormSubmit() {
           duration: 5000,
         }); 
         this.submitFormLoader = false;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/total-visit-list']);
         // if (this.politicalInformation.controls.visitPurposeCategory.value === 'Invitation'){
         //   this.router.navigate(['/scheduler-meeting'], { state: this.ifScheduleEvent });
         // } 
@@ -956,7 +956,7 @@ politicalInformationFormSubmit() {
           duration: 5000,
         }); 
         this.submitFormLoader = false;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/total-visit-list']);
       }
     },(error) => {
       this.submitFormLoader = false;

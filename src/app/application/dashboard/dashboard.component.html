@@ -44,7 +44,7 @@
       " *ngIf="kpi_total_percent">
           <div class="text-kpi">Data From {{ kpi_total_percent || "" }}</div>
           <div class="percent-kpi" style="text-align: center;">
-             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+             <mat-datepicker-toggle matSuffix (click)="timeFrameFilter('By Date');picker.open()" [for]="picker"></mat-datepicker-toggle>
              <span class="text-kpi">Date Filter</span>
           </div>
         </div>

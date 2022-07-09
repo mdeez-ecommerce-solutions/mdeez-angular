@@ -55,7 +55,7 @@ export class TotalVisitListComponent implements OnInit {
     "Status",
     "Visitor_Category",
     "Total_no_of_Visits",
-    "Remarks",
+    // "Remarks",
     "politicalInformationRemarks",
     "refrenceName",
     "refrenceMobile",
@@ -215,7 +215,7 @@ if(newObj){
 
 
 
-  openInNewTab() {
+  openInNewTab(filtered?) {
     // this._snackBar.open("Please wait while we are downloading your data..");
      this.isLoaderHappen = false;
      this._snackBar.open("Please wait while we are downloading your data..", "", {
@@ -226,11 +226,22 @@ if(newObj){
      //   .subscribe(blob => {saveAs(blob, 'VisitorList')
      //   this._snackBar.dismiss();});
      // FileSaver.saveAs(this.baseApiUrl, 'VisitorList');
+
+     if(filtered){
+      if(this.filterInitial)
+      this.baseApiUrl = this.baseApiUrl + "&purpose=" + this.filterInitial;
+      if(this.range.value.fromDate && this.range.value.toDate)
+      this.baseApiUrl = this.baseApiUrl + "&fromDate=" + this.range.value.fromDate + "&toDate=" + this.range.value.toDate;
+      if(this.filterValue)
+      this.baseApiUrl = this.baseApiUrl + "&search=" + this.filterValue;
+     }
+
      window.open(this.baseApiUrl, '_blank');
     //window.open(this.baseApiUrl,'MyWindow','width=600,height=300'); return false;
     }
     filterTable(): void {
       this.isLoadingResults = true;
+      console.log(this.filterInitial);
       console.log(this.range.value)
       this.userService
         .getVisitorByFilter(
@@ -261,7 +272,7 @@ if(newObj){
                   serial: i + 1,
                   uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
                   fullName: this.visitorLists[i].fullName,
-                  address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+                  address: this.visitorLists[i].address?.houseNumber + ' ' + this.visitorLists[i].address?.line1,
                   createdAt: day,
                   enrollmentDate: Eday,
                   mobile: this.visitorLists[i].mobile,
@@ -315,8 +326,8 @@ if(newObj){
                 serial: i + 1,
                 uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
                 fullName: this.visitorLists[i].fullName,
-                // address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
-                address:"ADDRESS DUMMY",
+                address: this.visitorLists[i].address?.houseNumber + ' ' + this.visitorLists[i].address?.line1,
+                // address:"ADDRESS DUMMY",
                 createdAt: day,
                 enrollmentDate: Eday,
                 mobile: this.visitorLists[i].mobile,
@@ -405,7 +416,7 @@ if(newObj){
                   serial: i + 1,
                   uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
                   fullName: this.visitorLists[i].fullName,
-                  address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+                  address: this.visitorLists[i].address?.houseNumber + ' ' + this.visitorLists[i].address?.line1,
                   createdAt: day,
                   enrollmentDate: Eday,
                   mobile: this.visitorLists[i].mobile,
@@ -419,6 +430,16 @@ if(newObj){
                 })
   
               }
+
+              // this.dataSource = new MatTableDataSource < any > (this.visitorLists);
+              // this.pageLength =response.data.length;
+              // // this.dataSource.paginator = this.paginator;
+              // this.paginator.pageIndex = 0;
+              // // this.pageLength = this.visitorListsTotalLength;
+           
+              // this.isLoadingResults = false;
+
+              
               this.dataSource = new MatTableDataSource<any>(this.visitorLists);
               // this.dataSource.paginator = this.paginator;
               this.pageLength = this.visitorListsTotalLength;
