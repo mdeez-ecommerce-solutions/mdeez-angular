@@ -1430,147 +1430,147 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
 
-      let data1 = [{
-        "year": "1989",
-        "value": 0.140
-      }, {
-        "year": "1990",
-        "value": 0.200
-      }, {
-        "year": "1991",
-        "value": 0.220
-      }, {
-        "year": "1992",
-        "value": 0.150
-      }, {
-        "year": "1993",
-        "value": 0.145
-      }, {
-        "year": "1994",
-        "value": 0.172
-      }, {
-        "year": "1995",
-        "value": 0.239
-      }, {
-        "year": "1996",
-        "value": 0.230
-      }, {
-        "year": "1997",
-        "value": 0.253
-      }, {
-        "year": "1998",
-        "value": 0.348,
-        "disabled": false
-      }];
+      // let data1 = [{
+      //   "year": "1989",
+      //   "value": 0.140
+      // }, {
+      //   "year": "1990",
+      //   "value": 0.200
+      // }, {
+      //   "year": "1991",
+      //   "value": 0.220
+      // }, {
+      //   "year": "1992",
+      //   "value": 0.150
+      // }, {
+      //   "year": "1993",
+      //   "value": 0.145
+      // }, {
+      //   "year": "1994",
+      //   "value": 0.172
+      // }, {
+      //   "year": "1995",
+      //   "value": 0.239
+      // }, {
+      //   "year": "1996",
+      //   "value": 0.230
+      // }, {
+      //   "year": "1997",
+      //   "value": 0.253
+      // }, {
+      //   "year": "1998",
+      //   "value": 0.348,
+      //   "disabled": false
+      // }];
 
 
-      let data2 = [{
-        "year": "1989",
-        "value": 0.030
-      }, {
-        "year": "1990",
-        "value": 0.255
-      }, {
-        "year": "1991",
-        "value": 0.21
-      }, {
-        "year": "1992",
-        "value": 0.065
-      }, {
-        "year": "1993",
-        "value": 0.11
-      }, {
-        "year": "1994",
-        "value": 0.172
-      }, {
-        "year": "1995",
-        "value": 0.269
-      }, {
-        "year": "1996",
-        "value": 0.141
-      }, {
-        "year": "1997",
-        "value": 0.353
-      }, {
-        "year": "1998",
-        "value": 0.548,
-        "disabled": false
-      }];
+      // let data2 = [{
+      //   "year": "1989",
+      //   "value": 0.030
+      // }, {
+      //   "year": "1990",
+      //   "value": 0.255
+      // }, {
+      //   "year": "1991",
+      //   "value": 0.21
+      // }, {
+      //   "year": "1992",
+      //   "value": 0.065
+      // }, {
+      //   "year": "1993",
+      //   "value": 0.11
+      // }, {
+      //   "year": "1994",
+      //   "value": 0.172
+      // }, {
+      //   "year": "1995",
+      //   "value": 0.269
+      // }, {
+      //   "year": "1996",
+      //   "value": 0.141
+      // }, {
+      //   "year": "1997",
+      //   "value": 0.353
+      // }, {
+      //   "year": "1998",
+      //   "value": 0.548,
+      //   "disabled": false
+      // }];
 
 
-      let data3 = [{
-        "year": "1989",
-        "value": 0.530
-      }, {
-        "year": "1990",
-        "value": 0.455
-      }, {
-        "year": "1991",
-        "value": 0.21
-      }, {
-        "year": "1992",
-        "value": 0.065
-      }, {
-        "year": "1993",
-        "value": 0.11
-      }, {
-        "year": "1994",
-        "value": 0.172
-      }, {
-        "year": "1995",
-        "value": 0.200
-      }, {
-        "year": "1996",
-        "value": 0.141
-      }, {
-        "year": "1997",
-        "value": 0.153
-      }, {
-        "year": "1998",
-        "value": 0.008,
-        "disabled": false
-      }];
+      // let data3 = [{
+      //   "year": "1989",
+      //   "value": 0.530
+      // }, {
+      //   "year": "1990",
+      //   "value": 0.455
+      // }, {
+      //   "year": "1991",
+      //   "value": 0.21
+      // }, {
+      //   "year": "1992",
+      //   "value": 0.065
+      // }, {
+      //   "year": "1993",
+      //   "value": 0.11
+      // }, {
+      //   "year": "1994",
+      //   "value": 0.172
+      // }, {
+      //   "year": "1995",
+      //   "value": 0.200
+      // }, {
+      //   "year": "1996",
+      //   "value": 0.141
+      // }, {
+      //   "year": "1997",
+      //   "value": 0.153
+      // }, {
+      //   "year": "1998",
+      //   "value": 0.008,
+      //   "disabled": false
+      // }];
 
 
-      let data4 = [{
-        "year": "1989",
-        "value": 0.030
-      }, {
-        "year": "1990",
-        "value": 0.255
-      }, {
-        "year": "1991",
-        "value": 0.21
-      }, {
-        "year": "1992",
-        "value": 0.205
-      }, {
-        "year": "1993",
-        "value": 0.11
-      }, {
-        "year": "1994",
-        "value": 0.270
-      }, {
-        "year": "1995",
-        "value": 0.169
-      }, {
-        "year": "1996",
-        "value": 0.300
-      }, {
-        "year": "1997",
-        "value": 0.353
-      }, {
-        "year": "1998",
-        "value": 0.548,
-        "disabled": false
-      }];
+      // let data4 = [{
+      //   "year": "1989",
+      //   "value": 0.030
+      // }, {
+      //   "year": "1990",
+      //   "value": 0.255
+      // }, {
+      //   "year": "1991",
+      //   "value": 0.21
+      // }, {
+      //   "year": "1992",
+      //   "value": 0.205
+      // }, {
+      //   "year": "1993",
+      //   "value": 0.11
+      // }, {
+      //   "year": "1994",
+      //   "value": 0.270
+      // }, {
+      //   "year": "1995",
+      //   "value": 0.169
+      // }, {
+      //   "year": "1996",
+      //   "value": 0.300
+      // }, {
+      //   "year": "1997",
+      //   "value": 0.353
+      // }, {
+      //   "year": "1998",
+      //   "value": 0.548,
+      //   "disabled": false
+      // }];
 
 
 
 
-      this.createKPI("kpi-today", data2, 1);
-      this.createKPI("kpi-week", data3, 2);
-      this.createKPI("kpi-month", data4, 3);
+      // this.createKPI("kpi-today", data2, 1);
+      // this.createKPI("kpi-week", data3, 2);
+      // this.createKPI("kpi-month", data4, 3);
 
 
 
@@ -4497,11 +4497,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           var starting = moment(this.kpi_total[0]._id, 'MM-DD-YYYY');
 
           this.kpi_total_percent = starting.isValid() ? starting.format('MMMM YYYY') : "";
-          this.kpi_today_percent = this.percentage(response.data.lastWeekVisits, this.anlyticData.thisWeekVisits);
-          this.kpi_week_percent = this.percentage(response.data.lastMonthVisits, this.anlyticData.thisMonthVisits);
+          this.kpi_today_percent = this.percentage(response.data.lastWeekVisits, _.sumBy(this.kpi_today , function(o:any) { return o.count;}));
+          this.kpi_week_percent = this.percentage(response.data.lastMonthVisits, _.sumBy(this.kpi_week , function(o:any) { return o.count;}));
           this.kpi_month_percent = this.percentage(response.data.lastYearVisits, response.data.thisYearVisits);
-
-
+          // 50
+           
 
 
           this.createKPI("kpi-total", this.kpi_total, 0);
@@ -4509,10 +4509,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           this.createKPI("kpi-week", this.kpi_week, 2);
           this.createKPI("kpi-month", this.kpi_month, 3);
 
-          console.log("kpi_lastweek:", response.data.lastWeekVisits);
-          console.log("kpi_lastMONTH:", response.data.lastMonthVisits);
+          console.log("kpi_lastweek:", response.data.lastMonthVisits);
+          console.log("kpi_lastMONTH:") ;
 
-          console.log("percentage:", this.percentage(1, 3));
+          console.log("percentage:", this.percentage(2, 11));
 
 
 
@@ -4539,7 +4539,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     if (old < 1 && curr > 0)
       return 100;
 
-    return Math.round(((curr - old) / old) * 100);
+    return Math.round((curr / old) * 100);
   }
 
   setToPollingTableView(): void {

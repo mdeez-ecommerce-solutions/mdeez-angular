@@ -79,15 +79,16 @@ categoryAxis.renderer.tooltip.dx = -40;
 
 
 let valueAxis = this.perceivedPoliticalInclination.xAxes.push(new am4charts.ValueAxis());
-valueAxis.renderer.inside = true;
-valueAxis.renderer.labels.template.fillOpacity = 0.3;
+// valueAxis.renderer.inside = true;
+// valueAxis.renderer.labels.template.fillOpacity = 0.3;
 valueAxis.renderer.grid.template.strokeOpacity = 0;
 valueAxis.min = 0;
 valueAxis.cursorTooltipEnabled = false;
 valueAxis.renderer.baseGrid.strokeOpacity = 0;
-valueAxis.renderer.labels.template.dy = 20;
+// valueAxis.renderer.labels.template.dy = 20;
 valueAxis.title.text= "VISITORS";
-valueAxis.title.dy=15;
+// valueAxis.title.dy=15;
+valueAxis.renderer.labels.template.fill = color("#fffff");
 
 let series = this.perceivedPoliticalInclination.series.push(new am4charts.ColumnSeries());
 

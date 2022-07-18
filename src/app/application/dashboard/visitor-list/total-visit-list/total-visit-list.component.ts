@@ -68,11 +68,11 @@ export class TotalVisitListComponent implements OnInit {
   ];
   dateFilterDropdownOption=[
     {value:"1Day",label:"Today"},
-    {value:"7Day",label:"Last 7 Day"},
-    {value:"14Day",label:"Last 14 Day"},
-    {value:"30Day",label:"Last 30 Day"},
     {value:"week",label:"This Week"},
     {value:"month",label:"This Month"},
+    {value:"7Day",label:"Last 7 Days"},
+    {value:"14Day",label:"Last 14 Days"},
+    {value:"30Day",label:"Last 30 Days"},
   ]
   today = new Date();
   date = this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate()
@@ -126,12 +126,12 @@ export class TotalVisitListComponent implements OnInit {
       this.range.value.toDate = now
       this.filterTable()
     } else if(dropDownValue==='week'){
-      var newDatew = this.addDays(new Date(), -8);
+      var newDatew = moment().subtract(1, 'week').toDate();
       this.range.value.fromDate = newDatew
       this.range.value.toDate = now
       this.filterTable()
     } else if(dropDownValue==='month'){
-      var newDatew = this.addDays(new Date(), -30);
+      var newDatew = moment().startOf("month").toDate();
       this.range.value.fromDate = newDatew
       this.range.value.toDate = now
       this.filterTable()
