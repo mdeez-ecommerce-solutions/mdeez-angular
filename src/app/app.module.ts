@@ -25,6 +25,9 @@ import { MomentModule } from 'angular2-moment';
 
 import { AuthGuard } from './app.routing.guard';
 import { LoginComponent } from "./application/authentication/login/login.component";
+import { RouteReuseStrategy } from "@angular/router";
+
+import { CacheRouteReuseStrategy } from "./cache-route-reuse.strategy";
 
 
 
@@ -53,6 +56,10 @@ import { LoginComponent } from "./application/authentication/login/login.compone
     AuthService,
     AuthGuard,
     UtilService,
+    {
+      provide: RouteReuseStrategy,
+      useClass: CacheRouteReuseStrategy
+    },
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
 

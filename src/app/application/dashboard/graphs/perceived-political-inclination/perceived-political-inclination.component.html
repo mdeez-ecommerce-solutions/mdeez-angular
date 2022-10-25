@@ -1,18 +1,28 @@
 
-<div class="card card-padding mt-3">
+<div class="card card-padding mt-3" #ppigraph>
     <div class="row">
         <div class="col-md-6">
             <h6>POLITICAL INCLINATION</h6>
         </div>
         <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+                <button class="btn btn-sm btn-icon-only"
+                (click)="toggleFullScreen(ppigraph)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                </svg>
+                </button>
+
                 <a class="nav-link m-0 p-0 dropdown-toggle" href="#" id="PPIDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ ppifilter ? ppifilter : "FILTER" }}  
+                    <!-- {{ ppifilter ? ppifilter : "FILTER" }}   -->
+                    <i class="fa fa-filter"></i>
                 </a>
                 <div class="dropdown-menu more_filter" aria-labelledby="geo">
                     <a class="dropdown-item cursor-pointer" 
-                    *ngFor="let perceivedPoliticalInclinations of perceivedPoliticalInclination?.data"
+                    *ngFor="let perceivedPoliticalInclinations of ppiData"
                     (click)="perceiveFilter(perceivedPoliticalInclinations?._id)">
                         {{perceivedPoliticalInclinations?._id}}
                     </a>
@@ -22,5 +32,5 @@
     </div>
     <graph-loader [loader]="graphDataLoader"></graph-loader>
         
-    <div id="perceivedPolitical" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" style="width: 100%; height: 350px; margin-top: 80px !important;"></div>
+    <div id="perceivedPolitical" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" style="width: 100%; height:100%;min-height: 350px; margin-top: 80px !important;"></div>
 </div>

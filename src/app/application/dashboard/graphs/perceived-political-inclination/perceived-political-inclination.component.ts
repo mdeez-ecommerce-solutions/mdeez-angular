@@ -18,6 +18,9 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { UserService } from 'src/app/core/services/user.service';
 
+import screenfull from 'screenfull';
+
+
 useTheme(am4themes_animated);
 
 @Component({
@@ -28,6 +31,7 @@ useTheme(am4themes_animated);
 export class PerceivedPoliticalInclinationComponent implements OnInit, AfterViewInit {
   dataItem: any;
   ppifilter: any;
+  ppiData;
   @Input() perceivedPoliticalInclinationsVar: any;
   graphDataLoader: boolean = true;
   @Output() perceivedFilterObj: EventEmitter<any> = new EventEmitter();
@@ -41,6 +45,9 @@ export class PerceivedPoliticalInclinationComponent implements OnInit, AfterView
   @Input() set perceivedPoliticalInclinationData(data) {
     if (data) {
       this.perceivedPoliticalInclination.data = data;
+      if(!this.ppiData){
+        this.ppiData = data;
+      } 
     }
   }
 
@@ -107,7 +114,6 @@ columnTemplate.height = percent(50);
 columnTemplate.maxHeight = 50;
 columnTemplate.column.cornerRadius(60, 10, 60, 10);
 columnTemplate.strokeOpacity = 0;
-
 series.heatRules.push({ target: columnTemplate, property: "fill", dataField: "valueX", min: color("#207cd1"), max: color("#2039d1") });
 series.mainContainer.mask = undefined;
 
@@ -130,7 +136,7 @@ let hoverState = bullet.states.create("hover");
 let outlineCircle = bullet.createChild(Circle);
 outlineCircle.adapter.add("radius", (radius, target: any) => {
     let circleBullet = target.parent;
-    return circleBullet.circle.pixelRadius + 6;
+    return circleBullet.circle.pixelRadius + 3;
 })
 
 let image = bullet.createChild(Image);
@@ -186,7 +192,12 @@ this.user.themeValueBehavior.subscribe((value) => {
   })
   }
 
-  
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
+  }
+
   perceiveFilter(value): void {
    // this.perceivedPoliticalInclination;
     this.perceivedFilterObj.emit({

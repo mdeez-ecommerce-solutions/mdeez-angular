@@ -44,8 +44,9 @@
       " *ngIf="kpi_total_percent">
           <div class="text-kpi">Data From {{ kpi_total_percent || "" }}</div>
           <div class="percent-kpi" style="text-align: center;">
-             <mat-datepicker-toggle matSuffix (click)="timeFrameFilter('By Date');picker.open()" [for]="picker"></mat-datepicker-toggle>
-             <span class="text-kpi">Date Filter</span>
+            <mat-datepicker-toggle matSuffix (click)="timeFrameFilter('By Date');picker.open()" [for]="picker">
+            </mat-datepicker-toggle>
+            <span class="text-kpi">Date Filter</span>
           </div>
         </div>
         <div class="row">
@@ -67,16 +68,16 @@
           <div class="percent-kpi">
 
 
-            <svg *ngIf="kpi_today_percent >= 0" fill="#10ba10" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_today_percent >= 0" fill="#10ba10" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M384 160C366.3 160 352 145.7 352 128C352 110.3 366.3 96 384 96H544C561.7 96 576 110.3 576 128V288C576 305.7 561.7 320 544 320C526.3 320 512 305.7 512 288V205.3L342.6 374.6C330.1 387.1 309.9 387.1 297.4 374.6L191.1 269.3L54.63 406.6C42.13 419.1 21.87 419.1 9.372 406.6C-3.124 394.1-3.124 373.9 9.372 361.4L169.4 201.4C181.9 188.9 202.1 188.9 214.6 201.4L320 306.7L466.7 159.1L384 160z" />
             </svg>
 
 
-            <svg *ngIf="kpi_today_percent < 0" fill="#c11b1b" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_today_percent < 0" fill="#c11b1b" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M466.7 352L320 205.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6L9.372 150.6C-3.124 138.1-3.124 117.9 9.372 105.4C21.87 92.88 42.13 92.88 54.63 105.4L191.1 242.7L297.4 137.4C309.9 124.9 330.1 124.9 342.6 137.4L512 306.7V223.1C512 206.3 526.3 191.1 544 191.1C561.7 191.1 576 206.3 576 223.1V384C576 401.7 561.7 416 544 416H384C366.3 416 352 401.7 352 384C352 366.3 366.3 352 384 352L466.7 352z" />
@@ -86,7 +87,7 @@
 
             <b> {{ absolute(kpi_today_percent) || "0"}}</b>%
           </div>
-          <div class="text-kpi">Last 7 Days</div>
+          <div class="text-kpi">Since Yesterday</div>
         </div>
         <div class="row">
           <div class="text-center flex-vertical-center col-5 m-0">
@@ -106,16 +107,16 @@
         <div class="trend-kpi">
           <div class="percent-kpi">
 
-            <svg *ngIf="kpi_week_percent >= 0" fill="#10ba10" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_week_percent >= 0" fill="#10ba10" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M384 160C366.3 160 352 145.7 352 128C352 110.3 366.3 96 384 96H544C561.7 96 576 110.3 576 128V288C576 305.7 561.7 320 544 320C526.3 320 512 305.7 512 288V205.3L342.6 374.6C330.1 387.1 309.9 387.1 297.4 374.6L191.1 269.3L54.63 406.6C42.13 419.1 21.87 419.1 9.372 406.6C-3.124 394.1-3.124 373.9 9.372 361.4L169.4 201.4C181.9 188.9 202.1 188.9 214.6 201.4L320 306.7L466.7 159.1L384 160z" />
             </svg>
 
 
-            <svg *ngIf="kpi_week_percent < 0" fill="#c11b1b" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_week_percent < 0" fill="#c11b1b" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M466.7 352L320 205.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6L9.372 150.6C-3.124 138.1-3.124 117.9 9.372 105.4C21.87 92.88 42.13 92.88 54.63 105.4L191.1 242.7L297.4 137.4C309.9 124.9 330.1 124.9 342.6 137.4L512 306.7V223.1C512 206.3 526.3 191.1 544 191.1C561.7 191.1 576 206.3 576 223.1V384C576 401.7 561.7 416 544 416H384C366.3 416 352 401.7 352 384C352 366.3 366.3 352 384 352L466.7 352z" />
@@ -124,7 +125,7 @@
 
             <b> {{ absolute(kpi_week_percent) || "0"}}</b>%
           </div>
-          <div class="text-kpi">Last 4 Weeks</div>
+          <div class="text-kpi">Since Last Week</div>
         </div>
         <div class="row">
           <div class="text-center flex-vertical-center col-5 m-0">
@@ -145,15 +146,15 @@
           <div class="percent-kpi">
 
 
-            <svg *ngIf="kpi_month_percent >= 0" fill="#10ba10" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_month_percent >= 0" fill="#10ba10" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M384 160C366.3 160 352 145.7 352 128C352 110.3 366.3 96 384 96H544C561.7 96 576 110.3 576 128V288C576 305.7 561.7 320 544 320C526.3 320 512 305.7 512 288V205.3L342.6 374.6C330.1 387.1 309.9 387.1 297.4 374.6L191.1 269.3L54.63 406.6C42.13 419.1 21.87 419.1 9.372 406.6C-3.124 394.1-3.124 373.9 9.372 361.4L169.4 201.4C181.9 188.9 202.1 188.9 214.6 201.4L320 306.7L466.7 159.1L384 160z" />
             </svg>
 
-            <svg *ngIf="kpi_month_percent < 0" fill="#c11b1b" width="12px"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <svg *ngIf="kpi_month_percent < 0" fill="#c11b1b" width="12px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
                 d="M466.7 352L320 205.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6L9.372 150.6C-3.124 138.1-3.124 117.9 9.372 105.4C21.87 92.88 42.13 92.88 54.63 105.4L191.1 242.7L297.4 137.4C309.9 124.9 330.1 124.9 342.6 137.4L512 306.7V223.1C512 206.3 526.3 191.1 544 191.1C561.7 191.1 576 206.3 576 223.1V384C576 401.7 561.7 416 544 416H384C366.3 416 352 401.7 352 384C352 366.3 366.3 352 384 352L466.7 352z" />
@@ -163,7 +164,7 @@
 
             <b> {{ absolute(kpi_month_percent) || "0"}}</b>%
           </div>
-          <div class="text-kpi">Last 12 Months</div>
+          <div class="text-kpi">Since Last Month</div>
         </div>
         <div class="row">
           <div class="text-center flex-vertical-center col-5 m-0">
@@ -192,6 +193,16 @@
             font-size: 30px;
         ">{{filteredVisitorCount || 0}}</span>
             <span style="font-size: 8px;letter-spacing: 1px;/* padding-right: 6px; */">VISITORS</span>
+           <a data-toggle="modal" data-target="#visitorModal" style="
+           font-size: 8px;
+           text-transform: uppercase;
+           background: #e3000f;
+           margin-top: 5px;
+           padding: 1px 5px;
+           font-weight: 900;
+           letter-spacing: 1px;
+           border-radius: 3px;
+       ">VIEW</a>
           </div>
 
 
@@ -199,7 +210,13 @@
 
           <div style="margin: 0 20px;">
 
-            <span class="filter-tag" *ngIf="appliedFilters['range']">{{ appliedFilters["range"]?.value }}
+            <span class="filter-tag" *ngFor="let value of usedFilters">{{ value?.display ?? value?.value }}
+              <span class="filter-remove" (click)="removeFilter(value?.key,value.value)"><i class="fa fa-times-circle"
+                  aria-hidden="true"></i></span>
+            </span>
+
+
+            <!-- <span class="filter-tag" *ngIf="appliedFilters['range']">{{ appliedFilters["range"]?.value }}
               <span class="filter-remove" (click)="removeFilter('range')"><i class="fa fa-times-circle"
                   aria-hidden="true"></i></span>
             </span>
@@ -269,7 +286,7 @@
               *ngIf="appliedFilters['meetingLocation']?.value">{{appliedFilters["meetingLocation"]?.value }}
               <span class="filter-remove" (click)="removeFilter('meetingLocation')"><i class="fa fa-times-circle"
                   aria-hidden="true"></i></span>
-            </span>
+            </span> -->
           </div>
 
           <button class="resetGraph" mat-stroked-button style="background: #a81919;
@@ -300,33 +317,33 @@
 
   <form [formGroup]="range">
     <!-- <div id="visitorRangeDatem-0"> -->
-      <!-- <div class="input-group margin-bot"> -->
-        <!-- <span class="search-label">FILTER BY DATE : </span> -->
-        <!-- <mat-form-field appearance="fill"> -->
-          <mat-date-range-input [formGroup]="range" [rangePicker]="picker" hidden type="hidden">
-            <input matStartDate formControlName="fromDate" placeholder="Start date" />
-            <input matEndDate (ngModelChange)="rangeFilter($event)"  formControlName="toDate" placeholder="End date"  />
-          </mat-date-range-input>
-          <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
-          
-          <!-- <mat-error *ngIf="
+    <!-- <div class="input-group margin-bot"> -->
+    <!-- <span class="search-label">FILTER BY DATE : </span> -->
+    <!-- <mat-form-field appearance="fill"> -->
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" hidden type="hidden">
+      <input matStartDate formControlName="fromDate" placeholder="Start date" />
+      <input matEndDate (ngModelChange)="rangeFilter($event)" formControlName="toDate" placeholder="End date" />
+    </mat-date-range-input>
+    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+
+    <!-- <mat-error *ngIf="
               range.controls.fromDate.hasError('matStartDateInvalid')
             ">Invalid start date</mat-error>
           <mat-error *ngIf="range.controls.toDate.hasError('matEndDateInvalid')">Invalid end date
         </mat-error> -->
-        <!-- </mat-form-field> -->
+    <!-- </mat-form-field> -->
 
-      <!-- </div> -->
     <!-- </div> -->
-</form>
+    <!-- </div> -->
+  </form>
 
-<mat-date-range-picker touchUi #picker>
-  <mat-date-range-picker-actions>
-    <button mat-button matDateRangePickerCancel>Cancel</button>
-    <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-  </mat-date-range-picker-actions>
-</mat-date-range-picker>  
- 
+  <mat-date-range-picker touchUi #picker>
+    <mat-date-range-picker-actions>
+      <button mat-button matDateRangePickerCancel>Cancel</button>
+      <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+    </mat-date-range-picker-actions>
+  </mat-date-range-picker>
+
 
   <!-- geo -->
   <div class="row">
@@ -380,7 +397,7 @@
      <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
           This graph not available at the moment.
         </p>
-       <div id="geoMap" class="mt-3" style="width: 100%; height: 350px"></div>
+       <div id="geoMap" class="mt-3" style="width: 100%; height: height: 100%; min-height:350px"></div>
         <app-area-map></app-area-map>
       </div>
     </div> -->
@@ -388,16 +405,45 @@
     <div class="col-md-12 col-lg-6">
       <div class="card card-padding" #pbMap style="width: 100%; height:100%;">
         <div class="row">
-          <button style="position: absolute; top:15px; right:15px;"
-            class="btn btn-sm btn-icon-only"
-            (click)="toggleFullScreen(pbMap)" >
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"  width="24"><path d="M0 0h24v24H0z" fill="none"/><path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-          </button>
           <div class="col-md-6">
             <h6>PB FOOTPRINT</h6>
-
-
           </div>
+
+          <div class="col-md-6">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(pbMap)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+            </button>
+
+              <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <!-- {{ appliedFilters["range"]?.key ? appliedFilters["range"]?.key : "FILTER" }} -->
+                <i class="fa fa-filter"></i> 
+                </a>
+              <div class="dropdown-menu more_filter" aria-labelledby="geo" style="width: 330px;">
+                <input class="form-control" type="text" placeholder="Type Booth Number | Name" name="search" [(ngModel)]="searchText" autocomplete="off"
+                style="
+                    border-color: #717171;
+                    width: 297px;
+                    height: 36px;
+                    border-radius: 2px;
+                    margin: auto;
+                    margin-bottom: 10px;
+                    color:white;
+                    
+                "
+                >
+                <a *ngFor="let pb of boothData | filter:searchText" (click)="boothNumberFilter(pb.boothNumber)" class="dropdown-item">{{ pb.boothNumber }} - {{ pb.boothName }}</a>
+              </div>
+            </div>
+          </div>
+        
+         
 
         </div>
         <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
@@ -423,24 +469,36 @@
     </div>
 
     <div class="col-md-6 col-lg-6">
-      <div class="card card-padding">
+      <div class="card card-padding" #heatmap>
         <div class="row">
           <div class="col-md-6">
             <h6>Heatmap</h6>
           </div>
 
+     
 
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(heatmap)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters["range"]?.key ? appliedFilters["range"]?.key : "FILTER" }} 
+                <!-- {{ appliedFilters["range"]?.key ? appliedFilters["range"]?.key : "FILTER" }} -->
+                <i class="fa fa-filter"></i>
               </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
                 <a (click)="timeFrameFilter('By Week')" class="dropdown-item">LAST WEEK</a>
                 <a (click)="timeFrameFilter('By Month')" class="dropdown-item">LAST MONTH</a>
                 <a (click)="timeFrameFilter('By Year')" class="dropdown-item">LAST YEAR</a>
-                <a matSuffix [for]="picker" (click)="timeFrameFilter('By Date');picker.open()" class="dropdown-item">BY DATE </a>    
+                <a matSuffix [for]="picker" (click)="timeFrameFilter('By Date');picker.open()" class="dropdown-item">BY
+                  DATE </a>
               </div>
             </div>
           </div>
@@ -448,7 +506,7 @@
         </div>
 
         <div id="heatmap" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="height: 450px"></div>
+          style="height: 100%; min-height:450px"></div>
 
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
@@ -458,21 +516,31 @@
     </div>
 
     <div class="col-md-6 col-lg-6">
-      <div class="card card-padding">
+      <div class="card card-padding" #proximity>
 
         <div class="row">
           <div class="col-md-6">
             <h6>Proximity</h6>
           </div>
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(proximity)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters?.proximity ? appliedFilters?.proximity : "FILTER" }}
+                <!-- {{ appliedFilters?.proximity ? appliedFilters?.proximity : "FILTER" }} -->
+                <i class="fa fa-filter"></i>
               </a>
               <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="proximity">
                 <a class="dropdown-item" (click)="proximityFilter(proximity?._id)"
-                  *ngFor="let proximity of proximityGraph?.data">{{
+                  *ngFor="let proximity of proximityData">{{
                   proximity?._id }}</a>
               </div>
             </div>
@@ -480,7 +548,7 @@
         </div>
 
         <div id="spiderchart" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 450px"></div>
+          style="width: 100%; height: 100%; min-height:450px"></div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -489,17 +557,27 @@
 
 
     <div class="col-md-12 col-lg-12">
-      <div class="card card-padding">
+      <div class="card card-padding" #district>
 
         <div class="row">
           <div class="col-md-6">
             <h6>District Flow</h6>
           </div>
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(district)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters?.district ? appliedFilters?.district : "FILTER" }}
+                <!-- {{ appliedFilters?.district ? appliedFilters?.district : "FILTER" }} -->
+                <i class="fa fa-filter"></i> 
               </a>
               <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="districts">
                 <a class="dropdown-item" (click)="districtFilter(district?.k)" *ngFor="let district of districts">{{
@@ -510,7 +588,7 @@
         </div>
 
         <div id="streamchart" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 450px"></div>
+          style="width: 100%; height: 100%; min-height:450px"></div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -520,18 +598,33 @@
 
 
     <div class="col-md-8">
-      <div class="card card-padding">
+      <div class="card card-padding" #livepurpose>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <h6>Purpose Timeline</h6>
-            <div id="livepurpose" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-              style="width: 100%; height: 450px"></div>
+         
+          </div>
+          <div class="col-md-6">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(livepurpose)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+            
+            </div>
           </div>
 
 
-          <graph-loader [loader]="graphDataLoader"></graph-loader>
-
+          
         </div>
+        <div id="livepurpose" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
+        style="width: 100%; height: 100%; min-height:450px"></div>
+
+        <graph-loader [loader]="graphDataLoader"></graph-loader>
         <!-- <p class="text-center text-danger" style="position: absolute; top: 60px; left: 20px">
           This graph not available at the moment.
         </p> -->
@@ -541,27 +634,52 @@
 
 
     <div class="col-md-4">
-      <div class="card card-padding">
+      <div class="card card-padding" #purpose>
         <div class="row">
           <div class="col-md-6">
             <h6>PURPOSE</h6>
           </div>
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(purpose)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters?.purpose ? appliedFilters?.purpose : "FILTER" }}
+                <!-- {{ appliedFilters?.purpose ? appliedFilters?.purpose : "FILTER" }} -->
+                <i class="fa fa-filter"></i> 
               </a>
-              <div class="dropdown-menu pull-right more_filter_right" aria-labelledby="purpose">
-                <a class="dropdown-item" (click)="purposeFilter(purpose?._id)" *ngFor="let purpose of purposes">{{
+              <div class="dropdown-menu more_filter" aria-labelledby="purpose" style="width: 310px;">
+               
+                <input class="form-control" type="text" placeholder="TYPE PURPOSE" name="search" [(ngModel)]="searchPurpose" autocomplete="off"
+                style="
+                    border-color: #717171;
+                    width: 280px;
+                    height: 36px;
+                    border-radius: 2px;
+                    margin: auto;
+                    margin-bottom: 10px;
+                    color:white;
+                    
+                "
+                >
+                <a class="dropdown-item" (click)="purposeFilter(purpose?._id)" *ngFor="let purpose of purposes | filter:searchPurpose">{{
                   purpose?._id }}</a>
-              </div>
+                  
+              </div>  
+
             </div>
           </div>
         </div>
 
         <div id="purpose" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 350px">
+          style="width: 100%; height: 100%; min-height:350px">
         </div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
@@ -574,7 +692,7 @@
         <div class="row">
           <div class="col-md-12">
             <h6>Bubble Graph</h6>
-            <div id="bubblechart" class="mt-3" style="width: 100%; height: 450px"></div>
+            <div id="bubblechart" class="mt-3" style="width: 100%; height: 100%; min-height:450px"></div>
           </div>
 
         </div>
@@ -585,16 +703,26 @@
   <!-- purpose -->
   <div class="row">
     <div class="col-md-5">
-      <div class="card card-padding mt-3">
+      <div class="card card-padding mt-3" #gender>
         <div class="row">
           <div class="col-md-6">
             <h6>GENDER</h6>
           </div>
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(gender)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters?.gender ? appliedFilters.gender : 'FILTER' }}
+                <!-- {{ appliedFilters?.gender ? appliedFilters.gender : 'FILTER' }} -->
+                <i class="fa fa-filter"></i> 
               </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
                 <a class="dropdown-item" (click)="genderFilter('Male')">MALE</a>
@@ -605,7 +733,7 @@
         </div>
 
         <div id="gender" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 350px"></div>
+          style="width: 100%; height: 100%; min-height:350px"></div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -613,23 +741,33 @@
       </div>
     </div>
     <div class="col-md-7">
-      <div class="card card-padding mt-3">
+      <div class="card card-padding mt-3" #timeframe>
         <div class="row">
           <div class="col-md-6">
             <h6>TIMEFRAME</h6>
           </div>
           <div class="col-md-6">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
 
-            <div class="nav-item dropdown text-right">
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(timeframe)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters["range"]?.key ? appliedFilters["range"]?.key : "FILTER" }} 
-              </a>
+                <!-- {{ appliedFilters["range"]?.key ? appliedFilters["range"]?.key : "FILTER" }} -->
+                <i class="fa fa-filter"></i> 
+                </a>
               <div class="dropdown-menu more_filter" aria-labelledby="geo">
                 <a (click)="timeFrameFilter('By Week')" class="dropdown-item">LAST WEEK</a>
                 <a (click)="timeFrameFilter('By Month')" class="dropdown-item">LAST MONTH</a>
                 <a (click)="timeFrameFilter('By Year')" class="dropdown-item">LAST YEAR</a>
-                <a matSuffix [for]="picker" (click)="timeFrameFilter('By Date');picker.open()" class="dropdown-item">BY DATE </a>    
+                <a matSuffix [for]="picker" (click)="timeFrameFilter('By Date');picker.open()" class="dropdown-item">BY
+                  DATE </a>
               </div>
             </div>
 
@@ -649,7 +787,7 @@
         </div>
 
         <div id="timeFrame" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 350px"></div>
+          style="width: 100%; height: 100%; min-height:350px"></div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -672,29 +810,57 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="card card-padding mt-3">
+      <div class="card card-padding mt-3" #castegraph>
         <div class="row">
           <div class="col-md-6">
             <h6>CASTE</h6>
           </div>
           <div class="col-md-6">
-            <div class="nav-item dropdown text-right">
+            <div class="nav-item dropdown text-right d-flex justify-content-end align-items-center">
+
+              <button class="btn btn-sm btn-icon-only"
+              (click)="toggleFullScreen(castegraph)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path fill="white" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+              </svg>
+              </button>
+
               <a class="nav-link m-0 p-0 dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                {{ appliedFilters?.caste ? appliedFilters.caste : 'FILTER' }} </a>
-              <div class="dropdown-menu more_filter" aria-labelledby="geo">
+                <!-- {{ appliedFilters?.caste ? appliedFilters.caste : 'FILTER' }}  -->
+                <i class="fa fa-filter"></i> 
+
+              </a>
+              <div class="dropdown-menu more_filter" aria-labelledby="geo" style="width: 330px;">
                 <ng-container *ngIf="casteGraph?.data">
-                  <a class="dropdown-item cursor-pointer" *ngFor="let caste of casteGraph?.data"
+                  <input class="form-control" type="text" placeholder="Type Caste" name="search" [(ngModel)]="searchCaste" autocomplete="off"
+                  style="
+                      border-color: #717171;
+                      width: 297px;
+                      height: 36px;
+                      border-radius: 2px;
+                      margin: auto;
+                      margin-bottom: 10px;
+                      color:white;
+                      
+                  "
+                  >
+                  <a class="dropdown-item cursor-pointer" *ngFor="let caste of allcasts | filter:searchCaste"
                     (click)="casteFilter(caste?._id)">
                     {{ caste?._id |titlecase}}
                   </a>
                 </ng-container>
               </div>
+
+             
+
+
             </div>
           </div>
         </div>
         <div id="bubblechart" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-          style="width: 100%; height: 450px"></div>
+          style="width: 100%; height: 100%; min-height:450px"></div>
 
         <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -725,7 +891,7 @@
           <div class="col-md-12">
             <h6>Purpose Timeline</h6>
             <div id="anoth" [style.visibility]="!graphDataLoader ? 'visible' : 'hidden'" class="mt-3"
-              style="width: 100%; height: 450px"></div>
+              style="width: 100%; height: 100%; min-height:450px"></div>
 
             <graph-loader [loader]="graphDataLoader"></graph-loader>
 
@@ -772,6 +938,347 @@
   </div>
 
 </div>
+
+
+
+      <div class="modal fade" id="visitorModal" tabindex="-1" role="dialog" aria-labelledby="visitorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content" style="
+          background-color: #202639;
+      ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="visitorModalLabel">Filtered Visitors</h5>
+ 
+             <a (click)="exportTable()" style="color: white;position: absolute;right: 65px;display: flex;align-items: center;flex-direction: column;justify-content: center;"><i class="fa fa-download "></i><span style="
+                font-size: 8px;
+                letter-spacing: 2px;
+                padding-top: 2px;
+            "> EXPORT
+            </span></a>
+              <button type="button" class="close" style="text-shadow: none; color:white;" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12" style="
+                margin: 0;
+            ">
+                  <div class="example-container mat-elevation-z8">
+                    <div class="example-loading-shade" *ngIf="isLoaderHappen">
+                      <mat-spinner></mat-spinner>
+                    </div>
+                    <div class="table-responsive">
+                      <div class="mat-elevation-z8 mt-3">
+                        <table *ngIf="visitorLists?.length > 0" id="exportVisitorListTable" mat-table [dataSource]="dataSource">
+                          <!-- Position Column -->
+                          <!-- <ng-container matColumnDef="S.No.">
+                            <th mat-header-cell *matHeaderCellDef>S.No.
+                              <a role="button" (click)="pinColumn($event)"
+                              class="cpin">
+                              <i class="fa fa-thumb-tack"
+                               ></i>
+                             </a>
+                            </th>
+                            <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+                          </ng-container> -->
+        
+                          <ng-container matColumnDef="S.No.">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No.
+                              <a role="button" (click)="pinColumn($event)"
+                              class="cpin">
+                              <i class="fa fa-thumb-tack"
+                               ></i>
+                             </a>
+                            </th>
+                            <td mat-cell *matCellDef="let item; let i = index">
+                               {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}
+                            </td>
+                           </ng-container>
+        
+        
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="Unique Visitor ID">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Unique Visitor ID
+                              <a role="button" (click)="pinColumn($event)"
+                              class="cpin">
+                              <i class="fa fa-thumb-tack"
+                               ></i>
+                             </a>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.uniqueVisitorId || 'NA' }}
+                            </td>
+                          </ng-container>
+        
+                          <!-- Weight Column -->
+                          <ng-container matColumnDef="Visitor_Name">
+                            <th mat-header-cell *matHeaderCellDef>Visitor Name
+                              <a role="button" (click)="pinColumn($event)"
+                                class="cpin">
+                                <i class="fa fa-thumb-tack"
+                                 ></i>
+                               </a>     
+        
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.fullName || 'NA'}}
+                            </td>
+                          </ng-container>
+        
+                          <!-- Symbol Column -->
+                          <ng-container matColumnDef="Address">
+                            <th mat-header-cell *matHeaderCellDef>Address 
+                              <a role="button" (click)="pinColumn($event)"
+                              class="cpin">
+                              <i class="fa fa-thumb-tack"
+                               ></i>
+                             </a>
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.address?.houseNumber }} {{ element?.address?.line1 }}
+                              <!-- {{ element.address?.line2 }} -->
+                            </td>
+                          </ng-container>
+        
+                          <ng-container matColumnDef="Date">
+                            <th mat-header-cell *matHeaderCellDef>Created Date
+                              <a role="button" (click)="pinColumn($event)"
+                              class="cpin">
+                              <i class="fa fa-thumb-tack"
+                               ></i>
+                             </a>
+        
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.createdAt | date: "dd/MM/yyyy" }}
+                            </td>
+                          </ng-container>
+                          <ng-container matColumnDef="enrollmentDate">
+                            <th mat-header-cell *matHeaderCellDef>Enrollment Date</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.enrollmentDate | date: "dd/MM/yyyy" }}
+                            </td>
+                          </ng-container>
+        
+        
+        
+        
+                          <ng-container matColumnDef="Mobile">
+                            <th mat-header-cell *matHeaderCellDef>Mobile</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.mobile || 'NA'}}
+                            </td>
+                          </ng-container>
+        
+                          <ng-container matColumnDef="Purpose_of_Visit">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Purpose of Visit
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.revisits[0]?.visitPurposeCategory || 'NA'}}
+                            </td>
+                          </ng-container>
+        
+                          <ng-container matColumnDef="Status">
+                            <th mat-header-cell *matHeaderCellDef>Status</th>
+                            <td mat-cell [ngClass]="[
+                                  element?.revisits[0]?.status == 'In Progress'
+                                    ? 'text-warning'
+                                    : '' || element?.revisits[0]?.status == 'Unresolved'
+                                    ? 'text-danger'
+                                    : '' || element?.revisits[0]?.status == 'Resolved'
+                                    ? 'text-success'
+                                    : ''
+                                ]" *matCellDef="let element">
+                              {{ element?.revisits[0]?.status || 'NA'}}
+                            </td>
+                          </ng-container>
+        
+                          <ng-container matColumnDef="Visitor_Category">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Visitor Category
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{
+                              element?.politicalinfo?.visitorCategory ||
+                              "NA"
+                              }}
+                            </td>
+                          </ng-container>
+        
+                          <ng-container matColumnDef="Total_no_of_Visits">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Total no of Visits
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.revisits.length || 'NA' }}
+                            </td>
+                          </ng-container>
+        
+                          <!-- <ng-container matColumnDef="Remarks">
+                            <th mat-header-cell *matHeaderCellDef>Remarks</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.objectiveinfo?.remark || 'NA' }}
+                            </td>
+        
+                            <td></td>
+                          </ng-container> -->
+        
+                          <ng-container matColumnDef="politicalInformationRemarks">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Remarks (In case if the visitor comes with some reference)*
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.remarks || 'NA' }}
+                            </td>
+        
+                            <td></td>
+                          </ng-container>
+                          <ng-container matColumnDef="refrenceName">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Reference Name
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.refrenceName || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+        
+                          <ng-container matColumnDef="refrenceMobile">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Reference Mobile
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.refrenceMobile || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+                          <ng-container matColumnDef="refrenceRemark">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Reference Remark
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.refrenceRemark || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+        
+                          <ng-container matColumnDef="accompliceName">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Accomplice Name
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.accompliceName || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+                          <ng-container matColumnDef="accompliceMobile">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Accomplice Mobile
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.accompliceMobile || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+                          <ng-container matColumnDef="accompliceRemark">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Accomplice Remark
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element?.politicalinfo?.accompliceRemark || 'NA' }}
+                            </td>
+        
+                          </ng-container>
+        
+                          <ng-container matColumnDef="captureDetailsOfAnyAccompliceWithTheVisitor">
+                            <th mat-header-cell *matHeaderCellDef>
+                              Capture details of any accomplice with the visitor
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                              {{
+                              element?.accomplicedDetails ||
+                              "Not Available"
+                              }}
+                            </td>
+        
+                            <td></td>
+                          </ng-container>
+        
+                          <!-- <ng-container matColumnDef="Thank_You_Acknowledgment_message_sent">
+                              <th mat-header-cell *matHeaderCellDef>
+                                Thank You Acknowledgment message sent
+                              </th>
+                              <td class="text-center" mat-cell *matCellDef="let element">
+                                {{
+                                  (element?.politicalinfo?.isAcknowledgementSent
+                                    ? "Yes"
+                                    : "No") || 'NA'
+                                }}
+                              </td>
+                            </ng-container>
+        
+                            <ng-container matColumnDef="Information_sent_to_the_booth_village_coordinator_of_the_visitor">
+                              <th mat-header-cell *matHeaderCellDef>
+                                Information sent to the booth/Village coordinator of the
+                                visitor
+                              </th>
+                              <td class="text-center" mat-cell *matCellDef="let element">
+                                {{
+                                  (element?.politicalinfo?.isInfoSentToBooth
+                                    ? "Yes"
+                                    : "No") || 'NA'
+                                }}
+                              </td>
+                            </ng-container> -->
+        
+                          <ng-container matColumnDef="Action">
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
+                            <td mat-cell *matCellDef="let element">
+                              <!-- <a (click)="getVisitorDetail(element?.uniqueVisitorId)" href="javascript:void(0)" >
+                                <img width="20" style="margin-left: 0.2em"  src="../../../assets/images/checked.svg"  alt="view" />
+                              </a>
+                              &nbsp; -->
+                              <a data-dismiss="modal" [routerLink]="[
+                                    '/visitor-list',
+                                    element?.uniqueVisitorId
+                                  ]"  routerLinkActive="router-link-active" href="javascript:void(0)"><img width="30"
+                                  src="../../../assets/images/View.svg" alt="view" /></a>
+                              &nbsp;
+                              <!-- <a (click)="addVisitorDetail(element?.uniqueVisitorId)" href="javascript:void(0)">
+                                <img width="20"  src="../../../assets/images/edit.svg" alt="edit" />
+                              </a> -->
+                             
+                             
+                            </td>
+                          </ng-container>
+        
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                        </table>
+                        <div class="no-table-msg" *ngIf="
+                              dataSource?.filteredData?.length === 0 ||
+                              dataSource?.length === 0
+                            ">
+                          No data found
+                        </div>
+                      </div>
+                    </div>
+                    <mat-paginator #paginatorRef [length]="pageLength" [pageSizeOptions]="[8]" (page)="yourPageChangeLogic($event)">
+                      <!-- showFirstLastButtons> -->
+                    </mat-paginator>
+                      <br/><br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    
 
 <br />
 <br />

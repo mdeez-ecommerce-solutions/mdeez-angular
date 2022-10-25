@@ -38,6 +38,7 @@
     "moment": "^2.29.2",
     "ng-multiselect-dropdown": "^0.3.8",
     "ng2-google-charts": "^7.0.0",
+    "ng2-search-filter": "^0.5.1",
     "ngx-daterangepicker-material": "^5.0.2",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-star-rating": "^2.1.0",

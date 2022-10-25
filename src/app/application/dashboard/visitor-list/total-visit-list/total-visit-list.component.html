@@ -227,6 +227,15 @@
                     </td>
                   </ng-container>
 
+                  <ng-container matColumnDef="Gender">
+                    <th mat-header-cell *matHeaderCellDef>
+                      Gender
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element?.gender || 'NA'}}
+                    </td>
+                  </ng-container>
+
                   <!-- Symbol Column -->
                   <ng-container matColumnDef="Address">
                     <th mat-header-cell *matHeaderCellDef>Address 
@@ -281,6 +290,8 @@
                     </td>
                   </ng-container>
 
+                  
+            
                   <ng-container matColumnDef="Status">
                     <th mat-header-cell *matHeaderCellDef>Status</th>
                     <td mat-cell [ngClass]="[

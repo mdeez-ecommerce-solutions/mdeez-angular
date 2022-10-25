@@ -184,6 +184,11 @@ display: inline-block;
     background-color: #282b35;
 }
 
+textPath{
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+}
+
 /* Media query for tablate */
 @media (min-width: 1024px) and (max-width: 1366px) {}
 

@@ -18,6 +18,8 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { UserService } from 'src/app/core/services/user.service';
 
+import screenfull from 'screenfull';
+
 @Component({
   selector: 'app-samajwadi-party-graph',
   templateUrl: './samajwadi-party-graph.component.html',
@@ -119,6 +121,12 @@ this.user.themeValueBehavior.subscribe((value) => {
 
     });
   })
+  }
+
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
   }
 
   visitorAreaGraphFilter(value): void {

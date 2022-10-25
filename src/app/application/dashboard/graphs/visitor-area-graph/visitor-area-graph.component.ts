@@ -12,6 +12,9 @@ import {
 import {
   isPlatformBrowser
 } from '@angular/common';
+
+import screenfull from 'screenfull';
+
 // amCharts imports
 import { useTheme, create, Scrollbar,color, percent } from '@amcharts/amcharts4/core';
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -114,6 +117,14 @@ this.user.themeValueBehavior.subscribe((value) => {
     });
   })
   }
+
+  
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
+  }
+
 
   visitorAreaGraphFilter(value): void {
     this.visitorAreaFilterObj.emit({

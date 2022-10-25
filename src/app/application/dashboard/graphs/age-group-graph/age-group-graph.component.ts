@@ -17,6 +17,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { UserService } from 'src/app/core/services/user.service';
 
+import screenfull from 'screenfull';
 
 useTheme(am4themes_animated);
 
@@ -40,16 +41,21 @@ export class AgeGroupGraphComponent implements OnInit {
   graphDataLoader: boolean = true;
   @Output() ageFilterObj: EventEmitter<any> = new EventEmitter();
   
+  
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
   private user: UserService) {
     this.user.graphDataLoader.subscribe((res) => this.graphDataLoader = res)
   }
   
   ageGraph: any;
+  ageData;
   agefilter:any;
   @Input() set ageGraphData(data) {
     if (data) {
       this.ageGraph.data = data;
+      if(!this.ageData){
+        this.ageData = data;
+      }
     }
   }
   ngOnInit(): void {
@@ -163,7 +169,12 @@ export class AgeGroupGraphComponent implements OnInit {
   })
   }
 
-
+  
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
+  }
 
   ageFilter(value): void {
     this.ageFilterObj.emit({

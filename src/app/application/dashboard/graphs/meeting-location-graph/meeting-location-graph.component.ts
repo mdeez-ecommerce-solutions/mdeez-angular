@@ -18,6 +18,8 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { UserService } from 'src/app/core/services/user.service';
 
+import screenfull from 'screenfull';
+
 useTheme(am4themes_animated);
 
 @Component({
@@ -28,9 +30,13 @@ useTheme(am4themes_animated);
 export class MeetingLocationGraphComponent implements OnInit {
   @Input() meetingLocationsOptionVar: any;
   meetingLocationGraph: any;
+  locationData;
   @Input() set meetingLocationGraphData(data) {
     if (data) {
       this.meetingLocationGraph.data = data;
+      if(!this.locationData){
+        this.locationData = data;
+      } 
     }
   }
 
@@ -108,6 +114,13 @@ this.user.themeValueBehavior.subscribe((value) => {
 
     });
   })
+  }
+
+  
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
   }
 
   meetingLocationGraphFilter(value): void {

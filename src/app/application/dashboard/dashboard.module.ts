@@ -14,12 +14,26 @@ import { VisitorOccupationGraphComponent } from './graphs/visitor-occupation-gra
 import { VisitorAreaGraphComponent } from './graphs/visitor-area-graph/visitor-area-graph.component';
 import { SamajwadiPartyGraphComponent } from './graphs/samajwadi-party-graph/samajwadi-party-graph.component';
 import { AreaMapComponent } from './graphs/area-map/area-map.component';
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 const route: Routes = [
   {
-    path: '',
+    path: 'analytics',
     component: DashboardComponent,
+    // children: [
+    //   {
+    //     path: 'login',
+    //     loadChildren: () =>
+    //         import("./visitor-list/visitor-list.module").then(
+    //           (m) => m.VisitorListModule
+    //         ),
+    //     component: LoginComponent,
+    //     data: { preload: true}
+    //   },
+      
+    // ],
   }
 ];
 
@@ -40,6 +54,7 @@ const route: Routes = [
     ],
   imports: [
     CommonModule,
+    Ng2SearchPipeModule,
     SharedModule,
     RouterModule.forChild(route)
   ]

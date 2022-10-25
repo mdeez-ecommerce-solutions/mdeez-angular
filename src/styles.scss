@@ -232,7 +232,8 @@ label {
 .myheading {
   font-size: 22px !important;
   letter-spacing: 2px;
-  color: #b2b7c5;
+  // color: #b2b7c5;
+  color: #ffffff;
   font-weight: 900;
 }
 
@@ -294,6 +295,10 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--colorLight);
   -webkit-box-shadow: 0 0 0px 1000px --colorBackground inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.mat-step-text-label{
+  text-transform: uppercase !important;
 }
 
 .mat-radio-outer-circle {
@@ -893,6 +898,36 @@ svg.mat-paginator-icon {
   cursor: pointer;
 }
 
+
+::-webkit-scrollbar-track
+{
+	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	// border-radius: 10px;
+	background-color: #2a3042;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #2a3042;
+}
+
+::-webkit-scrollbar-thumb
+{
+	// border-radius: 10px;
+	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	// background-color: #D62929;
+	background-color: #d50310;
+
+  
+}
+
+button.ng-star-inserted {
+
+  background-color: #d50310 !important;
+
+}
+
 .day-slide .mat-slide-toggle-thumb {
   height: 13px;
   width: 13px;
@@ -1298,7 +1333,7 @@ label.star {
 .dropdown-toggle {
   text-align: center;
   width: fit-content;
-  margin-left: auto !important;
+  // margin-left: auto !important;
   border: 1px solid #3c4254;
   padding: 5px 7px !important;
   width: min-content;
@@ -1463,4 +1498,78 @@ th {
   .breadcrumb-item+.breadcrumb-item::before {
     margin-bottom: 0;
   }
+}
+
+label,input,.mat-select-value-text{
+  text-transform: uppercase !important;
+}
+
+.mat-option {
+  color: rgb(255 255 255 / 87%);
+}
+
+.mat-autocomplete-panel , .mat-select-panel{
+  background: #21273a;
+  color: rgb(255 255 255 / 87%);
+}
+
+
+
+.loginform-group input{
+color: white !important;
+}
+
+.mat-flat-button.mat-warn, .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
+  background-color: #d50310;
+}
+
+.mat-select-placeholder {
+  // transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #949494;
+}
+
+.mat-option.mat-active {
+  color: #fff;
+}
+
+.log-icon {
+  padding: 21px 6px !important;
+}
+
+.log-position {
+  left: 5px !important;
+}
+
+.mat-step-label {
+  font-size: 17px;
+}
+
+.panel-body{
+margin: 0;
+}
+
+#prevLink > a:hover{
+color: white;
+}
+
+.loginform-group input{ 
+  color: white !important;
+  caret-color: red !important;
+}
+
+.loginform-group input:-webkit-autofill,
+.loginform-group input:-webkit-autofill:hover, 
+.loginform-group input:-webkit-autofill:focus, 
+.loginform-group input:-webkit-autofill:active{
+  color: white !important;
+  -webkit-text-fill-color: white ;
+  caret-color: red !important;
+}
+
+.loginform-group input:autofill,
+.loginform-group input:autofill:hover, 
+.loginform-group input:autofill:focus, 
+.loginform-group input:autofill:active{
+  color: white !important;
+  caret-color: red !important;
 }

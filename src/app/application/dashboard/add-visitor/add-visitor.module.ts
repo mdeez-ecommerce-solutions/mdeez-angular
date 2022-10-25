@@ -7,6 +7,8 @@ import { UploderService } from 'src/app/core/services/uploder.service';
 import { AgmCoreModule } from '@agm/core';
 import { UserService } from 'src/app/core/services/user.service';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 const route: Routes = [
   {
@@ -25,6 +27,7 @@ const route: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    Ng2SearchPipeModule,
     RouterModule.forChild(route),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDyjsSgp3HFDUgpGab1V5Jh8TuAI9ZCWLw'

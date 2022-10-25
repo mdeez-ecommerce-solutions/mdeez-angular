@@ -16,6 +16,9 @@ import {
 import { useTheme, create,percent, Scrollbar,color } from '@amcharts/amcharts4/core';
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
+import screenfull from 'screenfull';
+
 import {
   UserService
 } from 'src/app/core/services/user.service';
@@ -30,12 +33,15 @@ export class VisitorCategoryGraphComponent implements OnInit {
   @Input() set visitorCategoryData(data) {
     if (data) {
       this.visitorCategoryGraph.data = data;
-     
+      if(!this.categoryData){
+        this.categoryData = data;
+      }
     }
   }
   visitorCategoryGraph: any;
   graphDataLoader: boolean = true;
   categoryfilter: any;
+  categoryData;
   @Output() visitorCategoryFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
@@ -190,6 +196,12 @@ export class VisitorCategoryGraphComponent implements OnInit {
       this.visitorCategoryGraph.data = [];
     });
   })
+  }
+
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
   }
 
 

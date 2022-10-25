@@ -45,6 +45,10 @@ label {
   left: -4px;
 }
 
+.mat-step-text-label {
+  text-transform: uppercase !important;
+}
+
 /* Media query for tablate */
 @media (min-width: 1024px) and (max-width: 1112px) {
   .vistor_bot, .whome-meet {

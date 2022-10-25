@@ -55,6 +55,7 @@ import autoTable from "jspdf-autotable";
 import {
   Router
 } from "@angular/router";
+import { MatDialog } from '@angular/material/dialog';
 import { saveAs } from 'file-saver';
 import {
   toBase64String
@@ -75,6 +76,9 @@ options.onlyShowOnViewport = false;
 
 declare var require: any
 const FileSaver = require('file-saver');
+
+
+
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -109,7 +113,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     "Status",
     "Visitor_Category",
     "Total_no_of_Visits",
-    "Remarks",
+    // "Remarks",
     "politicalInformationRemarks",
     "refrenceName",
     "refrenceMobile",
@@ -180,6 +184,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   authenticated = false
   networkSeries: any;
   pbPoints: any;
+  boothData: any;
   kpi_total: any;
   kpi_today: any;
   kpi_week: any;
@@ -189,7 +194,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   kpi_week_percent: any;
   kpi_month_percent: any;
   districts: any;
-
+  allcasts = [];
+  proximityData;
+  // ppiData;
+  searchText: any;
+  searchCaste: any;
+  searchPurpose: any;
+  usedFilters = [];
 
 
 
@@ -199,7 +210,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     private userService: UserService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private dialog: MatDialog,
   ) {
     this.authData = JSON.parse(localStorage.getItem("SignInUserData"));
 
@@ -302,6 +314,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     window.open(this.baseApiUrl, '_blank');
     //window.open(this.baseApiUrl,'MyWindow','width=600,height=300'); return false;
   }
+
+
+  // openVisitor(item) {
+  //   // console.log(item)
+  //    const dialogRef = this.dialog.open(TotalVisitComponent, {
+  //      width: "700px",
+  //    //  height: '700px',
+  //     data: item.visitor,
+  //    });
+
+  //   //  dialogRef.afterClosed().subscribe(() => {
+  //   //    this.VisitorName=this.route.snapshot.paramMap.get('VisitorName');
+  //   //    this.visitorId = this.route.snapshot.paramMap.get('Visitorid');
+  //   //    console.log(this.visitorId)
+
+  //   //   // this.getTotalVisitList(this.visitorId);
+
+  //   //  });
+  //  }
+
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -577,393 +609,393 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       chartGeo.geodata = {
         "type": "FeatureCollection",
         "features": [
-            {
-                "type": "Feature",
-                "properties": {},
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                            [
-                                76.32854461669922,
-                                30.30353917828011
-                            ],
-                            [
-                                76.34296417236328,
-                                30.318655057186803
-                            ],
-                            [
-                                76.34090423583984,
-                                30.33110167727276
-                            ],
-                            [
-                                76.35429382324219,
-                                30.330805347556105
-                            ],
-                            [
-                                76.3546371459961,
-                                30.337028083293944
-                            ],
-                            [
-                                76.34227752685547,
-                                30.336731771512106
-                            ],
-                            [
-                                76.35841369628906,
-                                30.35658267783339
-                            ],
-                            [
-                                76.35738372802734,
-                                30.369616903210154
-                            ],
-                            [
-                                76.35120391845703,
-                                30.378799064289495
-                            ],
-                            [
-                                76.31549835205078,
-                                30.38472258144958
-                            ],
-                            [
-                                76.3113784790039,
-                                30.391089961939272
-                            ],
-                            [
-                                76.31309509277344,
-                                30.397308863195068
-                            ],
-                            [
-                                76.30674362182617,
-                                30.392126472976624
-                            ],
-                            [
-                                76.29987716674805,
-                                30.394495599764554
-                            ],
-                            [
-                                76.28992080688477,
-                                30.393014902255455
-                            ],
-                            [
-                                76.26228332519531,
-                                30.37169036980603
-                            ],
-                            [
-                                76.24614715576172,
-                                30.387388047033095
-                            ],
-                            [
-                                76.22692108154297,
-                                30.378502879007097
-                            ],
-                            [
-                                76.22520446777344,
-                                30.37198657573015
-                            ],
-                            [
-                                76.26434326171875,
-                                30.353027587637076
-                            ],
-                            [
-                                76.22589111328125,
-                                30.33554651541684
-                            ],
-                            [
-                                76.20872497558594,
-                                30.365766062875743
-                            ],
-                            [
-                                76.1953353881836,
-                                30.36724717325868
-                            ],
-                            [
-                                76.1788558959961,
-                                30.354805148883177
-                            ],
-                            [
-                                76.15379333496094,
-                                30.368728261208474
-                            ],
-                            [
-                                76.16409301757812,
-                                30.375244781665323
-                            ],
-                            [
-                                76.1630630493164,
-                                30.383241735819148
-                            ],
-                            [
-                                76.14383697509766,
-                                30.391534182301918
-                            ],
-                            [
-                                76.15619659423828,
-                                30.401010402148156
-                            ],
-                            [
-                                76.17851257324219,
-                                30.401898750620667
-                            ],
-                            [
-                                76.17713928222656,
-                                30.411670050415307
-                            ],
-                            [
-                                76.16031646728516,
-                                30.432985854877845
-                            ],
-                            [
-                                76.18881225585938,
-                                30.449265623235018
-                            ],
-                            [
-                                76.18640899658203,
-                                30.46672635218658
-                            ],
-                            [
-                                76.20838165283203,
-                                30.478858236062322
-                            ],
-                            [
-                                76.22005462646484,
-                                30.467614102257855
-                            ],
-                            [
-                                76.23653411865233,
-                                30.469685487622733
-                            ],
-                            [
-                                76.25232696533202,
-                                30.495130340274713
-                            ],
-                            [
-                                76.27970695495605,
-                                30.460807811599466
-                            ],
-                            [
-                                76.2934398651123,
-                                30.469241623039075
-                            ],
-                            [
-                                76.29687309265137,
-                                30.468057974259104
-                            ],
-                            [
-                                76.30133628845215,
-                                30.479597936184486
-                            ],
-                            [
-                                76.29592895507812,
-                                30.48374015299826
-                            ],
-                            [
-                                76.29816055297852,
-                                30.48677273567802
-                            ],
-                            [
-                                76.30983352661133,
-                                30.482112874557547
-                            ],
-                            [
-                                76.31524085998535,
-                                30.487660302976938
-                            ],
-                            [
-                                76.32159233093262,
-                                30.48803012029571
-                            ],
-                            [
-                                76.32073402404785,
-                                30.483888086052925
-                            ],
-                            [
-                                76.32940292358398,
-                                30.473236331462076
-                            ],
-                            [
-                                76.32373809814453,
-                                30.46687431109371
-                            ],
-                            [
-                                76.33472442626953,
-                                30.45207730788989
-                            ],
-                            [
-                                76.36064529418945,
-                                30.467466144474578
-                            ],
-                            [
-                                76.3611602783203,
-                                30.475011704826596
-                            ],
-                            [
-                                76.37025833129883,
-                                30.47619526908544
-                            ],
-                            [
-                                76.37935638427734,
-                                30.4773788189566
-                            ],
-                            [
-                                76.38708114624023,
-                                30.461399681840188
-                            ],
-                            [
-                                76.40253067016602,
-                                30.45932812026586
-                            ],
-                            [
-                                76.41094207763672,
-                                30.465690633543204
-                            ],
-                            [
-                                76.42450332641602,
-                                30.45947609041055
-                            ],
-                            [
-                                76.41780853271484,
-                                30.450153532415474
-                            ],
-                            [
-                                76.42227172851562,
-                                30.446453857466917
-                            ],
-                            [
-                                76.4095687866211,
-                                30.43653803617455
-                            ],
-                            [
-                                76.41626358032227,
-                                30.431209715711173
-                            ],
-                            [
-                                76.42724990844725,
-                                30.430913689372137
-                            ],
-                            [
-                                76.43377304077148,
-                                30.426177145763027
-                            ],
-                            [
-                                76.4457893371582,
-                                30.43135772854377
-                            ],
-                            [
-                                76.45746231079102,
-                                30.425585061640994
-                            ],
-                            [
-                                76.44527435302734,
-                                30.417295506645424
-                            ],
-                            [
-                                76.45145416259766,
-                                30.412854383934402
-                            ],
-                            [
-                                76.44304275512694,
-                                30.409301340268463
-                            ],
-                            [
-                                76.45008087158203,
-                                30.40826501150554
-                            ],
-                            [
-                                76.44115447998047,
-                                30.397308863195068
-                            ],
-                            [
-                                76.45608901977539,
-                                30.389313060289677
-                            ],
-                            [
-                                76.44201278686523,
-                                30.3888688298276
-                            ],
-                            [
-                                76.44132614135742,
-                                30.384130245890272
-                            ],
-                            [
-                                76.42827987670898,
-                                30.37953952356879
-                            ],
-                            [
-                                76.4322280883789,
-                                30.372282780756848
-                            ],
-                            [
-                                76.42724990844725,
-                                30.364877385878344
-                            ],
-                            [
-                                76.45196914672852,
-                                30.36502549927204
-                            ],
-                            [
-                                76.4593505859375,
-                                30.35954515431212
-                            ],
-                            [
-                                76.44149780273438,
-                                30.34295413059721
-                            ],
-                            [
-                                76.45694732666016,
-                                30.335250199151083
-                            ],
-                            [
-                                76.44235610961914,
-                                30.32487856492592
-                            ],
-                            [
-                                76.43840789794922,
-                                30.310060039424812
-                            ],
-                            [
-                                76.42416000366211,
-                                30.302205312335193
-                            ],
-                            [
-                                76.41815185546875,
-                                30.318506873612385
-                            ],
-                            [
-                                76.40802383422852,
-                                30.315691343116896
-                            ],
-                            [
-                                76.38914108276367,
-                                30.300871428242587
-                            ],
-                            [
-                                76.3930892944336,
-                                30.305762247858855
-                            ],
-                            [
-                                76.37991428375243,
-                                30.312171816229824
-                            ],
-                            [
-                                76.37197494506836,
-                                30.295683928709654
-                            ],
-                            [
-                                76.36253356933594,
-                                30.29657323383411
-                            ],
-                            [
-                                76.32854461669922,
-                                30.30353917828011
-                            ]
-                        ]
-                    ]
-                }
+          {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    76.32854461669922,
+                    30.30353917828011
+                  ],
+                  [
+                    76.34296417236328,
+                    30.318655057186803
+                  ],
+                  [
+                    76.34090423583984,
+                    30.33110167727276
+                  ],
+                  [
+                    76.35429382324219,
+                    30.330805347556105
+                  ],
+                  [
+                    76.3546371459961,
+                    30.337028083293944
+                  ],
+                  [
+                    76.34227752685547,
+                    30.336731771512106
+                  ],
+                  [
+                    76.35841369628906,
+                    30.35658267783339
+                  ],
+                  [
+                    76.35738372802734,
+                    30.369616903210154
+                  ],
+                  [
+                    76.35120391845703,
+                    30.378799064289495
+                  ],
+                  [
+                    76.31549835205078,
+                    30.38472258144958
+                  ],
+                  [
+                    76.3113784790039,
+                    30.391089961939272
+                  ],
+                  [
+                    76.31309509277344,
+                    30.397308863195068
+                  ],
+                  [
+                    76.30674362182617,
+                    30.392126472976624
+                  ],
+                  [
+                    76.29987716674805,
+                    30.394495599764554
+                  ],
+                  [
+                    76.28992080688477,
+                    30.393014902255455
+                  ],
+                  [
+                    76.26228332519531,
+                    30.37169036980603
+                  ],
+                  [
+                    76.24614715576172,
+                    30.387388047033095
+                  ],
+                  [
+                    76.22692108154297,
+                    30.378502879007097
+                  ],
+                  [
+                    76.22520446777344,
+                    30.37198657573015
+                  ],
+                  [
+                    76.26434326171875,
+                    30.353027587637076
+                  ],
+                  [
+                    76.22589111328125,
+                    30.33554651541684
+                  ],
+                  [
+                    76.20872497558594,
+                    30.365766062875743
+                  ],
+                  [
+                    76.1953353881836,
+                    30.36724717325868
+                  ],
+                  [
+                    76.1788558959961,
+                    30.354805148883177
+                  ],
+                  [
+                    76.15379333496094,
+                    30.368728261208474
+                  ],
+                  [
+                    76.16409301757812,
+                    30.375244781665323
+                  ],
+                  [
+                    76.1630630493164,
+                    30.383241735819148
+                  ],
+                  [
+                    76.14383697509766,
+                    30.391534182301918
+                  ],
+                  [
+                    76.15619659423828,
+                    30.401010402148156
+                  ],
+                  [
+                    76.17851257324219,
+                    30.401898750620667
+                  ],
+                  [
+                    76.17713928222656,
+                    30.411670050415307
+                  ],
+                  [
+                    76.16031646728516,
+                    30.432985854877845
+                  ],
+                  [
+                    76.18881225585938,
+                    30.449265623235018
+                  ],
+                  [
+                    76.18640899658203,
+                    30.46672635218658
+                  ],
+                  [
+                    76.20838165283203,
+                    30.478858236062322
+                  ],
+                  [
+                    76.22005462646484,
+                    30.467614102257855
+                  ],
+                  [
+                    76.23653411865233,
+                    30.469685487622733
+                  ],
+                  [
+                    76.25232696533202,
+                    30.495130340274713
+                  ],
+                  [
+                    76.27970695495605,
+                    30.460807811599466
+                  ],
+                  [
+                    76.2934398651123,
+                    30.469241623039075
+                  ],
+                  [
+                    76.29687309265137,
+                    30.468057974259104
+                  ],
+                  [
+                    76.30133628845215,
+                    30.479597936184486
+                  ],
+                  [
+                    76.29592895507812,
+                    30.48374015299826
+                  ],
+                  [
+                    76.29816055297852,
+                    30.48677273567802
+                  ],
+                  [
+                    76.30983352661133,
+                    30.482112874557547
+                  ],
+                  [
+                    76.31524085998535,
+                    30.487660302976938
+                  ],
+                  [
+                    76.32159233093262,
+                    30.48803012029571
+                  ],
+                  [
+                    76.32073402404785,
+                    30.483888086052925
+                  ],
+                  [
+                    76.32940292358398,
+                    30.473236331462076
+                  ],
+                  [
+                    76.32373809814453,
+                    30.46687431109371
+                  ],
+                  [
+                    76.33472442626953,
+                    30.45207730788989
+                  ],
+                  [
+                    76.36064529418945,
+                    30.467466144474578
+                  ],
+                  [
+                    76.3611602783203,
+                    30.475011704826596
+                  ],
+                  [
+                    76.37025833129883,
+                    30.47619526908544
+                  ],
+                  [
+                    76.37935638427734,
+                    30.4773788189566
+                  ],
+                  [
+                    76.38708114624023,
+                    30.461399681840188
+                  ],
+                  [
+                    76.40253067016602,
+                    30.45932812026586
+                  ],
+                  [
+                    76.41094207763672,
+                    30.465690633543204
+                  ],
+                  [
+                    76.42450332641602,
+                    30.45947609041055
+                  ],
+                  [
+                    76.41780853271484,
+                    30.450153532415474
+                  ],
+                  [
+                    76.42227172851562,
+                    30.446453857466917
+                  ],
+                  [
+                    76.4095687866211,
+                    30.43653803617455
+                  ],
+                  [
+                    76.41626358032227,
+                    30.431209715711173
+                  ],
+                  [
+                    76.42724990844725,
+                    30.430913689372137
+                  ],
+                  [
+                    76.43377304077148,
+                    30.426177145763027
+                  ],
+                  [
+                    76.4457893371582,
+                    30.43135772854377
+                  ],
+                  [
+                    76.45746231079102,
+                    30.425585061640994
+                  ],
+                  [
+                    76.44527435302734,
+                    30.417295506645424
+                  ],
+                  [
+                    76.45145416259766,
+                    30.412854383934402
+                  ],
+                  [
+                    76.44304275512694,
+                    30.409301340268463
+                  ],
+                  [
+                    76.45008087158203,
+                    30.40826501150554
+                  ],
+                  [
+                    76.44115447998047,
+                    30.397308863195068
+                  ],
+                  [
+                    76.45608901977539,
+                    30.389313060289677
+                  ],
+                  [
+                    76.44201278686523,
+                    30.3888688298276
+                  ],
+                  [
+                    76.44132614135742,
+                    30.384130245890272
+                  ],
+                  [
+                    76.42827987670898,
+                    30.37953952356879
+                  ],
+                  [
+                    76.4322280883789,
+                    30.372282780756848
+                  ],
+                  [
+                    76.42724990844725,
+                    30.364877385878344
+                  ],
+                  [
+                    76.45196914672852,
+                    30.36502549927204
+                  ],
+                  [
+                    76.4593505859375,
+                    30.35954515431212
+                  ],
+                  [
+                    76.44149780273438,
+                    30.34295413059721
+                  ],
+                  [
+                    76.45694732666016,
+                    30.335250199151083
+                  ],
+                  [
+                    76.44235610961914,
+                    30.32487856492592
+                  ],
+                  [
+                    76.43840789794922,
+                    30.310060039424812
+                  ],
+                  [
+                    76.42416000366211,
+                    30.302205312335193
+                  ],
+                  [
+                    76.41815185546875,
+                    30.318506873612385
+                  ],
+                  [
+                    76.40802383422852,
+                    30.315691343116896
+                  ],
+                  [
+                    76.38914108276367,
+                    30.300871428242587
+                  ],
+                  [
+                    76.3930892944336,
+                    30.305762247858855
+                  ],
+                  [
+                    76.37991428375243,
+                    30.312171816229824
+                  ],
+                  [
+                    76.37197494506836,
+                    30.295683928709654
+                  ],
+                  [
+                    76.36253356933594,
+                    30.29657323383411
+                  ],
+                  [
+                    76.32854461669922,
+                    30.30353917828011
+                  ]
+                ]
+              ]
             }
+          }
         ]
-    };
+      };
 
-    console.log("geodata",chartGeo.geodata);
+      console.log("geodata", chartGeo.geodata);
 
       //reversed the geodatajson in ngoninit
 
@@ -1044,6 +1076,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         this.psData = ev.target.dataItem.dataContext;
 
         //console.log("psdata", this.psData);
+        if (this.psData['boothNumber']) {
+
+          this.boothNumberFilter(this.psData['boothNumber']);
+
+        }
 
         if (this.psData) {
 
@@ -1794,7 +1831,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         event.target.dy = -event.target.pixelY;
       })
       yAxis.renderer.labels.template = yAxisLabel;
-      yAxis.renderer.labels.template.fill = color("#fff");
+      yAxis.renderer.labels.template.fill = color("#e3000f");
+      yAxis.renderer.labels.template.stroke = color("#bf0000");
+
 
       let heatseries = this.heatmapGraph.series.push(new am4charts.RadarColumnSeries());
       heatseries.dataFields.categoryX = "day";
@@ -2201,7 +2240,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
       // Legend
       this.streamGraph.legend = new am4charts.Legend();
-      this.streamGraph.legend.itemContainers.template.togglable = true;
+      this.streamGraph.legend.itemContainers.template.togglable = false;
       this.streamGraph.legend.position = "right"
       this.streamGraph.legend.valign = "top";
       this.streamGraph.legend.reverseOrder = true;
@@ -2327,7 +2366,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       series1.strokeWidth = 2;
       series1.tooltipText = "{valueY}";
       series1.name = "Male";
-      series1.bullets.create(am4charts.CircleBullet);
+      let bult = series1.bullets.create(am4charts.CircleBullet);
+       bult.circle.radius = 5;
+        bult.strokeWidth = 5;
+      // bult.
+      
+    //     bullet.strokeWidth = 4;
+    // bullet.tooltipText = "{valueY}";
       series1.dataItems.template.locations.valueX = 0.5;
 
       let series2 = this.proximityGraph.series.push(new am4charts.RadarSeries());
@@ -2386,6 +2431,30 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       ].reverse();
 
 
+  pieSeries.slices.template.events.on("hit", (ev) => {
+
+        // this.psData = ev.target.dataItem.dataContext;
+
+
+        console.log("psdata", ev.target.dataItem.category);
+        this.purposeFilter(ev.target.dataItem.category);
+        // if (this.psData['boothNumber']) {
+
+        //   this.boothNumberFilter(this.psData['boothNumber']);
+
+        // }
+
+        // if (this.psData) {
+
+        //   let pshtml = '<div class="psno">PB No. <b>' + this.psData['boothNumber'] + '</b></div>'
+        //     + '<div class="psloc">' + this.psData['boothName'] + '</div>'
+        //     + '<div class="psaddr">' + this.psData['count'] + ' Visitor' + (this.psData['count'] > 1 ? "s" : "") + '</div>';
+
+        //   $("#psData").html(pshtml);
+
+        // }
+
+      });
 
 
       // this.purposeGraph.legend = new am4charts.Legend();
@@ -3508,7 +3577,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         const found = ary.some(el => el.purpose === purpose);
         if (!found) ary.push({ "purpose": purpose, count: 0 });
       });
-      ary.sort((a, b) => a.purpose.localeCompare(b.purpose));
+      ary.sort((a, b) => a.purpose?.localeCompare(b.purpose));
       // //console.log("ary:", ary);
       // //console.log("SUM", sum);
       sum = sumObjectsByKey(sum, ary);
@@ -3600,8 +3669,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
     if (kpiData.length) {
       let last = kpiData[kpiData.length - 1];
-      if (kpiData.length < 2)
-        kpiData = this.prepend({ _id: "0", count: (0.3 * last.count) }, kpiData);
+      // if (kpiData.length < 2)
+      //   kpiData = this.prepend({ _id: "0", count: (0.3 * last.count) }, kpiData);
+
       last.disabled = false;
 
     }
@@ -3683,23 +3753,50 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  removeFilter(filter) {
-    if (this.appliedFilters.hasOwnProperty(filter)) {
-      const filterObj = {
-        key: filter,
-        value: "remove",
-      };
+  removeFilter(key, value) {
+
+    // console.log("FIL",type);
+    console.log("VAL", value);
+    // console.log("USED",this.usedFilters);
+
+    const filterObj = {
+      key: key,
+      value: "remove@" + value,
+    };
+
+    // text.substring(2);
 
 
-      delete this.appliedFilters[filter];
+    this.usedFilters = this.usedFilters.filter((filter) => {
+      return (filter.key != key || filter.value != value);
+    });
 
-      // //console.log(this.appliedFilters);
-      if (Object.keys(this.appliedFilters).length === 0)
-        this.resetFilter();
-      else
-        this.getVisitAnalyticGraphData(filterObj);
 
-    }
+    if (this.usedFilters.length === 0)
+      this.resetFilter();
+    else
+      this.getVisitAnalyticGraphData(filterObj);
+
+    // console.log("USED22", this.usedFilters);
+
+
+
+    // if (this.appliedFilters.hasOwnProperty(filter)) {
+    //   const filterObj = {
+    //     key: filter,
+    //     value: "remove",
+    //   };
+
+
+    //   delete this.appliedFilters[filter];
+
+    //   // //console.log(this.appliedFilters);
+    //   if (Object.keys(this.appliedFilters).length === 0)
+    //     this.resetFilter();
+    //   else
+    //     this.getVisitAnalyticGraphData(filterObj);
+
+    // }
 
 
 
@@ -4037,17 +4134,17 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
 
     this.isLoadingResults = true;
-    var currentTime = new Date();
-    var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
-    const range = { fromDate: fromdate, toDate: currentTime }
-    this.userService.getVisitorByFilter(
-      this.filterKeyword ? this.filterKeyword.search : '',
-      this.filterKeyword ? this.filterKeyword.purpose : '',
-      this.filterKeyword ? this.filterKeyword.date : '',
-      this.pageIndexOfListingTable).subscribe(
-        (response: any) => {
-          if (response.error === false) {
-            this.visitorLists = response.data.response;
+    // var currentTime = new Date();
+    // var fromdate = new Date("Fri Jan 01 2021 00:00:00 GMT+0530 (India Standard Time)");
+    // const range = { fromDate: fromdate, toDate: currentTime }
+    // this.userService.getVisitorByFilter(
+    //   this.filterKeyword ? this.filterKeyword.search : '',
+    //   this.filterKeyword ? this.filterKeyword.purpose : '',
+    //   this.filterKeyword ? this.filterKeyword.date : '',
+    //   this.pageIndexOfListingTable).subscribe(
+    //     (response: any) => {
+    //       if (response.error === false) {
+    //         this.visitorLists = response.data.response;
             this.exportList = [];
             for (var i = 0; i <= this.visitorLists.length - 1; i++) {
               var d = new Date(this.visitorLists[i].createdAt);
@@ -4074,20 +4171,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
               })
 
             }
-            this.dataSource = new MatTableDataSource<any>(this.visitorLists);
-            // this.dataSource.paginator = this.paginator;
-            this.pageLength = this.visitorListsTotalLength;
+    //         this.dataSource = new MatTableDataSource<any>(this.visitorLists);
+    //         // this.dataSource.paginator = this.paginator;
+    //         this.pageLength = this.visitorListsTotalLength;
             this.isLoadingResults = false;
 
-          }
-        },
-        (error) => {
-          this.isLoadingResults = false;
-          this._snackBar.open(error.message, "", {
-            duration: 5000,
-          });
-        }
-      );
+    //       }
+    //     },
+    //     (error) => {
+    //       this.isLoadingResults = false;
+    //       this._snackBar.open(error.message, "", {
+    //         duration: 5000,
+    //       });
+    //     }
+    //   );
   }
 
   getVisitorList(pageIndexOfListingTable?: any): void {
@@ -4153,6 +4250,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
     XLSX.writeFile(workbook, this.exportVisitorListFileName);
+  }
+
+    manualNav(path:String) {
+    this.router.navigate([path]);
   }
 
   exportTableAll(): void {
@@ -4452,6 +4553,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
   resetFilter() {
     this.appliedFilters = {};
+    this.usedFilters = [];
     // this.paginator.pageIndex = 0;
     // this.visitorListsTotalLength = 1;
     // this.filterInitial = "";
@@ -4497,11 +4599,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           var starting = moment(this.kpi_total[0]._id, 'MM-DD-YYYY');
 
           this.kpi_total_percent = starting.isValid() ? starting.format('MMMM YYYY') : "";
-          this.kpi_today_percent = this.percentage(response.data.lastWeekVisits, _.sumBy(this.kpi_today , function(o:any) { return o.count;}));
-          this.kpi_week_percent = this.percentage(response.data.lastMonthVisits, _.sumBy(this.kpi_week , function(o:any) { return o.count;}));
-          this.kpi_month_percent = this.percentage(response.data.lastYearVisits, response.data.thisYearVisits);
+          this.kpi_today_percent = this.percentage(response.data.lastDayVisits,response.data.todaysVisits); //_.sumBy(this.kpi_today, function (o: any) { return o.count; })
+          this.kpi_week_percent = this.percentage(response.data.lastWeekVisits, response.data.thisWeekVisits); //_.sumBy(this.kpi_week, function (o: any) { return o.count; })
+          this.kpi_month_percent = this.percentage(response.data.lastMonthVisits, response.data.thisMonthVisits);
           // 50
-           
+
 
 
           this.createKPI("kpi-total", this.kpi_total, 0);
@@ -4509,10 +4611,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           this.createKPI("kpi-week", this.kpi_week, 2);
           this.createKPI("kpi-month", this.kpi_month, 3);
 
-          console.log("kpi_lastweek:", response.data.lastMonthVisits);
-          console.log("kpi_lastMONTH:") ;
+          console.log("kpi_lastMONTH:", response.data.lastDayVisits);
+          console.log("kpi_thisMONTH:",response.data.todaysVisits);
 
-          console.log("percentage:", this.percentage(2, 11));
+          // console.log("percentage:", this.percentage(2, 11));
 
 
 
@@ -4534,12 +4636,17 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   percentage(old, curr) {
-    if (old < 1 && curr < 1)
-      return 0;
     if (old < 1 && curr > 0)
       return 100;
+    if (old > 0 && curr < 1)
+      return -100;
+    if(old < 1 && curr < 1)
+      return 0;
 
-    return Math.round((curr / old) * 100);
+    // return Math.round((curr / old) * 100);
+
+    return Math.round(((curr - old) / old ) * 100)
+
   }
 
   setToPollingTableView(): void {
@@ -4578,19 +4685,36 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       (response: any) => {
         if (response.error === false) {
 
-          //console.log("SUCCESSFULL ARRIVED");
-          this.userService.graphDataLoader.next(false);
+          console.log("SUCCESSFULL ARRIVED", response.data);
+
+
+          if (response.data.empty) {
+
+            // console.error("adasdsada");
+            this._snackBar.open("No Data Found For Applied Filter " + filterValue.value, "", {
+              duration: 5000,
+            });
+
+            this.filteredVisitorCount = 0
+
+            return false;
+          }
+
           if (!filterValue) {
             this.purposes = response.data.purpose;
             //console.log("purposes", this.purposes);
           }
+
+
+          this.userService.graphDataLoader.next(false);
 
           // //console.log('Purpose:', this.purposeGraph.data);
           // //console.log("castedat:", this.casteGraph.data);
           // //console.log("timeframe:", response.data.timeFrame);
 
 
-
+          if (response.data.count)
+            this.filteredVisitorCount = response.data.count;
           if (response.data.purpose)
             this.purposeGraph.data = response.data.purpose;
           if (response.data.gender) {
@@ -4598,12 +4722,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
             if (this.genderGraph.data.length < 2)
               this.genderGraph.data = _.unionBy(this.genderGraph.data, [{ _id: "Male", count: 0 }, { _id: "Female", count: 0 }], "_id");
           }
-          if (response.data.caste)
+          if (response.data.caste) {
             this.casteGraph.data = response.data.caste;
+            if (this.allcasts.length == 0)
+              this.allcasts = response.data.caste;
+          }
           if (this.casteGraph.data)
             this.networkSeries.data = this.casteGraph.data;
-          if (response.data.proximity)
+          if (response.data.proximity) {
             this.proximityGraph.data = response.data.proximity;
+            if (!this.proximityData) {
+              this.proximityData = response.data.proximity;
+            }
+          }
+
 
 
           //  this.genderGraph.data = [...new Set([..., ...])];
@@ -4707,7 +4839,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           if (response.data.districtStream) {
             if (this.streamGraph.data.length > 0) {
               this.streamGraph.data = response.data.districtStream;
-              //console.log("yes");
+             var obj = this.streamGraph.data[0];
+              if(this.streamGraph.data.length < 2){
+             var _id = obj._id;
+             var newObj = {...obj,_id: _id-1};
+              this.streamGraph.data.push(newObj);
+              this.streamGraph.data.reverse();
+              // this.streamGraph.data[1]._id = this.streamGraph.data[1]._id + 1;
+              }
+
+              console.log("yes",this.streamGraph.data);
             }
             else {
               this.districts = response.data.all_districts;
@@ -4824,9 +4965,18 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // this.geodata1.data = response.data.districtArea;
 
           //map ka data in this function below
-          if (response.data.boothArea)
+          if (response.data.boothArea) {
             this.pbPoints.data = response.data.boothArea;
-
+            if (!this.boothData) {
+              this.boothData = response.data.boothArea;
+              this.boothData = this.boothData.sort((a, b) => { return a.boothNumber - b.boothNumber })
+                .map((data) => {
+                  // if(data.boothNumber)
+                  return { boothNumber: data.boothNumber, boothName: data.boothName }
+                });
+            }
+            // console.log("PBBB",this.boothData);
+          }
           // this.pbPoints.data = this.geodatajson.features.filter(data => {
           //   return (data.geometry.type == "Point");
           // }).map(points => {
@@ -4834,45 +4984,50 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           // });
 
           // pbnos.map()
-          if (response.data.visitorCategory)
+          if (response.data.visitorCategory) {
             this.visitorCategoryData = response.data.visitorCategory;
+            // if(!this.categoryData){
+            //   this.categoryData = response.data.visitorCategory;
+            // }
+          }
           if (response.data.occupation)
             this.visitorOccupatioData = response.data.occupation;
           if (response.data.ageGroup)
             this.ageGraphData = response.data.ageGroup;
           if (response.data.ppi)
-            this.perceivedPoliticalInclinationData = response.data.ppi
+            this.perceivedPoliticalInclinationData = response.data.ppi;
           if (response.data.meetingLocation)
             this.meetingLocationGraphData = response.data.meetingLocation;
           if (response.data.whomVisitorMeet)
             this.whomVisitorMeetGraphData = response.data.whomVisitorMeet;
           if (response.data.meetingStatus)
             this.meetingStatusGraphData = response.data.meetingStatus;
-          if (response.data.count)
-            this.filteredVisitorCount = response.data.count;
-          if (response.data.isSamajwadiPartyMember){
+          if (response.data.isSamajwadiPartyMember) {
             this.samajwadiPartyGraphData = response.data.isSamajwadiPartyMember;
             if (this.samajwadiPartyGraphData.length < 2)
-            this.samajwadiPartyGraphData = _.unionBy(this.samajwadiPartyGraphData, [{ _id: "Yes", count: 0 }, { _id: "No", count: 0 }], "_id");
+              this.samajwadiPartyGraphData = _.unionBy(this.samajwadiPartyGraphData, [{ _id: "Yes", count: 0 }, { _id: "No", count: 0 }], "_id");
           }
-          if (response.data.area){
+          if (response.data.area) {
             this.visitorAreaData = response.data.area;
             if (this.visitorAreaData.length < 2)
-            this.visitorAreaData = _.unionBy(this.visitorAreaData, [{ _id: "Urban", count: 0 }, { _id: "Rural", count: 0 }], "_id");
+              this.visitorAreaData = _.unionBy(this.visitorAreaData, [{ _id: "Urban", count: 0 }, { _id: "Rural", count: 0 }], "_id");
           }
 
           this.graphDataLoader = false;
         }
 
-        
+
 
         console.log("response.data.ppi", response.data.ppi);
 
 
-        let sortingArr = ["Under 18","18 - 25","26 - 40","41 - 60","Over 60"];
-        
+        let sortingArr = ["Under 18", "18 - 25", "26 - 40", "41 - 60", "Over 60"];
+
 
         this.ageGraphData.sort((a, b) => sortingArr.indexOf(a.age) - sortingArr.indexOf(b.age));
+
+
+        console.log("asdasdn,mnm", response.data.visitorData);
 
 
         if (filterValue && response.data.visitorData) {
@@ -4890,16 +5045,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
               serial: i + 1,
               uniqueVisitorId: this.visitorLists[i].uniqueVisitorId,
               fullName: this.visitorLists[i].fullName,
-              address: this.visitorLists[i].address.houseNumber + ' ' + this.visitorLists[i].address.line1,
+              address: this.visitorLists[i].address?.houseNumber + ' ' + this.visitorLists[i].address?.line1,
               createdAt: day,
               enrollmentDate: Eday,
-              mobile: this.visitorLists[i].mobile,
-              revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].visitPurposeCategory : '',
-              revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0].status : '',
-              visitCategory: this.visitorLists[i].politicalinfo.visitorCategory,
-              totalVisits: this.visitorLists[i].totalVisits,
-              remark: this.visitorLists[i].objectiveinfo.remark,
-              politicalRemark: this.visitorLists[i].politicalinfo.remarks,
+              mobile: this.visitorLists[i]?.mobile,
+              revisit: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0]?.visitPurposeCategory : '',
+              revisitStatus: this.visitorLists[i].revisits[0] ? this.visitorLists[i].revisits[0]?.status : '',
+              visitCategory: this.visitorLists[i].politicalinfo?.visitorCategory,
+              totalVisits: this.visitorLists[i]?.totalVisits,
+              remark: this.visitorLists[i].objectiveinfo?.remark,
+              politicalRemark: this.visitorLists[i]?.politicalinfo?.remarks,
 
             })
             // if (this.visitorLists[i].politicalinfo.isAcknowledgementSent == true) {
@@ -4935,6 +5090,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
         }
       },
       (error) => {
+
+        // console.log("error",error);
         this.userService.graphDataLoader.next(false);
         this._snackBar.open(error.message, "", {
           duration: 5000,
@@ -4969,12 +5126,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
           value: formatDate.fromDate.toISOString() + "=" + formatDate.toDate.toISOString(),
         };
 
-        let range = this.appliedFilters['range'];
-        if(range.key && range.key != "By Week" && range.key != "By Month" && range.key != "By Year"){
-          this.appliedFilters['range'] = {key:"By Date"};
-        }
+        // let range = this.appliedFilters['range'];
+        // if (range.key && range.key != "By Week" && range.key != "By Month" && range.key != "By Year") {
+        //   // this.appliedFilters['range'] = { key: "By Date" };
+        // }
 
-        this.appliedFilters['range'].value = moment(formatDate.fromDate).format('D MMM YY') + " to " + moment(formatDate.toDate).format('D MMM YY');
+        // this.appliedFilters['range'].value = moment(formatDate.fromDate).format('D MMM YY') + " to " + moment(formatDate.toDate).format('D MMM YY');
+        this.usedFilters.push({ key: "range", value: filterObj.value, display: moment(formatDate.fromDate).format('D MMM YY') + " to " + moment(formatDate.toDate).format('D MMM YY') });
 
         this.getVisitAnalyticGraphData(filterObj);
 
@@ -4991,26 +5149,26 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
 
     var now = moment().startOf('day').toDate();
 
-    this.appliedFilters['range'] = {};
+    // this.appliedFilters['range'] = {};
 
     switch (value) {
       case "By Week":
-          this.appliedFilters['range'].key = "By Week";
-          this.range.patchValue({fromDate:moment(now).subtract(1, 'week').toDate(),toDate:moment(now).toDate()}); 
+        // this.appliedFilters['range'].key = "By Week";
+        this.range.patchValue({ fromDate: moment(now).subtract(1, 'week').toDate(), toDate: moment(now).toDate() });
 
         break;
       case "By Month":
-        this.appliedFilters['range'].key = "By Month";
-        this.range.patchValue({fromDate:moment(now).subtract(1, 'month').toDate(),toDate:moment(now).toDate()}); 
+        // this.appliedFilters['range'].key = "By Month";
+        this.range.patchValue({ fromDate: moment(now).subtract(1, 'month').toDate(), toDate: moment(now).toDate() });
 
         break;
       case "By Year":
-        this.appliedFilters['range'].key = "By Year";
-        this.range.patchValue({fromDate:moment(now).subtract(1, 'year').toDate(),toDate:moment(now).toDate()}); 
+        // this.appliedFilters['range'].key = "By Year";
+        this.range.patchValue({ fromDate: moment(now).subtract(1, 'year').toDate(), toDate: moment(now).toDate() });
 
         break;
       default:
-        this.appliedFilters['range'].key = "By Date";
+        // this.appliedFilters['range'].key = "By Date";
         break;
     }
 
@@ -5026,9 +5184,35 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       value: value,
     };
 
-    this.appliedFilters['purpose'] = value;
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push(filterObj);
+      this.getVisitAnalyticGraphData(filterObj);
+    }
 
-    this.getVisitAnalyticGraphData(filterObj);
+    //// this.appliedFilters['purpose'].push(value);
+    // this.usedFilters.push({type:"purpose", value: value});
+
+    // this.getVisitAnalyticGraphData(filterObj);
+    // this.getFilterMeetStatus(filterObj)
+
+  }
+
+  boothNumberFilter(value): void {
+    const filterObj = {
+      key: "boothNumber",
+      value: value,
+    };
+
+    //// this.appliedFilters['boothNumber'].push(value);
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push({ ...filterObj, display: "PB-" + value });
+      this.getVisitAnalyticGraphData(filterObj);
+    }
+
+    // this.usedFilters.push({type:"boothNumber", value: value});
+
+
+    // this.getVisitAnalyticGraphData(filterObj);
     // this.getFilterMeetStatus(filterObj)
 
   }
@@ -5039,9 +5223,17 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       value: value,
     };
 
-    this.appliedFilters['proximity'] = value;
 
-    this.getVisitAnalyticGraphData(filterObj);
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push(filterObj);
+      this.getVisitAnalyticGraphData(filterObj);
+    }
+
+    //// this.appliedFilters['proximity'].push(value);
+    // this.usedFilters.push({type:"proximity", value: value});
+
+
+    // this.getVisitAnalyticGraphData(filterObj);
 
   }
 
@@ -5051,20 +5243,29 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       value: value,
     };
 
-    this.appliedFilters['district'] = value;
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push(filterObj);
+      this.getVisitAnalyticGraphData(filterObj);
+    }
 
-    this.getVisitAnalyticGraphData(filterObj);
+    // this.appliedFilters['district'].push(value);
+    // this.usedFilters.push({type:"district", value: value});
+
+
+    // this.getVisitAnalyticGraphData(filterObj);
 
   }
 
 
-  visitorAreaFilter(filterObj): void {
+  visitorAreaFilter(value): void {
 
     // this.getFilterMeetStatus(filterObj)
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
 
-    this.getVisitAnalyticGraphData(filterObj);
-
-    this.appliedFilters['area'] = filterObj;
+    // this.appliedFilters['area'].push(value);
 
   }
 
@@ -5073,12 +5274,18 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       key: "gender",
       value: value,
     };
-
-    this.appliedFilters['gender'] = value;
+    // if (this.appliedFilters['gender'].length)
+    //// this.appliedFilters['gender'].push(value);
+    // else
+    //  // this.appliedFilters['gender'] = [];
 
     //console.log(this.appliedFilters);
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push(filterObj);
+      this.getVisitAnalyticGraphData(filterObj);
+    }
+
     // this.getFilterMeetStatus(filterObj)
-    this.getVisitAnalyticGraphData(filterObj);
     // this.getFilterGender(filterObj);
 
 
@@ -5089,70 +5296,109 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
       key: "caste",
       value: value,
     };
-    this.appliedFilters['caste'] = value;
-    // this.getFilterMeetStatus(filterObj)
-    this.getVisitAnalyticGraphData(filterObj);
+    // this.appliedFilters['caste'].push(value);
+
+    if (_.find(this.usedFilters, filterObj) == null) {
+      this.usedFilters.push(filterObj);
+      this.getVisitAnalyticGraphData(filterObj);
+    }
 
   }
 
-  ageFilter(filterObj): void {
+  ageFilter(value): void {
+
+    //  const filterObj = {
+    //   key: "caste",
+    //   value: value,
+    // };
+
     // this.getFilterMeetStatus(filterObj)
-    this.appliedFilters['ageGroup'] = filterObj;
+    // this.appliedFilters['ageGroup'].push(value);
+    // this.usedFilters.push(value);
+
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
+
     //console.log(this.appliedFilters);
-    this.getVisitAnalyticGraphData(filterObj);
+    // this.getVisitAnalyticGraphData(value);
 
   }
 
-  perceiveFilter(filterObj): void {
+  perceiveFilter(value): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['ppi'] = filterObj;
+    // this.appliedFilters['ppi'].push(value);
 
-    this.getVisitAnalyticGraphData(filterObj);
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
 
   }
 
-  samajwadiPartyFilter(filterObj): void {
+  samajwadiPartyFilter(value): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['isSamajwadiPartyMember'] = filterObj;
-    this.getVisitAnalyticGraphData(filterObj);
-  }
+    // this.appliedFilters['isSamajwadiPartyMember'].push(value);
 
-  visitorCategoryFilter(filterObj): void {
-    // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['visitorCategory'] = filterObj;
-
-    this.getVisitAnalyticGraphData(filterObj);
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
 
   }
 
-  visitorOccupationFilter(filterObj): void {
+  visitorCategoryFilter(value): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['occupation'] = filterObj;
+    // this.appliedFilters['visitorCategory'] = value;
 
-    this.getVisitAnalyticGraphData(filterObj);
-
-  }
-  whomVisitorMeetFilter(filterObj): void {
-    // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['whomVisitorMeet'] = filterObj;
-
-    this.getVisitAnalyticGraphData(filterObj);
-
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
 
   }
 
-  meetingStatusGraphFilter(filterObj): void {
+  visitorOccupationFilter(value): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['meetingStatus'] = filterObj;
+    // this.appliedFilters['occupation'].push(value);
 
-    this.getVisitAnalyticGraphData(filterObj);
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
+
+  }
+  whomVisitorMeetFilter(value): void {
+    // this.getFilterMeetStatus(filterObj);
+    // this.appliedFilters['whomVisitorMeet'].push(value);
+
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
+
+
+
   }
 
-  meetingLocationGraphFilter(filterObj): void {
+  meetingStatusGraphFilter(value): void {
     // this.getFilterMeetStatus(filterObj);
-    this.appliedFilters['meetingLocation'] = filterObj;
+    // this.appliedFilters['meetingStatus'].push(value);
 
-    this.getVisitAnalyticGraphData(filterObj);
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
+  }
+
+  meetingLocationGraphFilter(value): void {
+    // this.getFilterMeetStatus(filterObj);
+    // this.appliedFilters['meetingLocation'].push(value);
+    if (_.find(this.usedFilters, value) == null) {
+      this.usedFilters.push(value);
+      this.getVisitAnalyticGraphData(value);
+    }
 
   }
 

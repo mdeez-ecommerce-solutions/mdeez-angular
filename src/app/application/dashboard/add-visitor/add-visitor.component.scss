@@ -41,7 +41,9 @@ label {
     top: -2px;
     left: -4px;
 }
-
+.mat-step-text-label{
+  text-transform: uppercase !important;
+}
 /* Media query for tablate */
 @media (min-width: 1024px) and (max-width: 1366px) {
   

@@ -16,6 +16,8 @@ import {
 } from '../constant/apiConstant';
 
 
+import screenfull from 'screenfull';
+
 @Injectable({
   providedIn: 'root'
 })

@@ -19,6 +19,9 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import {
   UserService
 } from 'src/app/core/services/user.service';
+
+import screenfull from 'screenfull';
+
 useTheme(am4themes_animated);
 
 @Component({
@@ -43,6 +46,7 @@ export class VisitorOccupationGraphComponent implements OnInit {
   visitorCategoryGraph: any;
   graphDataLoader: boolean = true;
   occupationfilter: any;
+  searchOccupation: any;
   @Output() visitorOccupationFilterObj: EventEmitter < any > = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) private platformId, private zone: NgZone,
@@ -148,6 +152,12 @@ export class VisitorOccupationGraphComponent implements OnInit {
       this.visitorCategoryGraph.data = [];
     });
   })
+  }
+
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
   }
 
 

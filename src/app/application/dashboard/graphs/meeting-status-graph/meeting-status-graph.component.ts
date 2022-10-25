@@ -18,6 +18,9 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { UserService } from 'src/app/core/services/user.service';
 
+
+import screenfull from 'screenfull';
+
 useTheme(am4themes_animated);
 
 @Component({
@@ -27,9 +30,13 @@ useTheme(am4themes_animated);
 })
 export class MeetingStatusGraphComponent implements OnInit, AfterViewInit {
   meetingStatusGraph: any;
+  statusData;
   @Input() set meetingStatusGraphData(data) {
     if (data) {
       this.meetingStatusGraph.data = data;
+      if(!this.statusData){
+        this.statusData = data;
+      } 
     }
   }
   graphDataLoader: boolean = true;
@@ -114,6 +121,13 @@ this.user.themeValueBehavior.subscribe((value) => {
 
     });
   })
+  }
+
+  
+  toggleFullScreen(codePart: HTMLElement) {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(codePart);
+    }
   }
 
   meetingStatusGraphFilter(value): void {

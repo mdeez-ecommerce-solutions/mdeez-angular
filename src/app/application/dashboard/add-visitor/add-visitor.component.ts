@@ -41,7 +41,14 @@ export class AddVisitorComponent implements OnInit {
 
   imageUrl: string | ArrayBuffer =
     "https://bulma.io/images/placeholders/480x480.png";
-    uploadImageUrl: any;
+    // uploadImageUrl: any;
+  uploadImageUrl  : string | ArrayBuffer =
+    "https://bulma.io/images/placeholders/480x480.png"
+
+  existuploadImageUrl : string | ArrayBuffer =
+  "https://bulma.io/images/placeholders/480x480.png"
+
+
   fileName: string = "No file selected";
 
   SelectProximityOfVisitors: any;
@@ -92,6 +99,10 @@ ifAddWorkerEvent={};
   loaderVisitorSuggestion: boolean;
   visitorConstituency: any;
   occupation:any;
+  searchOccupation;
+  selectedOccupation;
+  searchCaste;
+  selectedCaste;
   constructor(
     private _formBuilder: FormBuilder,
     private uploader: UploderService,
@@ -314,7 +325,7 @@ this.visitorAddress.patchValue({
 
   existVisitorForm() {
     this.ExistVisitorInformation = this._formBuilder.group({
-      // visitorId: [''],
+      visitorId: [''],
       uniqueVisitorId: [''],
       date: ['', Validators.required],
       visitPurposeCategoryForExist: ['', Validators.required],
@@ -639,22 +650,26 @@ this.visitorAddress.patchValue({
 
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      const Visitor_id = this.visitorInformation.controls.visitorId.value;
+      // const Visitor_id = this.visitorInformation.controls.visitorId.value;
+      // console.log("asdas",Visitor_id);
       reader.onload = event => {
         this.uploadImageUrl = reader.result;
+        this.existuploadImageUrl = reader.result;
+
 
       };
+
       // this.onUpload();
-      this.loader = true;
-      this.userService.uploadVisitorImage(this.file, Visitor_id).subscribe((res) => {
-        this.loader = false;
-        this.imageUrl = this.uploadImageUrl
-      }, (error) => {
-        this.loader = false;
-        this._snackBar.open(error.message, '', {
-          duration: 5000,
-        });
-      })
+      // this.loader = true;
+      // this.userService.uploadVisitorImage(this.file, Visitor_id).subscribe((res) => {
+      //   this.loader = false;
+        // this.imageUrl = this.uploadImageUrl
+      // }, (error) => {
+      //   this.loader = false;
+      //   this._snackBar.open(error.message, '', {
+      //     duration: 5000,
+      //   });
+      // })
      
     }
     
@@ -719,6 +734,18 @@ visitorInformationFormSubmit(stepper?:any) {
         this.ifAddWorkerEvent['caste']=this.visitorInformation.controls.caste.value;
         this.ifAddWorkerEvent['gender']=this.visitorInformation.controls.gender.value;
         this.ifAddWorkerEvent['workerId']=response.data._id;
+
+        const Visitor_id = this.visitorInformation.controls.visitorId.value;
+        this.userService.uploadVisitorImage(this.file, Visitor_id).subscribe((res) => {
+          this.loader = false;
+          this.imageUrl = this.uploadImageUrl
+        }, (error) => {
+          this.loader = false;
+          this._snackBar.open(error.message, '', {
+            duration: 5000,
+          });
+        })
+
         // this._snackBar.open(response.message, '', {
         //   duration: 5000,
         // });
@@ -874,22 +901,30 @@ politicalInformationFormSubmit() {
     });
     dialogRef.afterClosed().subscribe(webCam => {
       if (webCam !== undefined) {
-      const Visitor_id = this.visitorInformation.controls.visitorId.value;
+      // const Visitor_id = this.visitorInformation.controls.visitorId.value;
       this.loaderWebcam = true;
         fetch(webCam._imageAsDataUrl)
         .then(res => res.blob())
         .then(blob => {
           const file = new File([blob], "File name",{ type: "image/png" });
-          this.userService.uploadVisitorImage(file, Visitor_id).subscribe((res) => {
+          
+          //new code
             this.loaderWebcam = false;
+             this.uploadImageUrl = webCam._imageAsDataUrl;
+            this.existuploadImageUrl = webCam._imageAsDataUrl;
             this.imageUrl = webCam._imageAsDataUrl;
-          }, (error) => {
-            this.loaderWebcam = false;
-            this.imageUrl = "https://bulma.io/images/placeholders/480x480.png";
-            this._snackBar.open(error.message, '', {
-              duration: 5000,
-            });
-          })
+
+
+          // this.userService.uploadVisitorImage(file, Visitor_id).subscribe((res) => {
+          //   this.loaderWebcam = false;
+          //   this.imageUrl = webCam._imageAsDataUrl;
+          // }, (error) => {
+          //   this.loaderWebcam = false;
+          //   this.imageUrl = "https://bulma.io/images/placeholders/480x480.png";
+          //   this._snackBar.open(error.message, '', {
+          //     duration: 5000,
+          //   });
+          // })
         })
   
       } else {
@@ -919,6 +954,7 @@ politicalInformationFormSubmit() {
               const existVisitorData = response.data.slice(-1).pop();
             
               this.ExistVisitorInformation.patchValue({
+                visitorId: existVisitorData._id,
                 date: new Date(existVisitorData.date),
                 meetingLocationForExist: existVisitorData.meetingLocation,
                 visitPurposeCategoryForExist: existVisitorData.visitPurposeCategory,
@@ -927,6 +963,22 @@ politicalInformationFormSubmit() {
                 perceivedPoliticalInclinationForExist: existVisitorData.perceivedPoliticalInclination,
                 
             });
+
+            console.log("cc",existVisitorData);
+
+            this.userService.getVisitorImage(existVisitorData._id).subscribe((response: any) => {
+              if (response.imagePath){
+                this.existuploadImageUrl = response.imagePath;
+              } else {
+                this.existuploadImageUrl = 'https://bulma.io/images/placeholders/480x480.png';
+              }
+            },(error) => {
+              this.existuploadImageUrl = 'https://bulma.io/images/placeholders/480x480.png';
+                this._snackBar.open("Visitor Image Not Found", '', {
+                  duration: 5000,
+                });
+            });
+          
          }
         }
       },(error) => {
@@ -936,8 +988,10 @@ politicalInformationFormSubmit() {
           });
       });
     }
+
   }
 
+  
   ExistVisitorInformationFormSubmit(): void {
     this.submitFormLoader = true;
     const existVisitorLocal = {
@@ -949,13 +1003,24 @@ politicalInformationFormSubmit() {
       meetingRemark: this.ExistVisitorInformation.controls.meetingRemark.value,
       perceivedPoliticalInclination: this.ExistVisitorInformation.controls.perceivedPoliticalInclinationForExist.value,
     }
-  
+  //ssssss
     this.userService.ExistVisitorInformationFormSubmit(existVisitorLocal).subscribe((response: any) => {
       if (response.error === false) {
         this._snackBar.open(response.message, '', {
           duration: 5000,
         }); 
         this.submitFormLoader = false;
+//updated image
+        const Visitor_id = this.ExistVisitorInformation.controls.visitorId.value;
+        this.userService.uploadVisitorImage(this.file, Visitor_id).subscribe((res) => {
+          this.loader = false;
+        }, (error) => {
+          this.loader = false;
+          this._snackBar.open(error.message, '', {
+            duration: 5000,
+          });
+        })
+
         this.router.navigate(['/total-visit-list']);
       }
     },(error) => {

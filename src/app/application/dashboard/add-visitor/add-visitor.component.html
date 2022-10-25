@@ -4,24 +4,24 @@
         height: 0;
         margin: 0;
     ">
-          <div class="mt-3 card">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item dashboard for_bold">
-                  <a class="myheading">ADD VISITOR</a>
-                </li>
-              </ol>
-            </nav>
-            <!-- <button *ngIf="viewGraphresetBtn == true" class="resetGraph" mat-stroked-button
+            <div class="mt-3 card">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item dashboard for_bold">
+                            <a class="myheading">ADD VISITOR</a>
+                        </li>
+                    </ol>
+                </nav>
+                <!-- <button *ngIf="viewGraphresetBtn == true" class="resetGraph" mat-stroked-button
               (click)="getVisitAnalyticGraphData()">
               RESET GRAPH
             </button>getFilterMeetStatus() -->
-            <!-- <button mat-raised-button color="warn" class="viewVisitorUI" (click)="setToPollingTableView()">
+                <!-- <button mat-raised-button color="warn" class="viewVisitorUI" (click)="setToPollingTableView()">
               VIEW VISITOR LIST
             </button> -->
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
     <!-- <div class="row">
         <div class="col-md-12">
             <div class="mt-3 card">
@@ -40,7 +40,7 @@
 
     <div class="row" *ngIf="existVisitorFlag">
         <div class="col-md-12">
-            <form class="mat-horizontal-content-container" [formGroup]="ExistVisitorInformation" >
+            <form class="mat-horizontal-content-container card" [formGroup]="ExistVisitorInformation">
                 <div class="row mt-5" *ngIf="!editForm">
 
                     <div class="col-md-6">
@@ -54,6 +54,36 @@
                         </mat-radio-group>
                     </div>
 
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <div class="d-flex-center">
+                            <div class="upload-img-height">
+                                <figure class="imageupload-fix-height">
+                                    <!-- <img class="img-fluid" [src]="imageUrl" /> -->
+                                    <img class="img-fluid" [src]="existuploadImageUrl" />
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="d-flex-center">
+                            <div class="m-1">
+                                <!-- (click)="startWeb() -->
+                                <label disabled class="fileContainer2 cursor-pointer" (click)="startWeb()">
+                                    <img class="upload-btn-align" src="../../../assets/images/camera.svg"
+                                        alt="camera" /> Click Photo <app-spiner [loader]="loaderWebcam">
+                                    </app-spiner>
+                                </label>
+                            </div>
+                            <div class="m-1">
+                                <label class="fileContainer2">
+                                    <img class="upload-btn-align" src="../../../assets/images/gallery.svg"
+                                        alt="camera" /> Browse <app-spiner [loader]="loader"></app-spiner>
+                                    <input class="file-input" type="file" name="file" accept="image/*" #fileInput
+                                        (change)="onChange(fileInput.files[0])" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-6">
@@ -72,8 +102,8 @@
                             <label> Date </label>
                         </div>
                         <mat-form-field floatLabel="never">
-                            <input matInput [matDatepicker]="picker" formControlName="date"
-                                placeholder="Date" required />
+                            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date"
+                                required />
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
@@ -171,7 +201,8 @@
                         <app-spiner class="align-submit-loader" [loader]="submitFormLoader"></app-spiner>
                         <span class="material-icons arrow-forword">
                             east
-                        </span></button>
+                        </span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -181,7 +212,7 @@
 
             <mat-horizontal-stepper linear #stepper class="card">
                 <mat-step [stepControl]="visitorInformation">
-                    <form   [formGroup]="visitorInformation" (ngSubmit)="visitorInformationFormSubmit(stepper)" >
+                    <form [formGroup]="visitorInformation" (ngSubmit)="visitorInformationFormSubmit(stepper)">
                         <ng-template matStepLabel>Visitor Information</ng-template>
                         <div class="row mt-5" *ngIf="!editForm">
 
@@ -199,6 +230,37 @@
                             </div>
 
                         </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12">
+                                <div class="d-flex-center">
+                                    <div class="upload-img-height">
+                                        <figure class="imageupload-fix-height">
+                                            <!-- <img class="img-fluid" [src]="imageUrl" /> -->
+                                            <img class="img-fluid" [src]="uploadImageUrl" />
+
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="d-flex-center">
+                                    <div class="m-1">
+                                        <!-- (click)="startWeb() -->
+                                        <label disabled class="fileContainer2 cursor-pointer" (click)="startWeb()">
+                                            <img class="upload-btn-align" src="../../../assets/images/camera.svg"
+                                                alt="camera" /> Click Photo <app-spiner [loader]="loaderWebcam">
+                                            </app-spiner>
+                                        </label>
+                                    </div>
+                                    <div class="m-1">
+                                        <label class="fileContainer2">
+                                            <img class="upload-btn-align" src="../../../assets/images/gallery.svg"
+                                                alt="camera" /> Browse <app-spiner [loader]="loader"></app-spiner>
+                                            <input class="file-input" type="file" name="file" accept="image/*"
+                                                #fileInput (change)="onChange(fileInput.files[0])" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row mt-4">
                             <div class="col-md-6">
                                 <div>
@@ -207,7 +269,7 @@
                                 <mat-form-field floatLabel="never">
                                     <input matInput [matDatepicker]="picker" formControlName="enrollmentDate"
                                         mat-raised-button (click)="picker.open()" placeholder="Date" autocomplete="off"
-                                         required  />
+                                        required />
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
@@ -232,7 +294,10 @@
                                         <mat-option (click)="getIndex(i)" *ngFor="let detail of options$; let i = index"
                                             [value]="detail?.firstName">
                                             {{detail?.firstName}} {{detail?.lastName}} |
-                                            <small>{{detail?.relationType == 'F' ? 'Father' : detail?.relationType == 'M' ? 'Mother' : detail?.relationType == 'H' ? 'Husband' : detail?.relationType == 'W' ? 'Wife' : detail?.relationType == 'G' ? 'Guru' : detail?.relationType == 'O' ? 'Other' : ''}}
+                                            <small>{{detail?.relationType == 'F' ? 'Father' : detail?.relationType ==
+                                                'M' ? 'Mother' : detail?.relationType == 'H' ? 'Husband' :
+                                                detail?.relationType == 'W' ? 'Wife' : detail?.relationType == 'G' ?
+                                                'Guru' : detail?.relationType == 'O' ? 'Other' : ''}}
                                                 name: {{detail?.realtionTypeFamilyFirstName}}</small>
                                         </mat-option>
                                     </mat-autocomplete>
@@ -266,12 +331,40 @@
                                     <label> Caste* </label>
                                 </div>
 
-                                <mat-form-field floatLabel="never" class="example-full-width">
+                                
+                                <mat-form-field appearance="fill" floatLabel="never" class="example-full-width">
+                                    <mat-select matInput [(ngModel)]="selectedCaste"
+                                        placeholder="SELECT VISITOR CASTE" formControlName="caste">
+                                        <input class="form-control" type="text" placeholder="SEARCH CASTE" [(ngModel)]="searchCaste" [ngModelOptions]="{standalone: true}" autocomplete="off"
+                                        style="
+                                            border-color: #717171;
+                                            width: 100%;
+                                            height: 36px;
+                                            border-radius: 2px;
+                                            margin: auto;
+                                            margin-bottom: 10px;
+                                            margin-top: 7px;
+
+                                            color:white;
+                                            
+                                        "
+                                        >
+                                        <mat-option *ngFor="let item of castes | filter:searchCaste;" [value]="item?.caste.toLowerCase() == 'others' || item?.caste.toLowerCase() == 'other' ? '' : item?.caste">
+                                            {{item?.caste}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field *ngIf="selectedCaste == ''" floatLabel="never">
+                                    <input matInput formControlName="caste" placeholder="ENTER VISITOR CASTE" >
+                                </mat-form-field>
+
+
+
+                                <!-- <mat-form-field floatLabel="never" class="example-full-width">
                                     <input type="text" placeholder="Enter visitor Caste" matInput
                                         formControlName="caste" [matAutocomplete]="casteSuggestion">
-                                    <!-- <app-spiner style="position: absolute; right: 0; top: 2px;"
-                                            [loader]="loaderVisitorSuggestion">
-                                        </app-spiner> -->
+                                 
 
                                     <mat-autocomplete #casteSuggestion="matAutocomplete">
                                         <mat-option *ngFor="let caste of $castesSuggestion; let i = index"
@@ -279,7 +372,7 @@
                                             {{caste?.caste}}
                                         </mat-option>
                                     </mat-autocomplete>
-                                </mat-form-field>
+                                </mat-form-field> -->
 
                             </div>
                             <div class="col-md-6">
@@ -289,7 +382,7 @@
                                 <mat-form-field floatLabel="never">
                                     <input [max]="today" matInput [matDatepicker]="dobPicker" formControlName="dob"
                                         placeholder="Select date" mat-raised-button (click)="dobPicker.open()"
-                                        autocomplete="off" required  />
+                                        autocomplete="off" required />
                                     <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
                                     <mat-datepicker #dobPicker></mat-datepicker>
                                 </mat-form-field>
@@ -316,7 +409,7 @@
                                     </mat-radio-button>
                                 </mat-radio-group>
                             </div>
-                           
+
                         </div>
                         <div class="row mt-4">
                             <!--- voter Id Change place-->
@@ -325,12 +418,42 @@
                                 <div>
                                     <label> Occupation* </label>
                                 </div>
-                                <mat-form-field floatLabel="never" class="example-full-width">
+
+
+                                <mat-form-field appearance="fill" floatLabel="never" class="example-full-width">
+                                    <mat-select matInput [(ngModel)]="selectedOccupation"
+                                        placeholder="SELECT VISITOR OCCUPATION" formControlName="occupation">
+                                        <input class="form-control" type="text" placeholder="SEARCH Occupation" [(ngModel)]="searchOccupation" [ngModelOptions]="{standalone: true}" autocomplete="off"
+                                        style="
+                                            border-color: #717171;
+                                            width: 100%;
+                                            height: 36px;
+                                            border-radius: 2px;
+                                            margin: auto;
+                                            margin-bottom: 10px;
+                                            margin-top: 7px;
+
+                                            color:white;
+                                            
+                                        "
+                                        >
+                                    <mat-option *ngFor="let item of occupation | filter:searchOccupation;" [value]="item?.occupation.toLowerCase() == 'others' || item?.occupation.toLowerCase() == 'other' ? '' : item?.occupation">
+                                            {{item?.occupation}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field *ngIf="selectedOccupation == ''" floatLabel="never">
+                                    <input matInput formControlName="occupation" placeholder="ENTER VISITOR OCCUPATION" >
+                                </mat-form-field>
+
+
+
+
+                                <!-- <mat-form-field floatLabel="never" class="example-full-width">
                                     <input type="text" placeholder="Enter visitor Occupation" matInput
                                         formControlName="occupation" [matAutocomplete]="occupationSuggestion">
-                                    <!-- <app-spiner style="position: absolute; right: 0; top: 2px;"
-                                            [loader]="loaderVisitorSuggestion">
-                                        </app-spiner> -->
+                       
 
                                     <mat-autocomplete #occupationSuggestion="matAutocomplete">
                                         <mat-option *ngFor="let item of $occupationSuggestion; let i = index"
@@ -338,7 +461,7 @@
                                             {{item?.occupation}}
                                         </mat-option>
                                     </mat-autocomplete>
-                                </mat-form-field>
+                                </mat-form-field> -->
                                 <!-- <mat-form-field appearance="fill" class="select-bg" required>
                                     <mat-select formControlName="occupation">
                                         <mat-option value="" selected disabled>Select Occupation</mat-option>
@@ -348,17 +471,16 @@
                                     </mat-select>
                                 </mat-form-field> -->
                             </div>
-                            </div>
+                        </div>
                         <br />
                         <hr>
                         <div class="float-right foot_bot">
-                            <button mat-button type="button"  class="m-2 back"  [routerLink]="['/dashboard']"
-                                ><span class="material-icons arrow-back">
+                            <button mat-button type="button" class="m-2 back" [routerLink]="['/dashboard']"><span
+                                    class="material-icons arrow-back">
                                     west
                                 </span> Cancel</button>
-                            <button type="submit"  
-                                [disabled]="!visitorInformation.valid" mat-button mat-flat-button color="warn"
-                                class="m-2 next">Next <span class="material-icons arrow-forword">
+                            <button type="submit" [disabled]="!visitorInformation.valid" mat-button mat-flat-button
+                                color="warn" class="m-2 next">Next <span class="material-icons arrow-forword">
                                     east
                                 </span></button>
                         </div>
@@ -419,10 +541,10 @@
                                         </mat-option>
                                     </mat-select> -->
 
-                                         <!-- we need to uncomment this and change const data -->
+                                    <!-- we need to uncomment this and change const data -->
 
-                                         <input matInput required formControlName="district" placeholder="Enter District">
-                                  
+                                    <input matInput required formControlName="district" placeholder="Enter District">
+
 
                                 </mat-form-field>
                                 <!-- <mat-form-field floatLabel="never">
@@ -456,7 +578,8 @@
                                     </mat-select> -->
                                     <!-- we need to uncomment this and change const data -->
 
-                                    <input required matInput formControlName="constituency" placeholder="Enter Constituency">
+                                    <input required matInput formControlName="constituency"
+                                        placeholder="Enter Constituency">
 
                                 </mat-form-field>
                             </div>
@@ -467,8 +590,8 @@
                                 <mat-form-field appearance="fill" class="select-bg" required>
                                     <mat-select formControlName="area">
                                         <mat-option value="" selected disabled>Select Area</mat-option>
-                                        <mat-option value="Rural" >RURAL</mat-option>
-                                        <mat-option value="Urban" >URBAN</mat-option>
+                                        <mat-option value="Rural">RURAL</mat-option>
+                                        <mat-option value="Urban">URBAN</mat-option>
                                         <!-- <mat-option *ngFor="let item of visitorConstituency" [value]="item">
                                             {{item}}
                                         </mat-option> -->
@@ -487,7 +610,7 @@
                         </div>
 
                         <div class="row mt-4">
-                        
+
                             <div class="col-md-6">
                                 <div>
                                     <label> Booth Name </label>
@@ -528,7 +651,7 @@
                                         class="material-icons arrow-back">
                                         west
                                     </span> Back</button>
-                                <button  (click)="visitorAddressFormSubmit(stepper)" [disabled]="!visitorAddress.valid"
+                                <button (click)="visitorAddressFormSubmit(stepper)" [disabled]="!visitorAddress.valid"
                                     mat-button mat-flat-button color="warn" class="m-2 next">Next
                                     <span class="material-icons arrow-forword">
                                         east
@@ -744,7 +867,7 @@
                                         class="material-icons arrow-back">
                                         west
                                     </span> Back</button>
-                                <button  (click)="objectiveInformationFormSubmit(stepper)"
+                                <button (click)="objectiveInformationFormSubmit(stepper)"
                                     [disabled]="!objectiveInformation.valid" mat-button mat-flat-button color="warn"
                                     class="m-2 next">Next
                                     <span class="material-icons arrow-forword">
@@ -759,7 +882,7 @@
                 <mat-step [stepControl]="politicalInformation">
                     <form [formGroup]="politicalInformation">
                         <ng-template matStepLabel>Political Information</ng-template>
-                        <div class="row mt-5">
+                        <!-- <div class="row mt-5">
                             <div class="col-md-12">
                                 <div class="d-flex-center">
                                     <div class="upload-img-height">
@@ -770,7 +893,7 @@
                                 </div>
                                 <div class="d-flex-center">
                                     <div class="m-1">
-                                        <!-- (click)="startWeb() -->
+                                        //remove (click)="startWeb() 
                                         <label disabled class="fileContainer2 cursor-pointer" (click)="startWeb()">
                                             <img class="upload-btn-align" src="../../../assets/images/camera.svg"
                                                 alt="camera" /> Click Photo <app-spiner [loader]="loaderWebcam">
@@ -787,7 +910,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row mt-4">
                             <div class="col-md-6">
                                 <div>
@@ -832,7 +955,7 @@
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <div>
-                                <label> In case if the visitor comes with some reference) * </label>
+                                    <label> In case if the visitor comes with some reference) * </label>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -840,8 +963,7 @@
                                     <label> Reference Name </label>
                                 </div>
                                 <mat-form-field floatLabel="never">
-                                    <input matInput formControlName="refrenceName"
-                                        placeholder="Enter reference Name" />
+                                    <input matInput formControlName="refrenceName" placeholder="Enter reference Name" />
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
@@ -863,9 +985,9 @@
                                 </mat-form-field>
 
                             </div>
-                           
+
                         </div>
-                       
+
 
                         <div class="row mt-4">
                             <div class="col-md-12">
@@ -878,8 +1000,7 @@
                                     <label> Accomplice Name </label>
                                 </div>
                                 <mat-form-field floatLabel="never">
-                                    <input matInput formControlName="accompliceName"
-                                        placeholder="Enter Name" />
+                                    <input matInput formControlName="accompliceName" placeholder="Enter Name" />
                                 </mat-form-field>
                             </div>
                             <div class="col-md-4">
@@ -896,8 +1017,7 @@
                                     <label> Accomplice Remarks </label>
                                 </div>
                                 <mat-form-field floatLabel="never">
-                                    <input matInput formControlName="accompliceRemark"
-                                        placeholder="Enter remark " />
+                                    <input matInput formControlName="accompliceRemark" placeholder="Enter remark " />
                                 </mat-form-field>
 
                             </div>
@@ -921,7 +1041,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div>
-                                    <label> Are you a member of Aam Aadmi Party ?* </label>
+                                    <label> Are you a Party Member ?* </label>
                                 </div>
                                 <mat-radio-group aria-label="Select an option" class="mt-3"
                                     formControlName="isSamajwadiPartyMember">
